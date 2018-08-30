@@ -1,42 +1,42 @@
 package compilador;
 
 	/*
- * Identificadores cuyos nombres pueden tener hasta 15caracteres de longitud. El primer carácter debe ser
-una letra, y el resto pueden ser letras, dígitos y “_”. Los identificadores con longitud mayor serán truncados
-y esto se informará como Warning.Las letras utilizadas en los nombres de identificador pueden ser
-mayúsculas o minúsculas, y el lenguaje NO será case sensitive. Entonces, el identificador MyVariable, será
+ * Identificadores cuyos nombres pueden tener hasta 15caracteres de longitud. El primer carï¿½cter debe ser
+una letra, y el resto pueden ser letras, dï¿½gitos y ï¿½_ï¿½. Los identificadores con longitud mayor serï¿½n truncados
+y esto se informarï¿½ como Warning.Las letras utilizadas en los nombres de identificador pueden ser
+mayï¿½sculas o minï¿½sculas, y el lenguaje NO serï¿½ case sensitive. Entonces, el identificador MyVariable, serï¿½
 igual a myvariable.
-• Constantes correspondientes alostemas particulares asignados a cada grupo. Para aquellos grupos cuyos
-temas asignados incluyan constantes tales que, el rango de uno de los tipos esté incluido en el rango del
-otro, considerar que, una constante incluída en el rango más acotado, será del tipo más chico.
+ï¿½ Constantes correspondientes alostemas particulares asignados a cada grupo. Para aquellos grupos cuyos
+temas asignados incluyan constantes tales que, el rango de uno de los tipos estï¿½ incluido en el rango del
+otro, considerar que, una constante incluï¿½da en el rango mï¿½s acotado, serï¿½ del tipo mï¿½s chico.
 Ejemplos:
-• INT y LONG. La constante 123 será de tipo INT.
-• UINT y ULONG. La constante 25 será de tipo UINT.
-• FLOAT y DOUBLE. La constante 1.234 será de tipo FLOAT.
-• Operadores aritméticos: “+”, “-” ,“*”, “/”.
-• Operador de asignación: “=”
-• Comparadores: “>=”, “<=”, “>”, “<”, “==”, “<>”
-• “(” “)”“,” “:” y“.”
-• Cadenas de caracteres correspondientes al tema particular de cada grupo.
-• Palabras reservadas (en mayúsculas):
+ï¿½ INT y LONG. La constante 123 serï¿½ de tipo INT.
+ï¿½ UINT y ULONG. La constante 25 serï¿½ de tipo UINT.
+ï¿½ FLOAT y DOUBLE. La constante 1.234 serï¿½ de tipo FLOAT.
+ï¿½ Operadores aritmï¿½ticos: ï¿½+ï¿½, ï¿½-ï¿½ ,ï¿½*ï¿½, ï¿½/ï¿½.
+ï¿½ Operador de asignaciï¿½n: ï¿½=ï¿½
+ï¿½ Comparadores: ï¿½>=ï¿½, ï¿½<=ï¿½, ï¿½>ï¿½, ï¿½<ï¿½, ï¿½==ï¿½, ï¿½<>ï¿½
+ï¿½ ï¿½(ï¿½ ï¿½)ï¿½ï¿½,ï¿½ ï¿½:ï¿½ yï¿½.ï¿½
+ï¿½ Cadenas de caracteres correspondientes al tema particular de cada grupo.
+ï¿½ Palabras reservadas (en mayï¿½sculas):
 IF, THEN, ELSE, END_IF, BEGIN, END, OUT
-• y demás símbolos / tokens indicados en los temas particulares asignados al grupo.
-El Analizador Léxico debe eliminar de la entrada (reconocer, pero no informarcomo tokens al Analizador
-Sintáctico), los siguientes elementos.
-• Comentarios correspondientes al tema particular de cada grupo.
-• Caracteres en blanco, tabulaciones y saltos de línea,que pueden aparecer en cualquier lugar de una
+ï¿½ y demï¿½s sï¿½mbolos / tokens indicados en los temas particulares asignados al grupo.
+El Analizador Lï¿½xico debe eliminar de la entrada (reconocer, pero no informarcomo tokens al Analizador
+Sintï¿½ctico), los siguientes elementos.
+ï¿½ Comentarios correspondientes al tema particular de cada grupo.
+ï¿½ Caracteres en blanco, tabulaciones y saltos de lï¿½nea,que pueden aparecer en cualquier lugar de una
 sentencia.
  */
 
 
 /*agregados:
  * 2 6 10 13 16 18 20
- * 2. Enteros sin signo: Constantes enteras con valores entre 0 y 216 – 1.
+ * 2. Enteros sin signo: Constantes enteras con valores entre 0 y 216 ï¿½ 1.
  
- * 6. Dobles:Números reales con signo y parte exponencial. El exponente comienza con la letra E
-(mayúscula o minúscula) y puede tener signo. La ausencia de signo implica positivo. La parte
-exponencial puede estar ausente. El símbolo decimal es la coma “,”.
-Ejemplos válidos: 1, ,6 -1,2 3,E–5 2,e+34 2,5E1 13, 0,
+ * 6. Dobles:Nï¿½meros reales con signo y parte exponencial. El exponente comienza con la letra E
+(mayï¿½scula o minï¿½scula) y puede tener signo. La ausencia de signo implica positivo. La parte
+exponencial puede estar ausente. El sï¿½mbolo decimal es la coma ï¿½,ï¿½.
+Ejemplos vï¿½lidos: 1, ,6 -1,2 3,Eï¿½5 2,e+34 2,5E1 13, 0,
 Considerar rango2,2250738585072014E-308 <x < 1,7976931348623157E308(incluir el 0,0)
 Se debe incorporar a la lista de palabras reservadas la palabra DOUBLE.
  
@@ -44,15 +44,15 @@ Se debe incorporar a la lista de palabras reservadas la palabra DOUBLE.
  
  *13. Incorporar a la lista de palabras reservadas las palabras FUNCTION, RETURN y MOVE.
  
- *16. Se definirá en el trabajo práctico 2
+ *16. Se definirï¿½ en el trabajo prï¿½ctico 2
  
- *18. Comentarios multilínea: Comentarios que comiencen con “{ ” y terminen con “}” (estos comentarios
-pueden ocupar más de una línea).
+ *18. Comentarios multilï¿½nea: Comentarios que comiencen con ï¿½{ ï¿½ y terminen con ï¿½}ï¿½ (estos comentarios
+pueden ocupar mï¿½s de una lï¿½nea).
  
- *20. Cadenas multilínea: Cadenas de caracteres que comiencen con y terminen con “ ”” . Estas cadenas
-pueden ocupar más de una línea, y en dicho caso, al final de cada línea, excepto la última, deben
-aparecer 3 puntos suspensivos“ ... ”. (En la Tabla de símbolos se guardará la cadena sin los puntos
-suspensivos, y sin el salto de línea.
+ *20. Cadenas multilï¿½nea: Cadenas de caracteres que comiencen con y terminen con ï¿½ ï¿½ï¿½ . Estas cadenas
+pueden ocupar mï¿½s de una lï¿½nea, y en dicho caso, al final de cada lï¿½nea, excepto la ï¿½ltima, deben
+aparecer 3 puntos suspensivosï¿½ ... ï¿½. (En la Tabla de sï¿½mbolos se guardarï¿½ la cadena sin los puntos
+suspensivos, y sin el salto de lï¿½nea.
  */
 import java.io.BufferedReader;
 import java.io.File;
@@ -66,7 +66,6 @@ import java.util.Enumeration;
 import java.util.Hashtable;
 
 import tercetos.Elemento;
-import compilador.AnalizadorLexico.RegistroTS;
 
 public class Main {
 	
@@ -149,7 +148,7 @@ public class Main {
 			System.out.println("-----------------------------");
 			pw.println("");
 			if (p.getErroresSemanticos().isEmpty())
-				pw.println("No se detectaron errores de chequeo semántico.");
+				pw.println("No se detectaron errores de chequeo semï¿½ntico.");
 			else
 				{
 				for(String e: p.getErroresSemanticos()){

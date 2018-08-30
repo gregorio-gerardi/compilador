@@ -1,6 +1,5 @@
 package compilador;
 
-import compilador.AnalizadorLexico.RegistroTS;
 import tercetos.Elemento;
 
 public class Token extends Elemento{

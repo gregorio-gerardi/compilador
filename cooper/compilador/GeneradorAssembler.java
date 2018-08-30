@@ -3,7 +3,6 @@ package compilador;
 import java.util.Set;
 import java.util.Vector;
 
-import compilador.AnalizadorLexico.RegistroTS;
 import tercetos.Elemento;
 
 public class GeneradorAssembler {

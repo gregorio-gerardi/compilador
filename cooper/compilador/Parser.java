@@ -20,12 +20,10 @@
 
 package compilador;
 
-import compilador.Token;
 import java.util.ArrayList;
-import compilador.Fuente;
+
 import tercetos.*;
 import java.util.Vector;
-import compilador.AnalizadorLexico.RegistroTS;
 
 
 //#line 29 "Parser.java"
