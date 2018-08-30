@@ -8,13 +8,14 @@ import java.io.IOException;
 * */
 public class Main {
     public static void main(String[] args) throws IOException {
+        Lector lector= new Lector(args[0]);
+        AnalizadorLexico analizadorLexico=new AnalizadorLexico(lector)
         FileReader inputStream = null;
         try {
             inputStream = new FileReader(args[0]);
             int c;
             while ((c = inputStream.read()) != -1) {
-                System.out.print(c);
-                System.out.print('-');
+
             }
         } finally {
             if (inputStream != null) {
