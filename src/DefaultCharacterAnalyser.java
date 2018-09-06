@@ -21,6 +21,7 @@ public class DefaultCharacterAnalyser {
     }
 
     public static int getColumnaSimbolo(char c) {
+       //todo valores random
 
         if (c == 'i')
             return 6;

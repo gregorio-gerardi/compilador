@@ -3,7 +3,7 @@ import java.io.FileReader;
 
 public class Reader {
     private String sourceCode;
-    private int position = 0;
+    private int position = 1;
     public static int actualLine = 1;
     BufferedReader inputReader;
 

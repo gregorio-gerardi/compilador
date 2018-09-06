@@ -2,6 +2,8 @@ public class AnalizadorLexico {
     private Reader fuente;
     private String buffer;
     private int[][] mTE = {//Matriz de transici�n de estados.
+            //todo valores random
+
             //0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29
             { 1, 1, 0, 0, 0, 2, 1, 1,10, 9, 9, 9, 9, 9, 9, 9, 9,15,11,14,13,13,16, 0, 0, 0, 0, 0,23, 0},//
             { 1, 1, 1,-1,-1, 1, 1, 1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, 1, 1,-1,-1,-1},//
@@ -30,6 +32,8 @@ public class AnalizadorLexico {
             {24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24, 0,-1,24}};//
 
     private AccionSemantica[][] mAS = {//matriz de acciones semanticas
+            //todo valores random
+
             {as1,as1,eci,asc,asc,as1,as1,as1,as1,as1,as1,as1,as1,as1,as1,as1,as1,as1,as1,as1,as1,as1,as1,eci,eci,eci,eci,asc,asc,eci},
             {as2,as2,as2,as3,as3,as2,as2,as2,as3,as3,as3,as3,as3,as3,as3,as3,as3,as3,as3,as3,as3,as3,as3,as3,as3,as2,as2,as3,as3,as3},
             {eeui,eeui,eeui,eeui,eeui,eeui,as2,as2,eeui,eeui,eeui,eeui,eeui,eeui,eeui,eeui,eeui,eeui,eeui,eeui,eeui,eeui,eeui,eeui,eeui,eeui,eeui,eeui,eeui,eeui},
