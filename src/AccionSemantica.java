@@ -1,2 +1,3 @@
-public class AccionSemantica {
+public interface AccionSemantica {
+    int exec(char c, AnalizadorLexico al);
 }
