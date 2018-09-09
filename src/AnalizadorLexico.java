@@ -61,7 +61,7 @@ public class AnalizadorLexico {
             {as2,as2,as2,as2,as2,as2,as2,as2,as2,as2,as2,as2,as2,as2,as2,as2,as2,as2,as2,as2,as2,as2,as2,as2,as2,as2,as2,ecl,as8,as2}};
 
     public Token getToken(){
-        //come gato 
+        //come gato
         buffer="";
         int estado = 0; //Estado inicial.
         while ((estado != -1) && (fuente.isNotFinal())){
