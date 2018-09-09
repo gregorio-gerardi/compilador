@@ -12,6 +12,6 @@ public class AS2 extends AccionSemantica{
 			catch (Exception ex) { //Try-Catch para salvar fuera de rango de String Java
 				Logger.getLogger(AnalizadorLexico.class.getName()).log(Level.SEVERE, null, ex);
 			}
-			return 0; //Devuelvo 0 para avanzar una posición y seguir reconociendo
+			return 0; //Devuelvo 0 para avanzar una posicion y seguir reconociendo
 		}
 }

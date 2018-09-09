@@ -1,5 +1,6 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.IOException;
 
 public class Reader {
     private String sourceCode;
@@ -19,10 +20,10 @@ public class Reader {
         return position == sourceCode.length();
     }
 
-    public Reader(String path) {
+    public Reader(String path) throws IOException {
         BufferedReader inputReader = new BufferedReader(new FileReader(path));
         int read ;
-        while (read=inputReader.read()!=-1){
+        while ((read=inputReader.read())!=-1){
         sourceCode+=read;}
     }
     public int getCaracter() {
