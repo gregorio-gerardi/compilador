@@ -1,3 +1,3 @@
 public interface AccionSemantica {
-    void ejecutar(AnalizadorLexico analizadorLexico);
+    void ejecutar(AnalizadorLexico al);
 }
