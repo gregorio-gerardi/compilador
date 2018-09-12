@@ -1,4 +1,5 @@
 public class AnalizadorLexico {
+    //Fermin
     public static int ERROR = -1;
     public static int FINAL = 100;
 //--------//
