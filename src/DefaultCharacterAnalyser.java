@@ -1,4 +1,3 @@
-/*
 public class DefaultCharacterAnalyser {
    public boolean esMayus(char c){
         if (c >= 65 && c <= 90){
@@ -67,4 +66,3 @@ public class DefaultCharacterAnalyser {
     }
 
 }
-*/
