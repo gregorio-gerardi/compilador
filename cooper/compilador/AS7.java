@@ -1,7 +1,7 @@
 package compilador;
 
 public class AS7 extends AccionSemantica{
-	//Define Anotaciones para tiempo de ejecución
+	//Define Anotaciones para tiempo de ejecucion
 	public int ejecutar (char c,AnalizadorLexico a){
 		//Guardamos /#@NC
 		String constante = a.getBuffer().substring(0,5);

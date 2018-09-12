@@ -1,8 +1,9 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.IOException;
 
 public class Reader {
-    private String sourceCode;
+    private String sourceCode="";
     private int position = 1;
     public static int actualLine = 1;
     BufferedReader inputReader;
@@ -19,11 +20,11 @@ public class Reader {
         return position == sourceCode.length();
     }
 
-    public Reader(String path) {
+    public Reader(String path) throws IOException {
         BufferedReader inputReader = new BufferedReader(new FileReader(path));
         int read ;
-        while (read=inputReader.read()!=-1){
-        sourceCode+=read;}
+        while ((read=inputReader.read())!=-1){
+        sourceCode+=(char)read;}
     }
     public int getCaracter() {
         return sourceCode.charAt(position);
