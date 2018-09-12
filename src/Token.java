@@ -7,5 +7,4 @@ public class Token {
         //todo retornar string identificador del token para el int que lo representa, para los de un solo caracter devolver su ASCCI
         return "";
     }
-
 }

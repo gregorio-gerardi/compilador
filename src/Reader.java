@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -24,7 +25,7 @@ public class Reader {
         BufferedReader inputReader = new BufferedReader(new FileReader(path));
         int read ;
         while ((read=inputReader.read())!=-1){
-        sourceCode+=(char)read;}
+            sourceCode+=(char)read;}
     }
     public int getCaracter() {
         return sourceCode.charAt(position);
