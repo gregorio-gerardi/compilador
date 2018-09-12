@@ -1,9 +1,9 @@
 
 public class ASAddBufferIncPos implements AccionSemantica {
     @Override
-    public void ejecutar(AnalizadorLexico analizadorLexico) {
-        analizadorLexico.setBuffer(analizadorLexico.getBuffer()+analizadorLexico.getC());
-        analizadorLexico.incPosition();
+    public void ejecutar(AnalizadorLexico al) {
+        al.setBuffer(al.getBuffer()+ al.getC());
+        al.incPosition();
     }
 }
 
