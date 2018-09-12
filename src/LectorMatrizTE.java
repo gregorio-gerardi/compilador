@@ -2,13 +2,13 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class LectorMatriz {
+public class LectorMatrizTE {
     public static int fila = 15;
     public static int columna = 16;
     private String sourceCode = new String();
     private int[][] mTE = new int[columna][fila];
 
-    public LectorMatriz(String path) throws IOException {
+    public LectorMatrizTE(String path) throws IOException {
         BufferedReader inputReader = new BufferedReader(new FileReader(path));
         int read;
         while ((read = inputReader.read()) != -1) {
@@ -41,7 +41,7 @@ public class MainPrueba {
         int[][] mTE = new int[16][15];
         System.out.println(mTE.length);
         System.out.println(mTE[0].length);
-        LectorMatriz lector = new LectorMatriz(args[0]);
+        LectorMatrizTE lector = new LectorMatrizTE(args[0]);
         mTE = lector.getMatriz();
         for (int i = 0; i < mTE[0].length; i++) {
             System.out.println();

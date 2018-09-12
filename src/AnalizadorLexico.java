@@ -1,5 +1,4 @@
 public class AnalizadorLexico {
-    //Fermin
     public static int ERROR = -1;
     public static int FINAL = 100;
 //--------//
@@ -67,3 +66,4 @@ public class AnalizadorLexico {
         this.getFuente().incPosition();
     }
 }
+

@@ -1,3 +1,4 @@
+
 public class ASAddBufferIncPos implements AccionSemantica {
     @Override
     public void ejecutar(AnalizadorLexico analizadorLexico) {
@@ -5,3 +6,4 @@ public class ASAddBufferIncPos implements AccionSemantica {
         analizadorLexico.incPosition();
     }
 }
+
