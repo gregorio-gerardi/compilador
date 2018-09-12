@@ -3,7 +3,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class Reader {
-    private String sourceCode;
+    private String sourceCode="";
     private int position = 1;
     public static int actualLine = 1;
     BufferedReader inputReader;
@@ -24,7 +24,7 @@ public class Reader {
         BufferedReader inputReader = new BufferedReader(new FileReader(path));
         int read ;
         while ((read=inputReader.read())!=-1){
-        sourceCode+=read;}
+        sourceCode+=(char)read;}
     }
     public int getCaracter() {
         return sourceCode.charAt(position);
