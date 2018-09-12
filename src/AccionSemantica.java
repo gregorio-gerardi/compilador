@@ -1,3 +1,3 @@
 public interface AccionSemantica {
-    int exec(char c, AnalizadorLexico al);
+    void ejecutar(AnalizadorLexico analizadorLexico);
 }

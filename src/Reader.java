@@ -4,7 +4,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class Reader {
-    private String sourceCode;
+    private String sourceCode="";
     private int position = 1;
     public static int actualLine = 1;
     BufferedReader inputReader;
