@@ -1,4 +1,3 @@
-/*
 public class AnalizadorLexico {
     private Reader fuente;
     private String buffer;
@@ -92,4 +91,3 @@ public class AnalizadorLexico {
         this.fuente = fuente;
     }
 }
-*/

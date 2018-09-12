@@ -25,7 +25,7 @@ public class Reader {
         BufferedReader inputReader = new BufferedReader(new FileReader(path));
         int read ;
         while ((read=inputReader.read())!=-1){
-            sourceCode+=read;}
+            sourceCode+=(char)read;}
     }
     public int getCaracter() {
         return sourceCode.charAt(position);
