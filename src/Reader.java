@@ -27,9 +27,14 @@ public class Reader {
         while ((read=inputReader.read())!=-1){
             sourceCode+=(char)read;}
     }
+
     public int getCaracter() {
         return sourceCode.charAt(position);
     }
+    public void incLinea(){
+        actualLine++;
+    }
+
     public void incPosition() {
         position++;
     }
