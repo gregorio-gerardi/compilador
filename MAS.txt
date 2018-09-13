@@ -1,0 +1,15 @@
+NoActionIncPos	AddBuffer	AddBuffer	AddBuffer	AddBuffer	AddBuffer	AddBuffer	FinSimbolo	AddBuffer	AddBuffer	AddBuffer	FinSimbolo	FinSimbolo	Error	NoActionIncPos	SumaLinea
+NoActionIncPos	NoActionIncPos	NoActionIncPos	NoActionIncPos	NoActionIncPos	NoActionIncPos	NoActionIncPos	NoActionIncPos	NoActionIncPos	NoActionIncPos	NoActionIncPos	NoActionIncPos	NoActionIncPos	NoActionIncPos	NoActionIncPos	SumaLinea
+FinSimboloSimple	FinSimboloSimple	FinSimboloSimple	FinSimboloSimple	FinSimboloSimple	FinSimboloSimple	FinSimboloSimple	FinSimboloCompuesto	FinSimboloSimple	FinSimboloSimple	FinSimboloSimple	FinSimboloSimple	FinSimboloSimple	FinSimboloSimple	FinSimboloSimple	FinSimboloSimple
+Error	Error	Error	Error	Error	Error	Error	FinSimboloCompuesto	Error	Error	Error	Error	Error	Error	Error	Error
+AddBuffer	AddBuffer	AddBuffer	FinString	AddBuffer	AddBuffer	AddBuffer	AddBuffer	AddBuffer	AddBuffer	AddBuffer	AddBuffer	AddBuffer	AddBuffer	AddBuffer	Error
+Error	Error	Error	Error	Error	AddBuffer	Error	Error	AddBuffer	AddBuffer	AddBuffer	Error	Error	Error	Error	Error
+FinID	FinID	FinID	FinID	FinID	AddBuffer	FinID	FinID	AddBuffer	AddBuffer	AddBuffer	FinID	FinID	FinID	FinID	FinID
+Error	Error	Error	Error	AddBuffer	AddBuffer	AddBuffer	Error	Error	Error	Error	Error	Error	Error	Error	Error
+Error	Error	Error	Error	Error	Error	Error	Error	Error	Error	FinEnteroLargo	Error	Error	Error	Error	Error
+Error	Error	Error	Error	Error	AddBuffer	Error	Error	Error	AddBuffer	Error	Error	Error	Error	Error	Error
+FinFloat	FinFloat	FinFloat	FinFloat	FinFloat	AddBuffer	FinFloat	FinFloat	FinFloat	AddBuffer	FinFloat	FinFloat	FinFloat	FinFloat	FinFloat	FinFloat
+Error	Error	Error	Error	Error	AddBuffer	Error	Error	Error	Error	Error	AddBuffer	Error	Error	Error	Error
+Error	Error	Error	Error	Error	AddBuffer	Error	Error	Error	Error	Error	Error	Error	Error	Error	Error
+FinFloat	FinFloat	FinFloat	FinFloat	FinFloat	AddBuffer	FinFloat	FinFloat	FinFloat	FinFloat	FinFloat	FinFloat	FinFloat	FinFloat	FinFloat	FinFloat
+FinPalabra	FinPalabra	FinPalabra	FinPalabra	AddBuffer	FinPalabra	FinPalabra	FinPalabra	AddBuffer	AddBuffer	AddBuffer	FinPalabra	FinPalabra	FinPalabra	FinPalabra	FinPalabra
