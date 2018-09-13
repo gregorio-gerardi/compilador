@@ -80,17 +80,8 @@ public class AnalizadorLexico {
         if (buffer.length()==1){
             return (int)buffer.charAt(0);
         }
-        switch (buffer){
-            case ():{}
-            case ():{}
-            case ():{}
-            case ():{}
-            case ():{}
-            case ():{}
-            case ():{}
-            case ():{}
-            case ():{}
-            case ():{}
+        else{
+            //TODO vincular a las variables estaticas publicas de YACC
         }
         return -1;//palabra u operador reservado no valido
     }

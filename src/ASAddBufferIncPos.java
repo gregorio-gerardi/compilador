@@ -1,4 +1,3 @@
-package AccionesSemanticas;
 import *;
 
 public class ASAddBufferIncPos implements AccionSemantica {
