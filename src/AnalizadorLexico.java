@@ -6,7 +6,7 @@ public class AnalizadorLexico {
     public static int FINAL = 100;
 //--------//
     private DefaultCharacterAnalyser analisadorDeChar= new DefaultCharacterAnalyserTest();
-    private Reader fuente;
+    private Reader reader;
     private String buffer="";
     private int tokenActual=-1;
     private char c;
@@ -14,8 +14,8 @@ public class AnalizadorLexico {
     private int[][] mTE = {{0}};//
     private AccionSemantica[][] mAS = {{new ASTest()}};
     private HashMap<String,Integer> listaPalabrasReservadas = new HashMap<>();
-    public AnalizadorLexico(Reader fuente) {
-        this.fuente = fuente;
+    public AnalizadorLexico(Reader reader) {
+        this.reader = reader;
         cargarListaPR();
     }
 
@@ -23,8 +23,8 @@ public class AnalizadorLexico {
 
     }
 
-    public Reader getFuente(){
-        return fuente;
+    public Reader getReader(){
+        return reader;
     }
 
     public String getBuffer() {
@@ -43,7 +43,7 @@ public class AnalizadorLexico {
         this.tokenActual = tokenActual;
     }
 
-    public char getC() {
+    public char getChar() {
         return c;
     }
 
@@ -63,8 +63,8 @@ public class AnalizadorLexico {
     public int getToken() {
         buffer = "";
         estadoActual = 0; //Estado inicial.
-        while ((estadoActual != ERROR) && (estadoActual != FINAL) && (fuente.isNotFinal())) {
-            c = (char) fuente.getCaracter();
+        while ((estadoActual != ERROR) && (estadoActual != FINAL) && (reader.isNotFinal())) {
+            c = (char) reader.getCaracter();
             AccionSemantica aS = mAS[estadoActual][analisadorDeChar.getColumnaSimbolo(c)]; //Accion semantica a realizar [Estado][Simbolo]
             aS.ejecutar(this);// ejecuta la accion. incrementa o no la posicion y carga el buffer, o resetea todo por error, desde metodos del analizador pasado como this;
             estadoActual = mTE[estadoActual][analisadorDeChar.getColumnaSimbolo(c)];
@@ -73,7 +73,7 @@ public class AnalizadorLexico {
     }
 
     public void incPosition() {
-        this.getFuente().incPosition();
+        this.getReader().incPosition();
     }
 
     public int getIDforPR(String buffer) {
@@ -87,7 +87,7 @@ public class AnalizadorLexico {
     }
 
     public void incLinea() {
-        this.fuente.incLinea();
+        this.reader.incLinea();
     }
 }
 
