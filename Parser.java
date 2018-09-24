@@ -153,6 +153,7 @@ final ParserVal dup_yyval(ParserVal val)
   return dup;
 }
 //#### end semantic value section ####
+public final static short YYERRCODE=256;
 public final static short ID=257;
 public final static short ASIGNACION=258;
 public final static short COMP_MAYOR_IGUAL=259;
@@ -171,7 +172,7 @@ public final static short WHILE=271;
 public final static short LET=272;
 public final static short MUT=273;
 public final static short CADENA=274;
-public final static short YYERRCODE=256;
+public final static short CTE=275;
 final static short yylhs[] = {                           -1,
     0,
 };

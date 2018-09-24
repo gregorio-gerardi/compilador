@@ -5,7 +5,7 @@ public class ASFinSimboloIncPos implements AccionSemantica{
     public void ejecutar(AnalizadorLexico al) {
         al.setBuffer(al.getBuffer()+ al.getChar());
         al.incPosition();
-        int idToken=(al.getIDforPR(al.getBuffer()));
+        //int idToken=(al.getIDforPR()); estaba al pedo
         al.setTokenActual(al.getIDforPR(al.getBuffer()));
     }
 }
