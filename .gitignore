@@ -32,3 +32,6 @@ out/production/compilador/Token.class
 out/production/compilador/gramatica.y
 out/production/compilador/yacc.exe
 *.xml___jb_tmp___
+salida_mensajes.txt
+CodigoFuente.txt
+CodigoFuente.txt
