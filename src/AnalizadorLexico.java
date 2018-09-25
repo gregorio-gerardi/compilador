@@ -133,10 +133,7 @@ public class AnalizadorLexico {
     }
 
     public int getIDforPR(String Token) {
-        if (Token.length() == 1) {
-            return (int) Token.charAt(0);
-        } else {
-            //vinculado a las variables estaticas publicas de YACC
+        //vinculado a las variables estaticas publicas de YACC
             switch (Token) {
                 case "YYERRCODE":
                     return Parser.YYERRCODE;
@@ -206,7 +203,6 @@ public class AnalizadorLexico {
                 case "=":
                     return (int) '=';
             }
-        }
         return -1;//palabra u operador reservado no valido
     }
     public void incLinea() {

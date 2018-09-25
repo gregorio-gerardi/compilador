@@ -395,7 +395,7 @@ final static String yyrule[] = {
       }
 
       public ArrayList<String> getListaDeTokens() {
-          return listaDeTokens;
+          return al.getListaDeTokens();
       }
 
       public ArrayList<String> getListaDeReglas() {
@@ -403,7 +403,7 @@ final static String yyrule[] = {
       }
 
       public ArrayList<String> getListaDeErroresLexicos() {
-          return listaDeErroresLexicos;
+          return al.getListaDeErroresLexicos();
       }
 
       public ArrayList<String> getListaDeErroresSintacticos() {

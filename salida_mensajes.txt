@@ -1,7 +1,7 @@
 ERRORES DEL ANALIZADOR LEXICO:
 ------------------------------
 
-No se encontraron errores lexicos.
+Error ID demasiado largo en linea: 1
 
 TOKENS DEL ANALIZADOR LEXICO:
 ------------------------------
@@ -16,4 +16,4 @@ No se detectaron errores sintacticos.
 REGLAS SINTACTICAS:
 --------------------
 
-referencia reconocida en linea 1
+No se detectaron reglas sintacticas.

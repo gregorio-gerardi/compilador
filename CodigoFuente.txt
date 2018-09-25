@@ -1,1 +1,2 @@
-_fermin := _ferchoconda
+   _fermin   :=   9999999999999999999999999999999999999_l   ,
+   _gregorio   :=   _grego   , ...

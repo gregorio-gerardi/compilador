@@ -126,7 +126,7 @@ import java.util.ArrayList;
       }
 
       public ArrayList<String> getListaDeTokens() {
-          return listaDeTokens;
+          return al.getListaDeTokens();
       }
 
       public ArrayList<String> getListaDeReglas() {
@@ -134,7 +134,7 @@ import java.util.ArrayList;
       }
 
       public ArrayList<String> getListaDeErroresLexicos() {
-          return listaDeErroresLexicos;
+          return al.getListaDeErroresLexicos();
       }
 
       public ArrayList<String> getListaDeErroresSintacticos() {
