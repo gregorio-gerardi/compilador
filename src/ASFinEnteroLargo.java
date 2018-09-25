@@ -7,10 +7,10 @@ public class ASFinEnteroLargo implements AccionSemantica {
         al.setTokenActual(al.getIDforPR("CTE"));
         al.addListaDeTokens(String.format("CTE linteger (linea %1$d)",al.getLinea()));
         //evaluo si es mayor de lo permitido
-        Long valor = Long.valueOf(al.getBuffer());
+        Double valor = Double.valueOf(al.getBuffer());
         if (valor > Long.MAX_VALUE){
             al.addListaDeErroresLexicos(String.format("Warning cte entera fuera de rango at linea: %1$d",al.getLinea()));
-            valor = Long.MAX_VALUE;
+            valor = Double.valueOf(Long.MAX_VALUE);
         }
 
         //Si no esta en la tabla de simbolos lo agrego, sino devuelvo referencia
