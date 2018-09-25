@@ -1,4 +1,3 @@
-/*
 public class ASFinString implements AccionSemantica {
     @Override
     public void ejecutar(AnalizadorLexico al) {
@@ -18,4 +17,3 @@ public class ASFinString implements AccionSemantica {
         }
     }
 }
-*/

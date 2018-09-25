@@ -16,6 +16,11 @@ public class AnalizadorLexico {
     private AccionSemantica[][] mAS = LectorMatrizAS.getMatriz();
     public HashMap<String, EntradaTablaSimbolos> tablaDeSimbolos = new HashMap<>();
     private EntradaTablaSimbolos entrada;
+    private ArrayList<String> listaPalabrasReservadas = new ArrayList<>();
+
+    public boolean esPalabraReservada(String pr){
+        return listaPalabrasReservadas.contains(pr);
+    }
 
     public ArrayList<String> getListaDeErroresLexicos() {
         return listaDeErroresLexicos;
@@ -55,7 +60,16 @@ public class AnalizadorLexico {
     }
 
     private void cargarListaPR() {
-
+        listaPalabrasReservadas.add("if");
+        listaPalabrasReservadas.add("else");
+        listaPalabrasReservadas.add("end_if");
+        listaPalabrasReservadas.add("print");
+        listaPalabrasReservadas.add("while");
+        listaPalabrasReservadas.add("linteger");
+        listaPalabrasReservadas.add("single");
+        listaPalabrasReservadas.add("let");
+        listaPalabrasReservadas.add("mut");
+        listaPalabrasReservadas.add("IF");
     }
 
     public int getLinea(){
