@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class AnalizadorLexico {
@@ -13,17 +14,36 @@ public class AnalizadorLexico {
     private int estadoActual = 0;
     private int[][] mTE = {{0}};//
     private AccionSemantica[][] mAS = LectorMatrizAS.getMatriz();
-    public HashMap<String, EntradasTablaSimbolos> tablaDeSimbolos = new HashMap<>();
-    private EntradasTablaSimbolos entrada;
-    
-    public void agregarATablaSimbolos(String lexema, EntradasTablaSimbolos entrada) {
+    public HashMap<String, EntradaTablaSimbolos> tablaDeSimbolos = new HashMap<>();
+    private EntradaTablaSimbolos entrada;
+
+    public ArrayList<String> getListaDeErroresLexicos() {
+        return listaDeErroresLexicos;
+    }
+
+    public ArrayList<String> getListaDeTokens() {
+        return listaDeTokens;
+    }
+
+    public void addListaDeErroresLexicos(String error) {
+        this.listaDeErroresLexicos.add(error);
+    }
+
+    public void addListaDeTokens(String token) {
+        this.listaDeTokens.add(token);
+    }
+
+    private ArrayList<String> listaDeErroresLexicos;
+    private ArrayList<String> listaDeTokens;
+
+
+    public void agregarATablaSimbolos(String lexema, EntradaTablaSimbolos entrada) {
         tablaDeSimbolos.put(entrada.getLexema(), entrada);
     }
 
-    public boolean estaEnTabla(String lexema, EntradasTablaSimbolos referencia) {
+    public boolean estaEnTabla(String lexema) {
         //todo verificar que si no esta en hash devuelve null
         if (!(tablaDeSimbolos.get(lexema) == null)){
-            referencia = tablaDeSimbolos.get(lexema);
             return true;
         }
         return false;
@@ -36,6 +56,10 @@ public class AnalizadorLexico {
 
     private void cargarListaPR() {
 
+    }
+
+    public int getLinea(){
+        return reader.getActualLine();
     }
 
     public Reader getReader() {
@@ -75,7 +99,7 @@ public class AnalizadorLexico {
     }
 
     //GET TOKEN DEVUELVE -1 EN CASO DE UN TOKEN ERRONEO
-    public int getToken(EntradasTablaSimbolos entrada) {
+    public int getToken() {
         entrada = null;
         buffer = "";
         estadoActual = 0; //Estado inicial.
@@ -85,24 +109,20 @@ public class AnalizadorLexico {
             aS.ejecutar(this);// ejecuta la accion. incrementa o no la posicion y carga el buffer, o resetea todo por error, desde metodos del analizador pasado como this;
             estadoActual = mTE[estadoActual][analisadorDeChar.getColumnaSimbolo(c)];
         }
-        entrada = this.entrada;
         return tokenActual;
     }
 
-    /*public int yylex(){
-        return getToken(entradaTablaSimbolos);
-    }
-*/
+
     public void incPosition() {
         this.getReader().incPosition();
     }
 
-    public int getIDforPR(String buffer) {
-        if (buffer.length() == 1) {
-            return (int) buffer.charAt(0);
+    public int getIDforPR(String Token) {
+        if (Token.length() == 1) {
+            return (int) Token.charAt(0);
         } else {
             //vinculado a las variables estaticas publicas de YACC
-            switch (this.buffer) {
+            switch (Token) {
                 case "YYERRCODE":
                     return 256;
                 case "ID":
@@ -174,7 +194,15 @@ public class AnalizadorLexico {
         this.reader.incLinea();
     }
 
-    public void setEntrada(EntradasTablaSimbolos elementoTS) {
+    public void setEntrada(EntradaTablaSimbolos elementoTS) {
         entrada = elementoTS;
+    }
+
+    public EntradaTablaSimbolos getEntrada(String id) {
+        return tablaDeSimbolos.get(id);
+    }
+
+    public EntradaTablaSimbolos getEntradaTablaSimbolo() {
+        return entrada;
     }
 }
