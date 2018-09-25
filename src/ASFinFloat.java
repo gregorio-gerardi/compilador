@@ -25,7 +25,7 @@ public class ASFinFloat implements AccionSemantica{
             single = Float.MIN_VALUE;
         }
 
-        //TODO revisar paso referencia TS ya hecho
+        al.addListaDeTokens(String.format("CTE Float %2$s (linea %1$d",al.getLinea(),String.valueOf(single)));
 
         //Si no esta en la tabla de simbolos lo agrego, sino devuelvo referencia
         al.setTokenActual(al.getIDforPR("CTE"));
