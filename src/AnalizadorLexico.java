@@ -1,3 +1,4 @@
+import java.net.ProxySelector;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -138,48 +139,50 @@ public class AnalizadorLexico {
             //vinculado a las variables estaticas publicas de YACC
             switch (Token) {
                 case "YYERRCODE":
-                    return 256;
+                    return Parser.YYERRCODE;
                 case "ID":
-                    return 257;
+                    return Parser.ID;
                 case "ASIGNACION":
-                    return 258;
+                    return Parser.ASIGNACION;
                 case "COMP_MAYOR_IGUAL":
-                    return 259;
+                    return Parser.COMP_MAYOR_IGUAL;
                 case "COMP_MENOR_IGUAL":
-                    return 260;
-                case "COMP_MAYOR":
-                    return 261;
-                case "COMP_MENOR":
-                    return 262;
-                case "COMP_IGUAL":
-                    return 263;
+                    return Parser.COMP_MENOR_IGUAL;
                 case "COMP_DIFERENTE":
-                    return 264;
+                    return Parser.COMP_DIFERENTE;
                 case "IF":
-                    return 265;
+                    return Parser.IF;
                 case "ELSE":
-                    return 266;
+                    return Parser.ELSE;
                 case "END_IF":
-                    return 267;
+                    return Parser.END_IF;
                 case "PRINT":
-                    return 268;
+                    return Parser.PRINT;
                 case "LINTEGER":
-                    return 269;
+                    return Parser.LINTEGER;
                 case "SINGLE":
-                    return 270;
+                    return Parser.SINGLE;
                 case "WHILE":
-                    return 271;
+                    return Parser.WHILE;
                 case "LET":
-                    return 272;
+                    return Parser.LET;
                 case "MUT":
-                    return 273;
+                    return Parser.MUT;
                 case "CADENA":
-                    return 274;
+                    return Parser.CADENA;
                 case "CTE":
-                    return 275;
+                    return Parser.CTE;
                 //para simbolos simples devuelvo el ascii ; , ( ) { } [ ] * / &
                 case ";":
                     return (int) ';';
+                case "+":
+                    return (int) '+';
+                case "-":
+                    return (int) '-';
+                case "<":
+                    return (int) '<';
+                case ">":
+                    return (int) '>';
                 case ",":
                     return (int) ',';
                 case "(":
@@ -200,6 +203,8 @@ public class AnalizadorLexico {
                     return (int) '/';
                 case "&":
                     return (int) '&';
+                case "=":
+                    return (int) '=';
             }
         }
         return -1;//palabra u operador reservado no valido
