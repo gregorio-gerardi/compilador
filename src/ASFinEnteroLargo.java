@@ -2,7 +2,8 @@ public class ASFinEnteroLargo implements AccionSemantica {
 
     @Override
     public void ejecutar(AnalizadorLexico al) {
-        al.incPosition();
+        //al.incPosition();
+
         al.setTokenActual(al.getIDforPR("CTE"));
         al.addListaDeTokens(String.format("CTE linteger (linea %1$d)",al.getLinea()));
         //evaluo si es mayor de lo permitido

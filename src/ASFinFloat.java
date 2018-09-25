@@ -1,8 +1,7 @@
 public class ASFinFloat implements AccionSemantica{
     @Override
     public void ejecutar(AnalizadorLexico al) {
-        //aumento contador posicion
-        al.incPosition();
+        //al.incPosition();
 
         //convierto a compatible con java
         String[] separados = new String[2];

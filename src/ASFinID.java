@@ -2,7 +2,7 @@ public class ASFinID implements AccionSemantica {
 
     @Override
     public void ejecutar(AnalizadorLexico al) {
-        al.incPosition();
+        //al.incPosition();
         //evaluo si es mayor de lo permitido
         String lexema = al.getBuffer();
         if (lexema.length() > 25) {
