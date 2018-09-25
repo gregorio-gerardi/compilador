@@ -171,10 +171,7 @@ public class Parser {
     public final static short MUT = 273;
     public final static short CADENA = 274;
     public final static short CTE = 275;
-<<<<<<<HEAD:src/Parser.java
     public final static short YYERRCODE = 256;
-=======
-        >>>>>>>master:Parser.java
     final static short yylhs[] = {-1,
             0, 1, 1, 2, 2, 3, 3, 5, 5, 6,
             6, 8, 8, 7, 4, 4, 4, 4, 10, 10,
@@ -627,6 +624,22 @@ public class Parser {
         return token;
     }
 
+    public ArrayList<String> getListaDeTokens() {
+        return listaDeTokens;
+    }
+
+    public ArrayList<String> getListaDeReglas() {
+        return listaDeReglas;
+    }
+
+    public ArrayList<String> getListaDeErroresLexicos() {
+        return listaDeErroresLexicos;
+    }
+
+    public ArrayList<String> getListaDeErroresSintacticos() {
+        return listaDeErroresSintacticos;
+    }
+
     private void addErrorSintactico(String error) {
         listaDeErroresSintacticos.add(error);
     }
@@ -636,92 +649,95 @@ public class Parser {
     }
 
     public void metodoFalso(){
-        programa : contenidoPrograma {addReglaSintacticaReconocida(String.format("Programa reconocido en linea %1$s",al.get));
+        programa : contenidoPrograma {addReglaSintacticaReconocida(String.format("Programa reconocido en linea %1$d",al.getLinea()));}
         ;
 
-        contenidoPrograma : sentencia ','
-                | contenidoPrograma sentencia ','
+        contenidoPrograma : sentencia ','{addReglaSintacticaReconocida(String.format("Contenido de programa reconocido en linea %1$d",al.getLinea()));}
+                | contenidoPrograma sentencia ',' {addReglaSintacticaReconocida(String.format("Contenido de programa reconocido en linea %1$d",al.getLinea()));}
         ;
 
-        sentencia : sentenciaDeclarativa
-                | sentenciaEjecutable
+        sentencia : sentenciaDeclarativa {addReglaSintacticaReconocida(String.format("sentencia reconocida en linea %1$d",al.getLinea()));}
+                | sentenciaEjecutable{addReglaSintacticaReconocida(String.format("sentencia reconocida en linea %1$d",al.getLinea()));}
         ;
 
-        sentenciaDeclarativa : LET MUT tipo listaVariables
-                     | LET tipo asignacionCte
+        sentenciaDeclarativa : LET MUT tipo listaVariables{addReglaSintacticaReconocida(String.format("sentencia declarativa reconocida en linea %1$d",al.getLinea()));}
+                     | LET tipo asignacionCte{addReglaSintacticaReconocida(String.format("sentencia declarativa en linea %1$d",al.getLinea()));}
         ;
 
-        tipo : LINTEGER
-                | SINGLE
+        tipo : LINTEGER {addReglaSintacticaReconocida(String.format("tipo reconocida en linea %1$d",al.getLinea()));}
+                | SINGLE {addReglaSintacticaReconocida(String.format("tipo reconocida en linea %1$d",al.getLinea()));}
         ;
 
-        listaVariables : referencia
-                | listaVariables ';' referencia
+        listaVariables : referencia {addReglaSintacticaReconocida(String.format("lista de variables reconocida en linea %1$d",al.getLinea()));}
+                | listaVariables ';' referencia{addReglaSintacticaReconocida(String.format("lista de variables reconocida en linea %1$d",al.getLinea()));}
         ;
 
-        referencia : '*' ID
-                | ID
+        referencia : '*' ID {addReglaSintacticaReconocida(String.format("referencia reconocida en linea %1$d",al.getLinea()));}
+
+                | ID {addReglaSintacticaReconocida(String.format("referencia reconocida en linea %1$d",al.getLinea()));}
+
         ;
 
-        asignacionCte : referencia ASIGNACION cte
+        asignacionCte : referencia ASIGNACION cte {addReglaSintacticaReconocida(String.format("asign cte reconocida en linea %1$d",al.getLinea()));}
         ;
 
-        sentenciaEjecutable : sentenciaIf
+        sentenciaEjecutable : sentenciaIf {addReglaSintacticaReconocida(String.format("sentencia ejecutable reconocida en linea %1$d",al.getLinea()));}
                 | sentenciaWhile
                 | asignacion
                 | sentenciaPrint
         ;
 
-        sentenciaIf : IF '(' condicion ')' bloqueSentencias ELSE bloqueSentencias END_IF
-            | IF '(' condicion ')' bloqueSentencias ELSE END_IF
+        sentenciaIf : IF '(' condicion ')' bloqueSentencias ELSE bloqueSentencias END_IF{addReglaSintacticaReconocida(String.format("if reconocida en linea %1$d",al.getLinea()));}
+            | IF '(' condicion ')' bloqueSentencias ELSE END_IF {addReglaSintacticaReconocida(String.format("if reconocida en linea %1$d",al.getLinea()));}
         ;
 
-        sentenciaWhile : WHILE '(' condicion ')' bloqueSentencias
+        sentenciaWhile : WHILE '(' condicion ')' bloqueSentencias {addReglaSintacticaReconocida(String.format("while reconocida en linea %1$d",al.getLinea()));}
         ;
 
-        asignacion :    referencia ASIGNACION expresion
+        asignacion :    referencia ASIGNACION expresion {addReglaSintacticaReconocida(String.format("asignacion reconocida en linea %1$d",al.getLinea()));}
         ;
 
-        bloqueSentencias :  sentenciaEjecutable
-                | '{' conjuntoSentenciasEjecutables '}'
+        bloqueSentencias :  sentenciaEjecutable {addReglaSintacticaReconocida(String.format("bloque sentencia reconocida en linea %1$d",al.getLinea()));}
+                | '{' conjuntoSentenciasEjecutables '}'{addReglaSintacticaReconocida(String.format("bloque sentencia reconocida en linea %1$d",al.getLinea()));}
         ;
 
-        conjuntoSentenciasEjecutables : sentenciaEjecutable ','
-                | conjuntoSentenciasEjecutables sentenciaEjecutable ','
+        conjuntoSentenciasEjecutables : sentenciaEjecutable ',' {addReglaSintacticaReconocida(String.format("conj sent ejecutable reconocida en linea %1$d",al.getLinea()));}
+                | conjuntoSentenciasEjecutables sentenciaEjecutable ','{addReglaSintacticaReconocida(String.format("conj sent ejecutable reconocida en linea %1$d",al.getLinea()));}
         ;
 
-        condicion : expresion comparador expresion
+        condicion : expresion comparador expresion {addReglaSintacticaReconocida(String.format("condicion reconocida en linea %1$d",al.getLinea()));}
         ;
 
-        expresion : expresion '+' termino
-                | expresion '-' termino
-                | termino
+        expresion : expresion '+' termino{addReglaSintacticaReconocida(String.format("expresion reconocida en linea %1$d",al.getLinea()));}
+                | expresion '-' termino{addReglaSintacticaReconocida(String.format("expresion reconocida en linea %1$d",al.getLinea()));}
+                | termino{addReglaSintacticaReconocida(String.format("expresion reconocida en linea %1$d",al.getLinea()));}
         ;
 
-        termino : termino '*' factor
-                | termino '/' factor
-                | factor
+        termino : termino '*' factor{addReglaSintacticaReconocida(String.format("termino reconocida en linea %1$d",al.getLinea()));}
+                | termino '/' factor{addReglaSintacticaReconocida(String.format("termino reconocida en linea %1$d",al.getLinea()));}
+                | factor{addReglaSintacticaReconocida(String.format("termino reconocida en linea %1$d",al.getLinea()));}
         ;
 
-        factor : ID
-                | cte
+        factor : ID{addReglaSintacticaReconocida(String.format("factor reconocida en linea %1$d",al.getLinea()));}
+                | cte{addReglaSintacticaReconocida(String.format("factor reconocida en linea %1$d",al.getLinea()));}
         ;
 
-        cte : CTE
-                | '-' CTE%prec '*'
-                | '&' ID
+        cte : CTE{addReglaSintacticaReconocida(String.format("cte reconocida en linea %1$d",al.getLinea()));}
+                | '-' CTE%prec '*'{addReglaSintacticaReconocida(String.format("cte reconocida en linea %1$d",al.getLinea()));}
+                | '&' ID{addReglaSintacticaReconocida(String.format("cte reconocida en linea %1$d",al.getLinea()));}
         ;
 
-        comparador: COMP_IGUAL
-                | COMP_MAYOR
-                | COMP_MENOR
-                | COMP_MAYOR_IGUAL
-                | COMP_MENOR_IGUAL
-                | COMP_DIFERENTE
+        comparador: COMP_IGUAL{addReglaSintacticaReconocida(String.format("comp reconocida en linea %1$d",al.getLinea()));}
+                | COMP_MAYOR{addReglaSintacticaReconocida(String.format("comp reconocida en linea %1$d",al.getLinea()));}
+                | COMP_MENOR{addReglaSintacticaReconocida(String.format("comp reconocida en linea %1$d",al.getLinea()));}
+                | COMP_MAYOR_IGUAL{addReglaSintacticaReconocida(String.format("comp reconocida en linea %1$d",al.getLinea()));}
+                | COMP_MENOR_IGUAL{addReglaSintacticaReconocida(String.format("comp reconocida en linea %1$d",al.getLinea()));}
+                | COMP_DIFERENTE{addReglaSintacticaReconocida(String.format("comp reconocida en linea %1$d",al.getLinea()));}
         ;
 
 
-        sentenciaPrint : PRINT '(' CADENA ')'
+        sentenciaPrint : PRINT '(' CADENA ')'{addReglaSintacticaReconocida(String.format("print reconocida en linea %1$d",al.getLinea()));}
+
         ;
 
     }

@@ -38,6 +38,10 @@ public class AnalizadorLexico {
 
     }
 
+    public int getLinea(){
+        return reader.getActualLine();
+    }
+
     public Reader getReader() {
         return reader;
     }
@@ -87,10 +91,6 @@ public class AnalizadorLexico {
         }
         entrada = this.entrada;
         return tokenActual;
-    }
-
-    public int yylex(){
-        return getToken(entradaTablaSimbolos);
     }
 
     public void incPosition() {
