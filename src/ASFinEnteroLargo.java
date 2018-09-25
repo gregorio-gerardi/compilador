@@ -13,7 +13,6 @@ public class ASFinEnteroLargo implements AccionSemantica {
         }
 
         //Si no esta en la tabla de simbolos lo agrego, sino devuelvo referencia
-        EntradaTablaSimbolos referencia = null;
         if (al.estaEnTabla(String.valueOf(valor))){
             //esta en tabla devuelvo referencia
             al.setEntrada(al.getEntrada(String.valueOf(valor)));
