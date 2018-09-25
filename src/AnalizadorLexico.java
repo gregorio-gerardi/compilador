@@ -60,7 +60,7 @@ public class AnalizadorLexico {
     }
 
     //GET TOKEN DEVUELVE -1 EN CASO DE UN TOKEN ERRONEO
-    public int getToken() {
+    public int getToken(EntradaTablaSimbolos entradaTablaSimbolos) {
         buffer = "";
         estadoActual = 0; //Estado inicial.
         while ((estadoActual != ERROR) && (estadoActual != FINAL) && (fuente.isNotFinal())) {
@@ -70,6 +70,10 @@ public class AnalizadorLexico {
             estadoActual = mTE[estadoActual][analisadorDeChar.getColumnaSimbolo(c)];
         }
         return tokenActual;
+    }
+
+    public int yylex(){
+        return getToken(entradaTablaSimbolos);
     }
 
     public void incPosition() {
@@ -86,7 +90,12 @@ public class AnalizadorLexico {
         return -1;//palabra u operador reservado no valido
     }
 
-    public void incLinea() {
+    public String getPRforID(int id) {
+    //todo generar
+        return "";
+    }
+
+        public void incLinea() {
         this.fuente.incLinea();
     }
 }

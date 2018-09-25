@@ -1,3 +1,8 @@
+%{
+package compilador
+
+%}
+
 %token ID ASIGNACION COMP_MAYOR_IGUAL COMP_MENOR_IGUAL COMP_MAYOR COMP_MENOR COMP_IGUAL COMP_DIFERENTE IF ELSE END_IF PRINT LINTEGER SINGLE WHILE LET MUT CADENA CTE
 %left '+' '-'
 %left '*' '/'
@@ -90,7 +95,36 @@ comparador: COMP_IGUAL
 ;
 
 
-sentenciaSalida : PRINT '(' CADENA ')'
+sentenciaPrint : PRINT '(' CADENA ')'
 ;
 
 %%
+  private AnalizadorLexico al;
+  private ArrayList<String> listaDeTokens;
+  private ArrayList<String> listaDeErroresLexicos;
+  private ArrayList<String> listaDeErroresSintacticos;
+
+  public Parser(String fuente)
+  {
+    try {
+      al=new AnalizadorLexico(new Reader(fuente));
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    listaDeTokens = new ArrayList<>();
+    listaDeErroresLexicos = new ArrayList<>();
+    listaDeErroresSintacticos = new ArrayList<>();
+  }
+
+  private void yyerror(String syntax_error) {
+  }
+
+  private int yylex() {
+    EntradaTablaSimbolos entradaTablaSimbolos=null;
+    //todo incorporar el recopilaor de tokens y errores al analisador lexico que lo cargue para luego imprimirlo aca
+    int token = al.getToken(entradaTablaSimbolos);
+    yylval=new ParserVal(entradaTablaSimbolos);
+    return token;
+  }
+
+}

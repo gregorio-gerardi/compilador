@@ -47,7 +47,7 @@ public class AnalisadorLexicoTest extends AnalizadorLexico {
     }
 
     @Override
-    public int getToken() {
+    public int getToken(EntradaTablaSimbolos entradaTablaSimbolos) {
         return 1;
     }
 
