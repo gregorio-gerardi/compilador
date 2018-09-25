@@ -385,12 +385,7 @@ final static String yyrule[] = {
       private ArrayList<String> listaDeErroresSintacticos;
 
       public Parser(Reader fuente) {
-          //todo remover analisador test junto al try catch
-          try {
-              al = new AnalisadorLexicoTest();
-          } catch (IOException e) {
-              e.printStackTrace();
-          }
+          al = new AnalizadorLexico(fuente);
           listaDeReglas=new ArrayList<>();
           listaDeTokens = new ArrayList<>();
           listaDeErroresLexicos = new ArrayList<>();

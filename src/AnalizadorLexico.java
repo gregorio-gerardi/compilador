@@ -12,7 +12,7 @@ public class AnalizadorLexico {
     private int tokenActual = -1;
     private char c;
     private int estadoActual = 0;
-    private int[][] mTE = {{0}};//
+    private int[][] mTE = LectorMatrizTE.getMatriz();
     private AccionSemantica[][] mAS = LectorMatrizAS.getMatriz();
     public HashMap<String, EntradaTablaSimbolos> tablaDeSimbolos = new HashMap<>();
     private EntradaTablaSimbolos entrada;
@@ -38,8 +38,8 @@ public class AnalizadorLexico {
         this.listaDeTokens.add(token);
     }
 
-    private ArrayList<String> listaDeErroresLexicos;
-    private ArrayList<String> listaDeTokens;
+    private ArrayList<String> listaDeErroresLexicos=new ArrayList<>();
+    private ArrayList<String> listaDeTokens=new ArrayList<>();
 
 
     public void agregarATablaSimbolos(String lexema, EntradaTablaSimbolos entrada) {

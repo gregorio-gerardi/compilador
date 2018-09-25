@@ -29,7 +29,7 @@ public class Reader {
     }
 
     public int getCaracter() {
-        return sourceCode.charAt(position);
+        return sourceCode.charAt(position-1);
     }
     public void incLinea(){
         actualLine++;
