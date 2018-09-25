@@ -14,7 +14,7 @@ public class Reader {
     }
 
     public boolean isNotFinal() {
-        return position < sourceCode.length();
+        return position <= sourceCode.length();
     }
 
     public boolean isFinal() {
