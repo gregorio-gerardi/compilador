@@ -27,3 +27,7 @@ out/production/compilador/MainPrueba.class
 out/production/compilador/Reader.class
 out/production/compilador/ReaderTest.class
 out/production/compilador/Token.class
+.idea/uiDesigner.xml
+*.class
+out/production/compilador/gramatica.y
+out/production/compilador/yacc.exe

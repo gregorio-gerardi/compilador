@@ -1,3 +1,4 @@
+/*
 public class ASFinString implements AccionSemantica {
     @Override
     public void ejecutar(AnalizadorLexico al) {
@@ -5,15 +6,16 @@ public class ASFinString implements AccionSemantica {
         al.setTokenActual(al.getIDforPR("CADENA"));
 
         //Si no esta en la tabla de simbolos lo agrego, sino devuelvo referencia
-        EntradasTablaSimbolos referencia = null;
+        EntradaTablaSimbolos referencia = null;
         if (al.estaEnTabla(al.getBuffer(),referencia)){
             //esta en tabla devuelvo referencia
             al.setEntrada(referencia);
         }else {
             // no esta en tabla, agrega a TS y tambien setea entrada en getToken para darle al parser la referencia
-            EntradasTablaSimbolos elementoTS = new EntradasTablaSimbolos(al.getBuffer(), "String");
+            EntradaTablaSimbolos elementoTS = new EntradaTablaSimbolos(al.getBuffer(), "String");
             al.agregarATablaSimbolos(al.getBuffer(), elementoTS);
             al.setEntrada(elementoTS);
         }
     }
 }
+*/

@@ -10,13 +10,12 @@ public class ASFinID implements AccionSemantica {
         } else {
             //Si no esta en la tabla de simbolos lo agrego, sino devuelvo referencia
             al.setTokenActual(al.getIDforPR("ID"));
-            EntradasTablaSimbolos referencia = null;
-            if (al.estaEnTabla(id, referencia)) {
+            if (al.estaEnTabla(id)) {
                 //esta en tabla devuelvo referencia
-                al.setEntrada(referencia);
+                al.setEntrada(al.getEntrada(id));
             } else {
                 // no esta en tabla, agrega a TS y tambien setea entrada en getToken para darle al parser la referencia
-                EntradasTablaSimbolos elementoTS = new EntradasTablaSimbolos(id, "Identificador");
+                EntradaTablaSimbolos elementoTS = new EntradaTablaSimbolos(id, "Identificador");
                 al.agregarATablaSimbolos(id, elementoTS);
                 al.setEntrada(elementoTS);
             }

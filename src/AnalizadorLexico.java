@@ -13,17 +13,16 @@ public class AnalizadorLexico {
     private int estadoActual = 0;
     private int[][] mTE = {{0}};//
     private AccionSemantica[][] mAS = LectorMatrizAS.getMatriz();
-    public HashMap<String, EntradasTablaSimbolos> listaPalabrasReservadas = new HashMap<>();
-    private EntradasTablaSimbolos entrada;
+    public HashMap<String, EntradaTablaSimbolos> listaPalabrasReservadas = new HashMap<>();
+    private EntradaTablaSimbolos entrada;
 
-    public void agregarATablaSimbolos(String lexema, EntradasTablaSimbolos entrada) {
+    public void agregarATablaSimbolos(String lexema, EntradaTablaSimbolos entrada) {
         listaPalabrasReservadas.put(entrada.getLexema(), entrada);
     }
 
-    public boolean estaEnTabla(String lexema, EntradasTablaSimbolos referencia) {
+    public boolean estaEnTabla(String lexema) {
         //todo verificar que si no esta en hash devuelve null
         if (!(listaPalabrasReservadas.get(lexema) == null)){
-            referencia = listaPalabrasReservadas.get(lexema);
             return true;
         }
         return false;
@@ -79,7 +78,7 @@ public class AnalizadorLexico {
     }
 
     //GET TOKEN DEVUELVE -1 EN CASO DE UN TOKEN ERRONEO
-    public int getToken(EntradasTablaSimbolos entrada) {
+    public int getToken() {
         entrada = null;
         buffer = "";
         estadoActual = 0; //Estado inicial.
@@ -89,7 +88,6 @@ public class AnalizadorLexico {
             aS.ejecutar(this);// ejecuta la accion. incrementa o no la posicion y carga el buffer, o resetea todo por error, desde metodos del analizador pasado como this;
             estadoActual = mTE[estadoActual][analisadorDeChar.getColumnaSimbolo(c)];
         }
-        entrada = this.entrada;
         return tokenActual;
     }
 
@@ -97,12 +95,12 @@ public class AnalizadorLexico {
         this.getReader().incPosition();
     }
 
-    public int getIDforPR(String buffer) {
-        if (buffer.length() == 1) {
-            return (int) buffer.charAt(0);
+    public int getIDforPR(String Token) {
+        if (Token.length() == 1) {
+            return (int) Token.charAt(0);
         } else {
             //vinculado a las variables estaticas publicas de YACC
-            switch (this.buffer) {
+            switch (Token) {
                 case "YYERRCODE":
                     return 256;
                 case "ID":
@@ -174,7 +172,15 @@ public class AnalizadorLexico {
         this.reader.incLinea();
     }
 
-    public void setEntrada(EntradasTablaSimbolos elementoTS) {
+    public void setEntrada(EntradaTablaSimbolos elementoTS) {
         entrada = elementoTS;
+    }
+
+    public EntradaTablaSimbolos getEntrada(String id) {
+        return listaPalabrasReservadas.get(id);
+    }
+
+    public EntradaTablaSimbolos getEntradaTablaSimbolo() {
+        return entrada;
     }
 }

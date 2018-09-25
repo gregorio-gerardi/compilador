@@ -4,7 +4,7 @@ public class ReaderTest extends Reader {
     public static final String NADA="Nothing";
     @Override
     public int getActualLine() {
-        return 0;
+        return 1;
     }
 
     @Override

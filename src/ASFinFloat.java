@@ -11,13 +11,13 @@ public class ASFinFloat implements AccionSemantica{
             valor = Float.MAX_VALUE;
         }
         //Si no esta en la tabla de simbolos lo agrego, sino devuelvo referencia
-        EntradasTablaSimbolos referencia = null;
+        EntradaTablaSimbolos referencia = null;
         if (al.estaEnTabla(String.valueOf(valor),referencia)){
             //esta en tabla devuelvo referencia
             al.setEntrada(referencia);
         }else {
             // no esta en tabla, agrega a TS y tambien setea entrada en getToken para darle al parser la referencia
-            EntradasTablaSimbolos elementoTS = new EntradasTablaSimbolos(String.valueOf(valor), "Flotante");
+            EntradaTablaSimbolos elementoTS = new EntradaTablaSimbolos(String.valueOf(valor), "Flotante");
             al.agregarATablaSimbolos(String.valueOf(valor), elementoTS);
             al.setEntrada(elementoTS);
         }*/

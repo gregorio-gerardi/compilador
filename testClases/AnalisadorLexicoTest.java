@@ -1,14 +1,17 @@
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class AnalisadorLexicoTest extends AnalizadorLexico {
     public AnalisadorLexicoTest() throws IOException {
         super(new ReaderTest());
         tokensDePrueba=new ArrayList<Integer>();
+        etsPrueba=new ArrayList<>();
+        tokensDePrueba.add(getIDforPR("ID"));
+        etsPrueba.add(new EntradaTablaSimbolos("idDePrueba",null));
     }
 
     private ArrayList<Integer> tokensDePrueba;
+    private ArrayList<EntradaTablaSimbolos> etsPrueba;
 
     public String getBuffer() {
         return "";
@@ -41,7 +44,11 @@ public class AnalisadorLexicoTest extends AnalizadorLexico {
     }
 
     @Override
-    public int getToken(EntradaTablaSimbolos entradaTablaSimbolos) {
+    public EntradaTablaSimbolos getEntrada(String id) {
+        return etsPrueba.remove(0);
+    }
+
+    public int getToken() {
         return tokensDePrueba.remove(0);
     }
 
