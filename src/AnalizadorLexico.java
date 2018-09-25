@@ -13,17 +13,17 @@ public class AnalizadorLexico {
     private int estadoActual = 0;
     private int[][] mTE = {{0}};//
     private AccionSemantica[][] mAS = LectorMatrizAS.getMatriz();
-    public HashMap<String, EntradasTablaSimbolos> listaPalabrasReservadas = new HashMap<>();
+    public HashMap<String, EntradasTablaSimbolos> tablaDeSimbolos = new HashMap<>();
     private EntradasTablaSimbolos entrada;
-
+    
     public void agregarATablaSimbolos(String lexema, EntradasTablaSimbolos entrada) {
-        listaPalabrasReservadas.put(entrada.getLexema(), entrada);
+        tablaDeSimbolos.put(entrada.getLexema(), entrada);
     }
 
     public boolean estaEnTabla(String lexema, EntradasTablaSimbolos referencia) {
         //todo verificar que si no esta en hash devuelve null
-        if (!(listaPalabrasReservadas.get(lexema) == null)){
-            referencia = listaPalabrasReservadas.get(lexema);
+        if (!(tablaDeSimbolos.get(lexema) == null)){
+            referencia = tablaDeSimbolos.get(lexema);
             return true;
         }
         return false;
@@ -89,10 +89,10 @@ public class AnalizadorLexico {
         return tokenActual;
     }
 
-    public int yylex(){
+    /*public int yylex(){
         return getToken(entradaTablaSimbolos);
     }
-
+*/
     public void incPosition() {
         this.getReader().incPosition();
     }

@@ -12,6 +12,7 @@ public class ASFinEnteroLargo implements AccionSemantica {
             //todo agregar warning
             valor = Long.MAX_VALUE;
         }
+
         //Si no esta en la tabla de simbolos lo agrego, sino devuelvo referencia
         EntradasTablaSimbolos referencia = null;
         if (al.estaEnTabla(String.valueOf(valor),referencia)){
