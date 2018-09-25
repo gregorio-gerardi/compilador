@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 %}
 
-%token ID ASIGNACION COMP_MAYOR_IGUAL COMP_MENOR_IGUAL COMP_MAYOR COMP_MENOR COMP_IGUAL COMP_DIFERENTE IF ELSE END_IF PRINT LINTEGER SINGLE WHILE LET MUT CADENA CTE
+%token ID ASIGNACION COMP_MAYOR_IGUAL COMP_MENOR_IGUAL COMP_DIFERENTE IF ELSE END_IF PRINT LINTEGER SINGLE WHILE LET MUT CADENA CTE
 %left '+' '-'
 %left '*' '/'
 %start programa
@@ -88,9 +88,9 @@ import java.util.ArrayList;
                 | '&' ID{addReglaSintacticaReconocida(String.format("cte reconocida en linea %1$d",al.getLinea()));}
         ;
 
-        comparador: COMP_IGUAL{addReglaSintacticaReconocida(String.format("comp reconocida en linea %1$d",al.getLinea()));}
-                | COMP_MAYOR{addReglaSintacticaReconocida(String.format("comp reconocida en linea %1$d",al.getLinea()));}
-                | COMP_MENOR{addReglaSintacticaReconocida(String.format("comp reconocida en linea %1$d",al.getLinea()));}
+        comparador: '='{addReglaSintacticaReconocida(String.format("comp reconocida en linea %1$d",al.getLinea()));}
+                | '>'{addReglaSintacticaReconocida(String.format("comp reconocida en linea %1$d",al.getLinea()));}
+                | '<'{addReglaSintacticaReconocida(String.format("comp reconocida en linea %1$d",al.getLinea()));}
                 | COMP_MAYOR_IGUAL{addReglaSintacticaReconocida(String.format("comp reconocida en linea %1$d",al.getLinea()));}
                 | COMP_MENOR_IGUAL{addReglaSintacticaReconocida(String.format("comp reconocida en linea %1$d",al.getLinea()));}
                 | COMP_DIFERENTE{addReglaSintacticaReconocida(String.format("comp reconocida en linea %1$d",al.getLinea()));}
