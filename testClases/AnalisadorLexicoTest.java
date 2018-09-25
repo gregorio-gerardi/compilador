@@ -5,62 +5,61 @@ public class AnalisadorLexicoTest extends AnalizadorLexico {
         super(new ReaderTest());
     }
 
-    @Override
+
     public Reader getFuente() {
         return super.getFuente();
     }
 
-    @Override
+
     public String getBuffer() {
         return "";
     }
 
-    @Override
+
     public void setBuffer(String buffer) {
     }
 
-    @Override
+
     public int getTokenActual() {
     return 1;
     }
 
-    @Override
+
     public void setTokenActual(int tokenActual) {
     }
 
-    @Override
     public char getC() {
         return 'A';
     }
 
-    @Override
     public void setC(char c) {
     }
 
-    @Override
+
     public int getEstadoActual() {
     return 1;
     }
 
-    @Override
+
     public void setEstadoActual(int estadoActual) {
     }
 
+<<<<<<< HEAD
     @Override
     public int getToken(EntradaTablaSimbolos entradaTablaSimbolos) {
+=======
+    public int getToken() {
+>>>>>>> master
         return 1;
     }
 
-    @Override
     public void incPosition() {
     }
 
-    @Override
-    public int getIDforPR(String buffer) {
+    public int getIDforPR() {
     return 1;
     }
 
-    @Override
     public void incLinea() {
     }
 }

@@ -157,6 +157,7 @@ final ParserVal dup_yyval(ParserVal val)
   return dup;
 }
 //#### end semantic value section ####
+public final static short YYERRCODE=256;
 public final static short ID=257;
 public final static short ASIGNACION=258;
 public final static short COMP_MAYOR_IGUAL=259;
@@ -176,7 +177,10 @@ public final static short LET=272;
 public final static short MUT=273;
 public final static short CADENA=274;
 public final static short CTE=275;
+<<<<<<< HEAD:src/Parser.java
 public final static short YYERRCODE=256;
+=======
+>>>>>>> master:Parser.java
 final static short yylhs[] = {                           -1,
     0,    1,    1,    2,    2,    3,    3,    5,    5,    6,
     6,    8,    8,    7,    4,    4,    4,    4,   10,   10,
