@@ -11,7 +11,7 @@ public class ASFinID implements AccionSemantica {
         } else {
             //Si no esta en la tabla de simbolos lo agrego, sino devuelvo referencia
             al.setTokenActual(al.getIDforPR("ID"));
-            al.addListaDeTokens(String.format("ID (linea %1$d",al.getLinea()));
+            al.addListaDeTokens(String.format("ID (linea %1$d)",al.getLinea()));
             if (al.estaEnTabla(lexema)) {
                 //esta en tabla devuelvo referencia
                 al.setEntrada(al.getEntrada(lexema));

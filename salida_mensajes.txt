@@ -1,0 +1,20 @@
+ERRORES DEL ANALIZADOR LEXICO:
+------------------------------
+
+No se encontraron errores lexicos.
+
+TOKENS DEL ANALIZADOR LEXICO:
+------------------------------
+
+ID (linea 1)
+SimboloSimple := (linea 1)
+
+ERRORES SINTACTICOS:
+--------------------
+
+No se detectaron errores sintacticos.
+
+REGLAS SINTACTICAS:
+--------------------
+
+referencia reconocida en linea 1

@@ -119,9 +119,9 @@ public class AnalizadorLexico {
         estadoActual = 0; //Estado inicial.
         while ((estadoActual != ERROR) && (estadoActual != FINAL) && (reader.isNotFinal())) {
             c = (char) reader.getCaracter();
-            AccionSemantica aS = mAS[estadoActual][analisadorDeChar.getColumnaSimbolo(c)]; //Accion semantica a realizar [Estado][Simbolo]
+            AccionSemantica aS = mAS[analisadorDeChar.getColumnaSimbolo(c)][estadoActual]; //Accion semantica a realizar [Estado][Simbolo]
             aS.ejecutar(this);// ejecuta la accion. incrementa o no la posicion y carga el buffer, o resetea todo por error, desde metodos del analizador pasado como this;
-            estadoActual = mTE[estadoActual][analisadorDeChar.getColumnaSimbolo(c)];
+            estadoActual = mTE[analisadorDeChar.getColumnaSimbolo(c)][estadoActual];
         }
         return tokenActual;
     }
