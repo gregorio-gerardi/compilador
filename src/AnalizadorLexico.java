@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class AnalizadorLexico {
@@ -13,16 +14,36 @@ public class AnalizadorLexico {
     private int estadoActual = 0;
     private int[][] mTE = {{0}};//
     private AccionSemantica[][] mAS = LectorMatrizAS.getMatriz();
-    public HashMap<String, EntradaTablaSimbolos> listaPalabrasReservadas = new HashMap<>();
+    public HashMap<String, EntradaTablaSimbolos> tablaDeSimbolos = new HashMap<>();
     private EntradaTablaSimbolos entrada;
 
+    public ArrayList<String> getListaDeErroresLexicos() {
+        return listaDeErroresLexicos;
+    }
+
+    public ArrayList<String> getListaDeTokens() {
+        return listaDeTokens;
+    }
+
+    public void addListaDeErroresLexicos(String error) {
+        this.listaDeErroresLexicos.add(error);
+    }
+
+    public void addListaDeTokens(String token) {
+        this.listaDeTokens.add(token);
+    }
+
+    private ArrayList<String> listaDeErroresLexicos;
+    private ArrayList<String> listaDeTokens;
+
+
     public void agregarATablaSimbolos(String lexema, EntradaTablaSimbolos entrada) {
-        listaPalabrasReservadas.put(entrada.getLexema(), entrada);
+        tablaDeSimbolos.put(entrada.getLexema(), entrada);
     }
 
     public boolean estaEnTabla(String lexema) {
         //todo verificar que si no esta en hash devuelve null
-        if (!(listaPalabrasReservadas.get(lexema) == null)){
+        if (!(tablaDeSimbolos.get(lexema) == null)){
             return true;
         }
         return false;
@@ -90,6 +111,7 @@ public class AnalizadorLexico {
         }
         return tokenActual;
     }
+
 
     public void incPosition() {
         this.getReader().incPosition();
@@ -177,7 +199,7 @@ public class AnalizadorLexico {
     }
 
     public EntradaTablaSimbolos getEntrada(String id) {
-        return listaPalabrasReservadas.get(id);
+        return tablaDeSimbolos.get(id);
     }
 
     public EntradaTablaSimbolos getEntradaTablaSimbolo() {

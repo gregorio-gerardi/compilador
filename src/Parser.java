@@ -377,6 +377,8 @@ final static String yyrule[] = {
 };
 
 //#line 105 "gramatica.y"
+
+    //TODO MOVE TO GRAMATICA
   private AnalizadorLexico al;
       private ArrayList<String> listaDeTokens;
       private ArrayList<String> listaDeReglas;
@@ -406,7 +408,7 @@ final static String yyrule[] = {
       }
 
       public ArrayList<String> getListaDeTokens() {
-          return listaDeTokens;
+          return al.getListaDeTokens();
       }
 
       public ArrayList<String> getListaDeReglas() {
@@ -414,7 +416,7 @@ final static String yyrule[] = {
       }
 
       public ArrayList<String> getListaDeErroresLexicos() {
-          return listaDeErroresLexicos;
+          return al.getListaDeErroresLexicos();
       }
 
       public ArrayList<String> getListaDeErroresSintacticos() {

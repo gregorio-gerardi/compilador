@@ -48,7 +48,7 @@ public class AnalisadorLexicoTest extends AnalizadorLexico {
         return etsPrueba.remove(0);
     }
 
-    public int getToken() {
+    public int getToken(ArrayList<String> listaDeTokens, ArrayList<String> listaDeErroresLexicos) {
         return tokensDePrueba.remove(0);
     }
 

@@ -1,5 +1,6 @@
 public class EntradaTablaSimbolos {
-String lexema;
+    public static final String TIPO_DESCONOCIDO = "desconocido";
+    String lexema;
 String tipo;
 
     public EntradaTablaSimbolos(String lexema, String tipo) {

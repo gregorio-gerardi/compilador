@@ -31,3 +31,4 @@ out/production/compilador/Token.class
 *.class
 out/production/compilador/gramatica.y
 out/production/compilador/yacc.exe
+*.xml___jb_tmp___
