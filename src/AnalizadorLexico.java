@@ -75,12 +75,8 @@ public class AnalizadorLexico {
     }
 
     //GET TOKEN DEVUELVE -1 EN CASO DE UN TOKEN ERRONEO
-<<<<<<< HEAD
-    public int getToken(EntradaTablaSimbolos entradaTablaSimbolos) {
-=======
     public int getToken(EntradasTablaSimbolos entrada) {
         entrada = null;
->>>>>>> master
         buffer = "";
         estadoActual = 0; //Estado inicial.
         while ((estadoActual != ERROR) && (estadoActual != FINAL) && (reader.isNotFinal())) {
@@ -174,23 +170,11 @@ public class AnalizadorLexico {
         }
         return -1;//palabra u operador reservado no valido
     }
-
-<<<<<<< HEAD
-    public String getPRforID(int id) {
-    //todo generar
-        return "";
-    }
-
-        public void incLinea() {
-        this.fuente.incLinea();
-=======
     public void incLinea() {
         this.reader.incLinea();
     }
 
     public void setEntrada(EntradasTablaSimbolos elementoTS) {
         entrada = elementoTS;
->>>>>>> master
     }
 }
-
