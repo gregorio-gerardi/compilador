@@ -1,11 +1,10 @@
 public class ASFinSimboloIncPos implements AccionSemantica{
 
-    //retorna -1 en caso de no reconocerse en la tabla de simbolos
     @Override
     public void ejecutar(AnalizadorLexico al) {
         al.setBuffer(al.getBuffer()+ al.getChar());
         al.incPosition();
-        //int idToken=(al.getIDforPR()); estaba al pedo
         al.setTokenActual(al.getIDforPR(al.getBuffer()));
+        al.addListaDeTokens(String.format("SimboloSimple %2$s (linea %1$d",al.getLinea(),al.getBuffer()));
     }
 }

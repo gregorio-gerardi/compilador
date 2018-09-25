@@ -12,10 +12,9 @@ public class ASFinEnteroLargo implements AccionSemantica {
             valor = Long.MAX_VALUE;
         }
         //Si no esta en la tabla de simbolos lo agrego, sino devuelvo referencia
-        EntradaTablaSimbolos referencia = null;
-        if (al.estaEnTabla(String.valueOf(valor),referencia)){
+        if (al.estaEnTabla(String.valueOf(valor))){
             //esta en tabla devuelvo referencia
-            al.setEntrada(referencia);
+            al.setEntrada(al.getEntrada(String.valueOf(valor)));
         }else {
             // no esta en tabla, agrega a TS y tambien setea entrada en getToken para darle al parser la referencia
             EntradaTablaSimbolos elementoTS = new EntradaTablaSimbolos(String.valueOf(valor), "Linteger");

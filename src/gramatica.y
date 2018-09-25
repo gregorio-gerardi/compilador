@@ -110,6 +110,7 @@ import java.util.ArrayList;
 
       public Parser(Reader fuente) {
           al = new AnalizadorLexico(fuente);
+          listaDeReglas=new ArrayList<>();
           listaDeTokens = new ArrayList<>();
           listaDeErroresLexicos = new ArrayList<>();
           listaDeErroresSintacticos = new ArrayList<>();
@@ -119,9 +120,8 @@ import java.util.ArrayList;
       }
 
       private int yylex() {
-          EntradaTablaSimbolos entradaTablaSimbolos = null;
-          int token = al.getToken(entradaTablaSimbolos);
-          yylval = new ParserVal(entradaTablaSimbolos);
+          int token = al.getToken();
+          yylval = new ParserVal(al.getEntradaTablaSimbolo());
           return token;
       }
 
