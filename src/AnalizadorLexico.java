@@ -12,7 +12,7 @@ public class AnalizadorLexico {
     private int tokenActual = -1;
     private char c;
     private int estadoActual = 0;
-    private int[][] mTE = {{0}};//
+    private int[][] mTE = LectorMatrizTE.getMatriz();
     private AccionSemantica[][] mAS = LectorMatrizAS.getMatriz();
     public HashMap<String, EntradaTablaSimbolos> tablaDeSimbolos = new HashMap<>();
     private EntradaTablaSimbolos entrada;
@@ -38,8 +38,8 @@ public class AnalizadorLexico {
         this.listaDeTokens.add(token);
     }
 
-    private ArrayList<String> listaDeErroresLexicos;
-    private ArrayList<String> listaDeTokens;
+    private ArrayList<String> listaDeErroresLexicos=new ArrayList<>();
+    private ArrayList<String> listaDeTokens=new ArrayList<>();
 
 
     public void agregarATablaSimbolos(String lexema, EntradaTablaSimbolos entrada) {
@@ -119,9 +119,9 @@ public class AnalizadorLexico {
         estadoActual = 0; //Estado inicial.
         while ((estadoActual != ERROR) && (estadoActual != FINAL) && (reader.isNotFinal())) {
             c = (char) reader.getCaracter();
-            AccionSemantica aS = mAS[estadoActual][analisadorDeChar.getColumnaSimbolo(c)]; //Accion semantica a realizar [Estado][Simbolo]
+            AccionSemantica aS = mAS[analisadorDeChar.getColumnaSimbolo(c)][estadoActual]; //Accion semantica a realizar [Estado][Simbolo]
             aS.ejecutar(this);// ejecuta la accion. incrementa o no la posicion y carga el buffer, o resetea todo por error, desde metodos del analizador pasado como this;
-            estadoActual = mTE[estadoActual][analisadorDeChar.getColumnaSimbolo(c)];
+            estadoActual = mTE[analisadorDeChar.getColumnaSimbolo(c)][estadoActual];
         }
         return tokenActual;
     }

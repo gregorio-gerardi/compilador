@@ -6,7 +6,7 @@ public class LectorMatrizTE {
     public static int fila = 15;
     public static int columna = 16;
     private String sourceCode = new String();
-    private int[][] mTE = new int[columna][fila];
+    private static int[][] mTE = new int[columna][fila];
 
     public LectorMatrizTE(String path) throws IOException {
         BufferedReader inputReader = new BufferedReader(new FileReader(path));
@@ -28,7 +28,7 @@ public class LectorMatrizTE {
         }
     }
 
-    public int[][] getMatriz() {
+    public static int[][] getMatriz() {
         return mTE;
     }
 }
