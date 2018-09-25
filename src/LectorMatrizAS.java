@@ -6,7 +6,7 @@ public class LectorMatrizAS {
     public static int fila = 15;
     public static int columna = 16;
     private String sourceCode = new String();
-    private AccionSemantica[][] mAS = new AccionSemantica[columna][fila];
+    private static AccionSemantica[][] mAS = new AccionSemantica[columna][fila];
 
     public LectorMatrizAS(String path) throws IOException, ClassNotFoundException, IllegalAccessException, InstantiationException {
         BufferedReader inputReader = new BufferedReader(new FileReader(path));
@@ -32,22 +32,22 @@ public class LectorMatrizAS {
         }
     }
 
-    public AccionSemantica[][] getMatriz() {
+    public static AccionSemantica[][] getMatriz() {
         return mAS;
     }
+/*    public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, IOException {
+        LectorMatrizAS lectorAS = new LectorMatrizAS("MAS.txt");
+        int fila = 15;
+        int columna = 16;
+        AccionSemantica[][] mAS = new AccionSemantica[columna][fila];
+        mAS = lectorAS.getMatriz();
+        for (AccionSemantica[] as:mAS
+                ) {
+            for (AccionSemantica as2:as
+                    ) {
+                as2.ejecutar(new AnalisadorLexicoTest());
+            }
+        }
+    }*/
 }
 
-//Unit Test prueba clase
-/*import java.io.IOException;
-
-public class MainPrueba {
-    public static int fila = 15;
-    public static int columna = 16;
-    private static AccionSemantica[][] mAS = new AccionSemantica[columna][fila];
-
-    public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, IOException {
-        LectorMatrizAS lectorAS = new LectorMatrizAS(args[0]);
-        mAS = lectorAS.getMatriz();
-        mAS[1][1].ejecutar("Lo que yo quiero hace");
-    }
-}*/

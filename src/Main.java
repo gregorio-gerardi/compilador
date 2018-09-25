@@ -8,11 +8,11 @@ import java.io.IOException;
 * carriage return -> \r -> 13*/
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, IllegalAccessException, InstantiationException, ClassNotFoundException {
         Reader lectorFuente = new Reader(args[0]);
         LectorMatrizTE lectorME = new LectorMatrizTE(args[1]);
         LectorMatrizAS lectorAS = new LectorMatrizAS(args[2]);
-        AnalizadorLexico analizadorLexico=new AnalizadorLexico(lector);
+        AnalizadorLexico analizadorLexico=new AnalizadorLexico(lectorFuente);
     }
 }
 
