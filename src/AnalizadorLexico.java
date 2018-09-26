@@ -1,4 +1,3 @@
-import java.net.ProxySelector;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -6,6 +5,13 @@ public class AnalizadorLexico {
 
     public static int ERROR = -1;
     public static int FINAL = 100;
+    public static int FINALARCHIVO = 1000;
+    public static long MAX_LONG = 2147483647;
+    public static long MIN_LONG = -2147483648;
+    //TODO REVISAR MAX Y MIN FLOAT Y ACOMODAR EL MAX Y MIN INTEGER
+    public static long MAX_FLOAT = -2147483648;
+    public static long MIN_FLOAT = -2147483648;
+    public HashMap<String, EntradaTablaSimbolos> tablaDeSimbolos = new HashMap<>();
     //--------//
     private DefaultCharacterAnalyser analisadorDeChar = new DefaultCharacterAnalyser();
     private Reader reader;
@@ -15,11 +21,17 @@ public class AnalizadorLexico {
     private int estadoActual = 0;
     private int[][] mTE = LectorMatrizTE.getMatriz();
     private AccionSemantica[][] mAS = LectorMatrizAS.getMatriz();
-    public HashMap<String, EntradaTablaSimbolos> tablaDeSimbolos = new HashMap<>();
     private EntradaTablaSimbolos entrada;
     private ArrayList<String> listaPalabrasReservadas = new ArrayList<>();
+    private ArrayList<String> listaDeErroresLexicos = new ArrayList<>();
+    private ArrayList<String> listaDeTokens = new ArrayList<>();
 
-    public boolean esPalabraReservada(String pr){
+    public AnalizadorLexico(Reader reader) {
+        this.reader = reader;
+        cargarListaPR();
+    }
+
+    public boolean esPalabraReservada(String pr) {
         return listaPalabrasReservadas.contains(pr);
     }
 
@@ -39,25 +51,16 @@ public class AnalizadorLexico {
         this.listaDeTokens.add(token);
     }
 
-    private ArrayList<String> listaDeErroresLexicos=new ArrayList<>();
-    private ArrayList<String> listaDeTokens=new ArrayList<>();
-
-
     public void agregarATablaSimbolos(String lexema, EntradaTablaSimbolos entrada) {
         tablaDeSimbolos.put(entrada.getLexema(), entrada);
     }
 
     public boolean estaEnTabla(String lexema) {
         //todo verificar que si no esta en hash devuelve null
-        if (!(tablaDeSimbolos.get(lexema) == null)){
+        if (!(tablaDeSimbolos.get(lexema) == null)) {
             return true;
         }
         return false;
-    }
-
-    public AnalizadorLexico(Reader reader) {
-        this.reader = reader;
-        cargarListaPR();
     }
 
     private void cargarListaPR() {
@@ -70,10 +73,9 @@ public class AnalizadorLexico {
         listaPalabrasReservadas.add("single");
         listaPalabrasReservadas.add("let");
         listaPalabrasReservadas.add("mut");
-        listaPalabrasReservadas.add("IF");
     }
 
-    public int getLinea(){
+    public int getLinea() {
         return reader.getActualLine();
     }
 
@@ -116,9 +118,10 @@ public class AnalizadorLexico {
     //GET TOKEN DEVUELVE -1 EN CASO DE UN TOKEN ERRONEO
     public int getToken() {
         entrada = null;
+        tokenActual = ERROR;
         buffer = "";
         estadoActual = 0; //Estado inicial.
-        while ((estadoActual != ERROR) && (estadoActual != FINAL) && (reader.isNotFinal())) {
+        while ((estadoActual != ERROR) && (estadoActual != FINAL) &&(estadoActual != FINALARCHIVO)) {
             c = (char) reader.getCaracter();
             AccionSemantica aS = mAS[analisadorDeChar.getColumnaSimbolo(c)][estadoActual]; //Accion semantica a realizar [Estado][Simbolo]
             aS.ejecutar(this);// ejecuta la accion. incrementa o no la posicion y carga el buffer, o resetea todo por error, desde metodos del analizador pasado como this;
@@ -134,77 +137,78 @@ public class AnalizadorLexico {
 
     public int getIDforPR(String Token) {
         //vinculado a las variables estaticas publicas de YACC
-            switch (Token) {
-                case "YYERRCODE":
-                    return Parser.YYERRCODE;
-                case "ID":
-                    return Parser.ID;
-                case "ASIGNACION":
-                    return Parser.ASIGNACION;
-                case "COMP_MAYOR_IGUAL":
-                    return Parser.COMP_MAYOR_IGUAL;
-                case "COMP_MENOR_IGUAL":
-                    return Parser.COMP_MENOR_IGUAL;
-                case "COMP_DIFERENTE":
-                    return Parser.COMP_DIFERENTE;
-                case "IF":
-                    return Parser.IF;
-                case "ELSE":
-                    return Parser.ELSE;
-                case "END_IF":
-                    return Parser.END_IF;
-                case "PRINT":
-                    return Parser.PRINT;
-                case "LINTEGER":
-                    return Parser.LINTEGER;
-                case "SINGLE":
-                    return Parser.SINGLE;
-                case "WHILE":
-                    return Parser.WHILE;
-                case "LET":
-                    return Parser.LET;
-                case "MUT":
-                    return Parser.MUT;
-                case "CADENA":
-                    return Parser.CADENA;
-                case "CTE":
-                    return Parser.CTE;
-                //para simbolos simples devuelvo el ascii ; , ( ) { } [ ] * / &
-                case ";":
-                    return (int) ';';
-                case "+":
-                    return (int) '+';
-                case "-":
-                    return (int) '-';
-                case "<":
-                    return (int) '<';
-                case ">":
-                    return (int) '>';
-                case ",":
-                    return (int) ',';
-                case "(":
-                    return (int) '(';
-                case ")":
-                    return (int) ')';
-                case "{":
-                    return (int) '{';
-                case "}":
-                    return (int) '}';
-                case "[":
-                    return (int) '[';
-                case "]":
-                    return (int) ']';
-                case "*":
-                    return (int) '*';
-                case "/":
-                    return (int) '/';
-                case "&":
-                    return (int) '&';
-                case "=":
-                    return (int) '=';
-            }
+        switch (Token) {
+            case "YYERRCODE":
+                return Parser.YYERRCODE;
+            case "ID":
+                return Parser.ID;
+            case "ASIGNACION":
+                return Parser.ASIGNACION;
+            case "COMP_MAYOR_IGUAL":
+                return Parser.COMP_MAYOR_IGUAL;
+            case "COMP_MENOR_IGUAL":
+                return Parser.COMP_MENOR_IGUAL;
+            case "COMP_DIFERENTE":
+                return Parser.COMP_DIFERENTE;
+            case "IF":
+                return Parser.IF;
+            case "ELSE":
+                return Parser.ELSE;
+            case "END_IF":
+                return Parser.END_IF;
+            case "PRINT":
+                return Parser.PRINT;
+            case "LINTEGER":
+                return Parser.LINTEGER;
+            case "SINGLE":
+                return Parser.SINGLE;
+            case "WHILE":
+                return Parser.WHILE;
+            case "LET":
+                return Parser.LET;
+            case "MUT":
+                return Parser.MUT;
+            case "CADENA":
+                return Parser.CADENA;
+            case "CTE":
+                return Parser.CTE;
+            //para simbolos simples devuelvo el ascii ; , ( ) { } [ ] * / &
+            case ";":
+                return (int) ';';
+            case "+":
+                return (int) '+';
+            case "-":
+                return (int) '-';
+            case "<":
+                return (int) '<';
+            case ">":
+                return (int) '>';
+            case ",":
+                return (int) ',';
+            case "(":
+                return (int) '(';
+            case ")":
+                return (int) ')';
+            case "{":
+                return (int) '{';
+            case "}":
+                return (int) '}';
+            case "[":
+                return (int) '[';
+            case "]":
+                return (int) ']';
+            case "*":
+                return (int) '*';
+            case "/":
+                return (int) '/';
+            case "&":
+                return (int) '&';
+            case "=":
+                return (int) '=';
+        }
         return -1;//palabra u operador reservado no valido
     }
+
     public void incLinea() {
         this.reader.incLinea();
     }
@@ -219,5 +223,8 @@ public class AnalizadorLexico {
 
     public EntradaTablaSimbolos getEntradaTablaSimbolo() {
         return entrada;
+    }
+
+    public void addErrorActual(String format) {
     }
 }

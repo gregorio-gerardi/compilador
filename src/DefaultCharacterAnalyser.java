@@ -121,6 +121,9 @@ public class DefaultCharacterAnalyser {
             case '\n': {
                 return 15;
             }
+            case (char)06: {
+                return 16;
+            }
         }
         return 13; //Otros
     }

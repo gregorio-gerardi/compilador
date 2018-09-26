@@ -1,2 +1,6 @@
-   _fermin   :=   9999999999999999999999999999999999999_l   ,
-   _gregorio   :=   _grego   , ...
+while ( _var
+<=
+ _count )
+_count := _count + 1_l,
+,
+

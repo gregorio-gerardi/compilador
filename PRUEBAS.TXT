@@ -1,0 +1,75 @@
+#EJEMPLOS ANALISADOR SINTACTICO 1 #
+let mut linteger _var1 ,
+let mut single _var2 ,
+let single _var3 := 3.4F10,
+let linteger _var4 := 3.4F10,
+
+
+#EJEMPLOS ANALISADOR SINTACTICO 2 #
+let mut linteger _var4;_var6   ;*_var7 ,
+
+
+#EJEMPLOS ANALISADOR SINTACTICO 3 #
+print ('salida por pantalla') ,
+
+
+#EJEMPLOS ANALISADOR SINTACTICO 4 #
+if (_varif=34_l)
+print('hola mundo'),
+end_if,
+
+
+#EJEMPLOS ANALISADOR SINTACTICO 5 #
+if (_varif=34_l)
+{
+print('hola mundo1'),
+print('hola mundo2'),
+print('hola mundo3'),
+}
+end_if,
+
+#EJEMPLOS ANALISADOR SINTACTICO 6 #
+if (_varif=34_l)
+print('hola mundo'),
+else
+print('hola mundo else'),
+end_if,
+
+#EJEMPLOS ANALISADOR SINTACTICO 7 #
+if ( _var / 2_l+ .2 = 34_l + _algo * _algomas)
+print('hola mundo'),
+else
+print('hola mundo else'),
+end_if,
+
+#EJEMPLOS ANALISADOR SINTACTICO 8 #
+
+
+#EJEMPLOS ANALISADOR SINTACTICO 9 #
+
+
+#EJEMPLOS ANALISADOR SINTACTICO 10 #
+
+
+#EJEMPLOS ANALISADOR SINTACTICO 11 #
+
+
+#EJEMPLOS ANALISADOR SINTACTICO 12 #
+
+
+#EJEMPLOS ANALISADOR SINTACTICO 13 #
+
+
+#EJEMPLOS ANALISADOR SINTACTICO 14 #
+
+
+#EJEMPLOS ANALISADOR SINTACTICO 15 #
+
+
+#EJEMPLOS ANALISADOR SINTACTICO 16 #
+
+
+#EJEMPLOS ANALISADOR SINTACTICO 17 #
+
+
+#EJEMPLOS ANALISADOR SINTACTICO 18 #
