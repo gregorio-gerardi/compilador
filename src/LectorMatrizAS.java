@@ -4,9 +4,9 @@ import java.io.IOException;
 
 public class LectorMatrizAS {
     public static int fila = 15;
-    public static int columna = 16;
-    private String sourceCode = new String();
+    public static int columna = 17;
     private static AccionSemantica[][] mAS = new AccionSemantica[columna][fila];
+    private String sourceCode = new String();
 
     public LectorMatrizAS(String path) throws IOException, ClassNotFoundException, IllegalAccessException, InstantiationException {
         BufferedReader inputReader = new BufferedReader(new FileReader(path));
@@ -14,8 +14,8 @@ public class LectorMatrizAS {
         while ((read = inputReader.read()) != -1) {
             sourceCode += (char) read;
         }
-        sourceCode=sourceCode.replace("\r","\t");
-        sourceCode=sourceCode.replace("\n","");
+        sourceCode = sourceCode.replace("\r", "\t");
+        sourceCode = sourceCode.replace("\n", "");
         String[] separados = sourceCode.split("\t");
         int cont = 0;
         String aux = new String();
@@ -23,7 +23,7 @@ public class LectorMatrizAS {
             for (int j = 0; j < mAS.length; j++) {
                 if (!separados[cont].equals("\n") && !separados[cont].equals("\r")) {
                     aux = String.valueOf(separados[cont]);
-                    Class temporal = Class.forName("AS"+aux);
+                    Class temporal = Class.forName("AS" + aux);
                     AccionSemantica asTemp = (AccionSemantica) temporal.newInstance();
                     mAS[j][i] = asTemp;
                 }

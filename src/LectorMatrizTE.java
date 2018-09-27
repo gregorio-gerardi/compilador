@@ -4,9 +4,9 @@ import java.io.IOException;
 
 public class LectorMatrizTE {
     public static int fila = 15;
-    public static int columna = 16;
-    private String sourceCode = new String();
+    public static int columna = 17;
     private static int[][] mTE = new int[columna][fila];
+    private String sourceCode = new String();
 
     public LectorMatrizTE(String path) throws IOException {
         BufferedReader inputReader = new BufferedReader(new FileReader(path));
@@ -14,8 +14,8 @@ public class LectorMatrizTE {
         while ((read = inputReader.read()) != -1) {
             sourceCode += (char) read;
         }
-        sourceCode=sourceCode.replace("\r","\t");
-        sourceCode=sourceCode.replace("\n","");
+        sourceCode = sourceCode.replace("\r", "\t");
+        sourceCode = sourceCode.replace("\n", "");
         String[] separados = sourceCode.split("\t");
         int cont = 0;
         for (int i = 0; i < mTE[0].length; i++) {

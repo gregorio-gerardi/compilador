@@ -1,13 +1,21 @@
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
 public class Reader {
-    private String sourceCode="";
-    private int position = 1;
     public static int actualLine = 1;
     BufferedReader inputReader;
+    private String sourceCode = "";
+    private int position = 1;
+    public static final char FIN=(char)06;
+    public Reader(String path) throws IOException {
+        BufferedReader inputReader = new BufferedReader(new FileReader(path));
+        int read;
+        while ((read = inputReader.read()) != -1) {
+            sourceCode += (char) read;
+        }
+        sourceCode += FIN;
+    }
 
     public int getActualLine() {
         return actualLine;
@@ -21,23 +29,18 @@ public class Reader {
         return position == sourceCode.length();
     }
 
-    public Reader(String path) throws IOException {
-        BufferedReader inputReader = new BufferedReader(new FileReader(path));
-        int read ;
-        while ((read=inputReader.read())!=-1){
-            sourceCode+=(char)read;}
+    public int getCaracter() {
+        return sourceCode.charAt(position - 1);
     }
 
-    public int getCaracter() {
-        return sourceCode.charAt(position-1);
-    }
-    public void incLinea(){
+    public void incLinea() {
         actualLine++;
     }
 
     public void incPosition() {
         position++;
     }
+
     public void decPosition() {
         position--;
     }

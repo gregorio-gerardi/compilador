@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 %}
 
-%token ID ASIGNACION COMP_MAYOR_IGUAL COMP_MENOR_IGUAL COMP_MAYOR COMP_MENOR COMP_IGUAL COMP_DIFERENTE IF ELSE END_IF PRINT LINTEGER SINGLE WHILE LET MUT CADENA CTE
+%token ID ASIGNACION COMP_MAYOR_IGUAL COMP_MENOR_IGUAL COMP_DIFERENTE IF ELSE END_IF PRINT LINTEGER SINGLE WHILE LET MUT CADENA CTE
 %left '+' '-'
 %left '*' '/'
 %start programa
@@ -21,9 +21,16 @@ import java.util.ArrayList;
                 | sentenciaEjecutable{addReglaSintacticaReconocida(String.format("sentencia reconocida en linea %1$d",al.getLinea()));}
         ;
 
-        sentenciaDeclarativa : LET MUT tipo listaVariables{addReglaSintacticaReconocida(String.format("sentencia declarativa reconocida en linea %1$d",al.getLinea()));}
-                     | LET tipo asignacionCte{addReglaSintacticaReconocida(String.format("sentencia declarativa en linea %1$d",al.getLinea()));}
-        ;
+    sentenciaDeclarativa : LET MUT tipo listaVariables{addReglaSintacticaReconocida(String.format("sentencia declarativa reconocida en linea %1$d",al.getLinea()));}
+                    | LET error tipo listaVariables{addErrorSintactico(String.format("sentencia declarativa mal declarada en linea %1$d",al.getLinea()));}
+                    | error MUT tipo listaVariables{addErrorSintactico(String.format("sentencia declarativa mal declarada en linea %1$d",al.getLinea()));}
+                    | LET MUT error listaVariables{addErrorSintactico(String.format("sentencia declarativa mal declarada en linea %1$d",al.getLinea()));}
+                    | LET MUT tipo error{addErrorSintactico(String.format("sentencia declarativa mal declarada en linea %1$d",al.getLinea()));}
+                    | LET tipo asignacionCte{addReglaSintacticaReconocida(String.format("sentencia declarativa en linea %1$d",al.getLinea()));}
+                    | error tipo asignacionCte{addErrorSintactico(String.format("sentencia declarativa mal declarada en linea %1$d",al.getLinea()));}
+                    | LET error asignacionCte{addErrorSintactico(String.format("sentencia declarativa mal declarada en linea %1$d",al.getLinea()));}
+                    | LET tipo error{addErrorSintactico(String.format("sentencia declarativa mal declarada en linea %1$d",al.getLinea()));}
+    ;
 
         tipo : LINTEGER {addReglaSintacticaReconocida(String.format("tipo reconocida en linea %1$d",al.getLinea()));}
                 | SINGLE {addReglaSintacticaReconocida(String.format("tipo reconocida en linea %1$d",al.getLinea()));}
@@ -49,7 +56,7 @@ import java.util.ArrayList;
         ;
 
         sentenciaIf : IF '(' condicion ')' bloqueSentencias ELSE bloqueSentencias END_IF{addReglaSintacticaReconocida(String.format("if reconocida en linea %1$d",al.getLinea()));}
-            | IF '(' condicion ')' bloqueSentencias ELSE END_IF {addReglaSintacticaReconocida(String.format("if reconocida en linea %1$d",al.getLinea()));}
+            | IF '(' condicion ')' bloqueSentencias END_IF {addReglaSintacticaReconocida(String.format("if reconocida en linea %1$d",al.getLinea()));}
         ;
 
         sentenciaWhile : WHILE '(' condicion ')' bloqueSentencias {addReglaSintacticaReconocida(String.format("while reconocida en linea %1$d",al.getLinea()));}
@@ -58,7 +65,7 @@ import java.util.ArrayList;
         asignacion :    referencia ASIGNACION expresion {addReglaSintacticaReconocida(String.format("asignacion reconocida en linea %1$d",al.getLinea()));}
         ;
 
-        bloqueSentencias :  sentenciaEjecutable {addReglaSintacticaReconocida(String.format("bloque sentencia reconocida en linea %1$d",al.getLinea()));}
+        bloqueSentencias :  sentenciaEjecutable ','{addReglaSintacticaReconocida(String.format("bloque sentencia reconocida en linea %1$d",al.getLinea()));}
                 | '{' conjuntoSentenciasEjecutables '}'{addReglaSintacticaReconocida(String.format("bloque sentencia reconocida en linea %1$d",al.getLinea()));}
         ;
 
@@ -88,9 +95,9 @@ import java.util.ArrayList;
                 | '&' ID{addReglaSintacticaReconocida(String.format("cte reconocida en linea %1$d",al.getLinea()));}
         ;
 
-        comparador: COMP_IGUAL{addReglaSintacticaReconocida(String.format("comp reconocida en linea %1$d",al.getLinea()));}
-                | COMP_MAYOR{addReglaSintacticaReconocida(String.format("comp reconocida en linea %1$d",al.getLinea()));}
-                | COMP_MENOR{addReglaSintacticaReconocida(String.format("comp reconocida en linea %1$d",al.getLinea()));}
+        comparador: '='{addReglaSintacticaReconocida(String.format("comp = reconocida en linea %1$d",al.getLinea()));}
+                | '>'{addReglaSintacticaReconocida(String.format("comp > reconocida en linea %1$d",al.getLinea()));}
+                | '<'{addReglaSintacticaReconocida(String.format("comp < reconocida en linea %1$d",al.getLinea()));}
                 | COMP_MAYOR_IGUAL{addReglaSintacticaReconocida(String.format("comp reconocida en linea %1$d",al.getLinea()));}
                 | COMP_MENOR_IGUAL{addReglaSintacticaReconocida(String.format("comp reconocida en linea %1$d",al.getLinea()));}
                 | COMP_DIFERENTE{addReglaSintacticaReconocida(String.format("comp reconocida en linea %1$d",al.getLinea()));}
@@ -126,7 +133,7 @@ import java.util.ArrayList;
       }
 
       public ArrayList<String> getListaDeTokens() {
-          return listaDeTokens;
+          return al.getListaDeTokens();
       }
 
       public ArrayList<String> getListaDeReglas() {
@@ -134,7 +141,7 @@ import java.util.ArrayList;
       }
 
       public ArrayList<String> getListaDeErroresLexicos() {
-          return listaDeErroresLexicos;
+          return al.getListaDeErroresLexicos();
       }
 
       public ArrayList<String> getListaDeErroresSintacticos() {

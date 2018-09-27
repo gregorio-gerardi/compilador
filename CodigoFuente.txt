@@ -1,1 +1,6 @@
-_fermin := _ferchoconda
+while ( _var
+<=
+ _count )
+_count := _count + 1_l,
+,
+
