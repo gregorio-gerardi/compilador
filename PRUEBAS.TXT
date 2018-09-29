@@ -93,5 +93,7 @@ _a := -32_l * _B + 4.F10 ,
 
 ______________-
 para los float comentar que concideramos el mismo rango tanto para positivos como para negativos
+los float deben obligatoriamente si llevan la letra f estar acompañados por un valor numerico
 aclarar la separacion de la sentencia if en encabezado y cuerpo para manejar errores sin tantas combinaciones posibles
 aclarar que no contemplamos el error de la regla de la sentencia while que no incorpora la palabra while por los conflicots shift reduce que genera contra las reglas de la sentencia if.
+signo fin de archivo en excel e informe se usa $ pero en el compilador se utiliza el ascci de ACK porque el $ puede estar incluido en agun comentario
