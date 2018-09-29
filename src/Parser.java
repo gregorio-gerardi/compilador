@@ -16,7 +16,7 @@
 
 
 
-//#line 2 "gramatica.y"
+//#line 2 "gramaticabu.y"
 import java.io.IOException;
 import java.util.ArrayList;
 //#line 20 "Parser.java"
@@ -382,7 +382,7 @@ final static String yyrule[] = {
 "sentenciaPrint : PRINT '(' CADENA ')'",
 };
 
-//#line 112 "gramatica.y"
+//#line 141 "gramaticabu.y"
   private AnalizadorLexico al;
       private ArrayList<String> listaDeTokens;
       private ArrayList<String> listaDeReglas;
@@ -584,202 +584,223 @@ boolean doaction;
       {
 //########## USER-SUPPLIED ACTIONS ##########
 case 1:
-//#line 13 "gramatica.y"
+//#line 13 "gramaticabu.y"
 {addReglaSintacticaReconocida(String.format("Programa reconocido en linea %1$d",al.getLinea()));}
 break;
 case 2:
-//#line 16 "gramatica.y"
+//#line 16 "gramaticabu.y"
 {addReglaSintacticaReconocida(String.format("Contenido de programa reconocido en linea %1$d",al.getLinea()));}
 break;
 case 3:
-//#line 17 "gramatica.y"
+//#line 17 "gramaticabu.y"
 {addReglaSintacticaReconocida(String.format("Contenido de programa reconocido en linea %1$d",al.getLinea()));}
 break;
 case 4:
-//#line 20 "gramatica.y"
+//#line 20 "gramaticabu.y"
 {addReglaSintacticaReconocida(String.format("sentencia reconocida en linea %1$d",al.getLinea()));}
 break;
 case 5:
-//#line 21 "gramatica.y"
+//#line 21 "gramaticabu.y"
 {addReglaSintacticaReconocida(String.format("sentencia reconocida en linea %1$d",al.getLinea()));}
 break;
 case 6:
-//#line 24 "gramatica.y"
+//#line 24 "gramaticabu.y"
 {addReglaSintacticaReconocida(String.format("sentencia declarativa reconocida en linea %1$d",al.getLinea()));}
 break;
 case 7:
-//#line 25 "gramatica.y"
+//#line 25 "gramaticabu.y"
 {addErrorSintactico(String.format("sentencia declarativa mal declarada en linea %1$d",al.getLinea()));}
 break;
 case 8:
-//#line 26 "gramatica.y"
+//#line 26 "gramaticabu.y"
 {addErrorSintactico(String.format("sentencia declarativa mal declarada en linea %1$d",al.getLinea()));}
 break;
 case 9:
-//#line 27 "gramatica.y"
+//#line 27 "gramaticabu.y"
 {addErrorSintactico(String.format("sentencia declarativa mal declarada en linea %1$d",al.getLinea()));}
 break;
 case 10:
-//#line 28 "gramatica.y"
+//#line 28 "gramaticabu.y"
 {addErrorSintactico(String.format("sentencia declarativa mal declarada en linea %1$d",al.getLinea()));}
 break;
 case 11:
-//#line 29 "gramatica.y"
+//#line 29 "gramaticabu.y"
 {addReglaSintacticaReconocida(String.format("sentencia declarativa en linea %1$d",al.getLinea()));}
 break;
 case 12:
-//#line 30 "gramatica.y"
+//#line 30 "gramaticabu.y"
 {addErrorSintactico(String.format("sentencia declarativa mal declarada en linea %1$d",al.getLinea()));}
 break;
 case 13:
-//#line 31 "gramatica.y"
+//#line 31 "gramaticabu.y"
 {addErrorSintactico(String.format("sentencia declarativa mal declarada en linea %1$d",al.getLinea()));}
 break;
 case 14:
-//#line 32 "gramatica.y"
+//#line 32 "gramaticabu.y"
 {addErrorSintactico(String.format("sentencia declarativa mal declarada en linea %1$d",al.getLinea()));}
 break;
 case 15:
-//#line 35 "gramatica.y"
+//#line 35 "gramaticabu.y"
 {addReglaSintacticaReconocida(String.format("tipo reconocida en linea %1$d",al.getLinea()));}
 break;
 case 16:
-//#line 36 "gramatica.y"
+//#line 36 "gramaticabu.y"
 {addReglaSintacticaReconocida(String.format("tipo reconocida en linea %1$d",al.getLinea()));}
 break;
 case 17:
-//#line 39 "gramatica.y"
+//#line 39 "gramaticabu.y"
 {addReglaSintacticaReconocida(String.format("lista de variables reconocida en linea %1$d",al.getLinea()));}
 break;
 case 18:
-//#line 40 "gramatica.y"
+//#line 40 "gramaticabu.y"
 {addReglaSintacticaReconocida(String.format("lista de variables reconocida en linea %1$d",al.getLinea()));}
 break;
 case 19:
-//#line 43 "gramatica.y"
+//#line 43 "gramaticabu.y"
 {addReglaSintacticaReconocida(String.format("referencia reconocida en linea %1$d",al.getLinea()));}
 break;
 case 20:
-//#line 45 "gramatica.y"
+//#line 45 "gramaticabu.y"
 {addReglaSintacticaReconocida(String.format("referencia reconocida en linea %1$d",al.getLinea()));}
 break;
 case 21:
-//#line 49 "gramatica.y"
+//#line 49 "gramaticabu.y"
 {addReglaSintacticaReconocida(String.format("asign cte reconocida en linea %1$d",al.getLinea()));}
 break;
 case 22:
-//#line 52 "gramatica.y"
+//#line 52 "gramaticabu.y"
 {addReglaSintacticaReconocida(String.format("sentencia ejecutable reconocida en linea %1$d",al.getLinea()));}
 break;
 case 26:
-//#line 58 "gramatica.y"
+//#line 58 "gramaticabu.y"
 {addReglaSintacticaReconocida(String.format("if reconocida en linea %1$d",al.getLinea()));}
 break;
 case 27:
-//#line 59 "gramatica.y"
+//#line 59 "gramaticabu.y"
 {addReglaSintacticaReconocida(String.format("if reconocida en linea %1$d",al.getLinea()));}
 break;
 case 28:
-//#line 62 "gramatica.y"
+//#line 62 "gramaticabu.y"
 {addReglaSintacticaReconocida(String.format("while reconocida en linea %1$d",al.getLinea()));}
 break;
 case 29:
-//#line 65 "gramatica.y"
+//#line 65 "gramaticabu.y"
 {addReglaSintacticaReconocida(String.format("asignacion reconocida en linea %1$d",al.getLinea()));}
 break;
 case 30:
-//#line 68 "gramatica.y"
+//#line 68 "gramaticabu.y"
 {addReglaSintacticaReconocida(String.format("bloque sentencia reconocida en linea %1$d",al.getLinea()));}
 break;
 case 31:
-//#line 69 "gramatica.y"
+//#line 69 "gramaticabu.y"
 {addReglaSintacticaReconocida(String.format("bloque sentencia reconocida en linea %1$d",al.getLinea()));}
 break;
 case 32:
-//#line 72 "gramatica.y"
+//#line 72 "gramaticabu.y"
 {addReglaSintacticaReconocida(String.format("conj sent ejecutable reconocida en linea %1$d",al.getLinea()));}
 break;
 case 33:
-//#line 73 "gramatica.y"
+//#line 73 "gramaticabu.y"
 {addReglaSintacticaReconocida(String.format("conj sent ejecutable reconocida en linea %1$d",al.getLinea()));}
 break;
 case 34:
-//#line 76 "gramatica.y"
+//#line 76 "gramaticabu.y"
 {addReglaSintacticaReconocida(String.format("condicion reconocida en linea %1$d",al.getLinea()));}
 break;
 case 35:
-//#line 79 "gramatica.y"
+//#line 79 "gramaticabu.y"
 {addReglaSintacticaReconocida(String.format("expresion reconocida en linea %1$d",al.getLinea()));}
 break;
 case 36:
-//#line 80 "gramatica.y"
+//#line 80 "gramaticabu.y"
 {addReglaSintacticaReconocida(String.format("expresion reconocida en linea %1$d",al.getLinea()));}
 break;
 case 37:
-//#line 81 "gramatica.y"
+//#line 81 "gramaticabu.y"
 {addReglaSintacticaReconocida(String.format("expresion reconocida en linea %1$d",al.getLinea()));}
 break;
 case 38:
-//#line 84 "gramatica.y"
+//#line 84 "gramaticabu.y"
 {addReglaSintacticaReconocida(String.format("termino reconocida en linea %1$d",al.getLinea()));}
 break;
 case 39:
-//#line 85 "gramatica.y"
+//#line 85 "gramaticabu.y"
 {addReglaSintacticaReconocida(String.format("termino reconocida en linea %1$d",al.getLinea()));}
 break;
 case 40:
-//#line 86 "gramatica.y"
+//#line 86 "gramaticabu.y"
 {addReglaSintacticaReconocida(String.format("termino reconocida en linea %1$d",al.getLinea()));}
 break;
 case 41:
-//#line 89 "gramatica.y"
+//#line 89 "gramaticabu.y"
 {addReglaSintacticaReconocida(String.format("factor reconocida en linea %1$d",al.getLinea()));}
 break;
 case 42:
-//#line 90 "gramatica.y"
+//#line 90 "gramaticabu.y"
 {addReglaSintacticaReconocida(String.format("factor reconocida en linea %1$d",al.getLinea()));}
 break;
 case 43:
-//#line 93 "gramatica.y"
-{addReglaSintacticaReconocida(String.format("cte reconocida en linea %1$d",al.getLinea()));}
+//#line 94 "gramaticabu.y"
+{
+        EntradaTablaSimbolos entradaTablaSimbolos = (EntradaTablaSimbolos) (val_peek(0).obj);
+        if (entradaTablaSimbolos.getTipo() == EntradaTablaSimbolos.LONG) {
+            if ((Double.valueOf(entradaTablaSimbolos.getLexema())) == AnalizadorLexico.MAX_LONG) {
+                addErrorSintactico(String.format("warning linteger cte positiva mayor al maximo permitido en linea %1$d", al.getLinea()));
+                String nuevoLexema = String.valueOf(AnalizadorLexico.MAX_LONG - 1);
+                entradaTablaSimbolos.setLexema(nuevoLexema);
+            }
+        }
+        addReglaSintacticaReconocida(String.format("cte reconocida en linea %1$d", al.getLinea()));
+    }
 break;
 case 44:
-//#line 94 "gramatica.y"
-{addReglaSintacticaReconocida(String.format("cte reconocida en linea %1$d",al.getLinea()));}
+//#line 107 "gramaticabu.y"
+{
+        EntradaTablaSimbolos entradaTablaSimbolos = (EntradaTablaSimbolos) (val_peek(1).obj);
+        String lexema = "-" + (entradaTablaSimbolos.getLexema());
+        if (!al.estaEnTabla(lexema)) {
+            /* no esta en tabla, agrega a TS*/
+            EntradaTablaSimbolos elementoTS = new EntradaTablaSimbolos(lexema, entradaTablaSimbolos.getTipo());
+            al.agregarATablaSimbolos(lexema, elementoTS);
+        }
+        addReglaSintacticaReconocida(String.format("ctenegativa  reconocida en linea %1$d", al.getLinea()));
+    }
 break;
 case 45:
-//#line 95 "gramatica.y"
-{addReglaSintacticaReconocida(String.format("cte reconocida en linea %1$d",al.getLinea()));}
+//#line 119 "gramaticabu.y"
+{
+        addReglaSintacticaReconocida(String.format("cte direccion de id reconocida en linea %1$d", al.getLinea()));
+    }
 break;
 case 46:
-//#line 98 "gramatica.y"
+//#line 127 "gramaticabu.y"
 {addReglaSintacticaReconocida(String.format("comp = reconocida en linea %1$d",al.getLinea()));}
 break;
 case 47:
-//#line 99 "gramatica.y"
+//#line 128 "gramaticabu.y"
 {addReglaSintacticaReconocida(String.format("comp > reconocida en linea %1$d",al.getLinea()));}
 break;
 case 48:
-//#line 100 "gramatica.y"
+//#line 129 "gramaticabu.y"
 {addReglaSintacticaReconocida(String.format("comp < reconocida en linea %1$d",al.getLinea()));}
 break;
 case 49:
-//#line 101 "gramatica.y"
+//#line 130 "gramaticabu.y"
 {addReglaSintacticaReconocida(String.format("comp reconocida en linea %1$d",al.getLinea()));}
 break;
 case 50:
-//#line 102 "gramatica.y"
+//#line 131 "gramaticabu.y"
 {addReglaSintacticaReconocida(String.format("comp reconocida en linea %1$d",al.getLinea()));}
 break;
 case 51:
-//#line 103 "gramatica.y"
+//#line 132 "gramaticabu.y"
 {addReglaSintacticaReconocida(String.format("comp reconocida en linea %1$d",al.getLinea()));}
 break;
 case 52:
-//#line 107 "gramatica.y"
+//#line 136 "gramaticabu.y"
 {addReglaSintacticaReconocida(String.format("print reconocida en linea %1$d",al.getLinea()));}
 break;
-//#line 706 "Parser.java"
+//#line 727 "Parser.java"
 //########## END OF USER-SUPPLIED ACTIONS ##########
     }//switch
     //#### Now let's reduce... ####

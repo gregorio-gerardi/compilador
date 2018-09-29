@@ -1,7 +1,8 @@
 #EJEMPLOS ANALISADOR SINTACTICO 1 #
 let mut linteger _var1 ,
 let mut single _var2 ,
-let single _var3 := 3.4F10,
+let single _var3 := 3.4F0,
+let single _var3 := 3.4,
 let linteger _var4 := 3.4F10,
 
 
@@ -73,3 +74,8 @@ end_if,
 
 
 #EJEMPLOS ANALISADOR SINTACTICO 18 #
+
+
+______________-
+para los float comentar que concideramos el mismo rango tanto para positivos como para negativos
+aclarar la separacion de la sentencia if en encabezado y cuerpo para manejar errores sin tantas combinaciones posibles
