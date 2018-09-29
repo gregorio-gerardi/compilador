@@ -85,13 +85,10 @@ public class Main {
             if (p.getTablaSimbolos().isEmpty())
                 pw.println("Tabla de simbolos vacia");
             else
-                for (Map.Entry e : p.getTablaSimbolos().entrySet()) {
-                    System.out.println(e);
-                    pw.println(e);
+                for (Map.Entry<String,EntradaTablaSimbolos> e : p.getTablaSimbolos().entrySet()) {
+                    System.out.println(e.getKey()+" --> "+e.getValue().getTipo());
+                    pw.println(e.getKey()+" --> "+e.getValue().getTipo());
                 }
-
-
-
             pw.close();
         } catch (IOException ex) {
             ex.printStackTrace();
