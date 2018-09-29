@@ -2,6 +2,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
+import java.util.Map;
 
 /*si se usa windows para hacer el texto, un salto de linea es /n/r por el carriage return. No sé si en linux es igual, o solo /n.
  * tab -> \t -> 9
@@ -75,6 +76,22 @@ public class Main {
                     System.out.println(e);
                     pw.println(e);
                 }
+            pw.println("");
+            pw.println("CONTENIDO DE LA TABLA DE SIMBOLOS:");
+            System.out.println("CONTENIDO DE LA TABLA DE SIMBOLOS:");
+            pw.println("--------------------");
+            System.out.println("--------------------");
+            pw.println("");
+            if (p.getTablaSimbolos().isEmpty())
+                pw.println("Tabla de simbolos vacia");
+            else
+                for (Map.Entry e : p.getTablaSimbolos().entrySet()) {
+                    System.out.println(e);
+                    pw.println(e);
+                }
+
+
+
             pw.close();
         } catch (IOException ex) {
             ex.printStackTrace();

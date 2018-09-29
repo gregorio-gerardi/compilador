@@ -1,6 +1,7 @@
 %{
-import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+
 %}
 
 %token ID ASIGNACION COMP_MAYOR_IGUAL COMP_MENOR_IGUAL COMP_DIFERENTE IF ELSE END_IF PRINT LINTEGER SINGLE WHILE LET MUT CADENA CTE
@@ -60,6 +61,7 @@ import java.util.ArrayList;
                 | sentenciaWhile {addReglaSintacticaReconocida(String.format("sentencia ejecutable reconocida en linea %1$d",al.getLinea()));}
                 | asignacion {addReglaSintacticaReconocida(String.format("sentencia ejecutable reconocida en linea %1$d",al.getLinea()));}
                 | sentenciaPrint {addReglaSintacticaReconocida(String.format("sentencia ejecutable reconocida en linea %1$d",al.getLinea()));}
+
     ;
 
     sentenciaIf : encabezadoIf cuerpoIf {addReglaSintacticaReconocida(String.format("if reconocida en linea %1$d",al.getLinea()));}
@@ -78,8 +80,6 @@ import java.util.ArrayList;
         | bloqueSentencias error bloqueSentencias END_IF {addErrorSintactico(String.format("cuerpo del if mal definido en linea %1$d",al.getLinea()));}
         | bloqueSentencias ELSE error END_IF {addErrorSintactico(String.format("cuerpo del if mal definido en linea %1$d",al.getLinea()));}
         | bloqueSentencias ELSE bloqueSentencias error {addErrorSintactico(String.format("cuerpo del if mal definido en linea %1$d",al.getLinea()));}
-
-
         |bloqueSentencias END_IF
         |bloqueSentencias error {addErrorSintactico(String.format("cuerpo del if mal definido en linea %1$d",al.getLinea()));}
         |error END_IF {addErrorSintactico(String.format("cuerpo del if mal definido en linea %1$d",al.getLinea()));}
@@ -88,7 +88,6 @@ import java.util.ArrayList;
 
 
     sentenciaWhile : WHILE '(' condicion ')' bloqueSentencias {addReglaSintacticaReconocida(String.format("while reconocida en linea %1$d",al.getLinea()));}
-           |error '(' condicion ')' bloqueSentencias {addErrorSintactico(String.format("while mal definido en linea %1$d",al.getLinea()));}
            |WHILE error condicion ')' bloqueSentencias {addErrorSintactico(String.format("while mal definido en linea %1$d",al.getLinea()));}
            |WHILE '(' error ')' bloqueSentencias {addErrorSintactico(String.format("while mal definido en linea %1$d",al.getLinea()));}
            |WHILE '(' condicion error bloqueSentencias {addErrorSintactico(String.format("while mal definido en linea %1$d",al.getLinea()));}
@@ -156,7 +155,7 @@ import java.util.ArrayList;
                 |'-'CTE %prec '*'
 
     {
-        EntradaTablaSimbolos entradaTablaSimbolos = (EntradaTablaSimbolos) ($1.obj);
+        EntradaTablaSimbolos entradaTablaSimbolos = (EntradaTablaSimbolos) ($2.obj);
         String lexema = "-" + (entradaTablaSimbolos.getLexema());
         if (!al.estaEnTabla(lexema)) {
             // no esta en tabla, agrega a TS
@@ -242,4 +241,8 @@ import java.util.ArrayList;
 
       private void addReglaSintacticaReconocida(String regla) {
           listaDeReglas.add(regla);
+      }
+
+      public HashMap<String, EntradaTablaSimbolos> getTablaSimbolos() {
+          return al.getTablaDeSimbolos();
       }

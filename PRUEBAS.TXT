@@ -44,38 +44,54 @@ print('hola mundo else'),
 end_if,
 
 #EJEMPLOS ANALISADOR SINTACTICO 8 #
-
+while ( _var <= _count )
+_count := _count + 1_l,,
 
 #EJEMPLOS ANALISADOR SINTACTICO 9 #
+while ( _var <= _count )
+if ( _var / 2_l+ .2 = 34_l + _algo * _algomas)
+print('hola mundo'),
+else
+print('hola mundo else'),
+end_if,
+,
 
 
 #EJEMPLOS ANALISADOR SINTACTICO 10 #
+let mut linteger _a; _b; *_c; _d; *_e ,
+let linteger _x := 5_l ,
 
 
 #EJEMPLOS ANALISADOR SINTACTICO 11 #
+*_a := &_b ,
+_a := &_b ,
+*_a := _b ,
+#the next one should throw a sintactic error about the non-constant value at the right side of the assignment#
+let linteger *_a := _b ,
 
 
 #EJEMPLOS ANALISADOR SINTACTICO 12 #
-
+#no corresponde #
 
 #EJEMPLOS ANALISADOR SINTACTICO 13 #
-
+#no corresponde #
 
 #EJEMPLOS ANALISADOR SINTACTICO 14 #
-
+#no corresponde #
 
 #EJEMPLOS ANALISADOR SINTACTICO 15 #
-
+#no corresponde #
 
 #EJEMPLOS ANALISADOR SINTACTICO 16 #
-
+_a := -32_l * _B + 4.F10 ,
 
 #EJEMPLOS ANALISADOR SINTACTICO 17 #
-
+#no corresponde #
 
 #EJEMPLOS ANALISADOR SINTACTICO 18 #
-
+#no corresponde #
 
 ______________-
 para los float comentar que concideramos el mismo rango tanto para positivos como para negativos
 aclarar la separacion de la sentencia if en encabezado y cuerpo para manejar errores sin tantas combinaciones posibles
+aclarar que no contemplamos el error de la regla de la sentencia while que no incorpora la palabra while por los conflicots shift reduce que genera contra las reglas de la sentencia if.

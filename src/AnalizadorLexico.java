@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 
 public class AnalizadorLexico {
@@ -224,5 +225,9 @@ public class AnalizadorLexico {
     }
 
     public void addErrorActual(String format) {
+    }
+
+    public HashMap<String, EntradaTablaSimbolos> getTablaDeSimbolos() {
+        return tablaDeSimbolos;
     }
 }
