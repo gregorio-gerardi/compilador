@@ -1,12 +1,13 @@
 ERRORES DEL ANALIZADOR LEXICO:
 ------------------------------
 
-Error lexico en linea: 1
+No se encontraron errores lexicos.
 
 TOKENS DEL ANALIZADOR LEXICO:
 ------------------------------
 
-No se encontraron tokens lexicos.
+CTE Float 4.5E10 (linea 1)
+SimboloSimple , (linea 1)
 
 ERRORES SINTACTICOS:
 --------------------
@@ -21,4 +22,4 @@ No se detectaron reglas sintacticas.
 CONTENIDO DE LA TABLA DE SIMBOLOS:
 --------------------
 
-Tabla de simbolos vacia
+4.5E10 --> Single
