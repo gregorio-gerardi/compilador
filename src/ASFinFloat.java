@@ -18,12 +18,12 @@ public class ASFinFloat implements AccionSemantica {
             single = Double.valueOf(buffer);
         }
         //me fijo el rango
-        if (single > Float.MAX_VALUE) {
+        if (single > AnalizadorLexico.MAX_FLOAT) {
             al.addListaDeErroresLexicos(String.format("Warning cte float mayor al rango at linea: %1$d", al.getLinea()));
-            single = Float.MAX_VALUE;
-        } else if (single < Float.MIN_VALUE) {
+            single = AnalizadorLexico.MAX_FLOAT;
+        } else if (single < AnalizadorLexico.MIN_FLOAT) {
             al.addListaDeErroresLexicos(String.format("Warning cte float menor al rango at linea: %1$d", al.getLinea()));
-            single = Float.MIN_VALUE;
+            single = AnalizadorLexico.MIN_FLOAT;
         }
 
         al.addListaDeTokens(String.format("CTE Float %2$s (linea %1$d)", al.getLinea(), String.valueOf(single)));
@@ -39,6 +39,5 @@ public class ASFinFloat implements AccionSemantica {
             al.agregarATablaSimbolos(String.valueOf(single), elementoTS);
             al.setEntrada(elementoTS);
         }
-
     }
 }

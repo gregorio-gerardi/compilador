@@ -2,6 +2,7 @@ public class EntradaTablaSimbolos {
     public static final String TIPO_DESCONOCIDO = "Desconocido";
     public static final String STRING = "String";
     public static final String SINGLE = "Single";
+    public static final String LONG = "Linteger";
     String lexema;
     String tipo;
 

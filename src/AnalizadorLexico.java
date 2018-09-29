@@ -6,11 +6,9 @@ public class AnalizadorLexico {
     public static int ERROR = -1;
     public static int FINAL = 100;
     public static int FINALARCHIVO = 1000;
-    public static long MAX_LONG = 2147483647;
-    public static long MIN_LONG = -2147483648;
-    //TODO REVISAR MAX Y MIN FLOAT Y ACOMODAR EL MAX Y MIN INTEGER
-    public static long MAX_FLOAT = -2147483648;
-    public static long MIN_FLOAT = -2147483648;
+    public static double MAX_LONG = 2147483648.; //contemplando el maximo valor negativo posible
+    public static double MAX_FLOAT = 340282347000000000000000000000000000000.;
+    public static double MIN_FLOAT = 0.0000000000000000000000000000000000000117549435 ;
     public HashMap<String, EntradaTablaSimbolos> tablaDeSimbolos = new HashMap<>();
     //--------//
     private DefaultCharacterAnalyser analisadorDeChar = new DefaultCharacterAnalyser();

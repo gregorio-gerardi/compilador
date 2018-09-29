@@ -9,16 +9,16 @@ TOKENS DEL ANALIZADOR LEXICO:
 Palabra Reservada while (linea 1)
 SimboloSimple ( (linea 1)
 ID (linea 1)
-SimboloSimple <= (linea 2)
-ID (linea 3)
-SimboloSimple ) (linea 3)
-ID (linea 4)
-SimboloSimple := (linea 4)
-ID (linea 4)
-SimboloSimple + (linea 4)
-CTE linteger (linea 4)
-SimboloSimple , (linea 4)
-SimboloSimple , (linea 5)
+SimboloSimple <= (linea 1)
+ID (linea 1)
+SimboloSimple ) (linea 1)
+ID (linea 2)
+SimboloSimple := (linea 2)
+ID (linea 2)
+SimboloSimple + (linea 2)
+CTE linteger (linea 2)
+SimboloSimple , (linea 2)
+SimboloSimple , (linea 2)
 
 ERRORES SINTACTICOS:
 --------------------
@@ -30,23 +30,23 @@ REGLAS SINTACTICAS:
 
 factor reconocida en linea 1
 termino reconocida en linea 1
+expresion reconocida en linea 1
+comp reconocida en linea 1
+factor reconocida en linea 1
+termino reconocida en linea 1
+expresion reconocida en linea 1
+condicion reconocida en linea 1
+referencia reconocida en linea 2
+factor reconocida en linea 2
+termino reconocida en linea 2
 expresion reconocida en linea 2
-comp reconocida en linea 2
-factor reconocida en linea 3
-termino reconocida en linea 3
-expresion reconocida en linea 3
-condicion reconocida en linea 3
-referencia reconocida en linea 4
-factor reconocida en linea 4
-termino reconocida en linea 4
-expresion reconocida en linea 4
-cte reconocida en linea 4
-factor reconocida en linea 4
-termino reconocida en linea 4
-expresion reconocida en linea 4
-asignacion reconocida en linea 4
-bloque sentencia reconocida en linea 4
-while reconocida en linea 4
-sentencia reconocida en linea 4
-Contenido de programa reconocido en linea 5
-Programa reconocido en linea 7
+cte reconocida en linea 2
+factor reconocida en linea 2
+termino reconocida en linea 2
+expresion reconocida en linea 2
+asignacion reconocida en linea 2
+bloque sentencia reconocida en linea 2
+while reconocida en linea 2
+sentencia reconocida en linea 2
+Contenido de programa reconocido en linea 2
+Programa reconocido en linea 4
