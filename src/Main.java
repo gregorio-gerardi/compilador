@@ -86,8 +86,8 @@ public class Main {
                 pw.println("Tabla de simbolos vacia");
             else
                 for (Map.Entry<String,EntradaTablaSimbolos> e : p.getTablaSimbolos().entrySet()) {
-                    System.out.println(e.getKey()+" --> "+e.getValue().getTipo());
-                    pw.println(e.getKey()+" --> "+e.getValue().getTipo());
+                    System.out.println(e.getKey()+" --> "+e.getValue().getLexema()+e.getValue().getTipo());
+                    pw.println(e.getKey()+" --> "+e.getValue().getLexema()+e.getValue().getTipo());
                 }
             pw.close();
         } catch (IOException ex) {

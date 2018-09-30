@@ -139,6 +139,7 @@ import java.util.HashMap;
     factor : ID{addReglaSintacticaReconocida(String.format("factor reconocida en linea %1$d",al.getLinea()));}
                 | cte{addReglaSintacticaReconocida(String.format("factor reconocida en linea %1$d",al.getLinea()));}
     ;
+
     cte :CTE
 
     {
@@ -147,12 +148,14 @@ import java.util.HashMap;
             if ((Double.valueOf(entradaTablaSimbolos.getLexema())) == AnalizadorLexico.MAX_LONG) {
                 addErrorSintactico(String.format("warning linteger cte positiva mayor al maximo permitido en linea %1$d", al.getLinea()));
                 String nuevoLexema = String.valueOf(AnalizadorLexico.MAX_LONG - 1);
+                al.getTablaDeSimbolos().remove(entradaTablaSimbolos.getLexema());
                 entradaTablaSimbolos.setLexema(nuevoLexema);
+                al.getTablaDeSimbolos().put(entradaTablaSimbolos.getLexema(), entradaTablaSimbolos);
             }
         }
         addReglaSintacticaReconocida(String.format("cte reconocida en linea %1$d", al.getLinea()));
     }
-                |'-'CTE %prec '*'
+                  |'-'CTE %prec '*'
 
     {
         EntradaTablaSimbolos entradaTablaSimbolos = (EntradaTablaSimbolos) ($2.obj);
@@ -163,17 +166,32 @@ import java.util.HashMap;
             al.agregarATablaSimbolos(lexema, elementoTS);
         }
         addReglaSintacticaReconocida(String.format("ctenegativa  reconocida en linea %1$d", al.getLinea()));
+        if (entradaTablaSimbolos.getTipo() == EntradaTablaSimbolos.LONG) {
+            if ((Double.valueOf(entradaTablaSimbolos.getLexema())) == AnalizadorLexico.MAX_LONG) {
+                al.getTablaDeSimbolos().remove(entradaTablaSimbolos.getLexema());
+            }
+        }
     }
-                |'&'ID
+                  |'&'ID
 
     {
         addReglaSintacticaReconocida(String.format("cte direccion de id reconocida en linea %1$d", al.getLinea()));
     }
-    |'&' error {addErrorSintactico(String.format("valor cte mal definido en linea %1$d",al.getLinea()));}
-    |error ID {addErrorSintactico(String.format("valor cte mal definido en linea %1$d",al.getLinea()));}
+      |'&'error
+
+    {
+        addErrorSintactico(String.format("valor cte mal definido en linea %1$d", al.getLinea()));
+    }
+      |
+    error ID
+
+    {
+        addErrorSintactico(String.format("valor cte mal definido en linea %1$d", al.getLinea()));
+    }
 
 
     ;
+
 
 
 

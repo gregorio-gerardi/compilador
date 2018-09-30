@@ -1,3 +1,77 @@
+#EJEMPLOS ANALISADOR LEXICO 1 #
+_lintegerMaxMin := 2147483648_l,
+_singleMax := 340282347000000000000000000000000000000. ,
+_singleMin := 0.0000000000000000000000000000000000000117549435 ,
+
+Para el analisis lexico, como cte con el primer y ultimo valor dentro del rango para linteger se utilizo el mayor valor permitido por si la cte era negativa (2147483648), como el lexico corrige sobre este valor
+se tomo como primer y ultimo del rango. Lo mismo para el punto 2, donde pide primer y ultimo valor fuera de rango se utilizo 2147483649.
+
+#EJEMPLOS ANALISADOR LEXICO 2 #
+_lintegerMaxMin := 2147483649_l,
+_singleMax := 340282347000000010000000000000000000000. ,
+_singleMin := 0.0000000000000000000000000000000000000117549434 ,
+
+Para evaluar el maximo float, por la representacion interna de doubles en java solo se reconocen ctes mayores a
+_singleMax := 340282347000000010000000000000000000000. ,
+una cte como
+_singleMax := 340282347000000000000000000000000000001. ,
+es redondeada y no supera el valor maximo.
+
+#EJEMPLOS ANALISADOR LEXICO 3 #
+a)
+_singleDecimal := 1.1 ,
+b)
+_singleSinDecimal := 1. ,
+c)
+_singleExponente := 10.F3,
+d)
+_singleSinExponente := 2. ,
+e)
+_singleExpPositivo := 15.F3 ,
+f)
+_singleExpNegativo := 15.F-3 ,
+
+#EJEMPLOS ANALISADOR LEXICO 4 #
+_identificadorCorto ,
+_identificadorQueSePasaDeLosLimitesDeCaracteres ,
+
+#EJEMPLOS ANALISADOR LEXICO 5 #
+_identificador_con_25 ,
+
+En este caso el compilador reconoce tres identificadores distintos por los "_",  acorde al enunciado en identificadores solo se permiten letras y digitos.
+
+#EJEMPLOS ANALISADOR LEXICO 6 #
+_()estoNoAnda ,
+
+#EJEMPLOS ANALISADOR LEXICO 7 #
+if,
+iff,
+IF,
+whileifelse,
+WHILE,
+
+Para este ejemplo solo reconoce la palabra de la primer linea, las demas dan errores lexicos.
+
+#EJEMPLOS ANALISADOR LEXICO 8 #
+#Esto es un comentario#
+#Esto
+es
+un
+comentario
+de
+muchas
+lineas#
+esto es un comentario que le falta el numeral de apertura #
+
+
+#EJEMPLOS ANALISADOR LEXICO 9 #
+print('ejemplo de cadena'),
+'esto es una cadena bien definida'
+'esta cadena no anda
+por que es multilinea'
+
+#------------------------------------------------------------------------------------------#
+
 #EJEMPLOS ANALISADOR SINTACTICO 1 #
 let mut linteger _var1 ,
 let mut single _var2 ,
@@ -91,9 +165,13 @@ _a := -32_l * _B + 4.F10 ,
 #EJEMPLOS ANALISADOR SINTACTICO 18 #
 #no corresponde #
 
-______________-
 para los float comentar que concideramos el mismo rango tanto para positivos como para negativos
 los float deben obligatoriamente si llevan la letra f estar acompañados por un valor numerico
 aclarar la separacion de la sentencia if en encabezado y cuerpo para manejar errores sin tantas combinaciones posibles
 aclarar que no contemplamos el error de la regla de la sentencia while que no incorpora la palabra while por los conflicots shift reduce que genera contra las reglas de la sentencia if.
 signo fin de archivo en excel e informe se usa $ pero en el compilador se utiliza el ascci de ACK porque el $ puede estar incluido en agun comentario
+aclarar que si se carga una constante negatiova en la tabla de simbolos tambien existira su version positiva, se deja el chequeo para semantica
+sobre la entrada anterior si la entrada negativa es el maximo valor permitido la entrada positiva se elimina de la tabla por que es imposible encontrar otra constante con ese valor positivo
+
+Casos de prueba:
+
