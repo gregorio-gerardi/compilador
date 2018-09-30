@@ -1,6 +1,6 @@
 ERRORES DEL ANALIZADOR LEXICO:
 
-Error lexico en linea: 3
+No se encontraron errores lexicos.
 --------------------
 
 TOKENS DEL ANALIZADOR LEXICO:
@@ -11,6 +11,7 @@ Cadena Caracteres: "ejemplo de cadena" (linea 1)
 Simbolo ) (linea 1)
 Simbolo , (linea 1)
 Cadena Caracteres: "esto es una cadena bien definida" (linea 2)
+Simbolo , (linea 2)
 --------------------
 
 ERRORES SINTACTICOS:
@@ -28,6 +29,6 @@ Contenido de programa reconocido en linea 1
 
 CONTENIDO DE LA TABLA DE SIMBOLOS:
 
-ejemplo de cadena --> ejemplo de cadenaString
-esto es una cadena bien definida --> esto es una cadena bien definidaString
+ejemplo de cadena --> String
+esto es una cadena bien definida --> String
 --------------------

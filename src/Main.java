@@ -13,8 +13,8 @@ import java.util.Map;
 public class Main {
     public static void main(String[] args) throws IOException, IllegalAccessException, InstantiationException, ClassNotFoundException {
         Reader lectorFuente = new Reader(args[0]);
-        LectorMatrizTE lectorME = new LectorMatrizTE(args[1]);
-        LectorMatrizAS lectorAS = new LectorMatrizAS(args[2]);
+        LectorMatrizTE lectorME = new LectorMatrizTE("MTE.txt");
+        LectorMatrizAS lectorAS = new LectorMatrizAS("MAS.txt");
         Parser parser = new Parser(lectorFuente);
         parser.run();
         mostrarMensajes(parser, "salida");
@@ -83,9 +83,9 @@ public class Main {
             if (p.getTablaSimbolos().isEmpty())
                 pw.println("Tabla de simbolos vacia");
             else
-                for (Map.Entry<String,EntradaTablaSimbolos> e : p.getTablaSimbolos().entrySet()) {
-                    System.out.println(e.getKey()+" --> "+e.getValue().getLexema()+e.getValue().getTipo());
-                    pw.println(e.getKey()+" --> "+e.getValue().getLexema()+e.getValue().getTipo());
+                for (Map.Entry<String, EntradaTablaSimbolos> e : p.getTablaSimbolos().entrySet()) {
+                    System.out.println(e.getKey() + " --> " + e.getValue().getTipo());
+                    pw.println(e.getKey() + " --> " + e.getValue().getTipo());
                 }
             pw.println("--------------------");
             System.out.println("--------------------");

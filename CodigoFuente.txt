@@ -1,4 +1,2 @@
 print('ejemplo de cadena'),
-'esto es una cadena bien definida'
-'esta cadena no anda
-por que es multilinea'
+'esto es una cadena bien definida',

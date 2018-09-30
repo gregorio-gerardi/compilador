@@ -21,12 +21,12 @@ public class LectorMatrizAS {
         String aux = new String();
         for (int i = 0; i < mAS[0].length; i++) {
             for (int j = 0; j < mAS.length; j++) {
-                if (!separados[cont].equals("\n") && !separados[cont].equals("\r")) {
+                //if (!separados[cont].equals("\n") && !separados[cont].equals("\r")) {
                     aux = String.valueOf(separados[cont]);
                     Class temporal = Class.forName("AS" + aux);
                     AccionSemantica asTemp = (AccionSemantica) temporal.newInstance();
                     mAS[j][i] = asTemp;
-                }
+                //}
                 cont++;
             }
         }
