@@ -27,8 +27,6 @@ public class Main {
             PrintWriter pw = new PrintWriter(file);
             pw.println("ERRORES DEL ANALIZADOR LEXICO:");
             System.out.println("ERRORES DEL ANALIZADOR LEXICO:");
-            pw.println("------------------------------");
-            System.out.println("------------------------------");
             pw.println("");
             if (p.getListaDeErroresLexicos().isEmpty())
                 pw.println("No se encontraron errores lexicos.");
@@ -37,11 +35,11 @@ public class Main {
                     System.out.println(e);
                     pw.println(e);
                 }
+            pw.println("--------------------");
+            System.out.println("--------------------");
             pw.println("");
             pw.println("TOKENS DEL ANALIZADOR LEXICO:");
             System.out.println("TOKENS DEL ANALIZADOR LEXICO:");
-            pw.println("------------------------------");
-            System.out.println("------------------------------");
             pw.println("");
             if (p.getListaDeTokens().isEmpty())
                 pw.println("No se encontraron tokens lexicos.");
@@ -50,11 +48,11 @@ public class Main {
                     System.out.println(e);
                     pw.println(e);
                 }
+            pw.println("--------------------");
+            System.out.println("--------------------");
             pw.println("");
             pw.println("ERRORES SINTACTICOS:");
             System.out.println("ERRORES SINTACTICOS:");
-            pw.println("--------------------");
-            System.out.println("--------------------");
             pw.println("");
             if (p.getListaDeErroresSintacticos().isEmpty())
                 pw.println("No se detectaron errores sintacticos.");
@@ -63,11 +61,11 @@ public class Main {
                     System.out.println(e);
                     pw.println(e);
                 }
+            pw.println("--------------------");
+            System.out.println("--------------------");
             pw.println("");
             pw.println("REGLAS SINTACTICAS:");
             System.out.println("REGLAS SINTACTICAS:");
-            pw.println("--------------------");
-            System.out.println("--------------------");
             pw.println("");
             if (p.getListaDeReglas().isEmpty())
                 pw.println("No se detectaron reglas sintacticas.");
@@ -76,11 +74,11 @@ public class Main {
                     System.out.println(e);
                     pw.println(e);
                 }
+            pw.println("--------------------");
+            System.out.println("--------------------");
             pw.println("");
             pw.println("CONTENIDO DE LA TABLA DE SIMBOLOS:");
             System.out.println("CONTENIDO DE LA TABLA DE SIMBOLOS:");
-            pw.println("--------------------");
-            System.out.println("--------------------");
             pw.println("");
             if (p.getTablaSimbolos().isEmpty())
                 pw.println("Tabla de simbolos vacia");
@@ -89,6 +87,8 @@ public class Main {
                     System.out.println(e.getKey()+" --> "+e.getValue().getLexema()+e.getValue().getTipo());
                     pw.println(e.getKey()+" --> "+e.getValue().getLexema()+e.getValue().getTipo());
                 }
+            pw.println("--------------------");
+            System.out.println("--------------------");
             pw.close();
         } catch (IOException ex) {
             ex.printStackTrace();

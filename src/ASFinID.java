@@ -6,7 +6,7 @@ public class ASFinID implements AccionSemantica {
         //evaluo si es mayor de lo permitido
         String lexema = al.getBuffer();
         if (lexema.length() > 25) {
-            al.setTokenActual(al.ERROR);
+            al.setTokenActual(AnalizadorLexico.ERROR);
             al.addListaDeErroresLexicos(String.format("Error ID demasiado largo en linea: %1$d", al.getLinea()));
         } else {
             //Si no esta en la tabla de simbolos lo agrego, sino devuelvo referencia

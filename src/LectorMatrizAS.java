@@ -6,11 +6,11 @@ public class LectorMatrizAS {
     public static int fila = 15;
     public static int columna = 17;
     private static AccionSemantica[][] mAS = new AccionSemantica[columna][fila];
-    private String sourceCode = new String();
 
     public LectorMatrizAS(String path) throws IOException, ClassNotFoundException, IllegalAccessException, InstantiationException {
         BufferedReader inputReader = new BufferedReader(new FileReader(path));
         int read;
+        String sourceCode = new String();
         while ((read = inputReader.read()) != -1) {
             sourceCode += (char) read;
         }
@@ -35,19 +35,6 @@ public class LectorMatrizAS {
     public static AccionSemantica[][] getMatriz() {
         return mAS;
     }
-/*    public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, IOException {
-        LectorMatrizAS lectorAS = new LectorMatrizAS("MAS.txt");
-        int fila = 15;
-        int columna = 16;
-        AccionSemantica[][] mAS = new AccionSemantica[columna][fila];
-        mAS = lectorAS.getMatriz();
-        for (AccionSemantica[] as:mAS
-                ) {
-            for (AccionSemantica as2:as
-                    ) {
-                as2.ejecutar(new AnalisadorLexicoTest());
-            }
-        }
-    }*/
+
 }
 

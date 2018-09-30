@@ -54,11 +54,7 @@ public class AnalizadorLexico {
     }
 
     public boolean estaEnTabla(String lexema) {
-        //todo verificar que si no esta en hash devuelve null
-        if (!(tablaDeSimbolos.get(lexema) == null)) {
-            return true;
-        }
-        return false;
+        return !(tablaDeSimbolos.get(lexema) == null);
     }
 
     private void cargarListaPR() {

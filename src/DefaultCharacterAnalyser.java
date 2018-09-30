@@ -1,16 +1,10 @@
 public class DefaultCharacterAnalyser {
     public boolean esMayus(char c) {
-        if (c >= 65 && c <= 90) {
-            return true;
-        }
-        return false;
+        return c >= 65 && c <= 90;
     }
 
     public boolean esMinus(char c) {
-        if (c >= 97 && c <= 122) {
-            return true;
-        }
-        return false;
+        return c >= 97 && c <= 122;
     }
 
     public boolean esLetra(char c) {
@@ -27,7 +21,6 @@ public class DefaultCharacterAnalyser {
     }
 
     public int getColumnaSimbolo(char c) {
-        //todo valores random
 
         if (esDigito(c)) {
             return 5;

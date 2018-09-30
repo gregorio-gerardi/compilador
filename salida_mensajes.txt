@@ -1,10 +1,9 @@
 ERRORES DEL ANALIZADOR LEXICO:
-------------------------------
 
 Error lexico en linea: 3
+--------------------
 
 TOKENS DEL ANALIZADOR LEXICO:
-------------------------------
 
 Palabra Reservada print (linea 1)
 Simbolo ( (linea 1)
@@ -12,22 +11,23 @@ Cadena Caracteres: "ejemplo de cadena" (linea 1)
 Simbolo ) (linea 1)
 Simbolo , (linea 1)
 Cadena Caracteres: "esto es una cadena bien definida" (linea 2)
+--------------------
 
 ERRORES SINTACTICOS:
---------------------
 
 No se detectaron errores sintacticos.
+--------------------
 
 REGLAS SINTACTICAS:
---------------------
 
 print reconocida en linea 1
 sentencia ejecutable reconocida en linea 1
 sentencia reconocida en linea 1
 Contenido de programa reconocido en linea 1
+--------------------
 
 CONTENIDO DE LA TABLA DE SIMBOLOS:
---------------------
 
 ejemplo de cadena --> ejemplo de cadenaString
 esto es una cadena bien definida --> esto es una cadena bien definidaString
+--------------------

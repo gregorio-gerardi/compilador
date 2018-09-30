@@ -6,11 +6,11 @@ public class LectorMatrizTE {
     public static int fila = 15;
     public static int columna = 17;
     private static int[][] mTE = new int[columna][fila];
-    private String sourceCode = new String();
 
     public LectorMatrizTE(String path) throws IOException {
         BufferedReader inputReader = new BufferedReader(new FileReader(path));
         int read;
+        String sourceCode = new String();
         while ((read = inputReader.read()) != -1) {
             sourceCode += (char) read;
         }
@@ -32,22 +32,3 @@ public class LectorMatrizTE {
         return mTE;
     }
 }
-
-//unit test para clase con print
-/*
-public class MainPrueba {
-    public static void main(String[] args) throws IOException {
-
-        int[][] mTE = new int[16][15];
-        System.out.println(mTE.length);
-        System.out.println(mTE[0].length);
-        LectorMatrizTE lector = new LectorMatrizTE(args[0]);
-        mTE = lector.getMatriz();
-        for (int i = 0; i < mTE[0].length; i++) {
-            System.out.println();
-            for (int j = 0; j < mTE.length; j++) {
-                System.out.print(mTE[j][i] + "    ");
-            }
-        }
-    }
-}*/

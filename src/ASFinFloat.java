@@ -6,7 +6,7 @@ public class ASFinFloat implements AccionSemantica {
         //convierto a compatible con java
         String[] separados = new String[2];
         String buffer = al.getBuffer();
-        double single = 0;
+        double single;
         if (String.valueOf(buffer).contains("F")) {
             separados = String.valueOf(buffer).split("(?<=F)");
             single = Double.valueOf(separados[0]);
@@ -40,18 +40,4 @@ public class ASFinFloat implements AccionSemantica {
             al.setEntrada(elementoTS);
         }
     }
-
-/*    public boolean esMayor(String single){
-        String max_float = "340282347000000000000000000000000000000";
-        char[] max = max_float.toCharArray();
-        single.substring(0,single.length()-1);
-        char[] singleChar = single.toCharArray();
-
-
-        for (int i = 0; i < max_float.length(); i++) {
-            if (singleChar[i] != ''){
-
-            }
-        }
-    }*/
 }
