@@ -1045,7 +1045,7 @@ case 77:
         if (!al.estaEnTabla(lexema)) {
             /* no esta en tabla, agrega a TS*/
             EntradaTablaSimbolos elementoTS = new EntradaTablaSimbolos(lexema, entradaTablaSimbolos.getTipo());
-            al.agregarATablaSimbolos(lexema, elementoTS);
+            al.agregarATablaSimbolos(elementoTS);
         }
         addReglaSintacticaReconocida(String.format("ctenegativa  reconocida en linea %1$d", al.getLinea()));
         if (entradaTablaSimbolos.getTipo() == EntradaTablaSimbolos.LONG) {

@@ -3,11 +3,11 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class Reader {
-    public static int actualLine = 1;
-    BufferedReader inputReader;
+    private static int actualLine = 1;
     private String sourceCode = "";
     private int position = 1;
-    public static final char FIN=(char)06;
+    private static final char FIN = (char) 06;
+
     public Reader(String path) throws IOException {
         BufferedReader inputReader = new BufferedReader(new FileReader(path));
         int read;
@@ -21,14 +21,6 @@ public class Reader {
         return actualLine;
     }
 
-    public boolean isNotFinal() {
-        return position <= sourceCode.length();
-    }
-
-    public boolean isFinal() {
-        return position == sourceCode.length();
-    }
-
     public int getCaracter() {
         return sourceCode.charAt(position - 1);
     }
@@ -39,9 +31,5 @@ public class Reader {
 
     public void incPosition() {
         position++;
-    }
-
-    public void decPosition() {
-        position--;
     }
 }

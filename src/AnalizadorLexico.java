@@ -8,10 +8,10 @@ public class AnalizadorLexico {
     public static int FINALARCHIVO = 1000;
     public static double MAX_LONG = 2147483648.; //contemplando el maximo valor negativo posible
     public static double MAX_FLOAT = 340282347000000000000000000000000000000.;
-    public static double MIN_FLOAT = 0.0000000000000000000000000000000000000117549435 ;
+    public static double MIN_FLOAT = 0.0000000000000000000000000000000000000117549435;
     public HashMap<String, EntradaTablaSimbolos> tablaDeSimbolos = new HashMap<>();
     //--------//
-    private DefaultCharacterAnalyser analisadorDeChar = new DefaultCharacterAnalyser();
+    private DefaultCharacterAnalyser analizadorDeChar = new DefaultCharacterAnalyser();
     private Reader reader;
     private String buffer = "";
     private int tokenActual = -1;
@@ -49,7 +49,7 @@ public class AnalizadorLexico {
         this.listaDeTokens.add(token);
     }
 
-    public void agregarATablaSimbolos(String lexema, EntradaTablaSimbolos entrada) {
+    public void agregarATablaSimbolos(EntradaTablaSimbolos entrada) {
         tablaDeSimbolos.put(entrada.getLexema(), entrada);
     }
 
@@ -85,10 +85,6 @@ public class AnalizadorLexico {
         this.buffer = buffer;
     }
 
-    public int getTokenActual() {
-        return tokenActual;
-    }
-
     public void setTokenActual(int tokenActual) {
         this.tokenActual = tokenActual;
     }
@@ -97,29 +93,17 @@ public class AnalizadorLexico {
         return c;
     }
 
-    public void setC(char c) {
-        this.c = c;
-    }
-
-    public int getEstadoActual() {
-        return estadoActual;
-    }
-
-    public void setEstadoActual(int estadoActual) {
-        this.estadoActual = estadoActual;
-    }
-
     //GET TOKEN DEVUELVE -1 EN CASO DE UN TOKEN ERRONEO
     public int getToken() {
         entrada = null;
         tokenActual = ERROR;
         buffer = "";
         estadoActual = 0; //Estado inicial.
-        while ((estadoActual != ERROR) && (estadoActual != FINAL) &&(estadoActual != FINALARCHIVO)) {
+        while ((estadoActual != ERROR) && (estadoActual != FINAL) && (estadoActual != FINALARCHIVO)) {
             c = (char) reader.getCaracter();
-            AccionSemantica aS = mAS[analisadorDeChar.getColumnaSimbolo(c)][estadoActual]; //Accion semantica a realizar [Estado][Simbolo]
+            AccionSemantica aS = mAS[analizadorDeChar.getColumnaSimbolo(c)][estadoActual]; //Accion semantica a realizar [Estado][Simbolo]
             aS.ejecutar(this);// ejecuta la accion. incrementa o no la posicion y carga el buffer, o resetea todo por error, desde metodos del analizador pasado como this;
-            estadoActual = mTE[analisadorDeChar.getColumnaSimbolo(c)][estadoActual];
+            estadoActual = mTE[analizadorDeChar.getColumnaSimbolo(c)][estadoActual];
         }
         return tokenActual;
     }
@@ -217,9 +201,6 @@ public class AnalizadorLexico {
 
     public EntradaTablaSimbolos getEntradaTablaSimbolo() {
         return entrada;
-    }
-
-    public void addErrorActual(String format) {
     }
 
     public HashMap<String, EntradaTablaSimbolos> getTablaDeSimbolos() {

@@ -20,9 +20,7 @@ public class LectorMatrizTE {
         int cont = 0;
         for (int i = 0; i < mTE[0].length; i++) {
             for (int j = 0; j < mTE.length; j++) {
-                //if (!separados[cont].equals("\n") && !separados[cont].equals("\r")) {
-                    mTE[j][i] = Integer.valueOf(separados[cont]);
-                //}
+                mTE[j][i] = Integer.valueOf(separados[cont]);
                 cont++;
             }
         }

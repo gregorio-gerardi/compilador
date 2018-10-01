@@ -1,8 +1,6 @@
 public class ASFinID implements AccionSemantica {
-
     @Override
     public void ejecutar(AnalizadorLexico al) {
-        //al.incPosition();
         //evaluo si es mayor de lo permitido
         String lexema = al.getBuffer();
         if (lexema.length() > 25) {
@@ -18,7 +16,7 @@ public class ASFinID implements AccionSemantica {
             } else {
                 // no esta en tabla, agrega a TS y tambien setea entrada en getToken para darle al parser la referencia
                 EntradaTablaSimbolos elementoTS = new EntradaTablaSimbolos(lexema, EntradaTablaSimbolos.TIPO_DESCONOCIDO);
-                al.agregarATablaSimbolos(lexema, elementoTS);
+                al.agregarATablaSimbolos(elementoTS);
                 al.setEntrada(elementoTS);
             }
         }

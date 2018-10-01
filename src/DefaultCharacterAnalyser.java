@@ -114,7 +114,7 @@ public class DefaultCharacterAnalyser {
             case '\n': {
                 return 15;
             }
-            case (char)06: {
+            case (char) 06: {
                 return 16;
             }
         }

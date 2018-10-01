@@ -13,7 +13,7 @@ public class ASFinString implements AccionSemantica {
         } else {
             // no esta en tabla, agrega a TS y tambien setea entrada en getToken para darle al parser la referencia
             EntradaTablaSimbolos elementoTS = new EntradaTablaSimbolos(cadena, EntradaTablaSimbolos.STRING);
-            al.agregarATablaSimbolos(cadena, elementoTS);
+            al.agregarATablaSimbolos(elementoTS);
             al.setEntrada(elementoTS);
         }
     }
