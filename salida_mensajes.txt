@@ -5,10 +5,19 @@ No se encontraron errores lexicos.
 
 TOKENS DEL ANALIZADOR LEXICO:
 
+Palabra Reservada let (linea 1)
+Palabra Reservada mut (linea 1)
+Palabra Reservada linteger (linea 1)
 ID (linea 1)
-Simbolo := (linea 1)
-CTE linteger (linea 1)
+Simbolo ; (linea 1)
+Simbolo * (linea 1)
+ID (linea 1)
 Simbolo , (linea 1)
+ID (linea 2)
+Simbolo := (linea 2)
+Simbolo * (linea 2)
+ID (linea 2)
+Simbolo , (linea 2)
 --------------------
 
 ERRORES SINTACTICOS:
@@ -18,17 +27,22 @@ No se detectaron errores sintacticos.
 
 REGLAS SINTACTICAS:
 
-cte reconocida en linea 1
-expresion reconocida en linea 1
-asignacion reconocida en linea 1
-sentencia ejecutable reconocida en linea 1
+tipo reconocida en linea 1
+lista de variables reconocida en linea 1
+lista de variables reconocida en linea 1
+sentencia declarativa reconocida en linea 1
 sentencia reconocida en linea 1
 Contenido de programa reconocido en linea 1
-Programa reconocido en linea 1
+expresion reconocida en linea 2
+asignacion reconocida en linea 2
+sentencia ejecutable reconocida en linea 2
+sentencia reconocida en linea 2
+Contenido de programa reconocido en linea 2
+Programa reconocido en linea 2
 --------------------
 
 CONTENIDO DE LA TABLA DE SIMBOLOS:
 
-89.0 --> Linteger
-_fermin --> Desconocido
+_a --> Desconocido
+_c --> Desconocido
 --------------------

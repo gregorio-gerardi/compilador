@@ -1,0 +1,19 @@
+CORRECCION:
+-------------------------------------------------------------------------------
+* En el código
+_id := 2_l,
+_123 := 3_l,
+_id123:= 1_l,
+
+debería dar un error en _123 (ID inválido o algo así)
+pero no da ningun error, además informa como tokens:
+
+_123 --> Desconocido
+_id123 --> Desconocido
+_id --> Desconocido
+
+-------------------------------------------------------------------------------
+No es correcta, el enunciado no discrimina identificadores que comiencen con numeros, solo que debe haber por lo menos
+un caracter alfanumerico luego del guion bajo.
+
+

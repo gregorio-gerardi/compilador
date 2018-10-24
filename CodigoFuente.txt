@@ -1,1 +1,2 @@
-_fermin := 89_l ,
+let mut linteger _a; *_c,
+_a := *_c,

@@ -197,7 +197,7 @@ import java.util.HashMap;
     ;
 
     factor: 
-        ID                                          {/*addReglaSintacticaReconocida(String.format("factor reconocida en linea %1$d",al.getLinea()));*/}
+        identificador                               {/*addReglaSintacticaReconocida(String.format("factor reconocida en linea %1$d",al.getLinea()));*/}
         | 
         cte                                         {/*addReglaSintacticaReconocida(String.format("factor reconocida en linea %1$d",al.getLinea()));*/}
     ;
