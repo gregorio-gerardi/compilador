@@ -3,7 +3,7 @@ import java.util.HashMap;
 
 public class AnalizadorLexico {
 
-    public static int ERROR = -1;
+    public static int ERROR = 256;
     public static int FINAL = 100;
     public static int FINALARCHIVO = 1000;
     public static double MAX_LONG = 2147483648.; //contemplando el maximo valor negativo posible
@@ -105,7 +105,7 @@ public class AnalizadorLexico {
             aS.ejecutar(this);// ejecuta la accion. incrementa o no la posicion y carga el buffer, o resetea todo por error, desde metodos del analizador pasado como this;
             estadoActual = mTE[analizadorDeChar.getColumnaSimbolo(c)][estadoActual];
         }
-        return tokenActual;
+        return estadoActual==FINALARCHIVO ? -1 : tokenActual;
     }
 
 

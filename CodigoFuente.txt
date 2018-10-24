@@ -1,2 +1,1 @@
-print('ejemplo de cadena'),
-'esto es una cadena bien definida',
+_fermin := 89_l ,

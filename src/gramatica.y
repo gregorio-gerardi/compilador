@@ -16,7 +16,9 @@ import java.util.HashMap;
 
     contenidoPrograma: 
         sentencia ','                                       {addReglaSintacticaReconocida(String.format("Contenido de programa reconocido en linea %1$d",al.getLinea()));}
-        | 
+        |
+        error ','                                           {addErrorSintactico(String.format("sentencia mal declarada recuperando en ',' siguiente en linea %1$d",al.getLinea()));}
+        |
         contenidoPrograma sentencia ','                     {addReglaSintacticaReconocida(String.format("Contenido de programa reconocido en linea %1$d",al.getLinea()));}
     ;
 
@@ -53,25 +55,25 @@ import java.util.HashMap;
     ;
 
     listaVariables: 
-        referencia                                          {addReglaSintacticaReconocida(String.format("lista de variables reconocida en linea %1$d",al.getLinea()));}
+        identificador                                          {addReglaSintacticaReconocida(String.format("lista de variables reconocida en linea %1$d",al.getLinea()));}
         | 
-        listaVariables ';' referencia                       {addReglaSintacticaReconocida(String.format("lista de variables reconocida en linea %1$d",al.getLinea()));}
+        listaVariables ';' identificador                       {addReglaSintacticaReconocida(String.format("lista de variables reconocida en linea %1$d",al.getLinea()));}
         | 
-        listaVariables error referencia                     {addErrorSintactico(String.format(" declaracion de lista de variables esperaba un ; entre variables en linea %1$d",al.getLinea()));}
+        listaVariables error identificador                     {addErrorSintactico(String.format(" declaracion de lista de variables esperaba un ; entre variables en linea %1$d",al.getLinea()));}
     ;
 
-    referencia: 
-        '*' ID                                              {addReglaSintacticaReconocida(String.format("referencia reconocida en linea %1$d",al.getLinea()));}
+    identificador:
+        '*' ID                                              {/*addReglaSintacticaReconocida(String.format("identificador reconocida en linea %1$d",al.getLinea()));*/}
         | 
-        ID                                                  {addReglaSintacticaReconocida(String.format("referencia reconocida en linea %1$d",al.getLinea()));}
+        ID                                                  {/*addReglaSintacticaReconocida(String.format("identificador reconocida en linea %1$d",al.getLinea()));*/}
     ;
 
     asignacionCte: 
-        referencia ASIGNACION cte                           {addReglaSintacticaReconocida(String.format("asign cte reconocida en linea %1$d",al.getLinea()));}
+        identificador ASIGNACION cte                           {addReglaSintacticaReconocida(String.format("asign cte reconocida en linea %1$d",al.getLinea()));}
         | 
-        referencia error cte                                {addErrorSintactico(String.format("asign cte mal definida en linea %1$d",al.getLinea()));}
+        identificador error cte                                {addErrorSintactico(String.format("asign cte mal definida en linea %1$d",al.getLinea()));}
         | 
-        referencia ASIGNACION error                         {addErrorSintactico(String.format("asign cte mal definida en linea %1$d",al.getLinea()));}
+        identificador ASIGNACION error                         {addErrorSintactico(String.format("asign cte mal definida en linea %1$d",al.getLinea()));}
         | 
         error ASIGNACION cte                                {addErrorSintactico(String.format("asign cte mal definida en linea %1$d",al.getLinea()));}
     ;
@@ -133,13 +135,13 @@ import java.util.HashMap;
     ;
 
     asignacion:    
-        referencia ASIGNACION expresion                             {addReglaSintacticaReconocida(String.format("asignacion reconocida en linea %1$d",al.getLinea()));}
+        identificador ASIGNACION expresion                             {addReglaSintacticaReconocida(String.format("asignacion reconocida en linea %1$d",al.getLinea()));}
         |
         error ASIGNACION expresion                                  {addErrorSintactico(String.format("asignacion mal definida en linea %1$d",al.getLinea()));}
         |
-        referencia error expresion                                  {addErrorSintactico(String.format("asignacion mal definida en linea %1$d",al.getLinea()));}
+        identificador error expresion                                  {addErrorSintactico(String.format("asignacion mal definida en linea %1$d",al.getLinea()));}
         |
-        referencia ASIGNACION error                                 {addErrorSintactico(String.format("asignacion mal definida en linea %1$d",al.getLinea()));}
+        identificador ASIGNACION error                                 {addErrorSintactico(String.format("asignacion mal definida en linea %1$d",al.getLinea()));}
     ;
 
     bloqueSentencias:  
@@ -187,17 +189,17 @@ import java.util.HashMap;
     ;
 
     termino: 
-        termino '*' factor                          {addReglaSintacticaReconocida(String.format("termino reconocida en linea %1$d",al.getLinea()));}
+        termino '*' factor                          {/*addReglaSintacticaReconocida(String.format("termino reconocida en linea %1$d",al.getLinea()));*/}
         | 
-        termino '/' factor                          {addReglaSintacticaReconocida(String.format("termino reconocida en linea %1$d",al.getLinea()));}
+        termino '/' factor                          {/*addReglaSintacticaReconocida(String.format("termino reconocida en linea %1$d",al.getLinea()));*/}
         | 
-        factor                                      {addReglaSintacticaReconocida(String.format("termino reconocida en linea %1$d",al.getLinea()));}
+        factor                                      {/*addReglaSintacticaReconocida(String.format("termino reconocida en linea %1$d",al.getLinea()));*/}
     ;
 
     factor: 
-        ID                                          {addReglaSintacticaReconocida(String.format("factor reconocida en linea %1$d",al.getLinea()));}
+        ID                                          {/*addReglaSintacticaReconocida(String.format("factor reconocida en linea %1$d",al.getLinea()));*/}
         | 
-        cte                                         {addReglaSintacticaReconocida(String.format("factor reconocida en linea %1$d",al.getLinea()));}
+        cte                                         {/*addReglaSintacticaReconocida(String.format("factor reconocida en linea %1$d",al.getLinea()));*/}
     ;
 
     cte: 
@@ -211,7 +213,7 @@ import java.util.HashMap;
                                                                 al.getTablaDeSimbolos().put(entradaTablaSimbolos.getLexema(), entradaTablaSimbolos);
                                                             }
                                                         }
-                                                        addReglaSintacticaReconocida(String.format("cte reconocida en linea %1$d", al.getLinea()));
+                                                        /*addReglaSintacticaReconocida(String.format("cte reconocida en linea %1$d", al.getLinea()));*/
                                                     } 
         |
         '-'CTE %prec '*'                            {   EntradaTablaSimbolos entradaTablaSimbolos = (EntradaTablaSimbolos) ($2.obj);
@@ -221,7 +223,7 @@ import java.util.HashMap;
                                                             EntradaTablaSimbolos elementoTS = new EntradaTablaSimbolos(lexema, entradaTablaSimbolos.getTipo());
                                                             al.agregarATablaSimbolos(elementoTS);
                                                         }
-                                                        addReglaSintacticaReconocida(String.format("ctenegativa  reconocida en linea %1$d", al.getLinea()));
+                                                        /*addReglaSintacticaReconocida(String.format("ctenegativa  reconocida en linea %1$d", al.getLinea()));*/
                                                         if (entradaTablaSimbolos.getTipo() == EntradaTablaSimbolos.LONG) {
                                                             if ((Double.valueOf(entradaTablaSimbolos.getLexema())) == AnalizadorLexico.MAX_LONG) {
                                                                 al.getTablaDeSimbolos().remove(entradaTablaSimbolos.getLexema());
@@ -229,7 +231,7 @@ import java.util.HashMap;
                                                         }
                                                     }
         |
-        '&'ID                                       {addReglaSintacticaReconocida(String.format("cte direccion de id reconocida en linea %1$d", al.getLinea())); }
+        '&'ID                                       {/*addReglaSintacticaReconocida(String.format("cte direccion de id reconocida en linea %1$d", al.getLinea())); */}
         |
         '&'error                                    {addErrorSintactico(String.format("valor cte mal definido en linea %1$d", al.getLinea())); }
         |
@@ -237,17 +239,17 @@ import java.util.HashMap;
     ;
 
     comparador: 
-        '='                                         {addReglaSintacticaReconocida(String.format("comp = reconocida en linea %1$d",al.getLinea()));}
+        '='                                         {/*addReglaSintacticaReconocida(String.format("comp = reconocida en linea %1$d",al.getLinea()));*/}
         |
-        '>'                                         {addReglaSintacticaReconocida(String.format("comp > reconocida en linea %1$d",al.getLinea()));}
+        '>'                                         {/*addReglaSintacticaReconocida(String.format("comp > reconocida en linea %1$d",al.getLinea()));*/}
         |
-        '<'                                         {addReglaSintacticaReconocida(String.format("comp < reconocida en linea %1$d",al.getLinea()));}
+        '<'                                         {/*addReglaSintacticaReconocida(String.format("comp < reconocida en linea %1$d",al.getLinea()))*/;}
         |
-        COMP_MAYOR_IGUAL                            {addReglaSintacticaReconocida(String.format("comp reconocida en linea %1$d",al.getLinea()));}
+        COMP_MAYOR_IGUAL                            {/*addReglaSintacticaReconocida(String.format("comp reconocida en linea %1$d",al.getLinea()));*/}
         |
-        COMP_MENOR_IGUAL                            {addReglaSintacticaReconocida(String.format("comp reconocida en linea %1$d",al.getLinea()));}
+        COMP_MENOR_IGUAL                            {/*addReglaSintacticaReconocida(String.format("comp reconocida en linea %1$d",al.getLinea()));*/}
         |
-        COMP_DIFERENTE                              {addReglaSintacticaReconocida(String.format("comp reconocida en linea %1$d",al.getLinea()));}
+        COMP_DIFERENTE                              {/*addReglaSintacticaReconocida(String.format("comp reconocida en linea %1$d",al.getLinea()));*/}
     ;
 
     sentenciaPrint: 
