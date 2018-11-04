@@ -2,6 +2,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
+import java.util.ArrayList;
 import java.util.Map;
 
 public class Main {
@@ -83,10 +84,33 @@ public class Main {
                 }
             pw.println("--------------------");
             System.out.println("--------------------");
+            pw.println("LISTA DE TERCETOS GENERADOS:");
+            System.out.println("LISTA DE TERCETOS GENERADOS:");
+            pw.println("");
+            ArrayList<Terceto> tercetos = ListaTercetos.getInstanceOfListaDeTercetos().getTercetos();
+            if (tercetos.isEmpty())
+                pw.println("Lista de tercetos vacia");
+            else {
+                int i = 0;
+                for (Terceto t : tercetos) {
+                    System.out.println(i + " - ( " + t.getOperador() + " , " + printOperador(t.getOperando1()) + " , " + printOperador(t.getOperando2()) + " ) ");
+                    pw.println(i + " - ( " + t.getOperador() + " , " + printOperador(t.getOperando1()) + " , " + printOperador(t.getOperando2()) + " ) ");
+                    i++;
+                }
+            }
+            pw.println("--------------------");
+            System.out.println("--------------------");
             pw.close();
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+    }
+
+    public static String printOperador(Operando operando) {
+        if (operando == null) return "-";
+        if (operando instanceof Terceto)
+            return ("[" + ListaTercetos.getInstanceOfListaDeTercetos().getIndice((Terceto) operando) + "]");
+        else return ((EntradaTablaSimbolos) operando).getLexema();
     }
 }
 

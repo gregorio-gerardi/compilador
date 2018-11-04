@@ -10,12 +10,12 @@ Palabra Reservada mut (linea 1)
 Palabra Reservada linteger (linea 1)
 ID (linea 1)
 Simbolo ; (linea 1)
-Simbolo * (linea 1)
 ID (linea 1)
 Simbolo , (linea 1)
 ID (linea 2)
 Simbolo := (linea 2)
-Simbolo * (linea 2)
+CTE linteger (linea 2)
+Simbolo + (linea 2)
 ID (linea 2)
 Simbolo , (linea 2)
 --------------------
@@ -34,6 +34,7 @@ sentencia declarativa reconocida en linea 1
 sentencia reconocida en linea 1
 Contenido de programa reconocido en linea 1
 expresion reconocida en linea 2
+expresion reconocida en linea 2
 asignacion reconocida en linea 2
 sentencia ejecutable reconocida en linea 2
 sentencia reconocida en linea 2
@@ -45,4 +46,10 @@ CONTENIDO DE LA TABLA DE SIMBOLOS:
 
 _a --> Desconocido
 _c --> Desconocido
+20.0 --> Linteger
+--------------------
+LISTA DE TERCETOS GENERADOS:
+
+0 - ( + , 20.0 , _c ) 
+1 - ( ASIGNACION , _a , [0] ) 
 --------------------

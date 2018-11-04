@@ -531,12 +531,13 @@ final static String yyrule[] = {
 "sentenciaPrint : PRINT '(' CADENA error",
 };
 
-//#line 268 "gramatica.y"
+//#line 301 "gramatica.y"
     private AnalizadorLexico al;
     private ArrayList<String> listaDeTokens;
     private ArrayList<String> listaDeReglas;
     private ArrayList<String> listaDeErroresLexicos;
     private ArrayList<String> listaDeErroresSintacticos;
+    private ArrayList<String> listaDeErroresSemanticos;
 
     public Parser(Reader fuente) {
         al = new AnalizadorLexico(fuente);
@@ -544,6 +545,7 @@ final static String yyrule[] = {
         listaDeTokens = new ArrayList<>();
         listaDeErroresLexicos = new ArrayList<>();
         listaDeErroresSintacticos = new ArrayList<>();
+        listaDeErroresSemanticos = new ArrayList<>();
     }
 
     private void yyerror(String syntax_error) {
@@ -818,305 +820,338 @@ case 20:
 break;
 case 21:
 //#line 66 "gramatica.y"
-{/*addReglaSintacticaReconocida(String.format("identificador reconocida en linea %1$d",al.getLinea()));*/}
+{/*addReglaSintacticaReconocida(String.format("identificador reconocida en linea %1$d",al.getLinea()));*/
+                                                            yyval=val_peek(0);}
 break;
 case 22:
-//#line 68 "gramatica.y"
-{/*addReglaSintacticaReconocida(String.format("identificador reconocida en linea %1$d",al.getLinea()));*/}
+//#line 69 "gramatica.y"
+{/*addReglaSintacticaReconocida(String.format("identificador reconocida en linea %1$d",al.getLinea()));*/
+                                                            yyval=val_peek(0);}
 break;
 case 23:
-//#line 72 "gramatica.y"
+//#line 74 "gramatica.y"
 {addReglaSintacticaReconocida(String.format("asign cte reconocida en linea %1$d",al.getLinea()));}
 break;
 case 24:
-//#line 74 "gramatica.y"
-{addErrorSintactico(String.format("asign cte mal definida en linea %1$d",al.getLinea()));}
-break;
-case 25:
 //#line 76 "gramatica.y"
 {addErrorSintactico(String.format("asign cte mal definida en linea %1$d",al.getLinea()));}
 break;
-case 26:
+case 25:
 //#line 78 "gramatica.y"
 {addErrorSintactico(String.format("asign cte mal definida en linea %1$d",al.getLinea()));}
 break;
-case 27:
-//#line 82 "gramatica.y"
-{addReglaSintacticaReconocida(String.format("sentencia ejecutable reconocida en linea %1$d",al.getLinea()));}
+case 26:
+//#line 80 "gramatica.y"
+{addErrorSintactico(String.format("asign cte mal definida en linea %1$d",al.getLinea()));}
 break;
-case 28:
+case 27:
 //#line 84 "gramatica.y"
 {addReglaSintacticaReconocida(String.format("sentencia ejecutable reconocida en linea %1$d",al.getLinea()));}
 break;
-case 29:
+case 28:
 //#line 86 "gramatica.y"
 {addReglaSintacticaReconocida(String.format("sentencia ejecutable reconocida en linea %1$d",al.getLinea()));}
 break;
-case 30:
+case 29:
 //#line 88 "gramatica.y"
 {addReglaSintacticaReconocida(String.format("sentencia ejecutable reconocida en linea %1$d",al.getLinea()));}
 break;
+case 30:
+//#line 90 "gramatica.y"
+{addReglaSintacticaReconocida(String.format("sentencia ejecutable reconocida en linea %1$d",al.getLinea()));}
+break;
 case 31:
-//#line 92 "gramatica.y"
+//#line 94 "gramatica.y"
 {addReglaSintacticaReconocida(String.format("if reconocida en linea %1$d",al.getLinea()));}
 break;
 case 33:
-//#line 98 "gramatica.y"
-{addErrorSintactico(String.format("encabezado del if mal definido en linea %1$d",al.getLinea()));}
-break;
-case 34:
 //#line 100 "gramatica.y"
 {addErrorSintactico(String.format("encabezado del if mal definido en linea %1$d",al.getLinea()));}
 break;
-case 35:
+case 34:
 //#line 102 "gramatica.y"
 {addErrorSintactico(String.format("encabezado del if mal definido en linea %1$d",al.getLinea()));}
 break;
-case 36:
+case 35:
 //#line 104 "gramatica.y"
 {addErrorSintactico(String.format("encabezado del if mal definido en linea %1$d",al.getLinea()));}
 break;
-case 38:
-//#line 110 "gramatica.y"
-{addErrorSintactico(String.format("cuerpo del if mal definido en linea %1$d",al.getLinea()));}
+case 36:
+//#line 106 "gramatica.y"
+{addErrorSintactico(String.format("encabezado del if mal definido en linea %1$d",al.getLinea()));}
 break;
-case 39:
+case 38:
 //#line 112 "gramatica.y"
 {addErrorSintactico(String.format("cuerpo del if mal definido en linea %1$d",al.getLinea()));}
 break;
-case 40:
+case 39:
 //#line 114 "gramatica.y"
 {addErrorSintactico(String.format("cuerpo del if mal definido en linea %1$d",al.getLinea()));}
 break;
-case 41:
+case 40:
 //#line 116 "gramatica.y"
 {addErrorSintactico(String.format("cuerpo del if mal definido en linea %1$d",al.getLinea()));}
 break;
-case 43:
-//#line 120 "gramatica.y"
+case 41:
+//#line 118 "gramatica.y"
 {addErrorSintactico(String.format("cuerpo del if mal definido en linea %1$d",al.getLinea()));}
 break;
-case 44:
+case 43:
 //#line 122 "gramatica.y"
 {addErrorSintactico(String.format("cuerpo del if mal definido en linea %1$d",al.getLinea()));}
 break;
+case 44:
+//#line 124 "gramatica.y"
+{addErrorSintactico(String.format("cuerpo del if mal definido en linea %1$d",al.getLinea()));}
+break;
 case 45:
-//#line 126 "gramatica.y"
+//#line 128 "gramatica.y"
 {addReglaSintacticaReconocida(String.format("while reconocida en linea %1$d",al.getLinea()));}
 break;
 case 46:
-//#line 128 "gramatica.y"
-{addErrorSintactico(String.format("while mal definido en linea %1$d",al.getLinea()));}
-break;
-case 47:
 //#line 130 "gramatica.y"
 {addErrorSintactico(String.format("while mal definido en linea %1$d",al.getLinea()));}
 break;
-case 48:
+case 47:
 //#line 132 "gramatica.y"
 {addErrorSintactico(String.format("while mal definido en linea %1$d",al.getLinea()));}
 break;
-case 49:
+case 48:
 //#line 134 "gramatica.y"
 {addErrorSintactico(String.format("while mal definido en linea %1$d",al.getLinea()));}
 break;
+case 49:
+//#line 136 "gramatica.y"
+{addErrorSintactico(String.format("while mal definido en linea %1$d",al.getLinea()));}
+break;
 case 50:
-//#line 138 "gramatica.y"
-{addReglaSintacticaReconocida(String.format("asignacion reconocida en linea %1$d",al.getLinea()));}
+//#line 140 "gramatica.y"
+{addReglaSintacticaReconocida(String.format("asignacion reconocida en linea %1$d",al.getLinea()));
+                                                                    Terceto terceto = new Terceto("ASIGNACION", (Operando)val_peek(2).obj, (Operando)val_peek(0).obj);
+                                                                    ListaTercetos.getInstanceOfListaDeTercetos().addTerceto(terceto);
+                                                                    yyval=new ParserVal(terceto); }
 break;
 case 51:
-//#line 140 "gramatica.y"
+//#line 145 "gramatica.y"
 {addErrorSintactico(String.format("asignacion mal definida en linea %1$d",al.getLinea()));}
 break;
 case 52:
-//#line 142 "gramatica.y"
+//#line 147 "gramatica.y"
 {addErrorSintactico(String.format("asignacion mal definida en linea %1$d",al.getLinea()));}
 break;
 case 53:
-//#line 144 "gramatica.y"
+//#line 149 "gramatica.y"
 {addErrorSintactico(String.format("asignacion mal definida en linea %1$d",al.getLinea()));}
 break;
 case 54:
-//#line 148 "gramatica.y"
+//#line 153 "gramatica.y"
 {addReglaSintacticaReconocida(String.format("bloque sentencia reconocida en linea %1$d",al.getLinea()));}
 break;
 case 55:
-//#line 150 "gramatica.y"
+//#line 155 "gramatica.y"
 {addReglaSintacticaReconocida(String.format("bloque sentencia reconocida en linea %1$d",al.getLinea()));}
 break;
 case 56:
-//#line 152 "gramatica.y"
+//#line 157 "gramatica.y"
 {addErrorSintactico(String.format("bloque de sentencias mal definid0 en linea %1$d",al.getLinea()));}
 break;
 case 57:
-//#line 154 "gramatica.y"
+//#line 159 "gramatica.y"
 {addErrorSintactico(String.format("bloque de sentencias mal definid0 en linea %1$d",al.getLinea()));}
 break;
 case 58:
-//#line 156 "gramatica.y"
+//#line 161 "gramatica.y"
 {addErrorSintactico(String.format("bloque de sentencias mal definid0 en linea %1$d",al.getLinea()));}
 break;
 case 59:
-//#line 160 "gramatica.y"
+//#line 165 "gramatica.y"
 {addReglaSintacticaReconocida(String.format("conj sent ejecutable reconocida en linea %1$d",al.getLinea()));}
 break;
 case 60:
-//#line 162 "gramatica.y"
+//#line 167 "gramatica.y"
 {addReglaSintacticaReconocida(String.format("conj sent ejecutable reconocida en linea %1$d",al.getLinea()));}
 break;
 case 61:
-//#line 166 "gramatica.y"
-{addReglaSintacticaReconocida(String.format("condicion reconocida en linea %1$d",al.getLinea()));}
+//#line 171 "gramatica.y"
+{addReglaSintacticaReconocida(String.format("condicion reconocida en linea %1$d",al.getLinea()));
+                                                    Terceto terceto = new Terceto(val_peek(1).sval, (Operando)val_peek(2).obj, (Operando)val_peek(0).obj);
+                                                    ListaTercetos.getInstanceOfListaDeTercetos().addTerceto(terceto);
+                                                    yyval=new ParserVal(terceto); }
 break;
 case 62:
-//#line 168 "gramatica.y"
+//#line 176 "gramatica.y"
 {addErrorSintactico(String.format("condicion mal definido en linea %1$d",al.getLinea()));}
 break;
 case 63:
-//#line 170 "gramatica.y"
+//#line 178 "gramatica.y"
 {addErrorSintactico(String.format("condicion mal definido en linea %1$d",al.getLinea()));}
 break;
 case 64:
-//#line 172 "gramatica.y"
+//#line 180 "gramatica.y"
 {addErrorSintactico(String.format("condicion mal definido en linea %1$d",al.getLinea()));}
 break;
 case 65:
-//#line 176 "gramatica.y"
-{addReglaSintacticaReconocida(String.format("expresion reconocida en linea %1$d",al.getLinea()));}
+//#line 184 "gramatica.y"
+{addReglaSintacticaReconocida(String.format("expresion reconocida en linea %1$d",al.getLinea()));
+                                                    Terceto terceto = new Terceto("+", (Operando)val_peek(2).obj, (Operando)val_peek(0).obj);
+                                                    ListaTercetos.getInstanceOfListaDeTercetos().addTerceto(terceto);
+                                                    yyval=new ParserVal(terceto); }
 break;
 case 66:
-//#line 178 "gramatica.y"
+//#line 189 "gramatica.y"
 {addErrorSintactico(String.format("expresion mal definido en linea %1$d",al.getLinea()));}
 break;
 case 67:
-//#line 180 "gramatica.y"
+//#line 191 "gramatica.y"
 {addErrorSintactico(String.format("expresion mal definido en linea %1$d",al.getLinea()));}
 break;
 case 68:
-//#line 182 "gramatica.y"
+//#line 193 "gramatica.y"
 {addErrorSintactico(String.format("expresion mal definido en linea %1$d",al.getLinea()));}
 break;
 case 69:
-//#line 184 "gramatica.y"
+//#line 195 "gramatica.y"
 {addErrorSintactico(String.format("expresion mal definido en linea %1$d",al.getLinea()));}
 break;
 case 70:
-//#line 186 "gramatica.y"
-{addReglaSintacticaReconocida(String.format("expresion reconocida en linea %1$d",al.getLinea()));}
+//#line 197 "gramatica.y"
+{addReglaSintacticaReconocida(String.format("expresion reconocida en linea %1$d",al.getLinea()));
+                                                    Terceto terceto = new Terceto("-", (Operando)val_peek(2).obj, (Operando)val_peek(0).obj);
+                                                    ListaTercetos.getInstanceOfListaDeTercetos().addTerceto(terceto);
+                                                    yyval=new ParserVal(terceto); }
 break;
 case 71:
-//#line 188 "gramatica.y"
-{addReglaSintacticaReconocida(String.format("expresion reconocida en linea %1$d",al.getLinea()));}
+//#line 202 "gramatica.y"
+{addReglaSintacticaReconocida(String.format("expresion reconocida en linea %1$d",al.getLinea()));
+                                                    yyval=val_peek(0);}
 break;
 case 72:
-//#line 192 "gramatica.y"
-{/*addReglaSintacticaReconocida(String.format("termino reconocida en linea %1$d",al.getLinea()));*/}
+//#line 207 "gramatica.y"
+{/*addReglaSintacticaReconocida(String.format("termino reconocida en linea %1$d",al.getLinea()));*/
+                                                    Terceto terceto = new Terceto("*", (Operando)val_peek(2).obj, (Operando)val_peek(0).obj);
+                                                    ListaTercetos.getInstanceOfListaDeTercetos().addTerceto(terceto);
+                                                    yyval=new ParserVal(terceto); }
 break;
 case 73:
-//#line 194 "gramatica.y"
-{/*addReglaSintacticaReconocida(String.format("termino reconocida en linea %1$d",al.getLinea()));*/}
+//#line 212 "gramatica.y"
+{/*addReglaSintacticaReconocida(String.format("termino reconocida en linea %1$d",al.getLinea()));*/
+                                                    Terceto terceto = new Terceto("/", (Operando)val_peek(2).obj, (Operando)val_peek(0).obj);
+                                                    ListaTercetos.getInstanceOfListaDeTercetos().addTerceto(terceto);
+                                                    yyval=new ParserVal(terceto); }
 break;
 case 74:
-//#line 196 "gramatica.y"
-{/*addReglaSintacticaReconocida(String.format("termino reconocida en linea %1$d",al.getLinea()));*/}
+//#line 217 "gramatica.y"
+{/*addReglaSintacticaReconocida(String.format("termino reconocida en linea %1$d",al.getLinea()));*/
+                                                    yyval=val_peek(0);}
 break;
 case 75:
-//#line 200 "gramatica.y"
-{/*addReglaSintacticaReconocida(String.format("factor reconocida en linea %1$d",al.getLinea()));*/}
+//#line 222 "gramatica.y"
+{/*addReglaSintacticaReconocida(String.format("factor reconocida en linea %1$d",al.getLinea()));*/
+                                                    yyval=val_peek(0);}
 break;
 case 76:
-//#line 202 "gramatica.y"
-{/*addReglaSintacticaReconocida(String.format("factor reconocida en linea %1$d",al.getLinea()));*/}
+//#line 225 "gramatica.y"
+{/*addReglaSintacticaReconocida(String.format("factor reconocida en linea %1$d",al.getLinea()));*/
+                                                    yyval=val_peek(0);}
 break;
 case 77:
-//#line 206 "gramatica.y"
+//#line 230 "gramatica.y"
 {    EntradaTablaSimbolos entradaTablaSimbolos = (EntradaTablaSimbolos) (val_peek(0).obj);
-                                                        if (entradaTablaSimbolos.getTipo() == EntradaTablaSimbolos.LONG) {
-                                                            if ((Double.valueOf(entradaTablaSimbolos.getLexema())) == AnalizadorLexico.MAX_LONG) {
-                                                                addErrorSintactico(String.format("warning linteger cte positiva mayor al maximo permitido en linea %1$d", al.getLinea()));
-                                                                String nuevoLexema = String.valueOf(AnalizadorLexico.MAX_LONG - 1);
-                                                                al.getTablaDeSimbolos().remove(entradaTablaSimbolos.getLexema());
-                                                                entradaTablaSimbolos.setLexema(nuevoLexema);
-                                                                al.getTablaDeSimbolos().put(entradaTablaSimbolos.getLexema(), entradaTablaSimbolos);
-                                                            }
-                                                        }
-                                                        /*addReglaSintacticaReconocida(String.format("cte reconocida en linea %1$d", al.getLinea()));*/
-                                                    }
+    if (entradaTablaSimbolos.getTipo() == EntradaTablaSimbolos.LONG) {
+        if ((Double.valueOf(entradaTablaSimbolos.getLexema())) == AnalizadorLexico.MAX_LONG) {
+            addErrorSintactico(String.format("warning linteger cte positiva mayor al maximo permitido en linea %1$d", al.getLinea()));
+            String nuevoLexema = String.valueOf(AnalizadorLexico.MAX_LONG - 1);
+            al.getTablaDeSimbolos().remove(entradaTablaSimbolos.getLexema());
+            entradaTablaSimbolos.setLexema(nuevoLexema);
+            al.getTablaDeSimbolos().put(entradaTablaSimbolos.getLexema(), entradaTablaSimbolos);
+        }
+    }
+    /*addReglaSintacticaReconocida(String.format("cte reconocida en linea %1$d", al.getLinea()));*/
+    yyval=val_peek(0);
+}
 break;
 case 78:
-//#line 219 "gramatica.y"
+//#line 244 "gramatica.y"
 {   EntradaTablaSimbolos entradaTablaSimbolos = (EntradaTablaSimbolos) (val_peek(0).obj);
-                                                        String lexema = "-" + (entradaTablaSimbolos.getLexema());
-                                                        if (!al.estaEnTabla(lexema)) {
-                                                            /* no esta en tabla, agrega a TS*/
-                                                            EntradaTablaSimbolos elementoTS = new EntradaTablaSimbolos(lexema, entradaTablaSimbolos.getTipo());
-                                                            al.agregarATablaSimbolos(elementoTS);
-                                                        }
-                                                        /*addReglaSintacticaReconocida(String.format("ctenegativa  reconocida en linea %1$d", al.getLinea()));*/
-                                                        if (entradaTablaSimbolos.getTipo() == EntradaTablaSimbolos.LONG) {
-                                                            if ((Double.valueOf(entradaTablaSimbolos.getLexema())) == AnalizadorLexico.MAX_LONG) {
-                                                                al.getTablaDeSimbolos().remove(entradaTablaSimbolos.getLexema());
-                                                            }
-                                                        }
-                                                    }
+    String lexema = "-" + (entradaTablaSimbolos.getLexema());
+    if (!al.estaEnTabla(lexema)) {
+        /* no esta en tabla, agrega a TS*/
+        EntradaTablaSimbolos elementoTS = new EntradaTablaSimbolos(lexema, entradaTablaSimbolos.getTipo());
+        al.agregarATablaSimbolos(elementoTS);
+    }
+    /*addReglaSintacticaReconocida(String.format("ctenegativa  reconocida en linea %1$d", al.getLinea()));*/
+    if (entradaTablaSimbolos.getTipo() == EntradaTablaSimbolos.LONG) {
+        if ((Double.valueOf(entradaTablaSimbolos.getLexema())) == AnalizadorLexico.MAX_LONG) {
+            al.getTablaDeSimbolos().remove(entradaTablaSimbolos.getLexema());
+        }
+    }
+    yyval=new ParserVal(al.getTablaDeSimbolos().get(lexema));
+}
 break;
 case 79:
-//#line 234 "gramatica.y"
+//#line 260 "gramatica.y"
 {/*addReglaSintacticaReconocida(String.format("cte direccion de id reconocida en linea %1$d", al.getLinea())); */}
 break;
 case 80:
-//#line 236 "gramatica.y"
+//#line 262 "gramatica.y"
 {addErrorSintactico(String.format("valor cte mal definido en linea %1$d", al.getLinea())); }
 break;
 case 81:
-//#line 238 "gramatica.y"
+//#line 264 "gramatica.y"
 {addErrorSintactico(String.format("valor cte mal definido en linea %1$d", al.getLinea())); }
 break;
 case 82:
-//#line 242 "gramatica.y"
-{/*addReglaSintacticaReconocida(String.format("comp = reconocida en linea %1$d",al.getLinea()));*/}
+//#line 268 "gramatica.y"
+{/*addReglaSintacticaReconocida(String.format("comp = reconocida en linea %1$d",al.getLinea()));*/
+                                                    yyval=new ParserVal("=");}
 break;
 case 83:
-//#line 244 "gramatica.y"
-{/*addReglaSintacticaReconocida(String.format("comp > reconocida en linea %1$d",al.getLinea()));*/}
+//#line 271 "gramatica.y"
+{/*addReglaSintacticaReconocida(String.format("comp > reconocida en linea %1$d",al.getLinea()));*/
+                                                    yyval=new ParserVal(">");}
 break;
 case 84:
-//#line 246 "gramatica.y"
-{/*addReglaSintacticaReconocida(String.format("comp < reconocida en linea %1$d",al.getLinea()))*/;}
+//#line 274 "gramatica.y"
+{/*addReglaSintacticaReconocida(String.format("comp < reconocida en linea %1$d",al.getLinea()))*/;
+                                                    yyval=new ParserVal("<");}
 break;
 case 85:
-//#line 248 "gramatica.y"
-{/*addReglaSintacticaReconocida(String.format("comp reconocida en linea %1$d",al.getLinea()));*/}
+//#line 277 "gramatica.y"
+{/*addReglaSintacticaReconocida(String.format("comp reconocida en linea %1$d",al.getLinea()));*/
+                                                    yyval=new ParserVal("COMP_MAYOR_IGUAL");}
 break;
 case 86:
-//#line 250 "gramatica.y"
-{/*addReglaSintacticaReconocida(String.format("comp reconocida en linea %1$d",al.getLinea()));*/}
+//#line 280 "gramatica.y"
+{/*addReglaSintacticaReconocida(String.format("comp reconocida en linea %1$d",al.getLinea()));*/
+                                                     yyval=new ParserVal("COMP_MENOR_IGUAL");}
 break;
 case 87:
-//#line 252 "gramatica.y"
-{/*addReglaSintacticaReconocida(String.format("comp reconocida en linea %1$d",al.getLinea()));*/}
+//#line 283 "gramatica.y"
+{/*addReglaSintacticaReconocida(String.format("comp reconocida en linea %1$d",al.getLinea()));*/
+                                                    yyval=new ParserVal("COMP_DIFERENTE");}
 break;
 case 88:
-//#line 256 "gramatica.y"
-{addReglaSintacticaReconocida(String.format("print reconocida en linea %1$d",al.getLinea()));}
+//#line 288 "gramatica.y"
+{addReglaSintacticaReconocida(String.format("print reconocida en linea %1$d",al.getLinea()));
+                                                    ListaTercetos.getInstanceOfListaDeTercetos().addTerceto(new Terceto("PRINT",(EntradaTablaSimbolos)val_peek(1).obj));}
 break;
 case 89:
-//#line 258 "gramatica.y"
+//#line 291 "gramatica.y"
 {addErrorSintactico(String.format("print mal definido en linea %1$d",al.getLinea()));}
 break;
 case 90:
-//#line 260 "gramatica.y"
+//#line 293 "gramatica.y"
 {addErrorSintactico(String.format("print mal definido en linea %1$d",al.getLinea()));}
 break;
 case 91:
-//#line 262 "gramatica.y"
+//#line 295 "gramatica.y"
 {addErrorSintactico(String.format("print mal definido en linea %1$d",al.getLinea()));}
 break;
 case 92:
-//#line 264 "gramatica.y"
+//#line 297 "gramatica.y"
 {addErrorSintactico(String.format("print mal definido en linea %1$d",al.getLinea()));}
 break;
-//#line 1043 "Parser.java"
+//#line 1076 "Parser.java"
 //########## END OF USER-SUPPLIED ACTIONS ##########
     }//switch
     //#### Now let's reduce... ####
@@ -1195,7 +1230,352 @@ public Parser(boolean debugMe)
 }
 //###############################################################
 
+%%
+    programa:
+    contenidoPrograma                                   {addReglaSintacticaReconocida(String.format("Programa reconocido en linea %1$d",al.getLinea()));}
+    ;
 
+    contenidoPrograma:
+    sentencia ','                                       {addReglaSintacticaReconocida(String.format("Contenido de programa reconocido en linea %1$d",al.getLinea()));}
+        |
+    error ','                                           {addErrorSintactico(String.format("sentencia mal declarada recuperando en ',' siguiente en linea %1$d",al.getLinea()));}
+        |
+    contenidoPrograma sentencia ','                     {addReglaSintacticaReconocida(String.format("Contenido de programa reconocido en linea %1$d",al.getLinea()));}
+    ;
+
+    sentencia:
+    sentenciaDeclarativa                                {addReglaSintacticaReconocida(String.format("sentencia reconocida en linea %1$d",al.getLinea()));}
+        |
+    sentenciaEjecutable                                 {addReglaSintacticaReconocida(String.format("sentencia reconocida en linea %1$d",al.getLinea()));}
+    ;
+
+    sentenciaDeclarativa:
+    LET MUT tipo listaVariables                         {addReglaSintacticaReconocida(String.format("sentencia declarativa reconocida en linea %1$d",al.getLinea()));}
+        |
+    LET error tipo listaVariables                       {addErrorSintactico(String.format("sentencia declarativa mal declarada en linea %1$d",al.getLinea()));}
+        |
+    error MUT tipo listaVariables                       {addErrorSintactico(String.format("sentencia declarativa mal declarada en linea %1$d",al.getLinea()));}
+        |
+    LET MUT error listaVariables                        {addErrorSintactico(String.format("sentencia declarativa mal declarada en linea %1$d",al.getLinea()));}
+        |
+    LET MUT tipo error                                  {addErrorSintactico(String.format("sentencia declarativa mal declarada en linea %1$d",al.getLinea()));}
+        |
+    LET tipo asignacionCte                              {addReglaSintacticaReconocida(String.format("sentencia declarativa en linea %1$d",al.getLinea()));}
+        |
+    error tipo asignacionCte                            {addErrorSintactico(String.format("sentencia declarativa mal declarada en linea %1$d",al.getLinea()));}
+        |
+    LET error asignacionCte                             {addErrorSintactico(String.format("sentencia declarativa mal declarada en linea %1$d",al.getLinea()));}
+        |
+    LET tipo error                                      {addErrorSintactico(String.format("sentencia declarativa mal declarada en linea %1$d",al.getLinea()));}
+    ;
+
+    tipo:
+    LINTEGER                                            {addReglaSintacticaReconocida(String.format("tipo reconocida en linea %1$d",al.getLinea()));}
+        |
+    SINGLE                                              {addReglaSintacticaReconocida(String.format("tipo reconocida en linea %1$d",al.getLinea()));}
+    ;
+
+    listaVariables:
+    identificador                                          {addReglaSintacticaReconocida(String.format("lista de variables reconocida en linea %1$d",al.getLinea()));}
+        |
+    listaVariables ';' identificador                       {addReglaSintacticaReconocida(String.format("lista de variables reconocida en linea %1$d",al.getLinea()));}
+        |
+    listaVariables error identificador                     {addErrorSintactico(String.format(" declaracion de lista de variables esperaba un ; entre variables en linea %1$d",al.getLinea()));}
+    ;
+
+    identificador:
+        '*' ID                                              {/*addReglaSintacticaReconocida(String.format("identificador reconocida en linea %1$d",al.getLinea()));*/
+    $$=$2;}
+        |
+    ID                                                  {/*addReglaSintacticaReconocida(String.format("identificador reconocida en linea %1$d",al.getLinea()));*/
+    $$=$1;}
+    ;
+
+    asignacionCte:
+    identificador ASIGNACION cte                           {addReglaSintacticaReconocida(String.format("asign cte reconocida en linea %1$d",al.getLinea()));}
+        |
+    identificador error cte                                {addErrorSintactico(String.format("asign cte mal definida en linea %1$d",al.getLinea()));}
+        |
+    identificador ASIGNACION error                         {addErrorSintactico(String.format("asign cte mal definida en linea %1$d",al.getLinea()));}
+        |
+    error ASIGNACION cte                                {addErrorSintactico(String.format("asign cte mal definida en linea %1$d",al.getLinea()));}
+    ;
+
+    sentenciaEjecutable:
+    sentenciaIf                                         {addReglaSintacticaReconocida(String.format("sentencia ejecutable reconocida en linea %1$d",al.getLinea()));}
+        |
+    sentenciaWhile                                      {addReglaSintacticaReconocida(String.format("sentencia ejecutable reconocida en linea %1$d",al.getLinea()));}
+        |
+    asignacion                                          {addReglaSintacticaReconocida(String.format("sentencia ejecutable reconocida en linea %1$d",al.getLinea()));}
+        |
+    sentenciaPrint                                      {addReglaSintacticaReconocida(String.format("sentencia ejecutable reconocida en linea %1$d",al.getLinea()));}
+    ;
+
+    sentenciaIf:
+    encabezadoIf cuerpoIf                               {addReglaSintacticaReconocida(String.format("if reconocida en linea %1$d",al.getLinea()));}
+    ;
+
+    encabezadoIf:
+    IF '(' condicion ')'
+        |
+    error '(' condicion ')'                             {addErrorSintactico(String.format("encabezado del if mal definido en linea %1$d",al.getLinea()));}
+        |
+    IF error condicion ')'                              {addErrorSintactico(String.format("encabezado del if mal definido en linea %1$d",al.getLinea()));}
+        |
+    IF '(' error ')'                                    {addErrorSintactico(String.format("encabezado del if mal definido en linea %1$d",al.getLinea()));}
+        |
+    IF '(' condicion error                              {addErrorSintactico(String.format("encabezado del if mal definido en linea %1$d",al.getLinea()));}
+    ;
+
+    cuerpoIf:
+    bloqueSentencias ELSE bloqueSentencias END_IF
+        |
+    error ELSE bloqueSentencias END_IF                          {addErrorSintactico(String.format("cuerpo del if mal definido en linea %1$d",al.getLinea()));}
+        |
+    bloqueSentencias error bloqueSentencias END_IF              {addErrorSintactico(String.format("cuerpo del if mal definido en linea %1$d",al.getLinea()));}
+        |
+    bloqueSentencias ELSE error END_IF                          {addErrorSintactico(String.format("cuerpo del if mal definido en linea %1$d",al.getLinea()));}
+        |
+    bloqueSentencias ELSE bloqueSentencias error                {addErrorSintactico(String.format("cuerpo del if mal definido en linea %1$d",al.getLinea()));}
+        |
+    bloqueSentencias END_IF
+        |
+    bloqueSentencias error                                      {addErrorSintactico(String.format("cuerpo del if mal definido en linea %1$d",al.getLinea()));}
+        |
+    error END_IF                                                {addErrorSintactico(String.format("cuerpo del if mal definido en linea %1$d",al.getLinea()));}
+    ;
+
+    sentenciaWhile:
+    WHILE '(' condicion ')' bloqueSentencias                    {addReglaSintacticaReconocida(String.format("while reconocida en linea %1$d",al.getLinea()));}
+        |
+    WHILE error condicion ')' bloqueSentencias                  {addErrorSintactico(String.format("while mal definido en linea %1$d",al.getLinea()));}
+        |
+    WHILE '(' error ')' bloqueSentencias                        {addErrorSintactico(String.format("while mal definido en linea %1$d",al.getLinea()));}
+        |
+    WHILE '(' condicion error bloqueSentencias                  {addErrorSintactico(String.format("while mal definido en linea %1$d",al.getLinea()));}
+        |
+    WHILE '(' condicion ')' error                               {addErrorSintactico(String.format("while mal definido en linea %1$d",al.getLinea()));}
+    ;
+
+    asignacion:
+    identificador ASIGNACION expresion                             {addReglaSintacticaReconocida(String.format("asignacion reconocida en linea %1$d",al.getLinea()));
+    Terceto terceto = new Terceto("ASIGNACION", (Operando)$1.obj, (Operando)$3.obj);
+    ListaTercetos.getInstanceOfListaDeTercetos().addTerceto(terceto);
+    $$=new ParserVal(terceto); }
+        |
+    error ASIGNACION expresion                                  {addErrorSintactico(String.format("asignacion mal definida en linea %1$d",al.getLinea()));}
+        |
+    identificador error expresion                                  {addErrorSintactico(String.format("asignacion mal definida en linea %1$d",al.getLinea()));}
+        |
+    identificador ASIGNACION error                                 {addErrorSintactico(String.format("asignacion mal definida en linea %1$d",al.getLinea()));}
+    ;
+
+    bloqueSentencias:
+    sentenciaEjecutable ','                                     {addReglaSintacticaReconocida(String.format("bloque sentencia reconocida en linea %1$d",al.getLinea()));}
+        |
+                '{' conjuntoSentenciasEjecutables '}'                      {addReglaSintacticaReconocida(String.format("bloque sentencia reconocida en linea %1$d",al.getLinea()));}
+        |
+                '{' error '}'                                              {addErrorSintactico(String.format("bloque de sentencias mal definid0 en linea %1$d",al.getLinea()));}
+        |
+    error conjuntoSentenciasEjecutables '}'                    {addErrorSintactico(String.format("bloque de sentencias mal definid0 en linea %1$d",al.getLinea()));}
+        |
+                '{' conjuntoSentenciasEjecutables error                    {addErrorSintactico(String.format("bloque de sentencias mal definid0 en linea %1$d",al.getLinea()));}
+    ;
+
+    conjuntoSentenciasEjecutables:
+    sentenciaEjecutable ','                                     {addReglaSintacticaReconocida(String.format("conj sent ejecutable reconocida en linea %1$d",al.getLinea()));}
+        |
+    conjuntoSentenciasEjecutables sentenciaEjecutable ','       {addReglaSintacticaReconocida(String.format("conj sent ejecutable reconocida en linea %1$d",al.getLinea()));}
+    ;
+
+    condicion:
+    expresion comparador expresion              {addReglaSintacticaReconocida(String.format("condicion reconocida en linea %1$d",al.getLinea()));
+    Terceto terceto = new Terceto($2.sval, (Operando)$1.obj, (Operando)$3.obj);
+    ListaTercetos.getInstanceOfListaDeTercetos().addTerceto(terceto);
+    $$=new ParserVal(terceto); }
+        |
+    error comparador expresion                  {addErrorSintactico(String.format("condicion mal definido en linea %1$d",al.getLinea()));}
+        |
+    expresion error expresion                   {addErrorSintactico(String.format("condicion mal definido en linea %1$d",al.getLinea()));}
+        |
+    expresion comparador error                  {addErrorSintactico(String.format("condicion mal definido en linea %1$d",al.getLinea()));}
+    ;
+
+    expresion:
+    expresion '+' termino                       {addReglaSintacticaReconocida(String.format("expresion reconocida en linea %1$d",al.getLinea()));
+    Terceto terceto = new Terceto("+", (Operando)$1.obj, (Operando)$3.obj);
+    ListaTercetos.getInstanceOfListaDeTercetos().addTerceto(terceto);
+    $$=new ParserVal(terceto); }
+        |
+    expresion '+' error                         {addErrorSintactico(String.format("expresion mal definido en linea %1$d",al.getLinea()));}
+        |
+    expresion '-' error                         {addErrorSintactico(String.format("expresion mal definido en linea %1$d",al.getLinea()));}
+        |
+    error '+' expresion                         {addErrorSintactico(String.format("expresion mal definido en linea %1$d",al.getLinea()));}
+        |
+    error '-' expresion                         {addErrorSintactico(String.format("expresion mal definido en linea %1$d",al.getLinea()));}
+        |
+    expresion '-' termino                       {addReglaSintacticaReconocida(String.format("expresion reconocida en linea %1$d",al.getLinea()));
+    Terceto terceto = new Terceto("-", (Operando)$1.obj, (Operando)$3.obj);
+    ListaTercetos.getInstanceOfListaDeTercetos().addTerceto(terceto);
+    $$=new ParserVal(terceto); }
+        |
+    termino                                     {addReglaSintacticaReconocida(String.format("expresion reconocida en linea %1$d",al.getLinea()));
+    $$=$1;}
+    ;
+
+    termino:
+    termino '*' factor                          {/*addReglaSintacticaReconocida(String.format("termino reconocida en linea %1$d",al.getLinea()));*/
+    if ()
+    Terceto terceto = new Terceto("*", (Operando)$1.obj, (Operando)$3.obj);
+    ListaTercetos.getInstanceOfListaDeTercetos().addTerceto(terceto);
+    $$=new ParserVal(terceto); }
+        |
+    termino '/' factor                          {/*addReglaSintacticaReconocida(String.format("termino reconocida en linea %1$d",al.getLinea()));*/
+    Terceto terceto = new Terceto("/", (Operando)$1.obj, (Operando)$3.obj);
+    ListaTercetos.getInstanceOfListaDeTercetos().addTerceto(terceto);
+    $$=new ParserVal(terceto); }
+        |
+    factor                                      {/*addReglaSintacticaReconocida(String.format("termino reconocida en linea %1$d",al.getLinea()));*/
+    $$=$1;}
+    ;
+
+    factor:
+    identificador                               {/*addReglaSintacticaReconocida(String.format("factor reconocida en linea %1$d",al.getLinea()));*/
+    $$=$1;}
+        |
+    cte                                         {/*addReglaSintacticaReconocida(String.format("factor reconocida en linea %1$d",al.getLinea()));*/
+    $$=$1;}
+    ;
+
+    cte:
+    CTE                                         {    EntradaTablaSimbolos entradaTablaSimbolos = (EntradaTablaSimbolos) ($1.obj);
+    if (entradaTablaSimbolos.getTipo() == EntradaTablaSimbolos.LONG) {
+        if ((Double.valueOf(entradaTablaSimbolos.getLexema())) == AnalizadorLexico.MAX_LONG) {
+            addErrorSintactico(String.format("warning linteger cte positiva mayor al maximo permitido en linea %1$d", al.getLinea()));
+            String nuevoLexema = String.valueOf(AnalizadorLexico.MAX_LONG - 1);
+            al.getTablaDeSimbolos().remove(entradaTablaSimbolos.getLexema());
+            entradaTablaSimbolos.setLexema(nuevoLexema);
+            al.getTablaDeSimbolos().put(entradaTablaSimbolos.getLexema(), entradaTablaSimbolos);
+        }
+    }
+    /*addReglaSintacticaReconocida(String.format("cte reconocida en linea %1$d", al.getLinea()));*/
+    $$=$1;
+}
+        |
+                '-'CTE %prec '*'                            {   EntradaTablaSimbolos entradaTablaSimbolos = (EntradaTablaSimbolos) ($2.obj);
+    String lexema = "-" + (entradaTablaSimbolos.getLexema());
+    if (!al.estaEnTabla(lexema)) {
+        // no esta en tabla, agrega a TS
+        EntradaTablaSimbolos elementoTS = new EntradaTablaSimbolos(lexema, entradaTablaSimbolos.getTipo());
+        al.agregarATablaSimbolos(elementoTS);
+    }
+    /*addReglaSintacticaReconocida(String.format("ctenegativa  reconocida en linea %1$d", al.getLinea()));*/
+    if (entradaTablaSimbolos.getTipo() == EntradaTablaSimbolos.LONG) {
+        if ((Double.valueOf(entradaTablaSimbolos.getLexema())) == AnalizadorLexico.MAX_LONG) {
+            al.getTablaDeSimbolos().remove(entradaTablaSimbolos.getLexema());
+        }
+    }
+    $$=new ParserVal(al.getTablaDeSimbolos().get(lexema));
+}
+        |
+                '&'ID                                       {/*addReglaSintacticaReconocida(String.format("cte direccion de id reconocida en linea %1$d", al.getLinea())); */}
+        |
+                '&'error                                    {addErrorSintactico(String.format("valor cte mal definido en linea %1$d", al.getLinea())); }
+        |
+    error ID                                    {addErrorSintactico(String.format("valor cte mal definido en linea %1$d", al.getLinea())); }
+    ;
+
+    comparador:
+        '='                                         {/*addReglaSintacticaReconocida(String.format("comp = reconocida en linea %1$d",al.getLinea()));*/
+    $$=new ParserVal("=");}
+        |
+                '>'                                         {/*addReglaSintacticaReconocida(String.format("comp > reconocida en linea %1$d",al.getLinea()));*/
+    $$=new ParserVal(">");}
+        |
+                '<'                                         {/*addReglaSintacticaReconocida(String.format("comp < reconocida en linea %1$d",al.getLinea()))*/;
+    $$=new ParserVal("<");}
+        |
+    COMP_MAYOR_IGUAL                            {/*addReglaSintacticaReconocida(String.format("comp reconocida en linea %1$d",al.getLinea()));*/
+    $$=new ParserVal("COMP_MAYOR_IGUAL");}
+        |
+    COMP_MENOR_IGUAL                            {/*addReglaSintacticaReconocida(String.format("comp reconocida en linea %1$d",al.getLinea()));*/
+    $$=new ParserVal("COMP_MENOR_IGUAL");}
+        |
+    COMP_DIFERENTE                              {/*addReglaSintacticaReconocida(String.format("comp reconocida en linea %1$d",al.getLinea()));*/
+    $$=new ParserVal("COMP_DIFERENTE");}
+    ;
+
+    sentenciaPrint:
+    PRINT '(' CADENA ')'                        {addReglaSintacticaReconocida(String.format("print reconocida en linea %1$d",al.getLinea()));
+    ListaTercetos.getInstanceOfListaDeTercetos().addTerceto(new Terceto("PRINT",(EntradaTablaSimbolos)$3.obj));}
+        |
+    error '(' CADENA ')'                        {addErrorSintactico(String.format("print mal definido en linea %1$d",al.getLinea()));}
+        |
+    PRINT error CADENA ')'                      {addErrorSintactico(String.format("print mal definido en linea %1$d",al.getLinea()));}
+        |
+    PRINT '(' error ')'                         {addErrorSintactico(String.format("print mal definido en linea %1$d",al.getLinea()));}
+        |
+    PRINT '(' CADENA error                      {addErrorSintactico(String.format("print mal definido en linea %1$d",al.getLinea()));}
+    ;
+
+%%
+    private AnalizadorLexico al;
+    private ArrayList<String> listaDeTokens;
+    private ArrayList<String> listaDeReglas;
+    private ArrayList<String> listaDeErroresLexicos;
+    private ArrayList<String> listaDeErroresSintacticos;
+    private ArrayList<String> getListaDeErroresSemanticos;
+
+    public Parser(Reader fuente) {
+        al = new AnalizadorLexico(fuente);
+        listaDeReglas = new ArrayList<>();
+        listaDeTokens = new ArrayList<>();
+        listaDeErroresLexicos = new ArrayList<>();
+        listaDeErroresSintacticos = new ArrayList<>();
+        listaDeErroresSemanticos = new ArrayList<>();
+    }
+
+    private void yyerror(String syntax_error) {
+    }
+
+    private int yylex() {
+        int token = al.getToken();
+        yylval = new ParserVal(al.getEntradaTablaSimbolo());
+        return token;
+    }
+
+    public ArrayList<String> getListaDeTokens() {
+        return al.getListaDeTokens();
+    }
+
+    public ArrayList<String> getListaDeReglas() {
+        return listaDeReglas;
+    }
+
+    public ArrayList<String> getListaDeErroresLexicos() {
+        return al.getListaDeErroresLexicos();
+    }
+
+    public ArrayList<String> getListaDeErroresSintacticos() {
+        return listaDeErroresSintacticos;
+    }
+
+    private void addErrorSintactico(String error) {
+        listaDeErroresSintacticos.add(error);
+    }
+
+    private void addErrorSemantico(String error) {
+        listaDeErroresSemanticos.add(error);
+    }
+
+    private void addReglaSintacticaReconocida(String regla) {
+        listaDeReglas.add(regla);
+    }
+
+    public HashMap<String, EntradaTablaSimbolos> getTablaSimbolos() {
+        return al.getTablaDeSimbolos();
+    }
 
 }
 //################### END OF CLASS ##############################
