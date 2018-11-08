@@ -1,18 +1,26 @@
-public class EntradaTablaSimbolos implements Operando{
+public class EntradaTablaSimbolos implements Operando {
     public static final String TIPO_DESCONOCIDO = "Desconocido";
     public static final String STRING = "String";
     public static final String SINGLE = "Single";
     public static final String LONG = "Linteger";
     String lexema;
     String tipo;
+    int cantUsos;
     String uso;
-    boolean mutable;
-    boolean puntero;
+    Boolean mutable;
+    private boolean declarada;
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
 
     public EntradaTablaSimbolos(String lexema, String tipo) {
         this.lexema = lexema;
         this.tipo = tipo;
-        this.uso = null;
+        uso = null;
+        mutable = null;
+        cantUsos=0;
+        declarada=false;
     }
 
     public String getLexema() {
@@ -43,12 +51,19 @@ public class EntradaTablaSimbolos implements Operando{
         this.mutable = mutable;
     }
 
-    public boolean isPuntero() {
-        return puntero;
+    public void incUsos() {
+        cantUsos++;
     }
 
-    public void setPuntero(boolean puntero) {
-        this.puntero = puntero;
+    public void decUsos() {
+        cantUsos--;
     }
 
+    public boolean isDeclarada() {
+        return declarada;
+    }
+
+    public void setDeclarada(boolean b) {
+        declarada=b;
+    }
 }

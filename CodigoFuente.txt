@@ -1,2 +1,2 @@
-let mut linteger _a; _c,
-_a := 20_l + _c,
+let linteger _a := 20_l,
+_a := 20_l,

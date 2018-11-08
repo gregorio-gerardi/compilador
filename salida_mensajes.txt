@@ -6,17 +6,14 @@ No se encontraron errores lexicos.
 TOKENS DEL ANALIZADOR LEXICO:
 
 Palabra Reservada let (linea 1)
-Palabra Reservada mut (linea 1)
 Palabra Reservada linteger (linea 1)
 ID (linea 1)
-Simbolo ; (linea 1)
-ID (linea 1)
+Simbolo := (linea 1)
+CTE linteger (linea 1)
 Simbolo , (linea 1)
 ID (linea 2)
 Simbolo := (linea 2)
 CTE linteger (linea 2)
-Simbolo + (linea 2)
-ID (linea 2)
 Simbolo , (linea 2)
 --------------------
 
@@ -28,12 +25,10 @@ No se detectaron errores sintacticos.
 REGLAS SINTACTICAS:
 
 tipo reconocida en linea 1
-lista de variables reconocida en linea 1
-lista de variables reconocida en linea 1
-sentencia declarativa reconocida en linea 1
+asign cte reconocida en linea 1
+sentencia declarativa en linea 1
 sentencia reconocida en linea 1
 Contenido de programa reconocido en linea 1
-expresion reconocida en linea 2
 expresion reconocida en linea 2
 asignacion reconocida en linea 2
 sentencia ejecutable reconocida en linea 2
@@ -44,12 +39,15 @@ Programa reconocido en linea 2
 
 CONTENIDO DE LA TABLA DE SIMBOLOS:
 
-_a --> Desconocido
-_c --> Desconocido
+_a --> Linteger
 20.0 --> Linteger
 --------------------
+ERRORES SEMANTICOS:
+
+asignacion a variable inmutable en linea 2
+--------------------
+
 LISTA DE TERCETOS GENERADOS:
 
-0 - ( + , 20.0 , _c ) 
-1 - ( ASIGNACION , _a , [0] ) 
+0 - ( ASIGNACION , _a , 20.0 ) 
 --------------------

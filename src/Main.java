@@ -75,15 +75,29 @@ public class Main {
             pw.println("CONTENIDO DE LA TABLA DE SIMBOLOS:");
             System.out.println("CONTENIDO DE LA TABLA DE SIMBOLOS:");
             pw.println("");
-            if (p.getTablaSimbolos().isEmpty())
+            if (p.getTablaDeSimbolos().isEmpty())
                 pw.println("Tabla de simbolos vacia");
             else
-                for (Map.Entry<String, EntradaTablaSimbolos> e : p.getTablaSimbolos().entrySet()) {
+                for (Map.Entry<String, EntradaTablaSimbolos> e : p.getTablaDeSimbolos().entrySet()) {
                     System.out.println(e.getKey() + " --> " + e.getValue().getTipo());
                     pw.println(e.getKey() + " --> " + e.getValue().getTipo());
                 }
             pw.println("--------------------");
             System.out.println("--------------------");
+            pw.println("ERRORES SEMANTICOS:");
+            System.out.println("ERRORES SEMANTICOS:");
+            pw.println("");
+            if (p.getListaDeErroresSemanticos().isEmpty())
+                pw.println("No se detectaron errores sintacticos.");
+            else
+                for (String e : p.getListaDeErroresSemanticos()) {
+                    System.out.println(e);
+                    pw.println(e);
+                }
+            pw.println("--------------------");
+            System.out.println("--------------------");
+            pw.println("");
+
             pw.println("LISTA DE TERCETOS GENERADOS:");
             System.out.println("LISTA DE TERCETOS GENERADOS:");
             pw.println("");
@@ -110,7 +124,8 @@ public class Main {
         if (operando == null) return "-";
         if (operando instanceof Terceto)
             return ("[" + ListaTercetos.getInstanceOfListaDeTercetos().getIndice((Terceto) operando) + "]");
-        else return ((EntradaTablaSimbolos) operando).getLexema();
+        if (operando instanceof TercetoDestino) return (((TercetoDestino)operando).destino.toString());
+        return ((EntradaTablaSimbolos) operando).getLexema();
     }
 }
 

@@ -1,11 +1,18 @@
 import java.util.ArrayList;
+import java.util.Stack;
 
 public class ListaTercetos {
     private ArrayList<Terceto> tercetos;
     private static ListaTercetos instanceOfListaDeTercetos;
+    private Stack<Integer> pilaTercetos;
+
+    public Stack<Integer> getPilaTercetos() {
+        return pilaTercetos;
+    }
 
     private ListaTercetos() {
         tercetos = new ArrayList<>();
+        pilaTercetos = new Stack<>();
     }
 
     public static ListaTercetos getInstanceOfListaDeTercetos() {
