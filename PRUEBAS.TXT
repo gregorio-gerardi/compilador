@@ -270,7 +270,8 @@ let linteger _a:=22_l,
 SE MUESTRA EL ERROR#
 let mut linteger _a,let mut linteger _a,
 
-#PROBANDO LA REDECLARACION DE VARIABLES 3
+#PROBANDO LA REDECLARACION DE
+ VARIABLES 3
 SE MUESTRA EL ERROR#
 let mut linteger _a; _a,
 
@@ -290,7 +291,6 @@ _c:=_b,
 SE VE LA LISTA DE TERCETOS#
 let mut linteger _a;_b;_c,
 _a:=22_l+_b*_c,
-
 #PROBANDO LA GENERARION DE TERCETOS PARA ASIGNACIONES CON EXPRESIONES
 SE VE LA LISTA DE TERCETOS#
 let mut linteger _a;_b;_c,
@@ -415,3 +415,47 @@ print('hola mundo else2'),
 print('hola mundo else3'),
 }
 end_if,
+
+#PROBANDO SENTENCIA IF CON CONDICION DE TIPO INCORRECTO
+SE VE EL ERROR SEMANTICO GENERADO#
+let mut single _b,
+if (_b=22.1)
+print('hola mundo'),
+end_if,
+print('next to if'),
+
+#PROBANDO SENTENCIA WHILE CON UNA SENTENCIA SOLA,
+SE VEN LOS TERCETOS GENERADOS#
+let mut linteger _a,
+while ( _a <= 22_l )
+_a := _a + 1_l,,
+
+#PROBANDO SENTENCIA WHILE CON UN BLOQUE DE SENTENCIAS,
+SE VEN LOS TERCETOS GENERADOS#
+let mut linteger _a,
+while ( _a <= 22_l )
+{
+_a := _a + 1_l,
+_a := _a + 1_l,
+},
+
+#PROBANDO SENTENCIA WHILE CON UN BLOQUE DE SENTENCIAS CON UN IF ANIDADO,
+SE VEN LOS TERCETOS GENERADOS#
+let mut linteger _a,
+while ( _a <= 22_l )
+{
+    _a := _a + 1_l,
+    if (_a=34_l)
+    {
+        print('hola mundo1'),
+        print('hola mundo2'),
+        print('hola mundo3'),
+    }
+    else
+    {
+        print('hola mundo else1'),
+        print('hola mundo else2'),
+        print('hola mundo else3'),
+    }
+    end_if,
+},

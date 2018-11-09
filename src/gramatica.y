@@ -270,7 +270,8 @@ import java.util.HashSet;
     ListaTercetos lt=ListaTercetos.getInstanceOfListaDeTercetos();
     Terceto tercetoIncompleto = lt.getTerceto(lt.getPilaTercetos().pop());
     tercetoIncompleto.setOperando2(new TercetoDestino(lt.getTercetos().size()+1));
-    Terceto saltoAlInicio= new Terceto("BI", new TercetoDestino(lt.getPilaTercetos().pop()));
+    Terceto saltoAlInicio= new Terceto("BI");
+    saltoAlInicio.setOperando2(new TercetoDestino(lt.getPilaTercetos().pop()));
     lt.addTerceto(saltoAlInicio);
 }
         |
@@ -357,7 +358,6 @@ import java.util.HashSet;
         if (((Operando) $1.obj).getTipo() != ("Linteger")) {
             addErrorSemantico(String.format("tipo en condicion debe ser entero. linea %1$d", al.getLinea()));
         }
-        else{
             //creo un terceto para la comparacion, lo añao a la lista
             Terceto terceto = new Terceto($2.sval, (Operando)$1.obj, (Operando)$3.obj);
             ListaTercetos lt= ListaTercetos.getInstanceOfListaDeTercetos();
@@ -365,9 +365,6 @@ import java.util.HashSet;
             //añado un terceto para indicar el branch por falso y apilo el terceto recien creado incompleto para completar luego
             lt.addTerceto(new Terceto("BF",lt.getTerceto(lt.getTercetos().size()-1)));
             lt.getPilaTercetos().push(lt.getTercetos().size()-1);
-            //retorno el terceto de la comparacion creo que es innecesario lo comento
-            //$$=new ParserVal(terceto);
-            }
         }
     }
         |

@@ -1,16 +1,20 @@
-#PROBANDO SENTENCIA IF CON BLOQUE THEN Y ELSE Y SALTOS,
+#PROBANDO SENTENCIA EHILE CON UN BLOQUE DE SENTENCIAS,
 SE VEN LOS TERCETOS GENERADOS#
 let mut linteger _a,
-if (_a=34_l)
+while ( _a <= 22_l )
 {
-print('hola mundo1'),
-print('hola mundo2'),
-print('hola mundo3'),
-}
-else
-{
-print('hola mundo else1'),
-print('hola mundo else2'),
-print('hola mundo else3'),
-}
-end_if,
+    _a := _a + 1_l,
+    if (_a=34_l)
+    {
+        print('hola mundo1'),
+        print('hola mundo2'),
+        print('hola mundo3'),
+    }
+    else
+    {
+        print('hola mundo else1'),
+        print('hola mundo else2'),
+        print('hola mundo else3'),
+    }
+    end_if,
+},
