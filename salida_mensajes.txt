@@ -8,66 +8,9 @@ TOKENS DEL ANALIZADOR LEXICO:
 Palabra Reservada let (linea 3)
 Palabra Reservada mut (linea 3)
 Palabra Reservada linteger (linea 3)
+Simbolo * (linea 3)
 ID (linea 3)
 Simbolo , (linea 3)
-Palabra Reservada while (linea 4)
-Simbolo ( (linea 4)
-ID (linea 4)
-Simbolo <= (linea 4)
-CTE linteger (linea 4)
-Simbolo ) (linea 4)
-Simbolo { (linea 5)
-ID (linea 6)
-Simbolo := (linea 6)
-ID (linea 6)
-Simbolo + (linea 6)
-CTE linteger (linea 6)
-Simbolo , (linea 6)
-Palabra Reservada if (linea 7)
-Simbolo ( (linea 7)
-ID (linea 7)
-Simbolo = (linea 7)
-CTE linteger (linea 7)
-Simbolo ) (linea 7)
-Simbolo { (linea 8)
-Palabra Reservada print (linea 9)
-Simbolo ( (linea 9)
-Cadena Caracteres: "hola mundo1" (linea 9)
-Simbolo ) (linea 9)
-Simbolo , (linea 9)
-Palabra Reservada print (linea 10)
-Simbolo ( (linea 10)
-Cadena Caracteres: "hola mundo2" (linea 10)
-Simbolo ) (linea 10)
-Simbolo , (linea 10)
-Palabra Reservada print (linea 11)
-Simbolo ( (linea 11)
-Cadena Caracteres: "hola mundo3" (linea 11)
-Simbolo ) (linea 11)
-Simbolo , (linea 11)
-Simbolo } (linea 12)
-Palabra Reservada else (linea 13)
-Simbolo { (linea 14)
-Palabra Reservada print (linea 15)
-Simbolo ( (linea 15)
-Cadena Caracteres: "hola mundo else1" (linea 15)
-Simbolo ) (linea 15)
-Simbolo , (linea 15)
-Palabra Reservada print (linea 16)
-Simbolo ( (linea 16)
-Cadena Caracteres: "hola mundo else2" (linea 16)
-Simbolo ) (linea 16)
-Simbolo , (linea 16)
-Palabra Reservada print (linea 17)
-Simbolo ( (linea 17)
-Cadena Caracteres: "hola mundo else3" (linea 17)
-Simbolo ) (linea 17)
-Simbolo , (linea 17)
-Simbolo } (linea 18)
-Palabra Reservada end_if (linea 19)
-Simbolo , (linea 19)
-Simbolo } (linea 20)
-Simbolo , (linea 20)
 --------------------
 
 ERRORES SINTACTICOS:
@@ -82,46 +25,7 @@ lista de variables reconocida en linea 3
 sentencia declarativa reconocida en linea 3
 sentencia reconocida en linea 3
 Contenido de programa reconocido en linea 3
-expresion reconocida en linea 4
-expresion reconocida en linea 4
-condicion reconocida en linea 4
-expresion reconocida en linea 6
-expresion reconocida en linea 6
-asignacion reconocida en linea 6
-sentencia ejecutable reconocida en linea 6
-conj sent ejecutable reconocida en linea 6
-expresion reconocida en linea 7
-expresion reconocida en linea 7
-condicion reconocida en linea 7
-print reconocida en linea 9
-sentencia ejecutable reconocida en linea 9
-conj sent ejecutable reconocida en linea 9
-print reconocida en linea 10
-sentencia ejecutable reconocida en linea 10
-conj sent ejecutable reconocida en linea 10
-print reconocida en linea 11
-sentencia ejecutable reconocida en linea 11
-conj sent ejecutable reconocida en linea 11
-bloque sentencia reconocida en linea 12
-print reconocida en linea 15
-sentencia ejecutable reconocida en linea 15
-conj sent ejecutable reconocida en linea 15
-print reconocida en linea 16
-sentencia ejecutable reconocida en linea 16
-conj sent ejecutable reconocida en linea 16
-print reconocida en linea 17
-sentencia ejecutable reconocida en linea 17
-conj sent ejecutable reconocida en linea 17
-bloque sentencia reconocida en linea 18
-if reconocida en linea 19
-sentencia ejecutable reconocida en linea 19
-conj sent ejecutable reconocida en linea 19
-bloque sentencia reconocida en linea 20
-while reconocida en linea 20
-sentencia ejecutable reconocida en linea 20
-sentencia reconocida en linea 20
-Contenido de programa reconocido en linea 20
-Programa reconocido en linea 20
+Programa reconocido en linea 4
 --------------------
 ERRORES SEMANTICOS:
 
@@ -130,32 +34,10 @@ No se detectaron errores sintacticos.
 
 CONTENIDO DE LA TABLA DE SIMBOLOS:
 
-_a --> Linteger
-1.0 --> Linteger
-34.0 --> Linteger
-22.0 --> Linteger
-hola mundo2 --> String
-hola mundo else3 --> String
-hola mundo1 --> String
-hola mundo else2 --> String
-hola mundo else1 --> String
-hola mundo3 --> String
+_a --> ReferenciaAMemoria
 --------------------
 
 LISTA DE TERCETOS GENERADOS:
 
-0 - ( COMP_MENOR_IGUAL , _a , 22.0 ) 
-1 - ( BF , [0] , 14 ) 
-2 - ( + , _a , 1.0 ) 
-3 - ( ASIGNACION , _a , [2] ) 
-4 - ( = , _a , 34.0 ) 
-5 - ( BF , [4] , 10 ) 
-6 - ( PRINT , hola mundo1 , - ) 
-7 - ( PRINT , hola mundo2 , - ) 
-8 - ( PRINT , hola mundo3 , - ) 
-9 - ( BI , - , 13 ) 
-10 - ( PRINT , hola mundo else1 , - ) 
-11 - ( PRINT , hola mundo else2 , - ) 
-12 - ( PRINT , hola mundo else3 , - ) 
-13 - ( BI , - , 0 ) 
+Lista de tercetos vacia
 --------------------

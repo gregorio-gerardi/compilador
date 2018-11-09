@@ -459,3 +459,12 @@ while ( _a <= 22_l )
     }
     end_if,
 },
+
+
+#------------------------------------#
+#--SECCION CON PUNTEROS--#
+#------------------------------------#
+
+#PROBANDO DECLARACION DE PUNTEROS
+SE VE EL TIPO EN LA TABLA DE SIMBOLOS#
+let mut linteger *_a,

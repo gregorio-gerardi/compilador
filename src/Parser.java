@@ -540,74 +540,74 @@ final static String yyrule[] = {
 "sentenciaPrint : PRINT '(' CADENA error",
 };
 
-//#line 611 "gramatica.y"
-    private AnalizadorLexico al;
-    private ArrayList<String> listaDeTokens;
-    private ArrayList<String> listaDeReglas;
-    private ArrayList<String> listaDeErroresLexicos;
-    private ArrayList<String> listaDeErroresSintacticos;
-    private ArrayList<String> listaDeErroresSemanticos;
-    private HashSet<String> listaDeLexemasDeclarados;
+//#line 622 "gramatica.y"
+  private AnalizadorLexico al;
+  private ArrayList<String> listaDeTokens;
+  private ArrayList<String> listaDeReglas;
+  private ArrayList<String> listaDeErroresLexicos;
+  private ArrayList<String> listaDeErroresSintacticos;
+  private ArrayList<String> listaDeErroresSemanticos;
+  private HashSet<String> listaDeLexemasDeclarados;
 
-    public Parser(Reader fuente) {
-        al = new AnalizadorLexico(fuente);
-        listaDeReglas = new ArrayList<>();
-        listaDeTokens = new ArrayList<>();
-        listaDeErroresLexicos = new ArrayList<>();
-        listaDeErroresSintacticos = new ArrayList<>();
-        listaDeErroresSemanticos = new ArrayList<>();
-                listaDeLexemasDeclarados = new HashSet<>();
-    }
+  public Parser(Reader fuente) {
+    al = new AnalizadorLexico(fuente);
+    listaDeReglas = new ArrayList<>();
+    listaDeTokens = new ArrayList<>();
+    listaDeErroresLexicos = new ArrayList<>();
+    listaDeErroresSintacticos = new ArrayList<>();
+    listaDeErroresSemanticos = new ArrayList<>();
+    listaDeLexemasDeclarados = new HashSet<>();
+  }
 
-    private void yyerror(String syntax_error) {
-    }
+  private void yyerror(String syntax_error) {
+  }
 
-    private int yylex() {
-        int token = al.getToken();
-        yylval = new ParserVal(al.getEntradaTablaSimbolo());
-        return token;
-    }
+  private int yylex() {
+    int token = al.getToken();
+    yylval = new ParserVal(al.getEntradaTablaSimbolo());
+    return token;
+  }
 
-    public ArrayList<String> getListaDeTokens() {
-        return al.getListaDeTokens();
-    }
+  public ArrayList<String> getListaDeTokens() {
+    return al.getListaDeTokens();
+  }
 
-    public ArrayList<String> getListaDeReglas() {
-        return listaDeReglas;
-    }
+  public ArrayList<String> getListaDeReglas() {
+    return listaDeReglas;
+  }
 
-    public ArrayList<String> getListaDeErroresLexicos() {
-        return al.getListaDeErroresLexicos();
-    }
+  public ArrayList<String> getListaDeErroresLexicos() {
+    return al.getListaDeErroresLexicos();
+  }
 
-    public ArrayList<String> getListaDeErroresSintacticos() {
-        return listaDeErroresSintacticos;
-    }
+  public ArrayList<String> getListaDeErroresSintacticos() {
+    return listaDeErroresSintacticos;
+  }
 
-    public ArrayList<String> getListaDeErroresSemanticos() {
-        return listaDeErroresSemanticos;
-    }
+  public ArrayList<String> getListaDeErroresSemanticos() {
+    return listaDeErroresSemanticos;
+  }
 
-    private void addErrorSintactico(String error) {
-        listaDeErroresSintacticos.add(error);
-    }
+  private void addErrorSintactico(String error) {
+    listaDeErroresSintacticos.add(error);
+  }
 
-    private void addErrorSemantico(String error) {
-        listaDeErroresSemanticos.add(error);
-    }
+  private void addErrorSemantico(String error) {
+    listaDeErroresSemanticos.add(error);
+  }
 
-    private void addReglaSintacticaReconocida(String regla) {
-        listaDeReglas.add(regla);
-    }
+  private void addReglaSintacticaReconocida(String regla) {
+    listaDeReglas.add(regla);
+  }
 
 
-public HashSet<String> getListaDeLexemasDeclarados() {
-        return listaDeLexemasDeclarados;
-        }
+  public HashSet<String> getListaDeLexemasDeclarados() {
+    return listaDeLexemasDeclarados;
+  }
 
-    public HashMap<String,EntradaTablaSimbolos> getTablaDeSimbolos() {
-        return al.getTablaDeSimbolos();
-    }
+  public HashMap<String,EntradaTablaSimbolos> getTablaDeSimbolos() {
+    return al.getTablaDeSimbolos();
+  }
 
 //#line 541 "Parser.java"
 //###############################################################
@@ -764,725 +764,735 @@ boolean doaction;
       {
 //########## USER-SUPPLIED ACTIONS ##########
 case 1:
-//#line 15 "gramatica.y"
+//#line 16 "gramatica.y"
 {addReglaSintacticaReconocida(String.format("Programa reconocido en linea %1$d",al.getLinea()));}
 break;
 case 2:
-//#line 19 "gramatica.y"
+//#line 20 "gramatica.y"
 {addReglaSintacticaReconocida(String.format("Contenido de programa reconocido en linea %1$d",al.getLinea()));}
 break;
 case 3:
-//#line 21 "gramatica.y"
+//#line 22 "gramatica.y"
 {addErrorSintactico(String.format("sentencia mal declarada recuperando en ',' siguiente en linea %1$d",al.getLinea()));}
 break;
 case 4:
-//#line 23 "gramatica.y"
+//#line 24 "gramatica.y"
 {addReglaSintacticaReconocida(String.format("Contenido de programa reconocido en linea %1$d",al.getLinea()));}
 break;
 case 5:
-//#line 27 "gramatica.y"
+//#line 28 "gramatica.y"
 {addReglaSintacticaReconocida(String.format("sentencia reconocida en linea %1$d",al.getLinea()));}
 break;
 case 6:
-//#line 29 "gramatica.y"
+//#line 30 "gramatica.y"
 {addReglaSintacticaReconocida(String.format("sentencia reconocida en linea %1$d",al.getLinea()));}
 break;
 case 7:
-//#line 33 "gramatica.y"
+//#line 34 "gramatica.y"
 {addReglaSintacticaReconocida(String.format("sentencia declarativa reconocida en linea %1$d",al.getLinea()));
-    for(EntradaTablaSimbolos e: ((ArrayList<EntradaTablaSimbolos>)val_peek(0).obj)){
-        /*redeclaracion de variables ya revisado en regla del identificadorDec*/
-        /*seteo el tipo de la variable, o de lo apuntado en caso de punteros.*/
-        e.setTipo((String) val_peek(1).sval);
-        /*las marco como mutables*/
-        e.setMutable(true);
-        }
-    }
+  for(EntradaTablaSimbolos e: ((ArrayList<EntradaTablaSimbolos>)val_peek(0).obj)){
+    /*redeclaracion de variables ya revisado en regla del identificadorDec*/
+    /*seteo el tipo de la variable, o de lo apuntado en caso de punteros.*/
+      if (e instanceof EntradaTablaDeSimbolosPuntero){
+          ((EntradaTablaDeSimbolosPuntero)e).setTipoApuntable((String) val_peek(1).sval);
+      }
+      else {
+          e.setTipo((String) val_peek(1).sval);
+      }
+    /*las marco como mutables*/
+    e.setMutable(true);
+  }
+}
 break;
 case 8:
-//#line 44 "gramatica.y"
-{addErrorSintactico(String.format("sentencia declarativa mal declarada en linea %1$d",al.getLinea()));}
-break;
-case 9:
-//#line 46 "gramatica.y"
-{addErrorSintactico(String.format("sentencia declarativa mal declarada en linea %1$d",al.getLinea()));}
-break;
-case 10:
-//#line 48 "gramatica.y"
-{addErrorSintactico(String.format("sentencia declarativa mal declarada en linea %1$d",al.getLinea()));}
-break;
-case 11:
 //#line 50 "gramatica.y"
 {addErrorSintactico(String.format("sentencia declarativa mal declarada en linea %1$d",al.getLinea()));}
 break;
-case 12:
+case 9:
 //#line 52 "gramatica.y"
+{addErrorSintactico(String.format("sentencia declarativa mal declarada en linea %1$d",al.getLinea()));}
+break;
+case 10:
+//#line 54 "gramatica.y"
+{addErrorSintactico(String.format("sentencia declarativa mal declarada en linea %1$d",al.getLinea()));}
+break;
+case 11:
+//#line 56 "gramatica.y"
+{addErrorSintactico(String.format("sentencia declarativa mal declarada en linea %1$d",al.getLinea()));}
+break;
+case 12:
+//#line 58 "gramatica.y"
 {addReglaSintacticaReconocida(String.format("sentencia declarativa en linea %1$d",al.getLinea()));
-    /*redeclaracion de variables ya revisado en regla del identificadorDec*/
-    EntradaTablaSimbolos ets = ((ParEntradas)val_peek(0).obj).e1;
-    /*seteo el tipo del identificador o de la variable apuntada en caso de un puntero*/
+  /*redeclaracion de variables ya revisado en regla del identificadorDec*/
+  EntradaTablaSimbolos ets = ((ParEntradas)val_peek(0).obj).e1;
+  /*seteo el tipo del identificador o de la variable apuntada en caso de un puntero*/
+  if (ets instanceof EntradaTablaDeSimbolosPuntero){
+    ((EntradaTablaDeSimbolosPuntero)ets).setTipoApuntable((String) val_peek(1).sval);
+  }
+  else {
     ets.setTipo((String) val_peek(1).sval);
-    /*lo marco como inmutable*/
-    ets.setMutable(false);
-    /*chequeo compatibilidad de tipos en la asignacion, o de punteros*/
-    /*en caso de asignar a un puntero una referencia a la direccion de memoria de otra variable*/
-    EntradaTablaSimbolos etsCte = ((ParEntradas)val_peek(0).obj).e2;
-    if (ets instanceof EntradaTablaDeSimbolosPuntero) {
-        /*corroboro se intente asignar una direccion de memoria*/
-        if (!(etsCte instanceof EntradaTablaDeSimbolosReferenciaAMemoria)) {
-            addErrorSemantico(String.format("Asignacion cte de tipos incompatibles en linea %1$d", al.getLinea()));
-        } else {
-            /*debo corroborar que el tipo del puntero y el de la variable referenciada sean el mismo*/
-            if (ets.getTipo() == etsCte.getTipo()) {
-                ((EntradaTablaDeSimbolosPuntero) ets).setApuntado(((EntradaTablaDeSimbolosReferenciaAMemoria) etsCte).getReferenciado());
-                /*creo un terceto para la asignacion y lo agrego al listado*/
-                Terceto terceto = new Terceto("ASIGNACION", ets, etsCte);
-                ListaTercetos.getInstanceOfListaDeTercetos().addTerceto(terceto);
-            } else
-                addErrorSemantico(String.format("Asignacion cte de tipos incompatibles en linea %1$d", al.getLinea()));
-        }
+  }
+  /*lo marco como inmutable*/
+  ets.setMutable(false);
+  /*chequeo compatibilidad de tipos en la asignacion, o de punteros*/
+  /*en caso de asignar a un puntero una referencia a la direccion de memoria de otra variable*/
+  EntradaTablaSimbolos etsCte = ((ParEntradas)val_peek(0).obj).e2;
+  if (ets instanceof EntradaTablaDeSimbolosPuntero) {
+    /*corroboro se intente asignar una direccion de memoria*/
+    if (!(etsCte instanceof EntradaTablaDeSimbolosReferenciaAMemoria)) {
+      addErrorSemantico(String.format("Asignacion cte de tipos incompatibles en linea %1$d", al.getLinea()));
+    } else {
+      /*debo corroborar que el tipo del puntero y el de la variable referenciada sean el mismo*/
+      if (((EntradaTablaDeSimbolosPuntero)ets).getReferenciadoTipo() == ((EntradaTablaDeSimbolosReferenciaAMemoria)etsCte).getReferenciadoTipo()) {
+        ((EntradaTablaDeSimbolosPuntero) ets).setApuntado(((EntradaTablaDeSimbolosReferenciaAMemoria) etsCte).getReferenciado());
+        /*creo un terceto para la asignacion y lo agrego al listado*/
+        Terceto terceto = new Terceto("ASIGNACION", ets, etsCte);
+        ListaTercetos.getInstanceOfListaDeTercetos().addTerceto(terceto);
+      } else
+        addErrorSemantico(String.format("Asignacion cte de tipos incompatibles en linea %1$d", al.getLinea()));
+    }
+  }
+  else {
+    /*en caso de no tratarse de un puntero debo checkear que el r-value sea una variable (no referencia a memoria) y del mismo tipo que el l-value*/
+    if ((etsCte instanceof EntradaTablaDeSimbolosReferenciaAMemoria)) {
+      addErrorSemantico(String.format("Asignacion cte de tipos incompatibles en linea %1$d", al.getLinea()));
     }
     else {
-        /*en caso de no tratarse de un puntero debo checkear que el r-value sea una variable (no referencia a memoria) y del mismo tipo que el l-value*/
-        if ((etsCte instanceof EntradaTablaDeSimbolosReferenciaAMemoria)) {
-            addErrorSemantico(String.format("Asignacion cte de tipos incompatibles en linea %1$d", al.getLinea()));
-        }
-        else {
-            /*chequeo compatibilidad de tipos*/
-            if (ets.getTipo() != etsCte.getTipo()) {
-                addErrorSemantico(String.format("Asignacion cte de tipos incompatibles en linea %1$d", al.getLinea()));
-            }
-            else{
-                /*creo un terceto para la asignacion y lo agrego al listado*/
-                Terceto terceto = new Terceto("ASIGNACION", ets, etsCte);
-                ListaTercetos.getInstanceOfListaDeTercetos().addTerceto(terceto);
-            }
-        }
+      /*chequeo compatibilidad de tipos*/
+      if (ets.getTipo() != etsCte.getTipo()) {
+        addErrorSemantico(String.format("Asignacion cte de tipos incompatibles en linea %1$d", al.getLinea()));
+      }
+      else{
+        /*creo un terceto para la asignacion y lo agrego al listado*/
+        Terceto terceto = new Terceto("ASIGNACION", ets, etsCte);
+        ListaTercetos.getInstanceOfListaDeTercetos().addTerceto(terceto);
+      }
     }
-    }
+  }
+}
 break;
 case 13:
-//#line 96 "gramatica.y"
+//#line 107 "gramatica.y"
 {addErrorSintactico(String.format("sentencia declarativa mal declarada en linea %1$d",al.getLinea()));}
 break;
 case 14:
-//#line 98 "gramatica.y"
+//#line 109 "gramatica.y"
 {addErrorSintactico(String.format("sentencia declarativa mal declarada en linea %1$d",al.getLinea()));}
 break;
 case 15:
-//#line 100 "gramatica.y"
+//#line 111 "gramatica.y"
 {addErrorSintactico(String.format("sentencia declarativa mal declarada en linea %1$d",al.getLinea()));}
 break;
 case 16:
-//#line 104 "gramatica.y"
+//#line 115 "gramatica.y"
 {addReglaSintacticaReconocida(String.format("tipo reconocida en linea %1$d",al.getLinea()));
-    yyval=new ParserVal("Linteger");
+  yyval=new ParserVal("Linteger");
 }
 break;
 case 17:
-//#line 108 "gramatica.y"
+//#line 119 "gramatica.y"
 {addReglaSintacticaReconocida(String.format("tipo reconocida en linea %1$d",al.getLinea()));
-    yyval=new ParserVal("Single");
+  yyval=new ParserVal("Single");
 }
 break;
 case 18:
-//#line 114 "gramatica.y"
+//#line 125 "gramatica.y"
 {addReglaSintacticaReconocida(String.format("lista de variables reconocida en linea %1$d",al.getLinea()));
-    ArrayList<EntradaTablaSimbolos> listaIds = new ArrayList<>();
-    listaIds.add(((EntradaTablaSimbolos)val_peek(0).obj));
-    yyval=new ParserVal(listaIds);
+  ArrayList<EntradaTablaSimbolos> listaIds = new ArrayList<>();
+  listaIds.add(((EntradaTablaSimbolos)val_peek(0).obj));
+  yyval=new ParserVal(listaIds);
 }
 break;
 case 19:
-//#line 120 "gramatica.y"
+//#line 131 "gramatica.y"
 {addReglaSintacticaReconocida(String.format("lista de variables reconocida en linea %1$d",al.getLinea()));
-    ((ArrayList<EntradaTablaSimbolos>)val_peek(2).obj).add((EntradaTablaSimbolos) val_peek(0).obj);
-    yyval= val_peek(2);
+  ((ArrayList<EntradaTablaSimbolos>)val_peek(2).obj).add((EntradaTablaSimbolos) val_peek(0).obj);
+  yyval= val_peek(2);
 }
 break;
 case 20:
-//#line 125 "gramatica.y"
+//#line 136 "gramatica.y"
 {addErrorSintactico(String.format(" declaracion de lista de variables esperaba un ; entre variables en linea %1$d",al.getLinea()));}
 break;
 case 21:
-//#line 129 "gramatica.y"
+//#line 140 "gramatica.y"
 {/*addReglaSintacticaReconocida(String.format("identificador reconocida en linea %1$d",al.getLinea()));*/
-            EntradaTablaSimbolos ets=(EntradaTablaSimbolos) val_peek(0).obj;
-    String lexema = ets.getLexema();
-    /*chequeo que la variable ya halla sido declarada*/
-    if (!listaDeLexemasDeclarados.contains(lexema))
-        addErrorSemantico(String.format("variable redeclarada, en linea %1$d", al.getLinea()));
-    else {
-        /*chequeo que si estoy tratando de desreferenciar a un puntero la variable sea efectivamente de tipo puntero*/
-        if (!(ets.getTipo() == "ReferenciaAMemoria")) {
-            addErrorSemantico(String.format("variable desreferenciada no es de tipo puntero, en linea %1$d", al.getLinea()));
-        } else {
-            /*chequeo que halla sido inicializado el puntero*/
-            if ((((EntradaTablaDeSimbolosPuntero) ets).getApuntado()) == null) {
-                addErrorSemantico(String.format("variable desreferenciada no apunta a nada, en linea %1$d", al.getLinea()));
-            } else {
-                /*retorno la variable apuntada por el puntero*/
-                yyval = new ParserVal(((EntradaTablaDeSimbolosPuntero) ets).getApuntado());
-            }
-        }
+  EntradaTablaSimbolos ets=(EntradaTablaSimbolos) val_peek(0).obj;
+  String lexema = ets.getLexema();
+  /*chequeo que la variable ya halla sido declarada*/
+  if (!listaDeLexemasDeclarados.contains(lexema))
+    addErrorSemantico(String.format("variable redeclarada, en linea %1$d", al.getLinea()));
+  else {
+    /*chequeo que si estoy tratando de desreferenciar a un puntero la variable sea efectivamente de tipo puntero*/
+    if (!(ets.getTipo() == "ReferenciaAMemoria")) {
+      addErrorSemantico(String.format("variable desreferenciada no es de tipo puntero, en linea %1$d", al.getLinea()));
+    } else {
+      /*chequeo que halla sido inicializado el puntero*/
+      if ((((EntradaTablaDeSimbolosPuntero) ets).getApuntado()) == null) {
+        addErrorSemantico(String.format("variable desreferenciada no apunta a nada, en linea %1$d", al.getLinea()));
+      } else {
+        /*retorno la variable apuntada por el puntero*/
+        yyval = new ParserVal(((EntradaTablaDeSimbolosPuntero) ets).getApuntado());
+      }
     }
+  }
 }
 break;
 case 22:
-//#line 153 "gramatica.y"
+//#line 164 "gramatica.y"
 {/*addReglaSintacticaReconocida(String.format("identificador reconocida en linea %1$d",al.getLinea()));*/
-        String lexema = ((EntradaTablaSimbolos) val_peek(0).obj).getLexema();
-        /*chequeo que la variable ya halla sido declarada*/
-        if (!listaDeLexemasDeclarados.contains(lexema))
-            addErrorSemantico(String.format("variable no declarada, en linea %1$d", al.getLinea()));
-        else {
-            /*si fue declarada solo retorno su entrada en la tabla de simbolos*/
-            yyval = val_peek(0);
-        }
+    String lexema = ((EntradaTablaSimbolos) val_peek(0).obj).getLexema();
+    /*chequeo que la variable ya halla sido declarada*/
+    if (!listaDeLexemasDeclarados.contains(lexema))
+      addErrorSemantico(String.format("variable no declarada, en linea %1$d", al.getLinea()));
+    else {
+      /*si fue declarada solo retorno su entrada en la tabla de simbolos*/
+      yyval = val_peek(0);
     }
+  }
 break;
 case 23:
-//#line 165 "gramatica.y"
+//#line 176 "gramatica.y"
 {/*addReglaSintacticaReconocida(String.format("identificador reconocida en linea %1$d",al.getLinea()));*/
-    /*si ya fue declarada la variable o un puntero con el mismo nombre*/
-    String lexema = ((EntradaTablaSimbolos) val_peek(0).obj).getLexema();
-    if (listaDeLexemasDeclarados.contains(lexema))
-        addErrorSemantico(String.format("variable redeclarada, en linea %1$d", al.getLinea()));
-    else {
-        /*creo una entrada para el puntero, apuntando a nada por el momento -null-*/
-        EntradaTablaSimbolos ets = new EntradaTablaDeSimbolosPuntero(lexema, "ReferenciaAMemoria",null);
-        /*la marco como ya declarada*/
-        listaDeLexemasDeclarados.add(lexema);
-        /*elimino la entrada de la tabla de simbolos del identificador que no era puntero y lo reemplazo por el puntero*/
-        al.getTablaDeSimbolos().remove(((EntradaTablaSimbolos) val_peek(0).obj).getLexema());
-        al.getTablaDeSimbolos().put(ets.getLexema(),ets);
-        /*retorno la nueva entrada*/
-        yyval=new ParserVal(ets);
-    }
-        }
+  /*si ya fue declarada la variable o un puntero con el mismo nombre*/
+  String lexema = ((EntradaTablaSimbolos) val_peek(0).obj).getLexema();
+  if (listaDeLexemasDeclarados.contains(lexema))
+    addErrorSemantico(String.format("variable redeclarada, en linea %1$d", al.getLinea()));
+  else {
+    /*creo una entrada para el puntero, apuntando a nada por el momento -null-*/
+    EntradaTablaSimbolos ets = new EntradaTablaDeSimbolosPuntero(lexema, "ReferenciaAMemoria",null);
+    /*la marco como ya declarada*/
+    listaDeLexemasDeclarados.add(lexema);
+    /*elimino la entrada de la tabla de simbolos del identificador que no era puntero y lo reemplazo por el puntero*/
+    al.getTablaDeSimbolos().remove(((EntradaTablaSimbolos) val_peek(0).obj).getLexema());
+    al.getTablaDeSimbolos().put(ets.getLexema(),ets);
+    /*retorno la nueva entrada*/
+    yyval=new ParserVal(ets);
+  }
+}
 break;
 case 24:
-//#line 183 "gramatica.y"
+//#line 194 "gramatica.y"
 {/*addReglaSintacticaReconocida(String.format("identificador reconocida en linea %1$d",al.getLinea()));*/
-    String lexema = ((EntradaTablaSimbolos) val_peek(0).obj).getLexema();
-    /*si ya fue declarada la variable o un puntero con el mismo nombre*/
-    if (listaDeLexemasDeclarados.contains(lexema))
-        addErrorSemantico(String.format("variable redeclarada, en linea %1$d", al.getLinea()));
-    else{
-        /*la marco como ya declarada*/
-        listaDeLexemasDeclarados.add(lexema);
-        yyval=val_peek(0);
-    }
+  String lexema = ((EntradaTablaSimbolos) val_peek(0).obj).getLexema();
+  /*si ya fue declarada la variable o un puntero con el mismo nombre*/
+  if (listaDeLexemasDeclarados.contains(lexema))
+    addErrorSemantico(String.format("variable redeclarada, en linea %1$d", al.getLinea()));
+  else{
+    /*la marco como ya declarada*/
+    listaDeLexemasDeclarados.add(lexema);
+    yyval=val_peek(0);
+  }
 }
 break;
 case 25:
-//#line 197 "gramatica.y"
+//#line 208 "gramatica.y"
 {addReglaSintacticaReconocida(String.format("asign cte reconocida en linea %1$d",al.getLinea()));
-        yyval=new ParserVal(new ParEntradas((EntradaTablaSimbolos)val_peek(2).obj,(EntradaTablaSimbolos)val_peek(0).obj));
-        }
+  yyval=new ParserVal(new ParEntradas((EntradaTablaSimbolos)val_peek(2).obj,(EntradaTablaSimbolos)val_peek(0).obj));
+}
 break;
 case 26:
-//#line 201 "gramatica.y"
+//#line 212 "gramatica.y"
 {addErrorSintactico(String.format("asign cte mal definida en linea %1$d",al.getLinea()));}
 break;
 case 27:
-//#line 203 "gramatica.y"
+//#line 214 "gramatica.y"
 {addErrorSintactico(String.format("asign cte mal definida en linea %1$d",al.getLinea()));}
 break;
 case 28:
-//#line 205 "gramatica.y"
+//#line 216 "gramatica.y"
 {addErrorSintactico(String.format("asign cte mal definida en linea %1$d",al.getLinea()));}
 break;
 case 29:
-//#line 209 "gramatica.y"
+//#line 220 "gramatica.y"
 {addReglaSintacticaReconocida(String.format("sentencia ejecutable reconocida en linea %1$d",al.getLinea()));}
 break;
 case 30:
-//#line 211 "gramatica.y"
+//#line 222 "gramatica.y"
 {addReglaSintacticaReconocida(String.format("sentencia ejecutable reconocida en linea %1$d",al.getLinea()));}
 break;
 case 31:
-//#line 213 "gramatica.y"
+//#line 224 "gramatica.y"
 {addReglaSintacticaReconocida(String.format("sentencia ejecutable reconocida en linea %1$d",al.getLinea()));}
 break;
 case 32:
-//#line 215 "gramatica.y"
+//#line 226 "gramatica.y"
 {addReglaSintacticaReconocida(String.format("sentencia ejecutable reconocida en linea %1$d",al.getLinea()));}
 break;
 case 33:
-//#line 219 "gramatica.y"
+//#line 230 "gramatica.y"
 {addReglaSintacticaReconocida(String.format("if reconocida en linea %1$d",al.getLinea()));
-    ListaTercetos lt = ListaTercetos.getInstanceOfListaDeTercetos();
-    Terceto acompletar = lt.getTerceto(lt.getPilaTercetos().pop());
-    acompletar.setOperando2(new TercetoDestino(lt.getTercetos().size()));
+  ListaTercetos lt = ListaTercetos.getInstanceOfListaDeTercetos();
+  Terceto acompletar = lt.getTerceto(lt.getPilaTercetos().pop());
+  acompletar.setOperando2(new TercetoDestino(lt.getTercetos().size()));
 }
 break;
 case 35:
-//#line 229 "gramatica.y"
+//#line 240 "gramatica.y"
 {addErrorSintactico(String.format("encabezado del if mal definido en linea %1$d",al.getLinea()));}
 break;
 case 36:
-//#line 231 "gramatica.y"
+//#line 242 "gramatica.y"
 {addErrorSintactico(String.format("encabezado del if mal definido en linea %1$d",al.getLinea()));}
 break;
 case 37:
-//#line 233 "gramatica.y"
+//#line 244 "gramatica.y"
 {addErrorSintactico(String.format("encabezado del if mal definido en linea %1$d",al.getLinea()));}
 break;
 case 38:
-//#line 235 "gramatica.y"
+//#line 246 "gramatica.y"
 {addErrorSintactico(String.format("encabezado del if mal definido en linea %1$d",al.getLinea()));}
 break;
 case 40:
-//#line 241 "gramatica.y"
+//#line 252 "gramatica.y"
 {addErrorSintactico(String.format("cuerpo del if mal definido en linea %1$d",al.getLinea()));}
 break;
 case 41:
-//#line 243 "gramatica.y"
+//#line 254 "gramatica.y"
 {addErrorSintactico(String.format("cuerpo del if mal definido en linea %1$d",al.getLinea()));}
 break;
 case 42:
-//#line 245 "gramatica.y"
+//#line 256 "gramatica.y"
 {addErrorSintactico(String.format("cuerpo del if mal definido en linea %1$d",al.getLinea()));}
 break;
 case 43:
-//#line 247 "gramatica.y"
+//#line 258 "gramatica.y"
 {addErrorSintactico(String.format("cuerpo del if mal definido en linea %1$d",al.getLinea()));}
 break;
 case 45:
-//#line 251 "gramatica.y"
+//#line 262 "gramatica.y"
 {addErrorSintactico(String.format("cuerpo del if mal definido en linea %1$d",al.getLinea()));}
 break;
 case 46:
-//#line 253 "gramatica.y"
+//#line 264 "gramatica.y"
 {addErrorSintactico(String.format("cuerpo del if mal definido en linea %1$d",al.getLinea()));}
 break;
 case 47:
-//#line 256 "gramatica.y"
+//#line 267 "gramatica.y"
 {ListaTercetos lt = ListaTercetos.getInstanceOfListaDeTercetos();
-    Terceto tercetoACompletar = lt.getTerceto(lt.getPilaTercetos().pop());
-    tercetoACompletar.setOperando2(new TercetoDestino(lt.getTercetos().size()+1));
-    Terceto incondicionalAcompletar = new Terceto("BI");
-    lt.addTerceto(incondicionalAcompletar);
-    lt.getPilaTercetos().push(lt.getTercetos().size()-1);
+  Terceto tercetoACompletar = lt.getTerceto(lt.getPilaTercetos().pop());
+  tercetoACompletar.setOperando2(new TercetoDestino(lt.getTercetos().size()+1));
+  Terceto incondicionalAcompletar = new Terceto("BI");
+  lt.addTerceto(incondicionalAcompletar);
+  lt.getPilaTercetos().push(lt.getTercetos().size()-1);
 }
 break;
 case 49:
-//#line 269 "gramatica.y"
+//#line 280 "gramatica.y"
 {addReglaSintacticaReconocida(String.format("while reconocida en linea %1$d",al.getLinea()));
-    ListaTercetos lt=ListaTercetos.getInstanceOfListaDeTercetos();
-    Terceto tercetoIncompleto = lt.getTerceto(lt.getPilaTercetos().pop());
-    tercetoIncompleto.setOperando2(new TercetoDestino(lt.getTercetos().size()+1));
-    Terceto saltoAlInicio= new Terceto("BI");
-    saltoAlInicio.setOperando2(new TercetoDestino(lt.getPilaTercetos().pop()));
-    lt.addTerceto(saltoAlInicio);
+  ListaTercetos lt=ListaTercetos.getInstanceOfListaDeTercetos();
+  Terceto tercetoIncompleto = lt.getTerceto(lt.getPilaTercetos().pop());
+  tercetoIncompleto.setOperando2(new TercetoDestino(lt.getTercetos().size()+1));
+  Terceto saltoAlInicio= new Terceto("BI");
+  saltoAlInicio.setOperando2(new TercetoDestino(lt.getPilaTercetos().pop()));
+  lt.addTerceto(saltoAlInicio);
 }
 break;
 case 50:
-//#line 278 "gramatica.y"
+//#line 289 "gramatica.y"
 {addErrorSintactico(String.format("while mal definido en linea %1$d",al.getLinea()));}
 break;
 case 51:
-//#line 280 "gramatica.y"
+//#line 291 "gramatica.y"
 {addErrorSintactico(String.format("while mal definido en linea %1$d",al.getLinea()));}
 break;
 case 52:
-//#line 282 "gramatica.y"
+//#line 293 "gramatica.y"
 {addErrorSintactico(String.format("while mal definido en linea %1$d",al.getLinea()));}
 break;
 case 53:
-//#line 284 "gramatica.y"
+//#line 295 "gramatica.y"
 {addErrorSintactico(String.format("while mal definido en linea %1$d",al.getLinea()));}
 break;
 case 54:
-//#line 287 "gramatica.y"
+//#line 298 "gramatica.y"
 { ListaTercetos.getInstanceOfListaDeTercetos().getPilaTercetos().push(ListaTercetos.getInstanceOfListaDeTercetos().getTercetos().size());}
 break;
 case 55:
-//#line 291 "gramatica.y"
+//#line 302 "gramatica.y"
 {
-        addReglaSintacticaReconocida(String.format("asignacion reconocida en linea %1$d",al.getLinea()));
-        /*chequeo compatibilidad de tipos*/
-    if (((Operando)val_peek(2).obj).getTipo()!=((Operando)val_peek(0).obj).getTipo()){
-        addErrorSemantico(String.format("tipos incompatibles en linea %1$d",al.getLinea()));
-    }
-    else{
-        /*chequeo el el l-value sea mutable*/
+  addReglaSintacticaReconocida(String.format("asignacion reconocida en linea %1$d",al.getLinea()));
+  /*chequeo compatibilidad de tipos*/
+  if (((Operando)val_peek(2).obj).getTipo()!=((Operando)val_peek(0).obj).getTipo()){
+    addErrorSemantico(String.format("tipos incompatibles en linea %1$d",al.getLinea()));
+  }
+  else{
+    /*chequeo el el l-value sea mutable*/
     if (!((EntradaTablaSimbolos)val_peek(2).obj).isMutable()){
-        addErrorSemantico(String.format("asignacion a variable inmutable en linea %1$d",al.getLinea()));
+      addErrorSemantico(String.format("asignacion a variable inmutable en linea %1$d",al.getLinea()));
     }
     else{
-        /*chequeo el caso de una asignacion entre punteros, para que ademas de ser ambos de tipo puntero ambos apunten a elementos del mismo tipo*/
-        /*el r-value puede no ser un puntero, sino una suma de direcciones de memoria usadas como variables de tipo puntero o &variable (no tipo puntero)*/
-        if (((Operando) val_peek(2).obj).getTipo() == "ReferenciaAMemoria") {
-            if (((ReferenciaAMemoria) val_peek(2).obj).getReferenciadoTipo() != (((ReferenciaAMemoria) val_peek(0).obj).getReferenciadoTipo())) {
-                addErrorSemantico(String.format("tipos referenciados con la direccion de memoria incompatibles en linea %1$d", al.getLinea()));
-            } else {
-                Terceto terceto = new Terceto("ASIGNACION", (Operando) val_peek(2).obj, (Operando) val_peek(0).obj);
-                ListaTercetos.getInstanceOfListaDeTercetos().addTerceto(terceto);
-                yyval = new ParserVal(terceto);
-            }
+      /*chequeo el caso de una asignacion entre punteros, para que ademas de ser ambos de tipo puntero ambos apunten a elementos del mismo tipo*/
+      /*el r-value puede no ser un puntero, sino una suma de direcciones de memoria usadas como variables de tipo puntero o &variable (no tipo puntero)*/
+      if (((Operando) val_peek(2).obj).getTipo() == "ReferenciaAMemoria") {
+        if (((ReferenciaAMemoria) val_peek(2).obj).getReferenciadoTipo() != (((ReferenciaAMemoria) val_peek(0).obj).getReferenciadoTipo())) {
+          addErrorSemantico(String.format("tipos referenciados con la direccion de memoria incompatibles en linea %1$d", al.getLinea()));
+        } else {
+          Terceto terceto = new Terceto("ASIGNACION", (Operando) val_peek(2).obj, (Operando) val_peek(0).obj);
+          ListaTercetos.getInstanceOfListaDeTercetos().addTerceto(terceto);
+          yyval = new ParserVal(terceto);
         }
-        else {
-            /*creo un nuevo terceto para la asignacion y lo retorno*/
-            Terceto terceto = new Terceto("ASIGNACION", (Operando) val_peek(2).obj, (Operando) val_peek(0).obj);
-            ListaTercetos.getInstanceOfListaDeTercetos().addTerceto(terceto);
-            yyval = new ParserVal(terceto);
-        }
+      }
+      else {
+        /*creo un nuevo terceto para la asignacion y lo retorno*/
+        Terceto terceto = new Terceto("ASIGNACION", (Operando) val_peek(2).obj, (Operando) val_peek(0).obj);
+        ListaTercetos.getInstanceOfListaDeTercetos().addTerceto(terceto);
+        yyval = new ParserVal(terceto);
+      }
     }
-    }
-    }
+  }
+}
 break;
 case 56:
-//#line 324 "gramatica.y"
+//#line 335 "gramatica.y"
 {addErrorSintactico(String.format("asignacion mal definida en linea %1$d",al.getLinea()));}
 break;
 case 57:
-//#line 326 "gramatica.y"
+//#line 337 "gramatica.y"
 {addErrorSintactico(String.format("asignacion mal definida en linea %1$d",al.getLinea()));}
 break;
 case 58:
-//#line 328 "gramatica.y"
+//#line 339 "gramatica.y"
 {addErrorSintactico(String.format("asignacion mal definida en linea %1$d",al.getLinea()));}
 break;
 case 59:
-//#line 332 "gramatica.y"
+//#line 343 "gramatica.y"
 {addReglaSintacticaReconocida(String.format("bloque sentencia reconocida en linea %1$d",al.getLinea()));}
 break;
 case 60:
-//#line 334 "gramatica.y"
+//#line 345 "gramatica.y"
 {addReglaSintacticaReconocida(String.format("bloque sentencia reconocida en linea %1$d",al.getLinea()));}
 break;
 case 61:
-//#line 336 "gramatica.y"
+//#line 347 "gramatica.y"
 {addErrorSintactico(String.format("bloque de sentencias mal definid0 en linea %1$d",al.getLinea()));}
 break;
 case 62:
-//#line 338 "gramatica.y"
+//#line 349 "gramatica.y"
 {addErrorSintactico(String.format("bloque de sentencias mal definid0 en linea %1$d",al.getLinea()));}
 break;
 case 63:
-//#line 340 "gramatica.y"
+//#line 351 "gramatica.y"
 {addErrorSintactico(String.format("bloque de sentencias mal definid0 en linea %1$d",al.getLinea()));}
 break;
 case 64:
-//#line 344 "gramatica.y"
+//#line 355 "gramatica.y"
 {addReglaSintacticaReconocida(String.format("conj sent ejecutable reconocida en linea %1$d",al.getLinea()));}
 break;
 case 65:
-//#line 346 "gramatica.y"
+//#line 357 "gramatica.y"
 {addReglaSintacticaReconocida(String.format("conj sent ejecutable reconocida en linea %1$d",al.getLinea()));}
 break;
 case 66:
-//#line 350 "gramatica.y"
+//#line 361 "gramatica.y"
 {
-        addReglaSintacticaReconocida(String.format("condicion reconocida en linea %1$d",al.getLinea()));
-        /*chequeo compatibilidad de tipos*/
-    if (((Operando)val_peek(2).obj).getTipo()!=((Operando)val_peek(0).obj).getTipo()){
-        addErrorSemantico(String.format("tipos incompatibles en linea %1$d",al.getLinea()));
+  addReglaSintacticaReconocida(String.format("condicion reconocida en linea %1$d",al.getLinea()));
+  /*chequeo compatibilidad de tipos*/
+  if (((Operando)val_peek(2).obj).getTipo()!=((Operando)val_peek(0).obj).getTipo()){
+    addErrorSemantico(String.format("tipos incompatibles en linea %1$d",al.getLinea()));
+  }
+  else {
+    /*chequeo que el tipo sea entero largo, es el unico permitido para condiciones*/
+    if (((Operando) val_peek(2).obj).getTipo() != ("Linteger")) {
+      addErrorSemantico(String.format("tipo en condicion debe ser entero. linea %1$d", al.getLinea()));
     }
-    else {
-        /*chequeo que el tipo sea entero largo, es el unico permitido para condiciones*/
-        if (((Operando) val_peek(2).obj).getTipo() != ("Linteger")) {
-            addErrorSemantico(String.format("tipo en condicion debe ser entero. linea %1$d", al.getLinea()));
-        }
-            /*creo un terceto para la comparacion, lo añao a la lista*/
-            Terceto terceto = new Terceto(val_peek(1).sval, (Operando)val_peek(2).obj, (Operando)val_peek(0).obj);
-            ListaTercetos lt= ListaTercetos.getInstanceOfListaDeTercetos();
-            lt.addTerceto(terceto);
-            /*añado un terceto para indicar el branch por falso y apilo el terceto recien creado incompleto para completar luego*/
-            lt.addTerceto(new Terceto("BF",lt.getTerceto(lt.getTercetos().size()-1)));
-            lt.getPilaTercetos().push(lt.getTercetos().size()-1);
-        }
-    }
+    /*creo un terceto para la comparacion, lo añao a la lista*/
+    Terceto terceto = new Terceto(val_peek(1).sval, (Operando)val_peek(2).obj, (Operando)val_peek(0).obj);
+    ListaTercetos lt= ListaTercetos.getInstanceOfListaDeTercetos();
+    lt.addTerceto(terceto);
+    /*añado un terceto para indicar el branch por falso y apilo el terceto recien creado incompleto para completar luego*/
+    lt.addTerceto(new Terceto("BF",lt.getTerceto(lt.getTercetos().size()-1)));
+    lt.getPilaTercetos().push(lt.getTercetos().size()-1);
+  }
+}
 break;
 case 67:
-//#line 371 "gramatica.y"
+//#line 382 "gramatica.y"
 {addErrorSintactico(String.format("condicion mal definido en linea %1$d",al.getLinea()));}
 break;
 case 68:
-//#line 373 "gramatica.y"
+//#line 384 "gramatica.y"
 {addErrorSintactico(String.format("condicion mal definido en linea %1$d",al.getLinea()));}
 break;
 case 69:
-//#line 375 "gramatica.y"
+//#line 386 "gramatica.y"
 {addErrorSintactico(String.format("condicion mal definido en linea %1$d",al.getLinea()));}
 break;
 case 70:
-//#line 379 "gramatica.y"
+//#line 390 "gramatica.y"
 {addReglaSintacticaReconocida(String.format("expresion reconocida en linea %1$d",al.getLinea()));
-        /*Chequeo compatibilidad de tipos para operar*/
-        if (((Operando)val_peek(2).obj).getTipo()!=((Operando)val_peek(0).obj).getTipo()){
-            addErrorSemantico(String.format("tipos incompatibles en linea %1$d",al.getLinea()));
-        }
-        else {
-            /*chequeo operaciones entre referencias a memoria que apunten a variables del mismo tipo*/
-            if (((Operando) val_peek(2).obj).getTipo() == "ReferenciaAMemoria") {
-                if (((ReferenciaAMemoria) val_peek(2).obj).getReferenciadoTipo() != (((ReferenciaAMemoria) val_peek(0).obj).getReferenciadoTipo())) {
-                    addErrorSemantico(String.format("tipos referenciados con la direccion de memoria incompatibles en linea %1$d", al.getLinea()));
-                } else {
-                    TercetoReferenciaAMemoria terceto = new TercetoReferenciaAMemoria("+", (Operando) val_peek(2).obj, (Operando) val_peek(0).obj);
-                    terceto.setTipoResultante("ReferenciaAMemoria");
-                    terceto.setTipoResultanteApuntado(((ReferenciaAMemoria) val_peek(2).obj).getReferenciadoTipo());
-                    ListaTercetos.getInstanceOfListaDeTercetos().addTerceto(terceto);
-                    yyval = new ParserVal(terceto);
-                }
-            } else {
-                /*en caso de no ser referencias a memoria creo un terceto comun con sus operandos y lo retorno*/
-                Terceto terceto = new Terceto("+", (Operando) val_peek(2).obj, (Operando) val_peek(0).obj);
-                terceto.setTipoResultante(((Operando) val_peek(2).obj).getTipo());
-                ListaTercetos.getInstanceOfListaDeTercetos().addTerceto(terceto);
-                yyval = new ParserVal(terceto);
-            }
-        }
+  /*Chequeo compatibilidad de tipos para operar*/
+  if (((Operando)val_peek(2).obj).getTipo()!=((Operando)val_peek(0).obj).getTipo()){
+    addErrorSemantico(String.format("tipos incompatibles en linea %1$d",al.getLinea()));
+  }
+  else {
+    /*chequeo operaciones entre referencias a memoria que apunten a variables del mismo tipo*/
+    if (((Operando) val_peek(2).obj).getTipo() == "ReferenciaAMemoria") {
+      if (((ReferenciaAMemoria) val_peek(2).obj).getReferenciadoTipo() != (((ReferenciaAMemoria) val_peek(0).obj).getReferenciadoTipo())) {
+        addErrorSemantico(String.format("tipos referenciados con la direccion de memoria incompatibles en linea %1$d", al.getLinea()));
+      } else {
+        TercetoReferenciaAMemoria terceto = new TercetoReferenciaAMemoria("+", (Operando) val_peek(2).obj, (Operando) val_peek(0).obj);
+        terceto.setTipoResultante("ReferenciaAMemoria");
+        terceto.setTipoResultanteApuntado(((ReferenciaAMemoria) val_peek(2).obj).getReferenciadoTipo());
+        ListaTercetos.getInstanceOfListaDeTercetos().addTerceto(terceto);
+        yyval = new ParserVal(terceto);
+      }
+    } else {
+      /*en caso de no ser referencias a memoria creo un terceto comun con sus operandos y lo retorno*/
+      Terceto terceto = new Terceto("+", (Operando) val_peek(2).obj, (Operando) val_peek(0).obj);
+      terceto.setTipoResultante(((Operando) val_peek(2).obj).getTipo());
+      ListaTercetos.getInstanceOfListaDeTercetos().addTerceto(terceto);
+      yyval = new ParserVal(terceto);
     }
+  }
+}
 break;
 case 71:
-//#line 406 "gramatica.y"
+//#line 417 "gramatica.y"
 {addErrorSintactico(String.format("expresion mal definido en linea %1$d",al.getLinea()));}
 break;
 case 72:
-//#line 408 "gramatica.y"
+//#line 419 "gramatica.y"
 {addErrorSintactico(String.format("expresion mal definido en linea %1$d",al.getLinea()));}
 break;
 case 73:
-//#line 410 "gramatica.y"
+//#line 421 "gramatica.y"
 {addErrorSintactico(String.format("expresion mal definido en linea %1$d",al.getLinea()));}
 break;
 case 74:
-//#line 412 "gramatica.y"
+//#line 423 "gramatica.y"
 {addErrorSintactico(String.format("expresion mal definido en linea %1$d",al.getLinea()));}
 break;
 case 75:
-//#line 414 "gramatica.y"
+//#line 425 "gramatica.y"
 {addReglaSintacticaReconocida(String.format("expresion reconocida en linea %1$d",al.getLinea()));
-        /*Chequeo compatibilidad de tipos para operar*/
-        if (((Operando)val_peek(2).obj).getTipo()!=((Operando)val_peek(0).obj).getTipo()){
-            addErrorSemantico(String.format("tipos incompatibles en linea %1$d",al.getLinea()));
-        }
-        else {
-            /*chequeo operaciones entre referencias a memoria que apunten a variables del mismo tipo*/
-            if (((Operando) val_peek(2).obj).getTipo() == "ReferenciaAMemoria") {
-                if (((ReferenciaAMemoria) val_peek(2).obj).getReferenciadoTipo() != (((ReferenciaAMemoria) val_peek(0).obj).getReferenciadoTipo())) {
-                    addErrorSemantico(String.format("tipos referenciados con la direccion de memoria incompatibles en linea %1$d", al.getLinea()));
-                } else {
-                    TercetoReferenciaAMemoria terceto = new TercetoReferenciaAMemoria("-", (Operando) val_peek(2).obj, (Operando) val_peek(0).obj);
-                    terceto.setTipoResultante("ReferenciaAMemoria");
-                    terceto.setTipoResultanteApuntado(((ReferenciaAMemoria) val_peek(2).obj).getReferenciadoTipo());
-                    ListaTercetos.getInstanceOfListaDeTercetos().addTerceto(terceto);
-                    yyval = new ParserVal(terceto);
-                }
-            } else {
-                /*en caso de no ser referencias a memoria creo un terceto comun con sus operandos y lo retorno*/
-                Terceto terceto = new Terceto("-", (Operando) val_peek(2).obj, (Operando) val_peek(0).obj);
-                terceto.setTipoResultante(((Operando) val_peek(2).obj).getTipo());
-                ListaTercetos.getInstanceOfListaDeTercetos().addTerceto(terceto);
-                yyval = new ParserVal(terceto);
-            }
-        }
+  /*Chequeo compatibilidad de tipos para operar*/
+  if (((Operando)val_peek(2).obj).getTipo()!=((Operando)val_peek(0).obj).getTipo()){
+    addErrorSemantico(String.format("tipos incompatibles en linea %1$d",al.getLinea()));
+  }
+  else {
+    /*chequeo operaciones entre referencias a memoria que apunten a variables del mismo tipo*/
+    if (((Operando) val_peek(2).obj).getTipo() == "ReferenciaAMemoria") {
+      if (((ReferenciaAMemoria) val_peek(2).obj).getReferenciadoTipo() != (((ReferenciaAMemoria) val_peek(0).obj).getReferenciadoTipo())) {
+        addErrorSemantico(String.format("tipos referenciados con la direccion de memoria incompatibles en linea %1$d", al.getLinea()));
+      } else {
+        TercetoReferenciaAMemoria terceto = new TercetoReferenciaAMemoria("-", (Operando) val_peek(2).obj, (Operando) val_peek(0).obj);
+        terceto.setTipoResultante("ReferenciaAMemoria");
+        terceto.setTipoResultanteApuntado(((ReferenciaAMemoria) val_peek(2).obj).getReferenciadoTipo());
+        ListaTercetos.getInstanceOfListaDeTercetos().addTerceto(terceto);
+        yyval = new ParserVal(terceto);
+      }
+    } else {
+      /*en caso de no ser referencias a memoria creo un terceto comun con sus operandos y lo retorno*/
+      Terceto terceto = new Terceto("-", (Operando) val_peek(2).obj, (Operando) val_peek(0).obj);
+      terceto.setTipoResultante(((Operando) val_peek(2).obj).getTipo());
+      ListaTercetos.getInstanceOfListaDeTercetos().addTerceto(terceto);
+      yyval = new ParserVal(terceto);
     }
+  }
+}
 break;
 case 76:
-//#line 441 "gramatica.y"
+//#line 452 "gramatica.y"
 {addReglaSintacticaReconocida(String.format("expresion reconocida en linea %1$d",al.getLinea()));
-    yyval=val_peek(0);}
+  yyval=val_peek(0);}
 break;
 case 77:
-//#line 446 "gramatica.y"
+//#line 457 "gramatica.y"
 {
-        /*addReglaSintacticaReconocida(String.format("termino reconocida en linea %1$d",al.getLinea()));*/
-        /*Chequeo compatibilidad de tipos para operar*/
-        if (((Operando)val_peek(2).obj).getTipo()!=((Operando)val_peek(0).obj).getTipo()){
-            addErrorSemantico(String.format("tipos incompatibles en linea %1$d",al.getLinea()));
-        }
-        else {
-            /*chequeo operaciones entre referencias a memoria que apunten a variables del mismo tipo*/
-            if (((Operando) val_peek(2).obj).getTipo() == "ReferenciaAMemoria") {
-                if (((ReferenciaAMemoria) val_peek(2).obj).getReferenciadoTipo() != (((ReferenciaAMemoria) val_peek(0).obj).getReferenciadoTipo())) {
-                    addErrorSemantico(String.format("tipos referenciados con la direccion de memoria incompatibles en linea %1$d", al.getLinea()));
-                } else {
-                    TercetoReferenciaAMemoria terceto = new TercetoReferenciaAMemoria("*", (Operando) val_peek(2).obj, (Operando) val_peek(0).obj);
-                    terceto.setTipoResultante("ReferenciaAMemoria");
-                    terceto.setTipoResultanteApuntado(((ReferenciaAMemoria) val_peek(2).obj).getReferenciadoTipo());
-                    ListaTercetos.getInstanceOfListaDeTercetos().addTerceto(terceto);
-                    yyval = new ParserVal(terceto);
-                }
-            } else {
-                /*en caso de no ser referencias a memoria creo un terceto comun con sus operandos y lo retorno*/
-                Terceto terceto = new Terceto("*", (Operando) val_peek(2).obj, (Operando) val_peek(0).obj);
-                terceto.setTipoResultante(((Operando) val_peek(2).obj).getTipo());
-                ListaTercetos.getInstanceOfListaDeTercetos().addTerceto(terceto);
-                yyval = new ParserVal(terceto);
-            }
-        }
+  /*addReglaSintacticaReconocida(String.format("termino reconocida en linea %1$d",al.getLinea()));*/
+  /*Chequeo compatibilidad de tipos para operar*/
+  if (((Operando)val_peek(2).obj).getTipo()!=((Operando)val_peek(0).obj).getTipo()){
+    addErrorSemantico(String.format("tipos incompatibles en linea %1$d",al.getLinea()));
+  }
+  else {
+    /*chequeo operaciones entre referencias a memoria que apunten a variables del mismo tipo*/
+    if (((Operando) val_peek(2).obj).getTipo() == "ReferenciaAMemoria") {
+      if (((ReferenciaAMemoria) val_peek(2).obj).getReferenciadoTipo() != (((ReferenciaAMemoria) val_peek(0).obj).getReferenciadoTipo())) {
+        addErrorSemantico(String.format("tipos referenciados con la direccion de memoria incompatibles en linea %1$d", al.getLinea()));
+      } else {
+        TercetoReferenciaAMemoria terceto = new TercetoReferenciaAMemoria("*", (Operando) val_peek(2).obj, (Operando) val_peek(0).obj);
+        terceto.setTipoResultante("ReferenciaAMemoria");
+        terceto.setTipoResultanteApuntado(((ReferenciaAMemoria) val_peek(2).obj).getReferenciadoTipo());
+        ListaTercetos.getInstanceOfListaDeTercetos().addTerceto(terceto);
+        yyval = new ParserVal(terceto);
+      }
+    } else {
+      /*en caso de no ser referencias a memoria creo un terceto comun con sus operandos y lo retorno*/
+      Terceto terceto = new Terceto("*", (Operando) val_peek(2).obj, (Operando) val_peek(0).obj);
+      terceto.setTipoResultante(((Operando) val_peek(2).obj).getTipo());
+      ListaTercetos.getInstanceOfListaDeTercetos().addTerceto(terceto);
+      yyval = new ParserVal(terceto);
     }
+  }
+}
 break;
 case 78:
-//#line 475 "gramatica.y"
+//#line 486 "gramatica.y"
 {/*addReglaSintacticaReconocida(String.format("termino reconocida en linea %1$d",al.getLinea()));*/
-        /*Chequeo compatibilidad de tipos para operar*/
-    if (((Operando)val_peek(2).obj).getTipo()!=((Operando)val_peek(0).obj).getTipo()){
-        addErrorSemantico(String.format("tipos incompatibles en linea %1$d",al.getLinea()));
+  /*Chequeo compatibilidad de tipos para operar*/
+  if (((Operando)val_peek(2).obj).getTipo()!=((Operando)val_peek(0).obj).getTipo()){
+    addErrorSemantico(String.format("tipos incompatibles en linea %1$d",al.getLinea()));
+  }
+  else {
+    /*chequeo operaciones entre referencias a memoria que apunten a variables del mismo tipo*/
+    if (((Operando) val_peek(2).obj).getTipo() == "ReferenciaAMemoria") {
+      if (((ReferenciaAMemoria) val_peek(2).obj).getReferenciadoTipo() != (((ReferenciaAMemoria) val_peek(0).obj).getReferenciadoTipo())) {
+        addErrorSemantico(String.format("tipos referenciados con la direccion de memoria incompatibles en linea %1$d", al.getLinea()));
+      } else {
+        TercetoReferenciaAMemoria terceto = new TercetoReferenciaAMemoria("/", (Operando) val_peek(2).obj, (Operando) val_peek(0).obj);
+        terceto.setTipoResultante("ReferenciaAMemoria");
+        terceto.setTipoResultanteApuntado(((ReferenciaAMemoria) val_peek(2).obj).getReferenciadoTipo());
+        ListaTercetos.getInstanceOfListaDeTercetos().addTerceto(terceto);
+        yyval = new ParserVal(terceto);
+      }
+    } else {
+      /*en caso de no ser referencias a memoria creo un terceto comun con sus operandos y lo retorno*/
+      Terceto terceto = new Terceto("/", (Operando) val_peek(2).obj, (Operando) val_peek(0).obj);
+      terceto.setTipoResultante(((Operando) val_peek(2).obj).getTipo());
+      ListaTercetos.getInstanceOfListaDeTercetos().addTerceto(terceto);
+      yyval = new ParserVal(terceto);
     }
-    else {
-        /*chequeo operaciones entre referencias a memoria que apunten a variables del mismo tipo*/
-        if (((Operando) val_peek(2).obj).getTipo() == "ReferenciaAMemoria") {
-            if (((ReferenciaAMemoria) val_peek(2).obj).getReferenciadoTipo() != (((ReferenciaAMemoria) val_peek(0).obj).getReferenciadoTipo())) {
-                addErrorSemantico(String.format("tipos referenciados con la direccion de memoria incompatibles en linea %1$d", al.getLinea()));
-            } else {
-                TercetoReferenciaAMemoria terceto = new TercetoReferenciaAMemoria("/", (Operando) val_peek(2).obj, (Operando) val_peek(0).obj);
-                terceto.setTipoResultante("ReferenciaAMemoria");
-                terceto.setTipoResultanteApuntado(((ReferenciaAMemoria) val_peek(2).obj).getReferenciadoTipo());
-                ListaTercetos.getInstanceOfListaDeTercetos().addTerceto(terceto);
-                yyval = new ParserVal(terceto);
-            }
-        } else {
-            /*en caso de no ser referencias a memoria creo un terceto comun con sus operandos y lo retorno*/
-            Terceto terceto = new Terceto("/", (Operando) val_peek(2).obj, (Operando) val_peek(0).obj);
-            terceto.setTipoResultante(((Operando) val_peek(2).obj).getTipo());
-            ListaTercetos.getInstanceOfListaDeTercetos().addTerceto(terceto);
-            yyval = new ParserVal(terceto);
-        }
-    }
-    }
+  }
+}
 break;
 case 79:
-//#line 503 "gramatica.y"
+//#line 514 "gramatica.y"
 {/*addReglaSintacticaReconocida(String.format("termino reconocida en linea %1$d",al.getLinea()));*/
-    yyval=val_peek(0);}
+  yyval=val_peek(0);}
 break;
 case 80:
-//#line 508 "gramatica.y"
+//#line 519 "gramatica.y"
 {/*addReglaSintacticaReconocida(String.format("factor reconocida en linea %1$d",al.getLinea()));*/
-    yyval=val_peek(0);}
+  yyval=val_peek(0);}
 break;
 case 81:
-//#line 511 "gramatica.y"
+//#line 522 "gramatica.y"
 {/*addReglaSintacticaReconocida(String.format("factor reconocida en linea %1$d",al.getLinea()));*/
-    yyval=val_peek(0);}
+  yyval=val_peek(0);}
 break;
 case 82:
-//#line 516 "gramatica.y"
+//#line 527 "gramatica.y"
 {
-    EntradaTablaSimbolos entradaTablaSimbolos = (EntradaTablaSimbolos) (val_peek(0).obj);
-    if (entradaTablaSimbolos.getTipo() == EntradaTablaSimbolos.LONG) {
-        /*chequeo si la cte positiva es mayor al maximo permitido-un valor por encima por si era negativa-*/
-        if ((Double.valueOf(entradaTablaSimbolos.getLexema())) == AnalizadorLexico.MAX_LONG) {
-            /*si lo es, lo informo y utilizo reemplazo para bajarla al maximo permitido*/
-            addErrorSintactico(String.format("warning linteger cte positiva mayor al maximo permitido en linea %1$d", al.getLinea()));
-            String nuevoLexema = String.valueOf(AnalizadorLexico.MAX_LONG - 1);
-            al.getTablaDeSimbolos().remove(entradaTablaSimbolos.getLexema());
-            entradaTablaSimbolos.setLexema(nuevoLexema);
-            al.getTablaDeSimbolos().put(entradaTablaSimbolos.getLexema(), entradaTablaSimbolos);
-        }
+  EntradaTablaSimbolos entradaTablaSimbolos = (EntradaTablaSimbolos) (val_peek(0).obj);
+  if (entradaTablaSimbolos.getTipo() == EntradaTablaSimbolos.LONG) {
+    /*chequeo si la cte positiva es mayor al maximo permitido-un valor por encima por si era negativa-*/
+    if ((Double.valueOf(entradaTablaSimbolos.getLexema())) == AnalizadorLexico.MAX_LONG) {
+      /*si lo es, lo informo y utilizo reemplazo para bajarla al maximo permitido*/
+      addErrorSintactico(String.format("warning linteger cte positiva mayor al maximo permitido en linea %1$d", al.getLinea()));
+      String nuevoLexema = String.valueOf(AnalizadorLexico.MAX_LONG - 1);
+      al.getTablaDeSimbolos().remove(entradaTablaSimbolos.getLexema());
+      entradaTablaSimbolos.setLexema(nuevoLexema);
+      al.getTablaDeSimbolos().put(entradaTablaSimbolos.getLexema(), entradaTablaSimbolos);
     }
-    /*addReglaSintacticaReconocida(String.format("cte reconocida en linea %1$d", al.getLinea()));*/
-    entradaTablaSimbolos.incUsos();
-    yyval=val_peek(0);
+  }
+  /*addReglaSintacticaReconocida(String.format("cte reconocida en linea %1$d", al.getLinea()));*/
+  entradaTablaSimbolos.incUsos();
+  yyval=val_peek(0);
 }
 break;
 case 83:
-//#line 534 "gramatica.y"
+//#line 545 "gramatica.y"
 {
-        EntradaTablaSimbolos entradaTablaSimbolos = (EntradaTablaSimbolos) (val_peek(0).obj);
-        String lexema = "-" + (entradaTablaSimbolos.getLexema());
-    /* no esta en tabla, agrega a TS*/
-    if (!al.estaEnTabla(lexema)) {
-            EntradaTablaSimbolos elementoTS = new EntradaTablaSimbolos(lexema, entradaTablaSimbolos.getTipo());
-            al.agregarATablaSimbolos(elementoTS);
-        }
-        /*addReglaSintacticaReconocida(String.format("ctenegativa  reconocida en linea %1$d", al.getLinea()));*/
-    /*si el tipo es long debo chequear que su contraparte positivo que queda en la tabla de simbolos no sea mayor al maximo,*/
-    /*todo si implementamos un contador de usos no deberia ser necesario, se podria utilizar que si el contador llega a 0  se elimine la positiva*/
-        if (entradaTablaSimbolos.getTipo() == EntradaTablaSimbolos.LONG) {
-            if ((Double.valueOf(entradaTablaSimbolos.getLexema())) == AnalizadorLexico.MAX_LONG) {
-                al.getTablaDeSimbolos().remove(entradaTablaSimbolos.getLexema());
-            }
-        }
-        /*al.getTablaDeSimbolos().get(lexema).incUsos();*/
-        /*retorno la entrada de la nueva cte negativa de la tabla de simbolos*/
-        yyval=new ParserVal(al.getTablaDeSimbolos().get(lexema));
+  EntradaTablaSimbolos entradaTablaSimbolos = (EntradaTablaSimbolos) (val_peek(0).obj);
+  String lexema = "-" + (entradaTablaSimbolos.getLexema());
+  /* no esta en tabla, agrega a TS*/
+  if (!al.estaEnTabla(lexema)) {
+    EntradaTablaSimbolos elementoTS = new EntradaTablaSimbolos(lexema, entradaTablaSimbolos.getTipo());
+    al.agregarATablaSimbolos(elementoTS);
+  }
+  /*addReglaSintacticaReconocida(String.format("ctenegativa  reconocida en linea %1$d", al.getLinea()));*/
+  /*si el tipo es long debo chequear que su contraparte positivo que queda en la tabla de simbolos no sea mayor al maximo,*/
+  /*todo si implementamos un contador de usos no deberia ser necesario, se podria utilizar que si el contador llega a 0  se elimine la positiva*/
+  if (entradaTablaSimbolos.getTipo() == EntradaTablaSimbolos.LONG) {
+    if ((Double.valueOf(entradaTablaSimbolos.getLexema())) == AnalizadorLexico.MAX_LONG) {
+      al.getTablaDeSimbolos().remove(entradaTablaSimbolos.getLexema());
+    }
+  }
+  /*al.getTablaDeSimbolos().get(lexema).incUsos();*/
+  /*retorno la entrada de la nueva cte negativa de la tabla de simbolos*/
+  yyval=new ParserVal(al.getTablaDeSimbolos().get(lexema));
 }
 break;
 case 84:
-//#line 555 "gramatica.y"
+//#line 566 "gramatica.y"
 {/*addReglaSintacticaReconocida(String.format("cte direccion de id reconocida en linea %1$d", al.getLinea())); */
-        EntradaTablaSimbolos ets = (EntradaTablaSimbolos)val_peek(0).obj;
-        /*chequeo que ID sea una variable ya declarada*/
-        if (!listaDeLexemasDeclarados.contains(ets.getLexema())){
-            addErrorSemantico(String.format("variable nunca declarada en linea %1$d", al.getLinea()));
-        }
-        else {
-            HashMap<String, EntradaTablaSimbolos> ts = al.getTablaDeSimbolos();
-            /* String lexemaRefMemoria = "&" + ets.getLexema();*/
-            /* si es la primera vez que referencio a ID como direccion de memoria lo doy de alta como cte en la tabla de simbolos*/
-            /* creo que no es necesario darlo de alta, solo elevar una entrada como ref a memoria*/
-            /* if (!ts.containsKey(lexemaRefMemoria))ts.put(lexemaRefMemoria, new EntradaTablaDeSimbolosReferenciaAMemoria(lexemaRefMemoria, ets.getTipo(),ets));*/
-            yyval=new ParserVal(new EntradaTablaDeSimbolosReferenciaAMemoria(ets.getLexema(),"ReferenciaAMemoria",ets));
-        }
+  EntradaTablaSimbolos ets = (EntradaTablaSimbolos)val_peek(0).obj;
+  /*chequeo que ID sea una variable ya declarada*/
+  if (!listaDeLexemasDeclarados.contains(ets.getLexema())){
+    addErrorSemantico(String.format("variable nunca declarada en linea %1$d", al.getLinea()));
+  }
+  else {
+    HashMap<String, EntradaTablaSimbolos> ts = al.getTablaDeSimbolos();
+    /* String lexemaRefMemoria = "&" + ets.getLexema();*/
+    /* si es la primera vez que referencio a ID como direccion de memoria lo doy de alta como cte en la tabla de simbolos*/
+    /* creo que no es necesario darlo de alta, solo elevar una entrada como ref a memoria*/
+    /* if (!ts.containsKey(lexemaRefMemoria))ts.put(lexemaRefMemoria, new EntradaTablaDeSimbolosReferenciaAMemoria(lexemaRefMemoria, ets.getTipo(),ets));*/
+    yyval=new ParserVal(new EntradaTablaDeSimbolosReferenciaAMemoria(ets.getLexema(),"ReferenciaAMemoria",ets));
+  }
 
 }
 break;
 case 85:
-//#line 572 "gramatica.y"
+//#line 583 "gramatica.y"
 {addErrorSintactico(String.format("valor cte mal definido en linea %1$d", al.getLinea())); }
 break;
 case 86:
-//#line 574 "gramatica.y"
+//#line 585 "gramatica.y"
 {addErrorSintactico(String.format("valor cte mal definido en linea %1$d", al.getLinea())); }
 break;
 case 87:
-//#line 578 "gramatica.y"
+//#line 589 "gramatica.y"
 {/*addReglaSintacticaReconocida(String.format("comp = reconocida en linea %1$d",al.getLinea()));*/
-    yyval=new ParserVal("=");}
+  yyval=new ParserVal("=");}
 break;
 case 88:
-//#line 581 "gramatica.y"
+//#line 592 "gramatica.y"
 {/*addReglaSintacticaReconocida(String.format("comp > reconocida en linea %1$d",al.getLinea()));*/
-    yyval=new ParserVal(">");}
+  yyval=new ParserVal(">");}
 break;
 case 89:
-//#line 584 "gramatica.y"
+//#line 595 "gramatica.y"
 {/*addReglaSintacticaReconocida(String.format("comp < reconocida en linea %1$d",al.getLinea()))*/;
-    yyval=new ParserVal("<");}
+  yyval=new ParserVal("<");}
 break;
 case 90:
-//#line 587 "gramatica.y"
+//#line 598 "gramatica.y"
 {/*addReglaSintacticaReconocida(String.format("comp reconocida en linea %1$d",al.getLinea()));*/
-    yyval=new ParserVal("COMP_MAYOR_IGUAL");}
+  yyval=new ParserVal("COMP_MAYOR_IGUAL");}
 break;
 case 91:
-//#line 590 "gramatica.y"
+//#line 601 "gramatica.y"
 {/*addReglaSintacticaReconocida(String.format("comp reconocida en linea %1$d",al.getLinea()));*/
-    yyval=new ParserVal("COMP_MENOR_IGUAL");}
+  yyval=new ParserVal("COMP_MENOR_IGUAL");}
 break;
 case 92:
-//#line 593 "gramatica.y"
+//#line 604 "gramatica.y"
 {/*addReglaSintacticaReconocida(String.format("comp reconocida en linea %1$d",al.getLinea()));*/
-    yyval=new ParserVal("COMP_DIFERENTE");}
+  yyval=new ParserVal("COMP_DIFERENTE");}
 break;
 case 93:
-//#line 598 "gramatica.y"
+//#line 609 "gramatica.y"
 {addReglaSintacticaReconocida(String.format("print reconocida en linea %1$d",al.getLinea()));
-    ListaTercetos.getInstanceOfListaDeTercetos().addTerceto(new Terceto("PRINT",(EntradaTablaSimbolos)val_peek(1).obj));}
+  ListaTercetos.getInstanceOfListaDeTercetos().addTerceto(new Terceto("PRINT",(EntradaTablaSimbolos)val_peek(1).obj));}
 break;
 case 94:
-//#line 601 "gramatica.y"
+//#line 612 "gramatica.y"
 {addErrorSintactico(String.format("print mal definido en linea %1$d",al.getLinea()));}
 break;
 case 95:
-//#line 603 "gramatica.y"
+//#line 614 "gramatica.y"
 {addErrorSintactico(String.format("print mal definido en linea %1$d",al.getLinea()));}
 break;
 case 96:
-//#line 605 "gramatica.y"
+//#line 616 "gramatica.y"
 {addErrorSintactico(String.format("print mal definido en linea %1$d",al.getLinea()));}
 break;
 case 97:
-//#line 607 "gramatica.y"
+//#line 618 "gramatica.y"
 {addErrorSintactico(String.format("print mal definido en linea %1$d",al.getLinea()));}
 break;
-//#line 1409 "Parser.java"
+//#line 1419 "Parser.java"
 //########## END OF USER-SUPPLIED ACTIONS ##########
     }//switch
     //#### Now let's reduce... ####
