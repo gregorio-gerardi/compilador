@@ -1,2 +1,2 @@
-let linteger _a := 20_l,
-_a := 20_l,
+let mut single _af;_bf;_cf,
+_af:=22.0+_bf*_cf,

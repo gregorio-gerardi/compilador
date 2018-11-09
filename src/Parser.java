@@ -934,7 +934,7 @@ case 22:
         String lexema = ((EntradaTablaSimbolos) val_peek(0).obj).getLexema();
         /*chequeo que la variable ya halla sido declarada*/
         if (!listaDeLexemasDeclarados.contains(lexema))
-            addErrorSemantico(String.format("variable redeclarada, en linea %1$d", al.getLinea()));
+            addErrorSemantico(String.format("variable no declarada, en linea %1$d", al.getLinea()));
         else {
             /*si fue declarada solo retorno su entrada en la tabla de simbolos*/
             yyval = val_peek(0);

@@ -173,5 +173,167 @@ signo fin de archivo en excel e informe se usa $ pero en el compilador se utiliz
 aclarar que si se carga una constante negatiova en la tabla de simbolos tambien existira su version positiva, se deja el chequeo para semantica
 sobre la entrada anterior si la entrada negativa es el maximo valor permitido la entrada positiva se elimina de la tabla por que es imposible encontrar otra constante con ese valor positivo
 
-Casos de prueba:
 
+#------------------------------------------------------------------------------------------#
+
+#EJEMPLOS ANALISADOR SEMANTICO Y GENERACION DE TERCETOS#
+
+
+#PROBANDO LA ASIGNACION DE TIPO A UNA VARIABLE INMUTABLE
+EN LA ENTRADA DE LA TABLA DE SIMBOLOS SE VEN LOS TIPOS#
+let linteger _a := 20_l,
+
+#PROBANDO LA ASIGNACION DE TIPO A UNA VARIABLE MUTABLE
+EN LA ENTRADA DE LA TABLA DE SIMBOLOS SE VEN LOS TIPOS#
+let mut linteger _a,
+
+#PROBANDO LA ASIGNACION DE TIPO A VARIAS VARIABLES MUTABLES EN UNA SOLA LINEA
+EN LA ENTRADA DE LA TABLA DE SIMBOLOS SE VEN LOS TIPOS#
+let mut linteger _a; _b; _c,
+
+#PROBANDO LA ASIGNACION DE TIPO A VARIAS VARIABLES DE DISTINTAS FORMAS
+EN LA ENTRADA DE LA TABLA DE SIMBOLOS SE VEN LOS TIPOS#
+let mut linteger _a; _b; _c,
+let mut linteger _d,
+let linteger _e:=22_l,
+
+#PROBANDO LA ASIGNACION DE TIPO A VARIAS VARIABLES DE DISTINTAS FORMAS
+Y DISTINTOS TIPOS
+EN LA ENTRADA DE LA TABLA DE SIMBOLOS SE VEN LOS TIPOS#
+let mut linteger _a; _b; _c,
+let mut single _af; _bf; _cf,
+let mut linteger _d,
+let mut single _df,
+let linteger _e:=22_l,
+let single _ef:=22.5,
+
+
+#PROBANDO LA ASIGNACION ENTRE VARIABLES DEL MISMO TIPO MUTABLES
+SE CREA EL TERCETO ACORDE#
+let mut linteger _a; _b,
+_a:=_b,
+
+#PROBANDO LA ASIGNACION ENTRE VARIABLES DE DISTINTO TIPO MUTABLES
+SE MUESTRA EL ERROR SEMANTICO#
+let mut linteger _a,
+let mut single _b,
+_a:=_b,
+
+#¡¡¡BUG!!!
+COMO LAS CTES SE GUARDAN UTILIZANDO COMO LEXEMA EL VALOR CONVERTIDO A DOUBLE SIN
+NINGUN PREFIJO O SUFIJO INDICANDO EL TIPO, UNA CTE INTEGER 20 Y UNA CTE SINGLE 20,0 SE
+GUARDAN AMBAS CON LEXEMA 20.0, Y AL INTENTAR UTILIZAR DOS CTES CON EL MISMO VALOR
+PERO DISTINTO TIPO INTERPRETA A LA SEGUNDA COMO UNA REFERENCIA A LA PRIMERA EN
+LUGAR DE UNA CTE NUEVAMENTE DECLARADA#
+
+let linteger _e:=22_l,
+let single _ef:=22.0,
+
+#SOLUCION: AGREGAR UNA EXTENSION A LOS LEXEMAS DIFIRIENDO LOS TIPOS#
+
+#¡¡¡BUG!!!
+el caso donde una cte negativa se detecta y su contraparte positiva nunca es utilizada, entonces en
+la tabla de simbolos quedan ambas ctes, tanto la negativa como la positiva#
+
+let linteger _e:= -22_l,
+
+#SOLUCION implementar un contador de usos que registre cuando se usa la cte positiva en el lexico y luego en el
+sintactico cuando se detecta que una cte era negativa disminuir el contador de usos de la version
+positiva de la misma cte, y si este contador luego de la disminucion resulta cero eliminar la cte
+positiva porque significa que nadie mas la uso hasta ahora, en caso de usarse mas adelante el lexico
+tan solo debera darla de alta de nuevo en la tabla de simbolos#
+
+#PROBANDO LA ASIGNACION ENTRE VARIABLES NO MUTABLES
+SE MUESTRA EL ERROR#
+let linteger _a:=22_l,
+let linteger _b:=22_l,
+_a:=_b,
+
+#PROBANDO LA ASIGNACION ENTRE VARIABLES NO MUTABLES Y CTE
+SE MUESTRA EL ERROR#
+let linteger _a:=22_l,
+_a:=22_l,
+
+#PROBANDO LA ASIGNACION ENTRE VARIABLES NO MUTABLES Y DE DISTINTO TIPO
+SE MUESTRA EL ERROR POR INCOMPATIBILIDAD DE TIPO, NO SE ALCANZA EL
+ERROR POR MUTABILIDAD PORQUE EL DE TIPO SE REVISA PRIMERO#
+let linteger _a:=22_l,
+let single _af:=22.5,
+_a:=_af,
+
+#PROBANDO LA REDECLARACION DE VARIABLES
+SE MUESTRA EL ERROR#
+let linteger _a:=22_l,
+let linteger _a:=22_l,
+
+#PROBANDO LA REDECLARACION DE VARIABLES 2
+SE MUESTRA EL ERROR#
+let mut linteger _a,let mut linteger _a,
+
+#PROBANDO LA REDECLARACION DE VARIABLES 3
+SE MUESTRA EL ERROR#
+let mut linteger _a; _a,
+
+#PROBANDO LA REDECLARACION DE VARIABLES 4
+SE MUESTRA EL ERROR#
+let linteger _a:=22_l,
+let mut linteger _a,
+
+#PROBANDO LA GENERARION DE TERCETOS PARA ASIGNACIONES
+SE VE LA LISTA DE TERCETOS#
+let mut linteger _a;_b;_c,
+_a:=22_l,
+_b:=_a,
+_c:=_b,
+
+#PROBANDO LA GENERARION DE TERCETOS PARA ASIGNACIONES CON EXPRESIONES
+SE VE LA LISTA DE TERCETOS#
+let mut linteger _a;_b;_c,
+_a:=22_l+_b*_c,
+
+#PROBANDO LA GENERARION DE TERCETOS PARA ASIGNACIONES CON EXPRESIONES
+SE VE LA LISTA DE TERCETOS#
+let mut linteger _a;_b;_c,
+_a:=22_l+_b*_c,
+
+#PROBANDO LA GENERARION DE TERCETOS PARA ASIGNACIONES CON EXPRESIONES 2
+SE VE LA LISTA DE TERCETOS#
+let mut single _af;_bf;_cf,
+_af:=22.0+_bf*_cf,
+
+#PROBANDO LA GENERARION DE TERCETOS PARA ASIGNACIONES CON EXPRESIONES INCORPORANDO TIPOS INCOMPATIBLES
+SE VE EL ERROR SEMANTICO#
+#NOTA: IGNORAR LA LISTA DE TERCETOS, ESTA QUEDA MAS CONSTRUIDA PORQUE EN LA REGLA DE LA ASIGNACION UTILIZA EL ULTIMO YYVAL PARA EL LADO DE LA EXPRESION QUE TUVO
+ANTES DE GENERAR EL ERROR, QUE FUE EL 22.0, DE HABER SIDO COMPATIBLES LOS TIPOS ESTA ENTRADA DE LA PILA
+DE YYVALs SE HABRIA CAMBIADO POR EL TERCETO RESULTANTE DE LA SUMA COMO EN EL EJEMPLO
+_a:= 22_l + 2_l,#
+
+let mut linteger _a,
+_a:=
+22_l + 2.0,
+
+#PROBANDO LA GENERARION DE TERCETOS PARA ASIGNACIONES CON EXPRESIONES INCORPORANDO TIPOS INCOMPATIBLES MAS VARIADO
+SE VE EL ERROR SEMANTICO#
+#NOTA: IGNORAR LA LISTA DE TERCETOS, MISMO CASO ANTERIOR#
+
+_a:= 22_l + 2_l,#
+let mut linteger _a; _c,
+let mut single _af; _cf,
+_a := 22_l + 2_l * 2.2 / 24_l - _cf,
+
+#PROBANDO VARIABLES NO DECLARADAS LADO IZQUIERDO
+SE VE EL ERROR#
+#NOTA: EL ERROR POR INCOMPATIBILIDAD DE TIPOS SE DA PORQUE LA VARIABLE NO DECLARADA TIENE COMO TIPO "Deesconocido"
+Y NO ES EL MISMO TIPO QUE LA CTE 22_l DE TIPO linteger#
+_a:=22_l,
+
+#PROBANDO VARIABLES NO DECLARADAS LADO DERECHO
+SE VE EL ERROR#
+#NOTA: EL ERROR POR INCOMPATIBILIDAD DE TIPOS SE DA PORQUE LA VARIABLE NO DECLARADA TIENE COMO TIPO "Deesconocido"
+Y NO ES EL MISMO TIPO QUE LA CTE 22_l DE TIPO linteger#
+let mut linteger _a,
+_a:=_b,
+
+#PROBANDO PRINT DE CADENA
+SE VE EL TERCETO GENERADO#
+print('ejemplo de cadena'),

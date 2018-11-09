@@ -27,7 +27,7 @@ public class Main {
                 pw.println("No se encontraron errores lexicos.");
             else
                 for (String e : p.getListaDeErroresLexicos()) {
-                    System.out.println(e);
+                    printRed(e);
                     pw.println(e);
                 }
             pw.println("--------------------");
@@ -53,7 +53,7 @@ public class Main {
                 pw.println("No se detectaron errores sintacticos.");
             else
                 for (String e : p.getListaDeErroresSintacticos()) {
-                    System.out.println(e);
+                    printRed(e);
                     pw.println(e);
                 }
             pw.println("--------------------");
@@ -71,6 +71,18 @@ public class Main {
                 }
             pw.println("--------------------");
             System.out.println("--------------------");
+            pw.println("ERRORES SEMANTICOS:");
+            System.out.println("ERRORES SEMANTICOS:");
+            pw.println("");
+            if (p.getListaDeErroresSemanticos().isEmpty())
+                pw.println("No se detectaron errores sintacticos.");
+            else
+                for (String e : p.getListaDeErroresSemanticos()) {
+                    printRed(e);
+                    pw.println(e);
+                }
+            pw.println("--------------------");
+            System.out.println("--------------------");
             pw.println("");
             pw.println("CONTENIDO DE LA TABLA DE SIMBOLOS:");
             System.out.println("CONTENIDO DE LA TABLA DE SIMBOLOS:");
@@ -84,20 +96,7 @@ public class Main {
                 }
             pw.println("--------------------");
             System.out.println("--------------------");
-            pw.println("ERRORES SEMANTICOS:");
-            System.out.println("ERRORES SEMANTICOS:");
             pw.println("");
-            if (p.getListaDeErroresSemanticos().isEmpty())
-                pw.println("No se detectaron errores sintacticos.");
-            else
-                for (String e : p.getListaDeErroresSemanticos()) {
-                    System.out.println(e);
-                    pw.println(e);
-                }
-            pw.println("--------------------");
-            System.out.println("--------------------");
-            pw.println("");
-
             pw.println("LISTA DE TERCETOS GENERADOS:");
             System.out.println("LISTA DE TERCETOS GENERADOS:");
             pw.println("");
@@ -107,7 +106,7 @@ public class Main {
             else {
                 int i = 0;
                 for (Terceto t : tercetos) {
-                    System.out.println(i + " - ( " + t.getOperador() + " , " + printOperador(t.getOperando1()) + " , " + printOperador(t.getOperando2()) + " ) ");
+                    System.out.println(i + " - ( " + t.getOperador() + " , " + printOperador(t.getOperando1()) + " , " + printOperador(t.getOperando2()) + " ) " + "  --> " + t.getTipo());
                     pw.println(i + " - ( " + t.getOperador() + " , " + printOperador(t.getOperando1()) + " , " + printOperador(t.getOperando2()) + " ) ");
                     i++;
                 }
@@ -126,6 +125,10 @@ public class Main {
             return ("[" + ListaTercetos.getInstanceOfListaDeTercetos().getIndice((Terceto) operando) + "]");
         if (operando instanceof TercetoDestino) return (((TercetoDestino)operando).destino.toString());
         return ((EntradaTablaSimbolos) operando).getLexema();
+    }
+
+    public static void printRed(String texto){
+        System.out.println("\033[31m"+texto+"\u001B[0m");
     }
 }
 

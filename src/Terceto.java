@@ -31,10 +31,15 @@ public class Terceto implements Operando {
     public Terceto(String operador, @Nullable Operando operando1) {
         this.operador = operador;
         this.operando1 = operando1;
+        this.operando2 = null;
+        tipoResultante="desconocido";
     }
 
     public Terceto(String operador) {
         this.operador = operador;
+        this.operando1 = null;
+        this.operando2 = null;
+        tipoResultante="desconocido";
     }
 
     public String getOperador() {
