@@ -1014,7 +1014,7 @@ case 33:
 {addReglaSintacticaReconocida(String.format("if reconocida en linea %1$d",al.getLinea()));
     ListaTercetos lt = ListaTercetos.getInstanceOfListaDeTercetos();
     Terceto acompletar = lt.getTerceto(lt.getPilaTercetos().pop());
-    acompletar.setOperando1(new TercetoDestino(lt.getTercetos().size()));
+    acompletar.setOperando2(new TercetoDestino(lt.getTercetos().size()));
 }
 break;
 case 35:
@@ -1192,7 +1192,7 @@ case 66:
             lt.addTerceto(terceto);
             /*añado un terceto para indicar el branch por falso y apilo el terceto recien creado incompleto para completar luego*/
             lt.addTerceto(new Terceto("BF",lt.getTerceto(lt.getTercetos().size()-1)));
-            lt.getPilaTercetos().push(lt.getTercetos().size());
+            lt.getPilaTercetos().push(lt.getTercetos().size()-1);
             /*retorno el terceto de la comparacion creo que es innecesario lo comento*/
             /*$$=new ParserVal(terceto);*/
             }

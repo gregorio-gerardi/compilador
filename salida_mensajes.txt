@@ -5,23 +5,54 @@ No se encontraron errores lexicos.
 
 TOKENS DEL ANALIZADOR LEXICO:
 
-Palabra Reservada let (linea 1)
-Palabra Reservada mut (linea 1)
-Palabra Reservada single (linea 1)
-ID (linea 1)
-Simbolo ; (linea 1)
-ID (linea 1)
-Simbolo ; (linea 1)
-ID (linea 1)
-Simbolo , (linea 1)
-ID (linea 2)
-Simbolo := (linea 2)
-CTE Float 22.0 (linea 2)
-Simbolo + (linea 2)
-ID (linea 2)
-Simbolo * (linea 2)
-ID (linea 2)
-Simbolo , (linea 2)
+Palabra Reservada let (linea 3)
+Palabra Reservada mut (linea 3)
+Palabra Reservada linteger (linea 3)
+ID (linea 3)
+Simbolo , (linea 3)
+Palabra Reservada if (linea 4)
+Simbolo ( (linea 4)
+ID (linea 4)
+Simbolo = (linea 4)
+CTE linteger (linea 4)
+Simbolo ) (linea 4)
+Simbolo { (linea 5)
+Palabra Reservada print (linea 6)
+Simbolo ( (linea 6)
+Cadena Caracteres: "hola mundo1" (linea 6)
+Simbolo ) (linea 6)
+Simbolo , (linea 6)
+Palabra Reservada print (linea 7)
+Simbolo ( (linea 7)
+Cadena Caracteres: "hola mundo2" (linea 7)
+Simbolo ) (linea 7)
+Simbolo , (linea 7)
+Palabra Reservada print (linea 8)
+Simbolo ( (linea 8)
+Cadena Caracteres: "hola mundo3" (linea 8)
+Simbolo ) (linea 8)
+Simbolo , (linea 8)
+Simbolo } (linea 9)
+Palabra Reservada else (linea 10)
+Simbolo { (linea 11)
+Palabra Reservada print (linea 12)
+Simbolo ( (linea 12)
+Cadena Caracteres: "hola mundo else1" (linea 12)
+Simbolo ) (linea 12)
+Simbolo , (linea 12)
+Palabra Reservada print (linea 13)
+Simbolo ( (linea 13)
+Cadena Caracteres: "hola mundo else2" (linea 13)
+Simbolo ) (linea 13)
+Simbolo , (linea 13)
+Palabra Reservada print (linea 14)
+Simbolo ( (linea 14)
+Cadena Caracteres: "hola mundo else3" (linea 14)
+Simbolo ) (linea 14)
+Simbolo , (linea 14)
+Simbolo } (linea 15)
+Palabra Reservada end_if (linea 16)
+Simbolo , (linea 16)
 --------------------
 
 ERRORES SINTACTICOS:
@@ -31,20 +62,39 @@ No se detectaron errores sintacticos.
 
 REGLAS SINTACTICAS:
 
-tipo reconocida en linea 1
-lista de variables reconocida en linea 1
-lista de variables reconocida en linea 1
-lista de variables reconocida en linea 1
-sentencia declarativa reconocida en linea 1
-sentencia reconocida en linea 1
-Contenido de programa reconocido en linea 1
-expresion reconocida en linea 2
-expresion reconocida en linea 2
-asignacion reconocida en linea 2
-sentencia ejecutable reconocida en linea 2
-sentencia reconocida en linea 2
-Contenido de programa reconocido en linea 2
-Programa reconocido en linea 2
+tipo reconocida en linea 3
+lista de variables reconocida en linea 3
+sentencia declarativa reconocida en linea 3
+sentencia reconocida en linea 3
+Contenido de programa reconocido en linea 3
+expresion reconocida en linea 4
+expresion reconocida en linea 4
+condicion reconocida en linea 4
+print reconocida en linea 6
+sentencia ejecutable reconocida en linea 6
+conj sent ejecutable reconocida en linea 6
+print reconocida en linea 7
+sentencia ejecutable reconocida en linea 7
+conj sent ejecutable reconocida en linea 7
+print reconocida en linea 8
+sentencia ejecutable reconocida en linea 8
+conj sent ejecutable reconocida en linea 8
+bloque sentencia reconocida en linea 9
+print reconocida en linea 12
+sentencia ejecutable reconocida en linea 12
+conj sent ejecutable reconocida en linea 12
+print reconocida en linea 13
+sentencia ejecutable reconocida en linea 13
+conj sent ejecutable reconocida en linea 13
+print reconocida en linea 14
+sentencia ejecutable reconocida en linea 14
+conj sent ejecutable reconocida en linea 14
+bloque sentencia reconocida en linea 15
+if reconocida en linea 16
+sentencia ejecutable reconocida en linea 16
+sentencia reconocida en linea 16
+Contenido de programa reconocido en linea 16
+Programa reconocido en linea 16
 --------------------
 ERRORES SEMANTICOS:
 
@@ -53,15 +103,25 @@ No se detectaron errores sintacticos.
 
 CONTENIDO DE LA TABLA DE SIMBOLOS:
 
-_bf --> Single
-_cf --> Single
-_af --> Single
-22.0 --> Single
+_a --> Linteger
+34.0 --> Linteger
+hola mundo2 --> String
+hola mundo else3 --> String
+hola mundo1 --> String
+hola mundo else2 --> String
+hola mundo else1 --> String
+hola mundo3 --> String
 --------------------
 
 LISTA DE TERCETOS GENERADOS:
 
-0 - ( * , _bf , _cf ) 
-1 - ( + , 22.0 , [0] ) 
-2 - ( ASIGNACION , _af , [1] ) 
+0 - ( = , _a , 34.0 ) 
+1 - ( BF , [0] , 6 ) 
+2 - ( PRINT , hola mundo1 , - ) 
+3 - ( PRINT , hola mundo2 , - ) 
+4 - ( PRINT , hola mundo3 , - ) 
+5 - ( BI , - , 9 ) 
+6 - ( PRINT , hola mundo else1 , - ) 
+7 - ( PRINT , hola mundo else2 , - ) 
+8 - ( PRINT , hola mundo else3 , - ) 
 --------------------

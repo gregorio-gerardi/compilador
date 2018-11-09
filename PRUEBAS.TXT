@@ -337,3 +337,81 @@ _a:=_b,
 #PROBANDO PRINT DE CADENA
 SE VE EL TERCETO GENERADO#
 print('ejemplo de cadena'),
+
+#PROBANDO PRINT DE CADENA CON TIPO DISTINTO DE CADENA
+NO ES NECESARIO CHEQUEO SEMANTICO DADO QUE LA GRAMATICA
+SOLO ACEPTA UNA CTE DE TIPO CADENA EN LA SENTENCIA PRINT,
+Y ESTE TIPO YA SE CONOCE DESDE EL ANALISIS LEXICO
+SE VE EL ERROR SINTACTICO#
+print(_a),
+
+
+#------------------------------------#
+#--SECCION CON SENTENCIAS DE CONTROL--#
+#------------------------------------#
+
+#PROBANDO SENTENCIA IF CON SALTOS,
+SE VEN LOS TERCETOS GENERADOS#
+
+#NOTA: EN EL CASO DE IFS SIN ELSE, SE GENERA UN BI INCESARIO HACIA LA LINEA INMEDIATAMENTE
+SIGUIENTE, ESTO SE DA PORQUE LA GENERACION DE ESTE TERCETO DE SALTO INCONDICIONAL SE GENERA EN
+UNA MISMA REGLA TANTO PARA EL IF CON ELSE COMO EL IF SIN ELSE#
+#POSIBLE OPTIMIZACION: UTILIZAR REGLAS DISTINTAS PARA LOS IF CON Y SIN BLOQUE ELSE,
+O UNA VEZ GENERADA LA LISTA DE TERCETOS RECORRERLA E ELIMINAR TODOS LOS SALTOS HACIA LINEAS SIGUIENTES
+(DURANTE LA GENERACION DE CODIGO ASSEMBLER POR EJEMPLO)
+
+let mut linteger _a,
+if (_a=22_l)
+print('hola mundo'),
+end_if,
+print('next to if'),
+
+#PROBANDO SENTENCIA IF CON BLOQUE THEN Y SALTOS,
+SE VEN LOS TERCETOS GENERADOS#
+
+#NOTA: IGUAL QUE ANTERIOR#
+
+let mut linteger _a,
+if (_a=34_l)
+{
+print('hola mundo1'),
+print('hola mundo2'),
+print('hola mundo3'),
+}
+end_if,
+
+#PROBANDO SENTENCIA IF CON BLOQUE THEN Y ELSE Y SALTOS,
+SE VEN LOS TERCETOS GENERADOS#
+
+let mut linteger _a,
+if (_a=22_l)
+print('hola mundo'),
+else
+print('hola mundo else'),
+end_if,
+
+#PROBANDO SENTENCIA IF CON BLOQUE THEN Y ELSE, CONDICION COMPLEJA
+SE VEN LOS TERCETOS GENERADOS#
+let mut linteger _a;_b;_c,
+if ( _a / 2_l+ 2_l = 34_l + _c * _b)
+print('hola mundo'),
+else
+print('hola mundo else'),
+end_if,
+
+#PROBANDO SENTENCIA IF CON BLOQUE THEN Y BLOQUE ELSE,
+SE VEN LOS TERCETOS GENERADOS#
+let mut linteger _a,
+if (_a=34_l)
+{
+print('hola mundo1'),
+print('hola mundo2'),
+print('hola mundo3'),
+}
+else
+{
+print('hola mundo else1'),
+print('hola mundo else2'),
+print('hola mundo else3'),
+}
+end_if,

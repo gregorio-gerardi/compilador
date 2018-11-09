@@ -123,7 +123,8 @@ public class Main {
         if (operando == null) return "-";
         if (operando instanceof Terceto)
             return ("[" + ListaTercetos.getInstanceOfListaDeTercetos().getIndice((Terceto) operando) + "]");
-        if (operando instanceof TercetoDestino) return (((TercetoDestino)operando).destino.toString());
+        if (operando instanceof TercetoDestino)
+            return (((TercetoDestino)operando).destino.toString());
         return ((EntradaTablaSimbolos) operando).getLexema();
     }
 
