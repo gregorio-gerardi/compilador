@@ -317,9 +317,16 @@ import java.util.HashSet;
         if (((ReferenciaAMemoria) $1.obj).getReferenciadoTipo() != (((ReferenciaAMemoria) $3.obj).getReferenciadoTipo())) {
           addErrorSemantico(String.format("tipos referenciados con la direccion de memoria incompatibles en linea %1$d", al.getLinea()));
         } else {
+        //chequeo que el r-value sea un puntero o una direccion de memoria de una sola variable, y no una operacion entre direcciones de memoria
+        if (($3.obj instanceof EntradaTablaDeSimbolosReferenciaAMemoria)||($3.obj instanceof EntradaTablaDeSimbolosPuntero)){
+          ((EntradaTablaDeSimbolosPuntero) $1.obj).setApuntado(((ReferenciaAMemoriaSimple) $3.obj).getReferenciado());
           Terceto terceto = new Terceto("ASIGNACION", (Operando) $1.obj, (Operando) $3.obj);
           ListaTercetos.getInstanceOfListaDeTercetos().addTerceto(terceto);
           $$ = new ParserVal(terceto);
+          }
+          else {
+                    addErrorSemantico(String.format("r-value asigando al puntero no es un puntero o una direccion de una variable simple, en linea %1$d", al.getLinea()));
+          }
         }
       }
       else {

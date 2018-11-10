@@ -540,7 +540,7 @@ final static String yyrule[] = {
 "sentenciaPrint : PRINT '(' CADENA error",
 };
 
-//#line 622 "gramatica.y"
+//#line 629 "gramatica.y"
   private AnalizadorLexico al;
   private ArrayList<String> listaDeTokens;
   private ArrayList<String> listaDeReglas;
@@ -1128,9 +1128,16 @@ case 55:
         if (((ReferenciaAMemoria) val_peek(2).obj).getReferenciadoTipo() != (((ReferenciaAMemoria) val_peek(0).obj).getReferenciadoTipo())) {
           addErrorSemantico(String.format("tipos referenciados con la direccion de memoria incompatibles en linea %1$d", al.getLinea()));
         } else {
+        /*chequeo que el r-value sea un puntero o una direccion de memoria de una sola variable, y no una operacion entre direcciones de memoria*/
+        if ((val_peek(0).obj instanceof EntradaTablaDeSimbolosReferenciaAMemoria)||(val_peek(0).obj instanceof EntradaTablaDeSimbolosPuntero)){
+          ((EntradaTablaDeSimbolosPuntero) val_peek(2).obj).setApuntado(((ReferenciaAMemoriaSimple) val_peek(0).obj).getReferenciado());
           Terceto terceto = new Terceto("ASIGNACION", (Operando) val_peek(2).obj, (Operando) val_peek(0).obj);
           ListaTercetos.getInstanceOfListaDeTercetos().addTerceto(terceto);
           yyval = new ParserVal(terceto);
+          }
+          else {
+                    addErrorSemantico(String.format("r-value asigando al puntero no es un puntero o una direccion de una variable simple, en linea %1$d", al.getLinea()));
+          }
         }
       }
       else {
@@ -1144,47 +1151,47 @@ case 55:
 }
 break;
 case 56:
-//#line 335 "gramatica.y"
+//#line 342 "gramatica.y"
 {addErrorSintactico(String.format("asignacion mal definida en linea %1$d",al.getLinea()));}
 break;
 case 57:
-//#line 337 "gramatica.y"
+//#line 344 "gramatica.y"
 {addErrorSintactico(String.format("asignacion mal definida en linea %1$d",al.getLinea()));}
 break;
 case 58:
-//#line 339 "gramatica.y"
+//#line 346 "gramatica.y"
 {addErrorSintactico(String.format("asignacion mal definida en linea %1$d",al.getLinea()));}
 break;
 case 59:
-//#line 343 "gramatica.y"
+//#line 350 "gramatica.y"
 {addReglaSintacticaReconocida(String.format("bloque sentencia reconocida en linea %1$d",al.getLinea()));}
 break;
 case 60:
-//#line 345 "gramatica.y"
+//#line 352 "gramatica.y"
 {addReglaSintacticaReconocida(String.format("bloque sentencia reconocida en linea %1$d",al.getLinea()));}
 break;
 case 61:
-//#line 347 "gramatica.y"
+//#line 354 "gramatica.y"
 {addErrorSintactico(String.format("bloque de sentencias mal definid0 en linea %1$d",al.getLinea()));}
 break;
 case 62:
-//#line 349 "gramatica.y"
+//#line 356 "gramatica.y"
 {addErrorSintactico(String.format("bloque de sentencias mal definid0 en linea %1$d",al.getLinea()));}
 break;
 case 63:
-//#line 351 "gramatica.y"
+//#line 358 "gramatica.y"
 {addErrorSintactico(String.format("bloque de sentencias mal definid0 en linea %1$d",al.getLinea()));}
 break;
 case 64:
-//#line 355 "gramatica.y"
+//#line 362 "gramatica.y"
 {addReglaSintacticaReconocida(String.format("conj sent ejecutable reconocida en linea %1$d",al.getLinea()));}
 break;
 case 65:
-//#line 357 "gramatica.y"
+//#line 364 "gramatica.y"
 {addReglaSintacticaReconocida(String.format("conj sent ejecutable reconocida en linea %1$d",al.getLinea()));}
 break;
 case 66:
-//#line 361 "gramatica.y"
+//#line 368 "gramatica.y"
 {
   addReglaSintacticaReconocida(String.format("condicion reconocida en linea %1$d",al.getLinea()));
   /*chequeo compatibilidad de tipos*/
@@ -1207,19 +1214,19 @@ case 66:
 }
 break;
 case 67:
-//#line 382 "gramatica.y"
+//#line 389 "gramatica.y"
 {addErrorSintactico(String.format("condicion mal definido en linea %1$d",al.getLinea()));}
 break;
 case 68:
-//#line 384 "gramatica.y"
+//#line 391 "gramatica.y"
 {addErrorSintactico(String.format("condicion mal definido en linea %1$d",al.getLinea()));}
 break;
 case 69:
-//#line 386 "gramatica.y"
+//#line 393 "gramatica.y"
 {addErrorSintactico(String.format("condicion mal definido en linea %1$d",al.getLinea()));}
 break;
 case 70:
-//#line 390 "gramatica.y"
+//#line 397 "gramatica.y"
 {addReglaSintacticaReconocida(String.format("expresion reconocida en linea %1$d",al.getLinea()));
   /*Chequeo compatibilidad de tipos para operar*/
   if (((Operando)val_peek(2).obj).getTipo()!=((Operando)val_peek(0).obj).getTipo()){
@@ -1248,23 +1255,23 @@ case 70:
 }
 break;
 case 71:
-//#line 417 "gramatica.y"
+//#line 424 "gramatica.y"
 {addErrorSintactico(String.format("expresion mal definido en linea %1$d",al.getLinea()));}
 break;
 case 72:
-//#line 419 "gramatica.y"
+//#line 426 "gramatica.y"
 {addErrorSintactico(String.format("expresion mal definido en linea %1$d",al.getLinea()));}
 break;
 case 73:
-//#line 421 "gramatica.y"
+//#line 428 "gramatica.y"
 {addErrorSintactico(String.format("expresion mal definido en linea %1$d",al.getLinea()));}
 break;
 case 74:
-//#line 423 "gramatica.y"
+//#line 430 "gramatica.y"
 {addErrorSintactico(String.format("expresion mal definido en linea %1$d",al.getLinea()));}
 break;
 case 75:
-//#line 425 "gramatica.y"
+//#line 432 "gramatica.y"
 {addReglaSintacticaReconocida(String.format("expresion reconocida en linea %1$d",al.getLinea()));
   /*Chequeo compatibilidad de tipos para operar*/
   if (((Operando)val_peek(2).obj).getTipo()!=((Operando)val_peek(0).obj).getTipo()){
@@ -1293,12 +1300,12 @@ case 75:
 }
 break;
 case 76:
-//#line 452 "gramatica.y"
+//#line 459 "gramatica.y"
 {addReglaSintacticaReconocida(String.format("expresion reconocida en linea %1$d",al.getLinea()));
   yyval=val_peek(0);}
 break;
 case 77:
-//#line 457 "gramatica.y"
+//#line 464 "gramatica.y"
 {
   /*addReglaSintacticaReconocida(String.format("termino reconocida en linea %1$d",al.getLinea()));*/
   /*Chequeo compatibilidad de tipos para operar*/
@@ -1328,7 +1335,7 @@ case 77:
 }
 break;
 case 78:
-//#line 486 "gramatica.y"
+//#line 493 "gramatica.y"
 {/*addReglaSintacticaReconocida(String.format("termino reconocida en linea %1$d",al.getLinea()));*/
   /*Chequeo compatibilidad de tipos para operar*/
   if (((Operando)val_peek(2).obj).getTipo()!=((Operando)val_peek(0).obj).getTipo()){
@@ -1357,22 +1364,22 @@ case 78:
 }
 break;
 case 79:
-//#line 514 "gramatica.y"
+//#line 521 "gramatica.y"
 {/*addReglaSintacticaReconocida(String.format("termino reconocida en linea %1$d",al.getLinea()));*/
   yyval=val_peek(0);}
 break;
 case 80:
-//#line 519 "gramatica.y"
+//#line 526 "gramatica.y"
 {/*addReglaSintacticaReconocida(String.format("factor reconocida en linea %1$d",al.getLinea()));*/
   yyval=val_peek(0);}
 break;
 case 81:
-//#line 522 "gramatica.y"
+//#line 529 "gramatica.y"
 {/*addReglaSintacticaReconocida(String.format("factor reconocida en linea %1$d",al.getLinea()));*/
   yyval=val_peek(0);}
 break;
 case 82:
-//#line 527 "gramatica.y"
+//#line 534 "gramatica.y"
 {
   EntradaTablaSimbolos entradaTablaSimbolos = (EntradaTablaSimbolos) (val_peek(0).obj);
   if (entradaTablaSimbolos.getTipo() == EntradaTablaSimbolos.LONG) {
@@ -1392,7 +1399,7 @@ case 82:
 }
 break;
 case 83:
-//#line 545 "gramatica.y"
+//#line 552 "gramatica.y"
 {
   EntradaTablaSimbolos entradaTablaSimbolos = (EntradaTablaSimbolos) (val_peek(0).obj);
   String lexema = "-" + (entradaTablaSimbolos.getLexema());
@@ -1415,7 +1422,7 @@ case 83:
 }
 break;
 case 84:
-//#line 566 "gramatica.y"
+//#line 573 "gramatica.y"
 {/*addReglaSintacticaReconocida(String.format("cte direccion de id reconocida en linea %1$d", al.getLinea())); */
   EntradaTablaSimbolos ets = (EntradaTablaSimbolos)val_peek(0).obj;
   /*chequeo que ID sea una variable ya declarada*/
@@ -1434,65 +1441,65 @@ case 84:
 }
 break;
 case 85:
-//#line 583 "gramatica.y"
+//#line 590 "gramatica.y"
 {addErrorSintactico(String.format("valor cte mal definido en linea %1$d", al.getLinea())); }
 break;
 case 86:
-//#line 585 "gramatica.y"
+//#line 592 "gramatica.y"
 {addErrorSintactico(String.format("valor cte mal definido en linea %1$d", al.getLinea())); }
 break;
 case 87:
-//#line 589 "gramatica.y"
+//#line 596 "gramatica.y"
 {/*addReglaSintacticaReconocida(String.format("comp = reconocida en linea %1$d",al.getLinea()));*/
   yyval=new ParserVal("=");}
 break;
 case 88:
-//#line 592 "gramatica.y"
+//#line 599 "gramatica.y"
 {/*addReglaSintacticaReconocida(String.format("comp > reconocida en linea %1$d",al.getLinea()));*/
   yyval=new ParserVal(">");}
 break;
 case 89:
-//#line 595 "gramatica.y"
+//#line 602 "gramatica.y"
 {/*addReglaSintacticaReconocida(String.format("comp < reconocida en linea %1$d",al.getLinea()))*/;
   yyval=new ParserVal("<");}
 break;
 case 90:
-//#line 598 "gramatica.y"
+//#line 605 "gramatica.y"
 {/*addReglaSintacticaReconocida(String.format("comp reconocida en linea %1$d",al.getLinea()));*/
   yyval=new ParserVal("COMP_MAYOR_IGUAL");}
 break;
 case 91:
-//#line 601 "gramatica.y"
+//#line 608 "gramatica.y"
 {/*addReglaSintacticaReconocida(String.format("comp reconocida en linea %1$d",al.getLinea()));*/
   yyval=new ParserVal("COMP_MENOR_IGUAL");}
 break;
 case 92:
-//#line 604 "gramatica.y"
+//#line 611 "gramatica.y"
 {/*addReglaSintacticaReconocida(String.format("comp reconocida en linea %1$d",al.getLinea()));*/
   yyval=new ParserVal("COMP_DIFERENTE");}
 break;
 case 93:
-//#line 609 "gramatica.y"
+//#line 616 "gramatica.y"
 {addReglaSintacticaReconocida(String.format("print reconocida en linea %1$d",al.getLinea()));
   ListaTercetos.getInstanceOfListaDeTercetos().addTerceto(new Terceto("PRINT",(EntradaTablaSimbolos)val_peek(1).obj));}
 break;
 case 94:
-//#line 612 "gramatica.y"
+//#line 619 "gramatica.y"
 {addErrorSintactico(String.format("print mal definido en linea %1$d",al.getLinea()));}
 break;
 case 95:
-//#line 614 "gramatica.y"
+//#line 621 "gramatica.y"
 {addErrorSintactico(String.format("print mal definido en linea %1$d",al.getLinea()));}
 break;
 case 96:
-//#line 616 "gramatica.y"
+//#line 623 "gramatica.y"
 {addErrorSintactico(String.format("print mal definido en linea %1$d",al.getLinea()));}
 break;
 case 97:
-//#line 618 "gramatica.y"
+//#line 625 "gramatica.y"
 {addErrorSintactico(String.format("print mal definido en linea %1$d",al.getLinea()));}
 break;
-//#line 1419 "Parser.java"
+//#line 1426 "Parser.java"
 //########## END OF USER-SUPPLIED ACTIONS ##########
     }//switch
     //#### Now let's reduce... ####

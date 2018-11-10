@@ -1,8 +1,8 @@
-public class EntradaTablaDeSimbolosReferenciaAMemoria extends EntradaTablaSimbolos implements ReferenciaAMemoria{
+public class EntradaTablaDeSimbolosReferenciaAMemoria extends EntradaTablaSimbolos implements ReferenciaAMemoria, ReferenciaAMemoriaSimple{
 
     public EntradaTablaDeSimbolosReferenciaAMemoria(String lexema, String tipo, EntradaTablaSimbolos apuntado) {
         super(lexema, tipo);
-        this.referenciado=referenciado;
+        this.referenciado=apuntado;
     }
 
     private EntradaTablaSimbolos referenciado;
@@ -18,5 +18,9 @@ public class EntradaTablaDeSimbolosReferenciaAMemoria extends EntradaTablaSimbol
     @Override
     public String getReferenciadoTipo() {
         return getReferenciado().getTipo();
+    }
+
+    public EntradaTablaSimbolos getApuntado() {
+        return getReferenciado();
     }
 }

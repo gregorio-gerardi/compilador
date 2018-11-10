@@ -468,3 +468,134 @@ while ( _a <= 22_l )
 #PROBANDO DECLARACION DE PUNTEROS
 SE VE EL TIPO EN LA TABLA DE SIMBOLOS#
 let mut linteger *_a,
+
+#PROBANDO DECLARACION DE PUNTEROS MEZCLADA CON NO PUNTEROS
+SE VE EL TIPO EN LA TABLA DE SIMBOLOS#
+let mut linteger *_a;_b;*_c,
+let mut single *_af;_bf;*_cf,
+
+#PROBANDO ASIGNACION ENTRE PUNTEROS
+SE VEN LOS TERCETOS GENERADOS#
+let mut linteger *_a;*_b,
+_a:=_b,
+
+#PROBANDO ASIGNACION ENTRE PUNTEROS DISTINTO TIPO
+SE VE EL ERROR SEMANTICO#
+let mut linteger *_a,
+let mut single *_b,
+_a:=_b,
+
+#PROBANDO ASIGNACION ENTRE PUNTEROS MUTABLE E INMUTABLE
+SE VEN LOS TERCETOS GENERADOS#
+let mut linteger *_a;_b,
+let linteger *_c:=&_b,
+_a:=_c,
+
+#PROBANDO ASIGNACION A PUNTERO DE DIRECCION CTE
+SE VEN LOS TERCETOS GENERADOS#
+let mut linteger _b,
+let linteger *_c:=&_b,
+
+#PROBANDO ASIGNACION A PUNTERO DE VARIABLE SIN ANULAR EL DESREFERENCING
+IMPLICITO, SE VE EL ERROR DE COMPATIBILIDAD DE TIPOS#
+let mut linteger _b,
+let linteger *_c:=_b,
+
+#PROBANDO ASIGNACION A PUNTERO INMUTABLE
+SE VE EL ERROR SEMANTICO#
+let mut linteger _b,
+let linteger *_c:=&_b,
+_c:=&_b,
+
+#PROBANDO ASIGNACION A LO APUNTADO POR UN PUNTERO AUNQUE EL PUNTERO SEA INMUTABLE
+SE VEN LOS TERCETOS GENERADOS#
+let mut linteger _b,
+let linteger *_c:=&_b,
+*_c:=22_l,
+
+#PROBANDO ASIGNACION A LO APUNTADO POR PUNTEROS DE TIPOS INCOMPATIBLE
+SE VE EL ERROR#
+let mut linteger *_a;_b,
+let mut single *_af;_bf,
+_a:=&_b,
+_af:=&_bf,
+*_a:=*_af,
+
+#PROBANDO ASIGNACION A PUNTEROS DE TIPOS INCOMPATIBLE
+SE VE EL ERROR#
+let mut linteger *_a;_b,
+let mut single *_af;_bf,
+_a:=&_b,
+_af:=&_bf,
+_a:=_af,
+
+#PROBANDO ASIGNACION A PUNTERO DE UNA EXPRESION ARITMETICA DE PUNTEROS
+SE VE EL ERROR#
+let mut linteger *_a;_b,
+let mut single *_af;_bf,
+_a:=&_b,
+_af:=&_bf,
+_a:=_a+_a-&_b,
+
+#¡¡¡BUG!!!
+el caso donde se intenta acceder a un puntero que nunca fue inicializado, da un null pointer
+ exception al tratar de preguntar por el tipo de la variable apuntada, y esta ser null
+ el caso siguiente lo ejemplifica, notar la inicializacion comentada#
+
+let mut linteger _integerMutable1; *_punteroALinteger,
+#_punteroALinteger := &_integerMutable1,#
+*_punteroALinteger :=_integerMutable1+1_l,
+
+#SOLUCION controlar siempre antes de acceder a puntero que halla sido inicializado,
+dar una inicializacion por defecto apuntando a una variable de tipo "Sin Inicializar",
+usar una variable por defecto que no sea de ningun otro tipo asegura que se de un error por
+tipos incompatibles en un acceso a un puntero que no apunta a nada. solo se chequea
+la redeclaracion o no declaracion de las variables, no sus inicializaciones, a los enteros
+y singles les daremos valores por defecto o les dejaremos conservar la basura que halla en memoria
+en la cuarta etapa#
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+----------------------------------------------------------------------------------
+----------------------------------------------------------------------------------
+__________________________________________________________________________________
+__________________________________________________________________________________
+
+
+#EJEMPLO DE PROGRAMA COMPLETO QUE USA TODOS
+LOS RECURSOS#
+
+let linteger _integerInmutable := 10_l,
+let mut linteger _integerMutable1; *_punteroALinteger; _integerMutable2,
+let single _singleInmutable := 10.5,
+let mut single _singleMutable1; _singleMutable2,
+_integerMutable1 := 1_l,
+_integerMutable2 := _integerMutable1,
+_singleMutable1 := 1.5,
+_singleMutable2 := _singleInmutable,
+#los singles no se usaran en el bucle, estan solo
+como ejemplo del uso de asignaciones a singles#
+_punteroALinteger := &_integerMutable1,
+print('inicio del while'),
+while ( _integerMutable1 < _integerInmutable )
+{
+    #incremento la variable que controla el
+    while accediendola desde el puntero#
+    *_punteroALinteger :=_integerMutable1+1_l,
+    _integerMutable2:=_integerMutable1,
+    print('inicio del if'),
+    if ( _integerMutable1 +  _integerMutable2 <= _integerInmutable)
+    {
+        print('hola mundo'),
+        print('dentro del if'),
+        print('porque los enteros juntos suman menos o igual a 10'),
+    }
+    else
+    {
+        print('chau mundo cruel'),
+        print('dentro del else'),
+        print('porque los enteros juntos suman mas de 10'),
+    }
+  end_if,
+  print('fin del if'),
+},
+print('fin del while'),

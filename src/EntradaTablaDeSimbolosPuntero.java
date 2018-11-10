@@ -1,4 +1,4 @@
-public class EntradaTablaDeSimbolosPuntero extends EntradaTablaSimbolos implements ReferenciaAMemoria{
+public class EntradaTablaDeSimbolosPuntero extends EntradaTablaSimbolos implements ReferenciaAMemoria, ReferenciaAMemoriaSimple{
 
     private String tipoApuntable = "Desconocido";
 
@@ -24,5 +24,10 @@ public class EntradaTablaDeSimbolosPuntero extends EntradaTablaSimbolos implemen
 
     public void setTipoApuntable(String s){
         tipoApuntable=s;
+    }
+
+    @Override
+    public EntradaTablaSimbolos getReferenciado() {
+        return getApuntado();
     }
 }

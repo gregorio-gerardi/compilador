@@ -5,12 +5,141 @@ No se encontraron errores lexicos.
 
 TOKENS DEL ANALIZADOR LEXICO:
 
-Palabra Reservada let (linea 3)
-Palabra Reservada mut (linea 3)
-Palabra Reservada linteger (linea 3)
-Simbolo * (linea 3)
-ID (linea 3)
-Simbolo , (linea 3)
+Palabra Reservada let (linea 4)
+Palabra Reservada linteger (linea 4)
+ID (linea 4)
+Simbolo := (linea 4)
+CTE linteger (linea 4)
+Simbolo , (linea 4)
+Palabra Reservada let (linea 5)
+Palabra Reservada mut (linea 5)
+Palabra Reservada linteger (linea 5)
+ID (linea 5)
+Simbolo ; (linea 5)
+Simbolo * (linea 5)
+ID (linea 5)
+Simbolo ; (linea 5)
+ID (linea 5)
+Simbolo , (linea 5)
+Palabra Reservada let (linea 6)
+Palabra Reservada single (linea 6)
+ID (linea 6)
+Simbolo := (linea 6)
+CTE Float 10.5 (linea 6)
+Simbolo , (linea 6)
+Palabra Reservada let (linea 7)
+Palabra Reservada mut (linea 7)
+Palabra Reservada single (linea 7)
+ID (linea 7)
+Simbolo ; (linea 7)
+ID (linea 7)
+Simbolo , (linea 7)
+ID (linea 8)
+Simbolo := (linea 8)
+CTE linteger (linea 8)
+Simbolo , (linea 8)
+ID (linea 9)
+Simbolo := (linea 9)
+ID (linea 9)
+Simbolo , (linea 9)
+ID (linea 10)
+Simbolo := (linea 10)
+CTE Float 1.5 (linea 10)
+Simbolo , (linea 10)
+ID (linea 11)
+Simbolo := (linea 11)
+ID (linea 11)
+Simbolo , (linea 11)
+ID (linea 14)
+Simbolo := (linea 14)
+Simbolo & (linea 14)
+ID (linea 14)
+Simbolo , (linea 14)
+Palabra Reservada print (linea 15)
+Simbolo ( (linea 15)
+Cadena Caracteres: "inicio del while" (linea 15)
+Simbolo ) (linea 15)
+Simbolo , (linea 15)
+Palabra Reservada while (linea 16)
+Simbolo ( (linea 16)
+ID (linea 16)
+Simbolo Simple < (linea 16)
+ID (linea 16)
+Simbolo ) (linea 16)
+Simbolo { (linea 17)
+Simbolo * (linea 20)
+ID (linea 20)
+Simbolo := (linea 20)
+ID (linea 20)
+Simbolo + (linea 20)
+CTE linteger (linea 20)
+Simbolo , (linea 20)
+ID (linea 21)
+Simbolo := (linea 21)
+ID (linea 21)
+Simbolo , (linea 21)
+Palabra Reservada print (linea 22)
+Simbolo ( (linea 22)
+Cadena Caracteres: "inicio del if" (linea 22)
+Simbolo ) (linea 22)
+Simbolo , (linea 22)
+Palabra Reservada if (linea 23)
+Simbolo ( (linea 23)
+ID (linea 23)
+Simbolo + (linea 23)
+ID (linea 23)
+Simbolo <= (linea 23)
+ID (linea 23)
+Simbolo ) (linea 23)
+Simbolo { (linea 24)
+Palabra Reservada print (linea 25)
+Simbolo ( (linea 25)
+Cadena Caracteres: "hola mundo" (linea 25)
+Simbolo ) (linea 25)
+Simbolo , (linea 25)
+Palabra Reservada print (linea 26)
+Simbolo ( (linea 26)
+Cadena Caracteres: "dentro del if" (linea 26)
+Simbolo ) (linea 26)
+Simbolo , (linea 26)
+Palabra Reservada print (linea 27)
+Simbolo ( (linea 27)
+Cadena Caracteres: "porque los enteros juntos suman menos o igual a 10" (linea 27)
+Simbolo ) (linea 27)
+Simbolo , (linea 27)
+Simbolo } (linea 28)
+Palabra Reservada else (linea 29)
+Simbolo { (linea 30)
+Palabra Reservada print (linea 31)
+Simbolo ( (linea 31)
+Cadena Caracteres: "chau mundo cruel" (linea 31)
+Simbolo ) (linea 31)
+Simbolo , (linea 31)
+Palabra Reservada print (linea 32)
+Simbolo ( (linea 32)
+Cadena Caracteres: "dentro del else" (linea 32)
+Simbolo ) (linea 32)
+Simbolo , (linea 32)
+Palabra Reservada print (linea 33)
+Simbolo ( (linea 33)
+Cadena Caracteres: "porque los enteros juntos suman mas de 10" (linea 33)
+Simbolo ) (linea 33)
+Simbolo , (linea 33)
+Simbolo } (linea 34)
+Palabra Reservada end_if (linea 35)
+Simbolo , (linea 35)
+Palabra Reservada print (linea 36)
+Simbolo ( (linea 36)
+Cadena Caracteres: "fin del if" (linea 36)
+Simbolo ) (linea 36)
+Simbolo , (linea 36)
+Simbolo } (linea 37)
+Simbolo , (linea 37)
+Palabra Reservada print (linea 38)
+Simbolo ( (linea 38)
+Cadena Caracteres: "fin del while" (linea 38)
+Simbolo ) (linea 38)
+Simbolo , (linea 38)
 --------------------
 
 ERRORES SINTACTICOS:
@@ -20,12 +149,113 @@ No se detectaron errores sintacticos.
 
 REGLAS SINTACTICAS:
 
-tipo reconocida en linea 3
-lista de variables reconocida en linea 3
-sentencia declarativa reconocida en linea 3
-sentencia reconocida en linea 3
-Contenido de programa reconocido en linea 3
-Programa reconocido en linea 4
+tipo reconocida en linea 4
+asign cte reconocida en linea 4
+sentencia declarativa en linea 4
+sentencia reconocida en linea 4
+Contenido de programa reconocido en linea 4
+tipo reconocida en linea 5
+lista de variables reconocida en linea 5
+lista de variables reconocida en linea 5
+lista de variables reconocida en linea 5
+sentencia declarativa reconocida en linea 5
+sentencia reconocida en linea 5
+Contenido de programa reconocido en linea 5
+tipo reconocida en linea 6
+asign cte reconocida en linea 6
+sentencia declarativa en linea 6
+sentencia reconocida en linea 6
+Contenido de programa reconocido en linea 6
+tipo reconocida en linea 7
+lista de variables reconocida en linea 7
+lista de variables reconocida en linea 7
+sentencia declarativa reconocida en linea 7
+sentencia reconocida en linea 7
+Contenido de programa reconocido en linea 7
+expresion reconocida en linea 8
+asignacion reconocida en linea 8
+sentencia ejecutable reconocida en linea 8
+sentencia reconocida en linea 8
+Contenido de programa reconocido en linea 8
+expresion reconocida en linea 9
+asignacion reconocida en linea 9
+sentencia ejecutable reconocida en linea 9
+sentencia reconocida en linea 9
+Contenido de programa reconocido en linea 9
+expresion reconocida en linea 10
+asignacion reconocida en linea 10
+sentencia ejecutable reconocida en linea 10
+sentencia reconocida en linea 10
+Contenido de programa reconocido en linea 10
+expresion reconocida en linea 11
+asignacion reconocida en linea 11
+sentencia ejecutable reconocida en linea 11
+sentencia reconocida en linea 11
+Contenido de programa reconocido en linea 11
+expresion reconocida en linea 14
+asignacion reconocida en linea 14
+sentencia ejecutable reconocida en linea 14
+sentencia reconocida en linea 14
+Contenido de programa reconocido en linea 14
+print reconocida en linea 15
+sentencia ejecutable reconocida en linea 15
+sentencia reconocida en linea 15
+Contenido de programa reconocido en linea 15
+expresion reconocida en linea 16
+expresion reconocida en linea 16
+condicion reconocida en linea 16
+expresion reconocida en linea 20
+expresion reconocida en linea 20
+asignacion reconocida en linea 20
+sentencia ejecutable reconocida en linea 20
+conj sent ejecutable reconocida en linea 20
+expresion reconocida en linea 21
+asignacion reconocida en linea 21
+sentencia ejecutable reconocida en linea 21
+conj sent ejecutable reconocida en linea 21
+print reconocida en linea 22
+sentencia ejecutable reconocida en linea 22
+conj sent ejecutable reconocida en linea 22
+expresion reconocida en linea 23
+expresion reconocida en linea 23
+expresion reconocida en linea 23
+condicion reconocida en linea 23
+print reconocida en linea 25
+sentencia ejecutable reconocida en linea 25
+conj sent ejecutable reconocida en linea 25
+print reconocida en linea 26
+sentencia ejecutable reconocida en linea 26
+conj sent ejecutable reconocida en linea 26
+print reconocida en linea 27
+sentencia ejecutable reconocida en linea 27
+conj sent ejecutable reconocida en linea 27
+bloque sentencia reconocida en linea 28
+print reconocida en linea 31
+sentencia ejecutable reconocida en linea 31
+conj sent ejecutable reconocida en linea 31
+print reconocida en linea 32
+sentencia ejecutable reconocida en linea 32
+conj sent ejecutable reconocida en linea 32
+print reconocida en linea 33
+sentencia ejecutable reconocida en linea 33
+conj sent ejecutable reconocida en linea 33
+bloque sentencia reconocida en linea 34
+if reconocida en linea 35
+sentencia ejecutable reconocida en linea 35
+conj sent ejecutable reconocida en linea 35
+print reconocida en linea 36
+sentencia ejecutable reconocida en linea 36
+conj sent ejecutable reconocida en linea 36
+bloque sentencia reconocida en linea 37
+while reconocida en linea 37
+sentencia ejecutable reconocida en linea 37
+sentencia reconocida en linea 37
+Contenido de programa reconocido en linea 37
+print reconocida en linea 38
+sentencia ejecutable reconocida en linea 38
+sentencia reconocida en linea 38
+Contenido de programa reconocido en linea 38
+Programa reconocido en linea 39
 --------------------
 ERRORES SEMANTICOS:
 
@@ -34,10 +264,56 @@ No se detectaron errores sintacticos.
 
 CONTENIDO DE LA TABLA DE SIMBOLOS:
 
-_a --> ReferenciaAMemoria
+hola mundo --> String
+dentro del else --> String
+_integerInmutable --> Linteger
+fin del if --> String
+chau mundo cruel --> String
+_integerMutable2 --> Linteger
+_integerMutable1 --> Linteger
+inicio del if --> String
+porque los enteros juntos suman menos o igual a 10 --> String
+10.5 --> Single
+_singleInmutable --> Single
+1.0 --> Linteger
+porque los enteros juntos suman mas de 10 --> String
+10.0 --> Linteger
+dentro del if --> String
+fin del while --> String
+_singleMutable1 --> Single
+1.5 --> Single
+_punteroALinteger --> ReferenciaAMemoria
+_singleMutable2 --> Single
+inicio del while --> String
 --------------------
 
 LISTA DE TERCETOS GENERADOS:
 
-Lista de tercetos vacia
+0 - ( ASIGNACION , _integerInmutable , 10.0 ) 
+1 - ( ASIGNACION , _singleInmutable , 10.5 ) 
+2 - ( ASIGNACION , _integerMutable1 , 1.0 ) 
+3 - ( ASIGNACION , _integerMutable2 , _integerMutable1 ) 
+4 - ( ASIGNACION , _singleMutable1 , 1.5 ) 
+5 - ( ASIGNACION , _singleMutable2 , _singleInmutable ) 
+6 - ( ASIGNACION , _punteroALinteger , &_integerMutable1 ) 
+7 - ( PRINT , inicio del while , - ) 
+8 - ( < , _integerMutable1 , _integerInmutable ) 
+9 - ( BF , [8] , 26 ) 
+10 - ( + , _integerMutable1 , 1.0 ) 
+11 - ( ASIGNACION , _integerMutable1 , [10] ) 
+12 - ( ASIGNACION , _integerMutable2 , _integerMutable1 ) 
+13 - ( PRINT , inicio del if , - ) 
+14 - ( + , _integerMutable1 , _integerMutable2 ) 
+15 - ( COMP_MENOR_IGUAL , [14] , _integerInmutable ) 
+16 - ( BF , [15] , 21 ) 
+17 - ( PRINT , hola mundo , - ) 
+18 - ( PRINT , dentro del if , - ) 
+19 - ( PRINT , porque los enteros juntos suman menos o igual a 10 , - ) 
+20 - ( BI , - , 24 ) 
+21 - ( PRINT , chau mundo cruel , - ) 
+22 - ( PRINT , dentro del else , - ) 
+23 - ( PRINT , porque los enteros juntos suman mas de 10 , - ) 
+24 - ( PRINT , fin del if , - ) 
+25 - ( BI , - , 8 ) 
+26 - ( PRINT , fin del while , - ) 
 --------------------

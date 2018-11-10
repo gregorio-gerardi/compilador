@@ -1,3 +1,3 @@
-#PROBANDO DECLARACION DE PUNTEROS
-SE VE EL TIPO EN LA TABLA DE SIMBOLOS#
-let mut linteger *_a,
+let mut linteger _integerMutable1; *_punteroALinteger,
+#_punteroALinteger := &_integerMutable1,#
+*_punteroALinteger :=_integerMutable1+1_l,

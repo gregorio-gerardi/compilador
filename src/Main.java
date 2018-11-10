@@ -125,6 +125,8 @@ public class Main {
             return ("[" + ListaTercetos.getInstanceOfListaDeTercetos().getIndice((Terceto) operando) + "]");
         if (operando instanceof TercetoDestino)
             return (((TercetoDestino)operando).destino.toString());
+        if (operando instanceof EntradaTablaDeSimbolosReferenciaAMemoria)
+            return "&"+((EntradaTablaSimbolos) operando).getLexema();
         return ((EntradaTablaSimbolos) operando).getLexema();
     }
 
