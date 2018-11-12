@@ -34,7 +34,11 @@ public class GeneradorAssembler {
             //suma
             if (t.getOperador().equals('+')){
                 if (t.getTipo().equals(EntradaTablaSimbolos.SINGLE)){
-
+                    code.add("FLD"+ t.getOperando1());
+                    code.add("FLD"+ t.getOperando2());
+                    code.add("FADD");
+                    code.add("FISTP "+ getResult(t));
+                    AnalizadorLexico.agregarATablaSimbolos(new EntradaTablaSimbolos(t.getAuxResultado(),t.getTipo()));
                 }
                 if (t.getTipo().equals(EntradaTablaSimbolos.LONG)){
                     code.add("MOV EAX," + t.getOperando1());
@@ -42,13 +46,16 @@ public class GeneradorAssembler {
                     code.add("MOV "+ getResult(t) + ",EAX");
                     AnalizadorLexico.agregarATablaSimbolos(new EntradaTablaSimbolos(t.getAuxResultado(),t.getTipo()));
                 }
-
                 //todo chequeo de overflow
             }
             //resta
             if (t.getOperador().equals('-')){
                 if (t.getTipo().equals(EntradaTablaSimbolos.SINGLE)){
-
+                    code.add("FLD"+ t.getOperando1());
+                    code.add("FLD"+ t.getOperando2()); //tener en cuenta que hace ST(1) - ST
+                    code.add("FSUB");
+                    code.add("FISTP "+ getResult(t));
+                    AnalizadorLexico.agregarATablaSimbolos(new EntradaTablaSimbolos(t.getAuxResultado(),t.getTipo()));
                 }
                 if (t.getTipo().equals(EntradaTablaSimbolos.LONG)){
                     code.add("MOV EAX," + t.getOperando1());
@@ -60,7 +67,7 @@ public class GeneradorAssembler {
             //multiplicacion
             if (t.getOperador().equals('-')){
                 if (t.getTipo().equals(EntradaTablaSimbolos.SINGLE)){
-
+                
                 }
                 if (t.getTipo().equals(EntradaTablaSimbolos.LONG)){
 
