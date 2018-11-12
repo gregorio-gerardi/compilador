@@ -3,6 +3,14 @@ import com.sun.istack.internal.Nullable;
 public class Terceto implements Operando {
 
     private String operador;
+    private Operando operando1;
+    private Operando operando2;
+    private String tipoResultante;
+    private String auxResultado;
+
+    public void setAuxResultado(String aux){
+        this.auxResultado=aux;
+    }
 
     public void setOperando1(Operando operando1) {
         this.operando1 = operando1;
@@ -11,11 +19,6 @@ public class Terceto implements Operando {
     public void setOperando2(Operando operando2) {
         this.operando2 = operando2;
     }
-
-    private Operando operando1;
-    private Operando operando2;
-
-    private String tipoResultante;
 
     public void setTipoResultante(String tipoResultante) {
         this.tipoResultante = tipoResultante;
@@ -59,4 +62,7 @@ public class Terceto implements Operando {
     }
 
 
+    public String getAuxResultado() {
+        return auxResultado;
+    }
 }

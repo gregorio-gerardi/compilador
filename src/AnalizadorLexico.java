@@ -9,7 +9,7 @@ public class AnalizadorLexico {
     public static double MAX_LONG = 2147483648.; //contemplando el maximo valor negativo posible
     public static double MAX_FLOAT = 340282347000000000000000000000000000000.;
     public static double MIN_FLOAT = 0.0000000000000000000000000000000000000117549435;
-    public HashMap<String, EntradaTablaSimbolos> tablaDeSimbolos = new HashMap<>();
+    public static HashMap<String, EntradaTablaSimbolos> tablaDeSimbolos = new HashMap<>();
     //--------//
     private DefaultCharacterAnalyser analizadorDeChar = new DefaultCharacterAnalyser();
     private Reader reader;
@@ -49,7 +49,7 @@ public class AnalizadorLexico {
         this.listaDeTokens.add(token);
     }
 
-    public void agregarATablaSimbolos(EntradaTablaSimbolos entrada) {
+    public static void agregarATablaSimbolos(EntradaTablaSimbolos entrada) {
         tablaDeSimbolos.put(entrada.getLexema(), entrada);
     }
 
