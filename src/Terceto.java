@@ -57,6 +57,19 @@ public class Terceto implements Operando {
         return operando2;
     }
 
+    public Object getOperando1ForAssembler() {
+        if (operando1 instanceof Terceto)
+            return (((Terceto) operando1).getAuxResultado());
+        return operando1;
+    }
+
+    public Object getOperando2ForAssembler() {
+        if (operando2 instanceof Terceto)
+            return (((Terceto) operando2).getAuxResultado());
+        return operando2;
+    }
+
+
     public String getTipo() {
         return tipoResultante;
     }
