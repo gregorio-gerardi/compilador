@@ -57,17 +57,41 @@ public class Terceto implements Operando {
         return operando2;
     }
 
-    public Object getOperando1ForAssembler() {
+    public String getOperando1ForAssembler(){
         if (operando1 instanceof Terceto)
-            return (((Terceto) operando1).getAuxResultado());
-        return operando1;
+            return ((Terceto) operando1).getAuxResultado();
+        if (operando1 instanceof TercetoDestino)
+            return (((TercetoDestino)operando1).destino.toString());
+        if (operando1 instanceof EntradaTablaDeSimbolosReferenciaAMemoria)
+            return "&"+((EntradaTablaDeSimbolosReferenciaAMemoria) operando1).getLexema();
+        return ((EntradaTablaSimbolos) operando1).getLexema();
     }
-
-    public Object getOperando2ForAssembler() {
+    public String getOperando2ForAssembler(){
         if (operando2 instanceof Terceto)
-            return (((Terceto) operando2).getAuxResultado());
-        return operando2;
+            return ((Terceto) operando2).getAuxResultado();
+        if (operando2 instanceof TercetoDestino)
+            return (((TercetoDestino)operando2).destino.toString());
+        if (operando2 instanceof EntradaTablaDeSimbolosReferenciaAMemoria)
+            return "&"+((EntradaTablaDeSimbolosReferenciaAMemoria) operando2).getLexema();
+        return ((EntradaTablaSimbolos) operando2).getLexema();
     }
+/*    public Object getOperando1ForAssembler() {
+        if (operando1 instanceof Terceto){
+            String buffer = ((Terceto) operando1).getAuxResultado();
+            return buffer;
+        }
+        if (operando1 instanceof EntradaTablaDeSimbolosReferenciaAMemoria)
+            return "&"+((EntradaTablaSimbolos) operando1).getLexema();
+        return ((EntradaTablaSimbolos) operando1).getLexema();
+    }*/
+
+/*    public Object getOperando2ForAssembler() {
+        if (operando2 instanceof Terceto){
+            String buffer = ((Terceto) operando2).getAuxResultado();
+            return buffer;
+        }
+        return operando2;
+    }*/
 
 
     public String getTipo() {

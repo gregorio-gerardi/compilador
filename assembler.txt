@@ -1,0 +1,39 @@
+.MODEL small
+.STACK 200h
+.DATA
+mensaje_overflow_producto db "ERROR EN TIEMPO DE EJECUCION --> OVERFLOW DETECTADO EN PRODUCTO", 0
+mensaje_overflow_suma db "ERROR EN TIEMPO DE EJECUCION --> OVERFLOW DETECTADO EN SUMA", 0
+.code
+start:
+MOV ,EntradaTablaSimbolos@7ea987ac,10.0
+FLD 10.5
+FSTP EntradaTablaSimbolos@12a3a380
+MOV ,EntradaTablaSimbolos@29453f44,1.0
+MOV ,EntradaTablaSimbolos@5cad8086,_integerMutable1
+FLD 1.5
+FSTP EntradaTablaSimbolos@6e0be858
+FLD _singleInmutable
+FSTP EntradaTablaSimbolos@61bbe9ba
+FLD &_integerMutable1
+FSTP EntradaTablaDeSimbolosPuntero@610455d6
+MOV EAX, _integerMutable1
+ADD EAX, 1.0
+JO @LABEL_OVF_SUMA
+MOV @aux10, EAX
+MOV ,EntradaTablaSimbolos@29453f44,@aux10
+MOV ,EntradaTablaSimbolos@5cad8086,_integerMutable1
+MOV EAX, _integerMutable1
+ADD EAX, _integerMutable2
+JO @LABEL_OVF_SUMA
+MOV @aux14, EAX
+@LABEL_OVF_PRODUCTO:
+invoke MessageBox, NULL, addr mensaje_overflow_producto, addr mensaje_overflow_producto, MB_OK
+JMP @LABEL_END
+@LABEL_OVF_SUMA:
+invoke MessageBox, NULL, addr mensaje_overflow_suma, addr mensaje_overflow_suma, MB_OK
+JMP @LABEL_END
+@LABEL_DIV_CERO:
+invoke MessageBox, NULL, addr mensaje_division_cero, addr mensaje_division_cero, MB_OK
+@LABEL_END:
+invoke ExitProcess, 0
+end start
