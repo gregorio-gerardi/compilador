@@ -1,35 +1,4 @@
-let linteger _integerInmutable := 10_l,
-let mut linteger _integerMutable1; *_punteroALinteger; _integerMutable2,
-let single _singleInmutable := 10.5,
-let mut single _singleMutable1; _singleMutable2,
-_integerMutable1 := 1_l,
-_integerMutable2 := _integerMutable1,
-_singleMutable1 := 1.5,
-_singleMutable2 := _singleInmutable,
-#los singles no se usaran en el bucle, estan solo
-como ejemplo del uso de asignaciones a singles#
-_punteroALinteger := &_integerMutable1,
-print('inicio del while'),
-while ( _integerMutable1 < _integerInmutable )
-{
-    #incremento la variable que controla el
-    while accediendola desde el puntero#
-    *_punteroALinteger :=_integerMutable1+1_l,
-    _integerMutable2:=_integerMutable1,
-    print('inicio del if'),
-    if ( _integerMutable1 +  _integerMutable2 <= _integerInmutable)
-    {
-        print('hola mundo'),
-        print('dentro del if'),
-        print('porque los enteros juntos suman menos o igual a 10'),
-    }
-    else
-    {
-        print('chau mundo cruel'),
-        print('dentro del else'),
-        print('porque los enteros juntos suman mas de 10'),
-    }
-  end_if,
-  print('fin del if'),
-},
-print('fin del while'),
+let mut linteger _a;_b;_c,
+_b:=2_l,
+_c:=3_l,
+_a:=22_l+_b*_c,

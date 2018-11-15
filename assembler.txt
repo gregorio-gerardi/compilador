@@ -1,5 +1,13 @@
-.MODEL small
+.MODEL flat, stdcall
 .STACK 200h
+option casemap :none
+include C:\masm32\include\windows.inc
+include C:\masm32\include\kernel32.inc
+include C:\masm32\include\user32.inc
+include C:\masm32\include\masm32.inc
+includelib C:\masm32\lib\kernel32.lib
+includelib C:\masm32\lib\user32.lib
+includelib C:\masm32\lib\masm32.lib
 .DATA
 1.5 DW 1.5
 10.0 DW 10.0
@@ -14,16 +22,16 @@ _integerMutable2 DD ?
 @aux10 DD ?
 @aux14 DD ?
 _integerInmutable DD ?
-inicio del while db "inicio del while", 0
-fin del while db "fin del while", 0
-dentro del if db "dentro del if", 0
-porque los enteros juntos suman mas de 10 db "porque los enteros juntos suman mas de 10", 0
-porque los enteros juntos suman menos o igual a 10 db "porque los enteros juntos suman menos o igual a 10", 0
-inicio del if db "inicio del if", 0
-chau mundo cruel db "chau mundo cruel", 0
-fin del if db "fin del if", 0
-dentro del else db "dentro del else", 0
-hola mundo db "hola mundo", 0
+iniciodelwhile db "inicio del while", 0
+findelwhile db "fin del while", 0
+dentrodelif db "dentro del if", 0
+porquelosenterosjuntossumanmasde10 db "porque los enteros juntos suman mas de 10", 0
+porquelosenterosjuntossumanmenosoiguala10 db "porque los enteros juntos suman menos o igual a 10", 0
+iniciodelif db "inicio del if", 0
+chaumundocruel db "chau mundo cruel", 0
+findelif db "fin del if", 0
+dentrodelelse db "dentro del else", 0
+holamundo db "hola mundo", 0
 mensaje_overflow_producto db "ERROR EN TIEMPO DE EJECUCION --> OVERFLOW DETECTADO EN PRODUCTO", 0
 mensaje_overflow_suma db "ERROR EN TIEMPO DE EJECUCION --> OVERFLOW DETECTADO EN SUMA", 0
 mensaje_division_cero db "ERROR EN TIEMPO DE EJECUCION --> DIVISION POR CERO DETECTADA", 0
@@ -41,7 +49,7 @@ FLD _singleInmutable
 FSTP _singleMutable2
 FLD &_integerMutable1
 FSTP _punteroALinteger
-invoke MessageBox, NULL, addr inicio del while, addr inicio del while, MB_OK
+invoke MessageBox, NULL, addr iniciodelwhile, addr inicio del while, MB_OK
 MOVE EAX, _integerMutable1
 CMP EAX, _integerInmutable
 JGL @labelTerceto26
@@ -51,7 +59,7 @@ JO @LABEL_OVF_SUMA
 MOV @aux10, EAX
 MOV _integerMutable1, @aux10
 MOV _integerMutable2, _integerMutable1
-invoke MessageBox, NULL, addr inicio del if, addr inicio del if, MB_OK
+invoke MessageBox, NULL, addr iniciodelif, addr inicio del if, MB_OK
 MOV EAX, _integerMutable1
 ADD EAX, _integerMutable2
 JO @LABEL_OVF_SUMA
@@ -59,16 +67,16 @@ MOV @aux14, EAX
 MOVE EAX, @aux14
 CMP EAX, _integerInmutable
 JG @labelTerceto21
-invoke MessageBox, NULL, addr hola mundo, addr hola mundo, MB_OK
-invoke MessageBox, NULL, addr dentro del if, addr dentro del if, MB_OK
-invoke MessageBox, NULL, addr porque los enteros juntos suman menos o igual a 10, addr porque los enteros juntos suman menos o igual a 10, MB_OK
+invoke MessageBox, NULL, addr holamundo, addr hola mundo, MB_OK
+invoke MessageBox, NULL, addr dentrodelif, addr dentro del if, MB_OK
+invoke MessageBox, NULL, addr porquelosenterosjuntossumanmenosoiguala10, addr porque los enteros juntos suman menos o igual a 10, MB_OK
 @labelTerceto21
-invoke MessageBox, NULL, addr chau mundo cruel, addr chau mundo cruel, MB_OK
-invoke MessageBox, NULL, addr dentro del else, addr dentro del else, MB_OK
-invoke MessageBox, NULL, addr porque los enteros juntos suman mas de 10, addr porque los enteros juntos suman mas de 10, MB_OK
-invoke MessageBox, NULL, addr fin del if, addr fin del if, MB_OK
+invoke MessageBox, NULL, addr chaumundocruel, addr chau mundo cruel, MB_OK
+invoke MessageBox, NULL, addr dentrodelelse, addr dentro del else, MB_OK
+invoke MessageBox, NULL, addr porquelosenterosjuntossumanmasde10, addr porque los enteros juntos suman mas de 10, MB_OK
+invoke MessageBox, NULL, addr findelif, addr fin del if, MB_OK
 @labelTerceto26
-invoke MessageBox, NULL, addr fin del while, addr fin del while, MB_OK
+invoke MessageBox, NULL, addr findelwhile, addr fin del while, MB_OK
 
 @LABEL_OVF_PRODUCTO:
 invoke MessageBox, NULL, addr mensaje_overflow_producto, addr mensaje_overflow_producto, MB_OK

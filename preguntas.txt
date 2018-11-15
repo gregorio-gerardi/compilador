@@ -2,3 +2,22 @@
 - Flags del co procesador para chequeo overflow y div por cero.
 - Hay que diferenciar al momento de declarar las variables en memoria si son Integer o Double, o se declaran de la misma manera?
 lhf
+
+--Para verificar overflow en los tipo singles,
+                    code.add("FLD " + t.getOperando1ForAssembler());
+                    code.add("FLD " + t.getOperando2ForAssembler());
+                    code.add("FADD");
+                    code.add("FSTP " + getResult(t));
+                    code.add("FLD max-double");
+                    code.add("FLD " + getResult(t));
+                    code.add("FCOM");
+                    code.add("FSTSW AX");
+                    code.add("SAHF");
+                    code.add("JO @LABEL_OVF_SUMA");
+                    code.add("FLD min-double");
+                    code.add("FLD " + getResult(t));
+                    code.add("FCOM");
+                    code.add("FSTSW AX");
+                    code.add("SAHF");
+                    code.add("JO @LABEL_OVF_SUMA");
+tambien hay que verificar que no sea menor al menor valor posible?
