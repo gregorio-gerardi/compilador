@@ -1,1 +1,4 @@
-- Chequeo de overflow para linteger y single, con JC o JO ?
+- Chequeo de overflow para linteger y single, con JC o JO ? single a manopla
+- Flags del co procesador para chequeo overflow y div por cero.
+- Hay que diferenciar al momento de declarar las variables en memoria si son Integer o Double, o se declaran de la misma manera?
+lhf
