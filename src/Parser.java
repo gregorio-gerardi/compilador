@@ -1083,7 +1083,7 @@ case 49:
   ListaTercetos lt=ListaTercetos.getInstanceOfListaDeTercetos();
   Terceto tercetoIncompleto = lt.getTerceto(lt.getPilaTercetos().pop());
   tercetoIncompleto.setOperando2(new TercetoDestino(lt.getTercetos().size()+1));
-  Terceto saltoAlInicio= new Terceto("BI");
+  Terceto saltoAlInicio= new Terceto("WHILE");
   saltoAlInicio.setOperando2(new TercetoDestino(lt.getPilaTercetos().pop()));
   lt.addTerceto(saltoAlInicio);
 }

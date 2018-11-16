@@ -10,37 +10,45 @@ includelib \masm32\lib\kernel32.lib
 includelib \masm32\lib\user32.lib
 includelib \masm32\lib\masm32.lib
 .DATA
-mem@cte3 DW 3
-mem@cte2 DW 2
-mem@cte22 DW 22
+mem@cte340282346E38 DD 3.40282346E38
+mem@cte340282345E38 DD 3.40282345E38
 @aux2 DD ?
-@aux3 DD ?
 _c DD ?
 _b DD ?
 _a DD ?
-max_double DW 3.40282347E38
-min_double DW 1.17549435E-38
+max_double DD 3.40282347E38
+min_double DD 1.17549435E-38
 mensaje_error db "Error en tiempo de ejecucion!",0
+mensaje_fin db "Fin de la ejecucion!",0
 mensaje_overflow_producto db "ERROR EN TIEMPO DE EJECUCION --> OVERFLOW DETECTADO EN PRODUCTO", 0
 mensaje_overflow_suma db "ERROR EN TIEMPO DE EJECUCION --> OVERFLOW DETECTADO EN SUMA", 0
 mensaje_division_cero db "ERROR EN TIEMPO DE EJECUCION --> DIVISION POR CERO DETECTADA", 0
 
 .code
 start:
-MOV EAX ,2
-MOV _b, EAX
-MOV EAX ,3
-MOV _c, EAX
-MOV EAX,_b
-IMUL EAX,_c
+FLD mem@cte340282346E38
+FSTP _a
+FLD mem@cte340282345E38
+FSTP _b
+FLD _a
+FLD _b
+FMUL
+FSTP @aux2
+FLD max_double
+FLD @aux2
+FCOM
+FSTSW AX
+SAHF
 JO @LABEL_OVF_PRODUCTO
-MOV @aux2, EAX
-MOV EAX, 22
-ADD EAX, @aux2
-JO @LABEL_OVF_SUMA
-MOV @aux3, EAX
-MOV EAX ,@aux3
-MOV _a, EAX
+FLD min_double
+FLD @aux2
+FCOM
+FSTSW AX
+SAHF
+JO @LABEL_OVF_PRODUCTO
+FLD @aux2
+FSTP _c
+JMP @LABEL_END
 
 @LABEL_OVF_PRODUCTO:
 invoke MessageBox, NULL, addr mensaje_overflow_producto,addr mensaje_error, MB_OK
@@ -51,5 +59,6 @@ JMP @LABEL_END
 @LABEL_DIV_CERO:
 invoke MessageBox, NULL, addr mensaje_division_cero, addr mensaje_error, MB_OK
 @LABEL_END:
+invoke MessageBox, NULL, addr mensaje_fin, addr mensaje_fin, MB_OK
 invoke ExitProcess, 0
 end start

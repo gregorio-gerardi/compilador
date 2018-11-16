@@ -6,26 +6,24 @@ No se encontraron errores lexicos.
 TOKENS DEL ANALIZADOR LEXICO:
 
 Palabra Reservada let (linea 1)
-Palabra Reservada mut (linea 1)
-Palabra Reservada linteger (linea 1)
+Palabra Reservada single (linea 1)
 ID (linea 1)
-Simbolo ; (linea 1)
-ID (linea 1)
-Simbolo ; (linea 1)
-ID (linea 1)
+Simbolo := (linea 1)
+CTE Float 3.40282346E38 (linea 1)
 Simbolo , (linea 1)
+Palabra Reservada let (linea 2)
+Palabra Reservada single (linea 2)
 ID (linea 2)
 Simbolo := (linea 2)
-CTE linteger (linea 2)
+CTE Float 3.40282345E38 (linea 2)
 Simbolo , (linea 2)
+Palabra Reservada let (linea 3)
+Palabra Reservada mut (linea 3)
+Palabra Reservada single (linea 3)
 ID (linea 3)
-Simbolo := (linea 3)
-CTE linteger (linea 3)
 Simbolo , (linea 3)
 ID (linea 4)
 Simbolo := (linea 4)
-CTE linteger (linea 4)
-Simbolo + (linea 4)
 ID (linea 4)
 Simbolo * (linea 4)
 ID (linea 4)
@@ -40,29 +38,26 @@ No se detectaron errores sintacticos.
 REGLAS SINTACTICAS:
 
 tipo reconocida en linea 1
-lista de variables reconocida en linea 1
-lista de variables reconocida en linea 1
-lista de variables reconocida en linea 1
-sentencia declarativa reconocida en linea 1
+asign cte reconocida en linea 1
+sentencia declarativa en linea 1
 sentencia reconocida en linea 1
 Contenido de programa reconocido en linea 1
-expresion reconocida en linea 2
-asignacion reconocida en linea 2
-sentencia ejecutable reconocida en linea 2
+tipo reconocida en linea 2
+asign cte reconocida en linea 2
+sentencia declarativa en linea 2
 sentencia reconocida en linea 2
 Contenido de programa reconocido en linea 2
-expresion reconocida en linea 3
-asignacion reconocida en linea 3
-sentencia ejecutable reconocida en linea 3
+tipo reconocida en linea 3
+lista de variables reconocida en linea 3
+sentencia declarativa reconocida en linea 3
 sentencia reconocida en linea 3
 Contenido de programa reconocido en linea 3
-expresion reconocida en linea 4
 expresion reconocida en linea 4
 asignacion reconocida en linea 4
 sentencia ejecutable reconocida en linea 4
 sentencia reconocida en linea 4
 Contenido de programa reconocido en linea 4
-Programa reconocido en linea 4
+Programa reconocido en linea 5
 --------------------
 ERRORES SEMANTICOS:
 
@@ -71,19 +66,17 @@ No se detectaron errores sintacticos.
 
 CONTENIDO DE LA TABLA DE SIMBOLOS:
 
-22 --> Linteger
-_a --> Linteger
-2 --> Linteger
-_b --> Linteger
-3 --> Linteger
-_c --> Linteger
+_a --> Single
+_b --> Single
+_c --> Single
+3.40282345E38 --> Single
+3.40282346E38 --> Single
 --------------------
 
 LISTA DE TERCETOS GENERADOS:
 
-0 - ( ASIGNACION , _b , 2 ) 
-1 - ( ASIGNACION , _c , 3 ) 
-2 - ( * , _b , _c ) 
-3 - ( + , 22 , [2] ) 
-4 - ( ASIGNACION , _a , [3] ) 
+0 - ( ASIGNACION , _a , 3.40282346E38 ) 
+1 - ( ASIGNACION , _b , 3.40282345E38 ) 
+2 - ( * , _a , _b ) 
+3 - ( ASIGNACION , _c , [2] ) 
 --------------------

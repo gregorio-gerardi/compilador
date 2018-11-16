@@ -64,6 +64,8 @@ public class Terceto implements Operando {
             return (((TercetoDestino)operando1).destino.toString());
         if (operando1 instanceof EntradaTablaDeSimbolosReferenciaAMemoria)
             return "&"+((EntradaTablaDeSimbolosReferenciaAMemoria) operando1).getLexema();
+        /*if (operando1.getTipo().equals(EntradaTablaSimbolos.SINGLE))
+            return "mem@cte"+((EntradaTablaSimbolos) operando1).getLexema();*/
         return ((EntradaTablaSimbolos) operando1).getLexema();
     }
     public String getOperando2ForAssembler(){
