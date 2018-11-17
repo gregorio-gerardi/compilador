@@ -653,3 +653,176 @@ print('hola'),
 }
 end_if,
 print('asdsad'),
+
+
+
+
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+----------------------------------------------------------------------------------
+----------------------------------------------------------------------------------
+__________________________________________________________________________________
+__________________________________________________________________________________
+#CASOS DE PRUEBA SOLICITADOS POR LA CATEDRA#
+
+#- Para los ejemplos 4 a 9 del análisis sintáctico, agregar en cada bloque una impresión para mostrar el comportamiento.#
+
+#EJEMPLOS ANALISADOR SINTACTICO 4 #
+let linteger _varif=34_l,
+if (_varif=34_l)
+print('hola mundo'),
+end_if,
+
+
+#EJEMPLOS ANALISADOR SINTACTICO 5 #
+let linteger _varif=34_l,
+if (_varif=34_l)
+{
+print('hola mundo1'),
+print('hola mundo2'),
+print('hola mundo3'),
+}
+end_if,
+
+#EJEMPLOS ANALISADOR SINTACTICO 6 #
+#CASO IF#
+let linteger _varif=34_l,
+if (_varif=34_l)
+print('hola mundo'),
+else
+print('hola mundo else'),
+end_if,
+
+#EJEMPLOS ANALISADOR SINTACTICO 6 #
+#CASO ELSE#
+let linteger _varif=35_l,
+if (_varif=34_l)
+print('hola mundo'),
+else
+print('hola mundo else'),
+end_if,
+
+#EJEMPLOS ANALISADOR SINTACTICO 7 #
+#CASO IF#
+let linteger _var=12_l,
+let linteger _algo=-2_l,
+let linteger _algomas=2_l,
+if ( _var / 2_l+ = 10_l + _algo * _algomas)
+print('hola mundo'),
+else
+print('hola mundo else'),
+end_if,
+
+#EJEMPLOS ANALISADOR SINTACTICO 7 #
+#CASO ELSE#
+let linteger _var=12_l,
+let linteger _algo=-2_l,
+let linteger _algomas=4_l,
+if ( _var / 2_l+ = 10_l + _algo * _algomas)
+print('hola mundo'),
+else
+print('hola mundo else'),
+end_if,
+
+#EJEMPLOS ANALISADOR SINTACTICO 8 #
+let mut linteger _var,
+_var := 0_l,
+let linteger _count=5_l,
+while ( _var <= _count )
+{
+print('hola mundo'),
+_var := _var + 1_l,
+},
+
+#EJEMPLOS ANALISADOR SINTACTICO 9 #
+let mut linteger _var,
+_var := 10_l,
+let linteger _count=20_l,
+let linteger _algo=-2_l,
+let linteger _algomas=2_l,
+while ( _var <= _count )
+{
+print('hola mundo while'),
+if ( _var / 2_l+ = 10_l + _algo * _algomas)
+print('hola mundo var vale 12'),
+else
+print('hola mundo else var distinto de 12'),
+end_if,
+_var := _var + 1_l,
+},
+
+
+#- Para los ejemplos 12 a 15 del análisis sintáctico, agregar impresiones en los cuerpos de las funciones.#
+
+#NO CORRESPONDE#
+
+#- Para los ejemplos 10, 11 y 16 a 18 del análisis sintáctico, colocar luego una selección para verificar el
+resultado de las expresiones y conversiones. #
+
+
+#EJEMPLOS ANALISADOR SINTACTICO 10 #
+let mut linteger _a; _b; *_c; _d; *_e ,
+let linteger _x := 5_l ,
+#NO HAY EXPRESIONES NI CONVERSIONES, SOLO SE DECLARAN COMO MUTABLES O NO LAS VARIABLES#
+
+#EJEMPLOS ANALISADOR SINTACTICO 11 #
+let mut linteger *_a;_b,
+_a := &_b ,
+_b:=2_l,
+if ( _b = 2_l )
+print('hola mundo _b vale 2'),
+else
+print('hola mundo _b no vale 2'),
+end_if,
+*_a := 4_l,
+if ( _b = 4_l )
+print('hola mundo _b vale 4'),
+else
+print('hola mundo _b no vale 4'),
+end_if,
+
+
+#EJEMPLOS ANALISADOR SINTACTICO 16 #
+let mut linteger _a,
+_a := -32_l + 2_l ,
+if ( _a = -30_l )
+print('hola mundo _a vale 30'),
+else
+print('hola mundo _a no vale 30'),
+end_if,
+
+#- Variables y funciones no declaradas.#
+
+#Validado en casos de prueba propios#
+
+#- Variables y funciones redeclaradas.#
+
+#Validado en casos de prueba propios#
+
+#- Chequeos de tipos para el for (si corresponde).#
+
+#No corresponde#
+
+#- Chequeos de tipos para el case (si corresponde).#
+
+#No corresponde#
+
+#- Expresiones con tipos compatibles y tipos no compatibles.#
+
+#Validado en casos de prueba propios#
+
+#- Conversiones válidas e inválidas.#
+
+#No corresponde#
+
+#- Visibilidad de las variables declaradas en funciones (si corresponde).#
+
+#No corresponde#
+
+#- Lectura y escritura de variables según diferentes permisos (si corresponde).#
+
+#No corresponde#
+
+#- Casos válidos e inválidos para mutabilidad (si corresponde).#
+
+#Validado en casos de prueba propios#
