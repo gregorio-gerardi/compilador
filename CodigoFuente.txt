@@ -1,4 +1,7 @@
-let single _a := 340282346000000000000000000000000000000.,
-let single _b := 340282345000000000000000000000000000000.,
-let mut single _c,
-_c := _a * _b,
+let mut linteger _b,
+let linteger *_c:=&_b,
+*_c:=22_l,
+if (_b=22_l){
+print('anduvo'),
+}
+end_if,

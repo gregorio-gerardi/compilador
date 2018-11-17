@@ -24,3 +24,5 @@ tambien hay que verificar que no sea menor al menor valor posible?
 
 --Tenemos un problema con las ctes, las declarabamos usando el lexema que era el mismo numero pero no esta permitido en assembler declarar
 algo con nombre 22 por ejemplo, hace falta que las declaremos o las podemos usar como valor inmediato directamente?
+
+--problema con las cadenas print si tienen una "," no se pueden guardar como el lexema va haber que modificar eso

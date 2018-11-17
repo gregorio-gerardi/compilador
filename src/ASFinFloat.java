@@ -2,7 +2,6 @@ public class ASFinFloat implements AccionSemantica {
     @Override
     public void ejecutar(AnalizadorLexico al) {
         //al.incPosition();
-
         //convierto a compatible con java
         String[] separados = new String[2];
         String buffer = al.getBuffer();

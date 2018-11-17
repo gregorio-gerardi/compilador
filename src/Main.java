@@ -114,6 +114,7 @@ public class Main {
             pw.println("--------------------");
             System.out.println("--------------------");
             pw.close();
+            //TODO VERIFICAR QUE NO HAYA ERRORES
             GeneradorAssembler.generarAssembler(tercetos);
         } catch (IOException ex) {
             ex.printStackTrace();

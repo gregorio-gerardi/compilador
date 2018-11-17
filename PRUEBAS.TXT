@@ -599,3 +599,57 @@ while ( _integerMutable1 < _integerInmutable )
   print('fin del if'),
 },
 print('fin del while'),
+
+
+---------------------------------------------------------------------
+PRUEBAS FERMIN
+
+let linteger _a := 12_l,
+let linteger _b := 4_l,
+let mut linteger _c,
+
+_c := _a + _b,
+if (_c = 16_l){
+print ('suma enteros bien echa dio 16'),
+} end_if,
+
+_c := _a - _b,
+if (_c = 8_l){
+print (' resta enteros bien echa dio 8'),
+} end_if,
+
+let mut linteger _a,
+let mut linteger _c,
+let mut linteger _b,
+_a := 15_l,
+_b := 3_l,
+_c := _a / _b,
+if (_c =5_l){
+print('Anduvo'),
+print('Anduvo'),
+print('Anduvo'),
+}
+else
+{
+print('No Anduvo'),
+print('No Anduvo'),
+print('No Anduvo'),
+}
+end_if,
+print('hola'),
+
+
+#invoke printf, cfm$("%d\n"), _c#
+let linteger _integerInmutable := 10_l,
+let mut linteger _integerMutable1; *_punteroALinteger; *_punteroLoco; _integerMutable2,
+
+_integerMutable1 := 15_l,
+_integerMutable2 := 15_l,
+_punteroALinteger := &_integerMutable1,
+_punteroLoco := &_integerMutable2,
+
+if(_punteroALinteger = &_integerMutable1){
+print('hola'),
+}
+end_if,
+print('asdsad'),

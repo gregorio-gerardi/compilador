@@ -1208,7 +1208,7 @@ case 66:
     ListaTercetos lt= ListaTercetos.getInstanceOfListaDeTercetos();
     lt.addTerceto(terceto);
     /*añado un terceto para indicar el branch por falso y apilo el terceto recien creado incompleto para completar luego*/
-    lt.addTerceto(new Terceto("BF",lt.getTerceto(lt.getTercetos().size()-1)));
+    lt.addTerceto(new Terceto("ELSE",lt.getTerceto(lt.getTercetos().size()-1)));
     lt.getPilaTercetos().push(lt.getTercetos().size()-1);
   }
 }

@@ -267,7 +267,7 @@ import java.util.HashSet;
   cuerpoThen: bloqueSentencias {ListaTercetos lt = ListaTercetos.getInstanceOfListaDeTercetos();
   Terceto tercetoACompletar = lt.getTerceto(lt.getPilaTercetos().pop());
   tercetoACompletar.setOperando2(new TercetoDestino(lt.getTercetos().size()+1));
-  Terceto incondicionalAcompletar = new Terceto("BI");
+  Terceto incondicionalAcompletar = new Terceto("ELSE");
   lt.addTerceto(incondicionalAcompletar);
   lt.getPilaTercetos().push(lt.getTercetos().size()-1);
 }
