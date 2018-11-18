@@ -5,14 +5,15 @@ includelib \masm32\lib\masm32.lib
 dll_dllcrt0 PROTO C
 printf PROTO C :VARARG
 .DATA
-mem@cte10@0 DD 10.0
-mem@cte15@0 DD 15.0
-@aux2 DD ?
-_c DD ?
-_b DD ?
-_a DD ?
-max_double DD 3.40282347E38
-min_double DD 1.17549435E-38
+mem@cte0@0 REAL8 0.0
+mem@cte15@0 REAL8 15.0
+@aux2 REAL8 ?
+_c REAL8 ?
+_b REAL8 ?
+_a REAL8 ?
+@aux_mem DW ?
+max_double REAL8 340282347000000000000000000000000000000.
+min_double REAL8 0.0000000000000000000000000000000000000117549435
 mensaje_error db "Error en tiempo de ejecucion!",0
 mensaje_fin db "Fin de la ejecucion!",0
 mensaje_overflow_producto db "OVERFLOW DETECTADO EN PRODUCTO", 0
@@ -21,9 +22,10 @@ mensaje_division_cero db "DIVISION POR CERO DETECTADA", 0
 
 .code
 start:
-FLD mem@cte15@0
+FNINIT
+FLD mem@cte0@0
 FSTP _a
-FLD mem@cte10@0
+FLD mem@cte15@0
 FSTP _b
 FLD _a
 FLD _b
@@ -32,9 +34,16 @@ FSTP @aux2
 FLD max_double
 FLD @aux2
 FCOM
+FSTSW @aux_mem
+MOV AX, @aux_mem
+SAHF
+JA @LABEL_OVF_SUMA
+FLD min_double
+FLD @aux2
+FCOM
 FSTSW AX
 SAHF
-JG @LABEL_OVF_SUMA
+JB @LABEL_OVF_SUMA
 FLD @aux2
 FSTP _c
 JMP @LABEL_END
@@ -49,5 +58,6 @@ JMP @LABEL_END
 invoke MessageBox, NULL, addr mensaje_division_cero, addr mensaje_error, MB_OK
 @LABEL_END:
 invoke MessageBox, NULL, addr mensaje_fin, addr mensaje_fin, MB_OK
+FNINIT
 invoke ExitProcess, 0
 end start

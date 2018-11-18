@@ -26,7 +26,7 @@ public class GeneradorAssembler {
         int indexS = desde;
         for (EntradaTablaSimbolos e : AnalizadorLexico.tablaDeSimbolos.values()) {
             if (e.getLexema().substring(0, 1).equals("_") || e.getLexema().substring(0, 1).equals("@")) {  //Variables
-                code.add(indexV, e.getLexema() + " DD ?");
+                code.add(indexV, e.getLexema() + " REAL8 ?");
                 indexS++;
             } else if (e.getTipo().equals("String")) {                                              //Strings
                 code.add(indexS, e.getLexema().replace(" ", "") + " db \"" + e.getLexema() + "\", 0");
@@ -37,7 +37,7 @@ public class GeneradorAssembler {
                     indexS++;
                 } else if
                 (e.tipo.equals(EntradaTablaSimbolos.SINGLE)) {
-                    code.add(desde, "mem@cte" + e.getLexema().replace(".", "@") + " DD " + e.getLexema());                 //Constantes
+                    code.add(desde, "mem@cte" + e.getLexema().replace(".", "@") + " REAL8 " + e.getLexema());                 //Constantes
                     indexV++;
                     indexS++;
                 }
@@ -70,6 +70,7 @@ public class GeneradorAssembler {
         code.add("invoke MessageBox, NULL, addr mensaje_division_cero, addr mensaje_error, MB_OK");
         code.add("@LABEL_END:");
         code.add("invoke MessageBox, NULL, addr mensaje_fin, addr mensaje_fin, MB_OK");
+        code.add("FNINIT");
         code.add("invoke ExitProcess, 0");
         code.add("end start");
     }
@@ -87,8 +88,9 @@ public class GeneradorAssembler {
         code.add("printf PROTO C :VARARG");
         code.add(".DATA");
         desdeLinea = code.size();
-        code.add("max_double DD " + AnalizadorLexico.MAX_FLOAT);
-        code.add("min_double DD " + AnalizadorLexico.MIN_FLOAT);
+        code.add("@aux_mem DW ?");
+        code.add("max_double REAL8 " + "340282347000000000000000000000000000000.");
+        code.add("min_double REAL8 " + "0.0000000000000000000000000000000000000117549435");
         code.add("mensaje_error db \"Error en tiempo de ejecucion!\",0");
         code.add("mensaje_fin db \"Fin de la ejecucion!\",0");
         code.add("mensaje_overflow_producto db \"OVERFLOW DETECTADO EN PRODUCTO\", 0");
@@ -106,6 +108,7 @@ public class GeneradorAssembler {
         code.add(String.valueOf('\n'));
         code.add(".code");
         code.add("start:");
+        code.add("FNINIT");
         Terceto t;
         ArrayList<Integer> labelsIf = new ArrayList<>();
         ArrayList<Integer> labelsWhile = new ArrayList<>();
@@ -161,7 +164,7 @@ public class GeneradorAssembler {
             //suma
             if (t.getOperador().equals("+")) {
                 if (t.getTipo().equals(EntradaTablaSimbolos.SINGLE)) {
-                    //todo CHEQUEAR ESTABA DISNTO EL FILMINA DE ANTO Y DE MARCELA, IMPROVISE
+                    //TODO QUEDA CON JA Y JB NO ANDA LOS JUMP SIGNADOS
                     code.add("FLD " + t.getOperando1ForAssembler());
                     code.add("FLD " + t.getOperando2ForAssembler());
                     code.add("FADD");
@@ -169,15 +172,16 @@ public class GeneradorAssembler {
                     code.add("FLD max_double");
                     code.add("FLD " + getResult(t));
                     code.add("FCOM");
-                    code.add("FSTSW AX");
+                    code.add("FSTSW @aux_mem");
+                    code.add("MOV AX, @aux_mem");
                     code.add("SAHF");
-                    code.add("JG @LABEL_OVF_SUMA");
-/*                    code.add("FLD min_double");
+                    code.add("JA @LABEL_OVF_SUMA");
+                    code.add("FLD min_double");
                     code.add("FLD " + getResult(t));
                     code.add("FCOM");
                     code.add("FSTSW AX");
                     code.add("SAHF");
-                    code.add("JL @LABEL_OVF_SUMA"); //todo consultar*/
+                    code.add("JB @LABEL_OVF_SUMA");
                     AnalizadorLexico.agregarATablaSimbolos(new EntradaTablaSimbolos(t.getAuxResultado(), t.getTipo()));
                 }
                 if (t.getTipo().equals(EntradaTablaSimbolos.LONG)) {
@@ -209,7 +213,7 @@ public class GeneradorAssembler {
             //multiplicacion
             if (t.getOperador().equals("*")) {
                 if (t.getTipo().equals(EntradaTablaSimbolos.SINGLE)) {
-                    //TODO CHEQUEAR
+                    //TODO QUEDA CON JA Y JB NO ANDA LOS JUMP SIGNADOS
                     code.add("FLD " + t.getOperando1ForAssembler());
                     code.add("FLD " + t.getOperando2ForAssembler()); //tener en cuenta que hace ST(1) * ST
                     code.add("FMUL");
@@ -219,13 +223,13 @@ public class GeneradorAssembler {
                     code.add("FCOM");
                     code.add("FSTSW AX");
                     code.add("SAHF");
-                    code.add("JG @LABEL_OVF_PRODUCTO");
+                    code.add("JA @LABEL_OVF_PRODUCTO");
                     code.add("FLD min_double");
                     code.add("FLD " + getResult(t));
                     code.add("FCOM");
                     code.add("FSTSW AX");
                     code.add("SAHF");
-                    code.add("JL @LABEL_OVF_PRODUCTO");
+                    code.add("JB @LABEL_OVF_PRODUCTO");
                     AnalizadorLexico.agregarATablaSimbolos(new EntradaTablaSimbolos(t.getAuxResultado(), t.getTipo()));
                 }
                 if (t.getTipo().equals(EntradaTablaSimbolos.LONG)) {
