@@ -686,6 +686,8 @@ QUE INTERCAMBIA EL DESREFERENCIN QUE LA GENERACION DE TERCETOS HARA CUANDO SE LO
 PERO EL TERCETO DE LA ASIGNACION PROPIA ENTRE PUNTEROS ES IGNORADO POR EL GENERADOR DE
 ASSEMBLER#
 
+AGREGAR CAMBIO EN ACCION SEMANTICA DE RECONOCIMIENTO DE SINGLES, AGREGAMOS PARA QUE SE PUEDA ASIGNAR EL
+VALOR 0.
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ----------------------------------------------------------------------------------

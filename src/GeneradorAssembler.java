@@ -37,7 +37,7 @@ public class GeneradorAssembler {
                     indexS++;
                 } else if
                 (e.tipo.equals(EntradaTablaSimbolos.SINGLE)) {
-                    code.add(desde, "mem@cte" + e.getLexema().replace(".", "") + " DD " + e.getLexema());                 //Constantes
+                    code.add(desde, "mem@cte" + e.getLexema().replace(".", "@") + " DD " + e.getLexema());                 //Constantes
                     indexV++;
                     indexS++;
                 }
@@ -172,12 +172,12 @@ public class GeneradorAssembler {
                     code.add("FSTSW AX");
                     code.add("SAHF");
                     code.add("JG @LABEL_OVF_SUMA");
-                    code.add("FLD min_double");
+/*                    code.add("FLD min_double");
                     code.add("FLD " + getResult(t));
                     code.add("FCOM");
                     code.add("FSTSW AX");
                     code.add("SAHF");
-                    code.add("JL @LABEL_OVF_SUMA"); //todo consultar
+                    code.add("JL @LABEL_OVF_SUMA"); //todo consultar*/
                     AnalizadorLexico.agregarATablaSimbolos(new EntradaTablaSimbolos(t.getAuxResultado(), t.getTipo()));
                 }
                 if (t.getTipo().equals(EntradaTablaSimbolos.LONG)) {
@@ -275,7 +275,7 @@ public class GeneradorAssembler {
                     code.add("MOV " + t.getOperando1ForAssembler() + ", EAX");
                 } else if (t.getOperando1().getTipo().equals(EntradaTablaSimbolos.SINGLE)){
                     if (t.getOperando2() instanceof EntradaTablaSimbolos && !(((EntradaTablaSimbolos) t.getOperando2()).getLexema().startsWith("_", 0))) {
-                        code.add("FLD mem@cte" + t.getOperando2ForAssembler().replace(".", ""));
+                        code.add("FLD mem@cte" + t.getOperando2ForAssembler().replace(".", "@"));
                         code.add("FSTP " + t.getOperando1ForAssembler());
                     } else {
                         code.add("FLD " + t.getOperando2ForAssembler());

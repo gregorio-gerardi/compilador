@@ -5,7 +5,8 @@ includelib \masm32\lib\masm32.lib
 dll_dllcrt0 PROTO C
 printf PROTO C :VARARG
 .DATA
-mem@cte340282347E38 DD 3.40282347E38
+mem@cte10@0 DD 10.0
+mem@cte0@0 DD 0.0
 @aux2 DD ?
 _c DD ?
 _b DD ?
@@ -20,9 +21,9 @@ mensaje_division_cero db "DIVISION POR CERO DETECTADA", 0
 
 .code
 start:
-FLD mem@cte340282347E38
+FLD mem@cte0@0
 FSTP _a
-FLD mem@cte340282347E38
+FLD mem@cte10@0
 FSTP _b
 FLD _a
 FLD _b
@@ -33,13 +34,7 @@ FLD @aux2
 FCOM
 FSTSW AX
 SAHF
-JO @LABEL_OVF_SUMA
-FLD min_double
-FLD @aux2
-FCOM
-FSTSW AX
-SAHF
-JL @LABEL_OVF_SUMA
+JG @LABEL_OVF_SUMA
 FLD @aux2
 FSTP _c
 JMP @LABEL_END

@@ -267,7 +267,7 @@ import java.util.HashSet;
   cuerpoThen: bloqueSentencias {ListaTercetos lt = ListaTercetos.getInstanceOfListaDeTercetos();
   Terceto tercetoACompletar = lt.getTerceto(lt.getPilaTercetos().pop());
   tercetoACompletar.setOperando2(new TercetoDestino(lt.getTercetos().size()+1));
-  Terceto incondicionalAcompletar = new Terceto("ELSE");
+  Terceto incondicionalAcompletar = new Terceto("BI");
   lt.addTerceto(incondicionalAcompletar);
   lt.getPilaTercetos().push(lt.getTercetos().size()-1);
 }
@@ -381,7 +381,7 @@ import java.util.HashSet;
     ListaTercetos lt= ListaTercetos.getInstanceOfListaDeTercetos();
     lt.addTerceto(terceto);
     //añado un terceto para indicar el branch por falso y apilo el terceto recien creado incompleto para completar luego
-    lt.addTerceto(new Terceto("BF",lt.getTerceto(lt.getTercetos().size()-1)));
+    lt.addTerceto(new Terceto("ELSE",lt.getTerceto(lt.getTercetos().size()-1)));
     lt.getPilaTercetos().push(lt.getTercetos().size()-1);
   }
 }

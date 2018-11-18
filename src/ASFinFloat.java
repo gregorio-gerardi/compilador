@@ -20,7 +20,7 @@ public class ASFinFloat implements AccionSemantica {
         if (single > AnalizadorLexico.MAX_FLOAT) {
             al.addListaDeErroresLexicos(String.format("Warning cte float mayor al rango at linea: %1$d", al.getLinea()));
             single = AnalizadorLexico.MAX_FLOAT;
-        } else if (single < AnalizadorLexico.MIN_FLOAT) {
+        } else if (single < AnalizadorLexico.MIN_FLOAT && single!= 0) {
             al.addListaDeErroresLexicos(String.format("Warning cte float menor al rango at linea: %1$d", al.getLinea()));
             single = AnalizadorLexico.MIN_FLOAT;
         }
