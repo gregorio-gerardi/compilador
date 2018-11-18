@@ -6,7 +6,7 @@ dll_dllcrt0 PROTO C
 printf PROTO C :VARARG
 .DATA
 mem@cte10@0 DD 10.0
-mem@cte0@0 DD 0.0
+mem@cte15@0 DD 15.0
 @aux2 DD ?
 _c DD ?
 _b DD ?
@@ -21,7 +21,7 @@ mensaje_division_cero db "DIVISION POR CERO DETECTADA", 0
 
 .code
 start:
-FLD mem@cte0@0
+FLD mem@cte15@0
 FSTP _a
 FLD mem@cte10@0
 FSTP _b

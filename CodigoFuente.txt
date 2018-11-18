@@ -1,6 +1,6 @@
 let mut single _a,
 let mut single _b,
 let mut single _c,
-_a:=0.,
+_a:=15.,
 _b:=10.,
 _c := _a+_b,

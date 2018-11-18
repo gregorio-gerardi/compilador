@@ -22,7 +22,7 @@ ID (linea 3)
 Simbolo , (linea 3)
 ID (linea 4)
 Simbolo := (linea 4)
-CTE Float 0.0 (linea 4)
+CTE Float 15.0 (linea 4)
 Simbolo , (linea 4)
 ID (linea 5)
 Simbolo := (linea 5)
@@ -83,8 +83,8 @@ No se detectaron errores sintacticos.
 
 CONTENIDO DE LA TABLA DE SIMBOLOS:
 
+15.0 --> Single
 _a --> Single
-0.0 --> Single
 _b --> Single
 _c --> Single
 10.0 --> Single
@@ -92,7 +92,7 @@ _c --> Single
 
 LISTA DE TERCETOS GENERADOS:
 
-0 - ( ASIGNACION , _a , 0.0 ) 
+0 - ( ASIGNACION , _a , 15.0 ) 
 1 - ( ASIGNACION , _b , 10.0 ) 
 2 - ( + , _a , _b ) 
 3 - ( ASIGNACION , _c , [2] ) 

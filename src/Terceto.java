@@ -1,5 +1,3 @@
-import com.sun.istack.internal.Nullable;
-
 public class Terceto implements Operando {
 
     private String operador;
@@ -24,14 +22,14 @@ public class Terceto implements Operando {
         this.tipoResultante = tipoResultante;
     }
 
-    public Terceto(String operador, @Nullable Operando operando1, @Nullable Operando operando2) {
+    public Terceto(String operador, Operando operando1, Operando operando2) {
         this.operador = operador;
         this.operando1 = operando1;
         this.operando2 = operando2;
         tipoResultante="desconocido";
     }
 
-    public Terceto(String operador, @Nullable Operando operando1) {
+    public Terceto(String operador, Operando operando1) {
         this.operador = operador;
         this.operando1 = operando1;
         this.operando2 = null;
