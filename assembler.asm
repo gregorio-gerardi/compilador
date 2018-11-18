@@ -5,10 +5,13 @@ includelib \masm32\lib\masm32.lib
 dll_dllcrt0 PROTO C
 printf PROTO C :VARARG
 .DATA
-mem@cte22 DD 22
+mem@cte5 DD 5
+_x DD ?
+_e DD ?
+_d DD ?
 _c DD ?
 _b DD ?
-anduvo db "anduvo", 0
+_a DD ?
 max_double DD 3.40282347E38
 min_double DD 1.17549435E-38
 mensaje_error db "Error en tiempo de ejecucion!",0
@@ -19,12 +22,8 @@ mensaje_division_cero db "DIVISION POR CERO DETECTADA", 0
 
 .code
 start:
-MOV EAX ,22
-MOV _b, EAX
-MOV EAX, _b
-CMP EAX, 22
-invoke MessageBox, NULL, addr anduvo, addr anduvo, MB_OK
-@labelTercetoEndIf5:
+MOV EAX ,5
+MOV _x, EAX
 JMP @LABEL_END
 
 @LABEL_OVF_PRODUCTO:

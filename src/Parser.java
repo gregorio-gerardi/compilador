@@ -540,7 +540,7 @@ final static String yyrule[] = {
 "sentenciaPrint : PRINT '(' CADENA error",
 };
 
-//#line 629 "gramatica.y"
+//#line 628 "gramatica.y"
   private AnalizadorLexico al;
   private ArrayList<String> listaDeTokens;
   private ArrayList<String> listaDeReglas;
@@ -1072,7 +1072,7 @@ case 47:
 {ListaTercetos lt = ListaTercetos.getInstanceOfListaDeTercetos();
   Terceto tercetoACompletar = lt.getTerceto(lt.getPilaTercetos().pop());
   tercetoACompletar.setOperando2(new TercetoDestino(lt.getTercetos().size()+1));
-  Terceto incondicionalAcompletar = new Terceto("BI");
+  Terceto incondicionalAcompletar = new Terceto("ELSE");
   lt.addTerceto(incondicionalAcompletar);
   lt.getPilaTercetos().push(lt.getTercetos().size()-1);
 }
@@ -1208,7 +1208,7 @@ case 66:
     ListaTercetos lt= ListaTercetos.getInstanceOfListaDeTercetos();
     lt.addTerceto(terceto);
     /*añado un terceto para indicar el branch por falso y apilo el terceto recien creado incompleto para completar luego*/
-    lt.addTerceto(new Terceto("ELSE",lt.getTerceto(lt.getTercetos().size()-1)));
+    lt.addTerceto(new Terceto("BF",lt.getTerceto(lt.getTercetos().size()-1)));
     lt.getPilaTercetos().push(lt.getTercetos().size()-1);
   }
 }
@@ -1384,7 +1384,7 @@ case 82:
   EntradaTablaSimbolos entradaTablaSimbolos = (EntradaTablaSimbolos) (val_peek(0).obj);
   if (entradaTablaSimbolos.getTipo() == EntradaTablaSimbolos.LONG) {
     /*chequeo si la cte positiva es mayor al maximo permitido-un valor por encima por si era negativa-*/
-    if ((Double.valueOf(entradaTablaSimbolos.getLexema())) == AnalizadorLexico.MAX_LONG) {
+    if ((Long.valueOf(entradaTablaSimbolos.getLexema())) == AnalizadorLexico.MAX_LONG) {
       /*si lo es, lo informo y utilizo reemplazo para bajarla al maximo permitido*/
       addErrorSintactico(String.format("warning linteger cte positiva mayor al maximo permitido en linea %1$d", al.getLinea()));
       String nuevoLexema = String.valueOf(AnalizadorLexico.MAX_LONG - 1);
@@ -1409,10 +1409,9 @@ case 83:
     al.agregarATablaSimbolos(elementoTS);
   }
   /*addReglaSintacticaReconocida(String.format("ctenegativa  reconocida en linea %1$d", al.getLinea()));*/
-  /*si el tipo es long debo chequear que su contraparte positivo que queda en la tabla de simbolos no sea mayor al maximo,*/
-  /*todo si implementamos un contador de usos no deberia ser necesario, se podria utilizar que si el contador llega a 0  se elimine la positiva*/
+  /*si el tipo es long debo chequear que su contraparte positiva que queda en la tabla de simbolos no sea mayor al maximo,*/
   if (entradaTablaSimbolos.getTipo() == EntradaTablaSimbolos.LONG) {
-    if ((Double.valueOf(entradaTablaSimbolos.getLexema())) == AnalizadorLexico.MAX_LONG) {
+    if ((Long.valueOf(entradaTablaSimbolos.getLexema())) == AnalizadorLexico.MAX_LONG) {
       al.getTablaDeSimbolos().remove(entradaTablaSimbolos.getLexema());
     }
   }
@@ -1422,7 +1421,7 @@ case 83:
 }
 break;
 case 84:
-//#line 573 "gramatica.y"
+//#line 572 "gramatica.y"
 {/*addReglaSintacticaReconocida(String.format("cte direccion de id reconocida en linea %1$d", al.getLinea())); */
   EntradaTablaSimbolos ets = (EntradaTablaSimbolos)val_peek(0).obj;
   /*chequeo que ID sea una variable ya declarada*/
@@ -1441,65 +1440,65 @@ case 84:
 }
 break;
 case 85:
-//#line 590 "gramatica.y"
+//#line 589 "gramatica.y"
 {addErrorSintactico(String.format("valor cte mal definido en linea %1$d", al.getLinea())); }
 break;
 case 86:
-//#line 592 "gramatica.y"
+//#line 591 "gramatica.y"
 {addErrorSintactico(String.format("valor cte mal definido en linea %1$d", al.getLinea())); }
 break;
 case 87:
-//#line 596 "gramatica.y"
+//#line 595 "gramatica.y"
 {/*addReglaSintacticaReconocida(String.format("comp = reconocida en linea %1$d",al.getLinea()));*/
   yyval=new ParserVal("=");}
 break;
 case 88:
-//#line 599 "gramatica.y"
+//#line 598 "gramatica.y"
 {/*addReglaSintacticaReconocida(String.format("comp > reconocida en linea %1$d",al.getLinea()));*/
   yyval=new ParserVal(">");}
 break;
 case 89:
-//#line 602 "gramatica.y"
+//#line 601 "gramatica.y"
 {/*addReglaSintacticaReconocida(String.format("comp < reconocida en linea %1$d",al.getLinea()))*/;
   yyval=new ParserVal("<");}
 break;
 case 90:
-//#line 605 "gramatica.y"
+//#line 604 "gramatica.y"
 {/*addReglaSintacticaReconocida(String.format("comp reconocida en linea %1$d",al.getLinea()));*/
   yyval=new ParserVal("COMP_MAYOR_IGUAL");}
 break;
 case 91:
-//#line 608 "gramatica.y"
+//#line 607 "gramatica.y"
 {/*addReglaSintacticaReconocida(String.format("comp reconocida en linea %1$d",al.getLinea()));*/
   yyval=new ParserVal("COMP_MENOR_IGUAL");}
 break;
 case 92:
-//#line 611 "gramatica.y"
+//#line 610 "gramatica.y"
 {/*addReglaSintacticaReconocida(String.format("comp reconocida en linea %1$d",al.getLinea()));*/
   yyval=new ParserVal("COMP_DIFERENTE");}
 break;
 case 93:
-//#line 616 "gramatica.y"
+//#line 615 "gramatica.y"
 {addReglaSintacticaReconocida(String.format("print reconocida en linea %1$d",al.getLinea()));
   ListaTercetos.getInstanceOfListaDeTercetos().addTerceto(new Terceto("PRINT",(EntradaTablaSimbolos)val_peek(1).obj));}
 break;
 case 94:
-//#line 619 "gramatica.y"
+//#line 618 "gramatica.y"
 {addErrorSintactico(String.format("print mal definido en linea %1$d",al.getLinea()));}
 break;
 case 95:
-//#line 621 "gramatica.y"
+//#line 620 "gramatica.y"
 {addErrorSintactico(String.format("print mal definido en linea %1$d",al.getLinea()));}
 break;
 case 96:
-//#line 623 "gramatica.y"
+//#line 622 "gramatica.y"
 {addErrorSintactico(String.format("print mal definido en linea %1$d",al.getLinea()));}
 break;
 case 97:
-//#line 625 "gramatica.y"
+//#line 624 "gramatica.y"
 {addErrorSintactico(String.format("print mal definido en linea %1$d",al.getLinea()));}
 break;
-//#line 1426 "Parser.java"
+//#line 1425 "Parser.java"
 //########## END OF USER-SUPPLIED ACTIONS ##########
     }//switch
     //#### Now let's reduce... ####

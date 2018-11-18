@@ -1,8 +1,7 @@
-let mut linteger _b,
-let linteger *_c:=&_b,
-*_c:=22_l,
-if (_b=22_l){
-print('anduvo'),
-}
+let mut linteger _a,
+_a := -32_l + 2_l ,
+if ( _a = -30_l )
+print('hola mundo _a vale 30'),
+else
+print('hola mundo _a no vale 30'),
 end_if,
-

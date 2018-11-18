@@ -1,0 +1,101 @@
+ERRORES DEL ANALIZADOR LEXICO:
+
+No se encontraron errores lexicos.
+--------------------
+
+TOKENS DEL ANALIZADOR LEXICO:
+
+Palabra Reservada let (linea 1)
+Palabra Reservada mut (linea 1)
+Palabra Reservada linteger (linea 1)
+ID (linea 1)
+Simbolo , (linea 1)
+ID (linea 2)
+Simbolo := (linea 2)
+Simbolo - (linea 2)
+CTE linteger (linea 2)
+Simbolo + (linea 2)
+CTE linteger (linea 2)
+Simbolo , (linea 2)
+Palabra Reservada if (linea 3)
+Simbolo ( (linea 3)
+ID (linea 3)
+Simbolo = (linea 3)
+Simbolo - (linea 3)
+CTE linteger (linea 3)
+Simbolo ) (linea 3)
+Palabra Reservada print (linea 4)
+Simbolo ( (linea 4)
+Cadena Caracteres: "hola mundo _a vale 30" (linea 4)
+Simbolo ) (linea 4)
+Simbolo , (linea 4)
+Palabra Reservada else (linea 5)
+Palabra Reservada print (linea 6)
+Simbolo ( (linea 6)
+Cadena Caracteres: "hola mundo _a no vale 30" (linea 6)
+Simbolo ) (linea 6)
+Simbolo , (linea 6)
+Palabra Reservada end_if (linea 7)
+Simbolo , (linea 7)
+--------------------
+
+ERRORES SINTACTICOS:
+
+No se detectaron errores sintacticos.
+--------------------
+
+REGLAS SINTACTICAS:
+
+tipo reconocida en linea 1
+lista de variables reconocida en linea 1
+sentencia declarativa reconocida en linea 1
+sentencia reconocida en linea 1
+Contenido de programa reconocido en linea 1
+expresion reconocida en linea 2
+expresion reconocida en linea 2
+asignacion reconocida en linea 2
+sentencia ejecutable reconocida en linea 2
+sentencia reconocida en linea 2
+Contenido de programa reconocido en linea 2
+expresion reconocida en linea 3
+expresion reconocida en linea 3
+condicion reconocida en linea 3
+print reconocida en linea 4
+sentencia ejecutable reconocida en linea 4
+bloque sentencia reconocida en linea 4
+print reconocida en linea 6
+sentencia ejecutable reconocida en linea 6
+bloque sentencia reconocida en linea 6
+if reconocida en linea 7
+sentencia ejecutable reconocida en linea 7
+sentencia reconocida en linea 7
+Contenido de programa reconocido en linea 7
+Programa reconocido en linea 7
+--------------------
+ERRORES SEMANTICOS:
+
+No se detectaron errores sintacticos.
+--------------------
+
+CONTENIDO DE LA TABLA DE SIMBOLOS:
+
+hola mundo _a no vale 30 --> String
+_a --> Linteger
+2 --> Linteger
+hola mundo _a vale 30 --> String
+-30 --> Linteger
+-32 --> Linteger
+30 --> Linteger
+32 --> Linteger
+--------------------
+
+LISTA DE TERCETOS GENERADOS:
+
+0 - ( + , -32 , 2 ) 
+1 - ( ASIGNACION , _a , [0] ) 
+2 - ( = , _a , -30 ) 
+3 - ( BF , [2] , 6 ) 
+4 - ( PRINT , hola mundo _a vale 30 , - ) 
+5 - ( ELSE , - , 7 ) 
+6 - ( PRINT , hola mundo _a no vale 30 , - ) 
+--------------------
