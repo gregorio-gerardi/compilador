@@ -6,7 +6,7 @@ public class AnalizadorLexico {
     public static int ERROR = 256;
     public static int FINAL = 100;
     public static int FINALARCHIVO = 1000;
-    public static double MAX_LONG = 2147483648.; //contemplando el maximo valor negativo posible
+    public static long MAX_LONG = 2147483648l; //contemplando el maximo valor negativo posible
     public static double MAX_FLOAT = 340282347000000000000000000000000000000.;
     public static double MIN_FLOAT = 0.0000000000000000000000000000000000000117549435;
     public static HashMap<String, EntradaTablaSimbolos> tablaDeSimbolos = new HashMap<>();

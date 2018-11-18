@@ -231,6 +231,13 @@ let single _ef:=22.0,
 
 #SOLUCION: AGREGAR UNA EXTENSION A LOS LEXEMAS DIFIRIENDO LOS TIPOS#
 
+#UPDATE:
+    SOLUCIONADO: MODIFICAMOS LA FORMA EN QUE EN ENTREGAS ANTERIORES SE ALMACENABA INTERNAMENTE
+             A LOS LINTEGER, AHORA EL LEXEMA EN LA TABLA DE SIMBOLOS NO ES LA CADENA CORRESPONDIENTE
+             A LA CONVERSION A DOUBLE DEL VALOR LEIDO, SINO LA CONVERSION A LONG, DESAMBIGUANDO CONTRA
+             LOS SINGLE QUE SE ALMACENAN CON SU REPRESENTACION INTERNA EN JAVA DE TIPO DOUBLE
+#
+
 #¡¡¡BUG!!!
 el caso donde una cte negativa se detecta y su contraparte positiva nunca es utilizada, entonces en
 la tabla de simbolos quedan ambas ctes, tanto la negativa como la positiva#
@@ -291,6 +298,7 @@ _c:=_b,
 SE VE LA LISTA DE TERCETOS#
 let mut linteger _a;_b;_c,
 _a:=22_l+_b*_c,
+
 #PROBANDO LA GENERARION DE TERCETOS PARA ASIGNACIONES CON EXPRESIONES
 SE VE LA LISTA DE TERCETOS#
 let mut linteger _a;_b;_c,
@@ -303,9 +311,10 @@ _af:=22.0+_bf*_cf,
 
 #PROBANDO LA GENERARION DE TERCETOS PARA ASIGNACIONES CON EXPRESIONES INCORPORANDO TIPOS INCOMPATIBLES
 SE VE EL ERROR SEMANTICO#
+
 #NOTA: IGNORAR LA LISTA DE TERCETOS, ESTA QUEDA MAS CONSTRUIDA PORQUE EN LA REGLA DE LA ASIGNACION UTILIZA EL ULTIMO YYVAL PARA EL LADO DE LA EXPRESION QUE TUVO
 ANTES DE GENERAR EL ERROR, QUE FUE EL 22.0, DE HABER SIDO COMPATIBLES LOS TIPOS ESTA ENTRADA DE LA PILA
-DE YYVALs SE HABRIA CAMBIADO POR EL TERCETO RESULTANTE DE LA SUMA COMO EN EL EJEMPLO
+DE YYVALs SE HABRIA CAMBIADO POR EL TERCETO RESULTANTE DE LA SUMA COMO EN EL EJEMPLO:
 _a:= 22_l + 2_l,#
 
 let mut linteger _a,
@@ -314,23 +323,27 @@ _a:=
 
 #PROBANDO LA GENERARION DE TERCETOS PARA ASIGNACIONES CON EXPRESIONES INCORPORANDO TIPOS INCOMPATIBLES MAS VARIADO
 SE VE EL ERROR SEMANTICO#
+
 #NOTA: IGNORAR LA LISTA DE TERCETOS, MISMO CASO ANTERIOR#
 
-_a:= 22_l + 2_l,#
 let mut linteger _a; _c,
 let mut single _af; _cf,
 _a := 22_l + 2_l * 2.2 / 24_l - _cf,
 
 #PROBANDO VARIABLES NO DECLARADAS LADO IZQUIERDO
 SE VE EL ERROR#
-#NOTA: EL ERROR POR INCOMPATIBILIDAD DE TIPOS SE DA PORQUE LA VARIABLE NO DECLARADA TIENE COMO TIPO "Deesconocido"
-Y NO ES EL MISMO TIPO QUE LA CTE 22_l DE TIPO linteger#
+
+#NOTA: EL ERROR POR INCOMPATIBILIDAD DE TIPOS SE DA PORQUE LA VARIABLE NO DECLARADA ES ENTREGADA POR EL ANALISADOR
+ LEXICO CON TIPO "Deesconocido" Y NO ES EL MISMO TIPO QUE LA CTE 22_l DE TIPO linteger#
+
 _a:=22_l,
 
 #PROBANDO VARIABLES NO DECLARADAS LADO DERECHO
 SE VE EL ERROR#
+
 #NOTA: EL ERROR POR INCOMPATIBILIDAD DE TIPOS SE DA PORQUE LA VARIABLE NO DECLARADA TIENE COMO TIPO "Deesconocido"
 Y NO ES EL MISMO TIPO QUE LA CTE 22_l DE TIPO linteger#
+
 let mut linteger _a,
 _a:=_b,
 
@@ -343,6 +356,7 @@ NO ES NECESARIO CHEQUEO SEMANTICO DADO QUE LA GRAMATICA
 SOLO ACEPTA UNA CTE DE TIPO CADENA EN LA SENTENCIA PRINT,
 Y ESTE TIPO YA SE CONOCE DESDE EL ANALISIS LEXICO
 SE VE EL ERROR SINTACTICO#
+
 print(_a),
 
 
@@ -353,7 +367,7 @@ print(_a),
 #PROBANDO SENTENCIA IF CON SALTOS,
 SE VEN LOS TERCETOS GENERADOS#
 
-#NOTA: EN EL CASO DE IFS SIN ELSE, SE GENERA UN BI INCESARIO HACIA LA LINEA INMEDIATAMENTE
+#NOTA: EN EL CASO DE IFS SIN ELSE, SE GENERA UN BI (TERCETO ELSE) INCESARIO HACIA LA LINEA INMEDIATAMENTE
 SIGUIENTE, ESTO SE DA PORQUE LA GENERACION DE ESTE TERCETO DE SALTO INCONDICIONAL SE GENERA EN
 UNA MISMA REGLA TANTO PARA EL IF CON ELSE COMO EL IF SIN ELSE#
 #POSIBLE OPTIMIZACION: UTILIZAR REGLAS DISTINTAS PARA LOS IF CON Y SIN BLOQUE ELSE,
@@ -379,6 +393,7 @@ print('hola mundo2'),
 print('hola mundo3'),
 }
 end_if,
+print('next to if'),
 
 #PROBANDO SENTENCIA IF CON BLOQUE THEN Y ELSE Y SALTOS,
 SE VEN LOS TERCETOS GENERADOS#
@@ -389,6 +404,8 @@ print('hola mundo'),
 else
 print('hola mundo else'),
 end_if,
+print('next to if'),
+
 
 #PROBANDO SENTENCIA IF CON BLOQUE THEN Y ELSE, CONDICION COMPLEJA
 SE VEN LOS TERCETOS GENERADOS#
@@ -398,6 +415,7 @@ print('hola mundo'),
 else
 print('hola mundo else'),
 end_if,
+print('next to if'),
 
 #PROBANDO SENTENCIA IF CON BLOQUE THEN Y BLOQUE ELSE,
 SE VEN LOS TERCETOS GENERADOS#
@@ -415,6 +433,7 @@ print('hola mundo else2'),
 print('hola mundo else3'),
 }
 end_if,
+print('next to if'),
 
 #PROBANDO SENTENCIA IF CON CONDICION DE TIPO INCORRECTO
 SE VE EL ERROR SEMANTICO GENERADO#
@@ -653,3 +672,186 @@ print('hola'),
 }
 end_if,
 print('asdsad'),
+
+
+#NOTA: RECORDAR COMENTAR EN EL INFORME RELATIVO A PUNTEROS EN ASSEMBLER, QUE SE IGNORARON
+TODOS LOS TERCETOS RELACIONADOS A PUNTEROS, NO SE TRADUJERON, YA QUE NUESTRO COMPILADOR
+REALIZA UNA ESPECIE DE REEMPLAZO POR NOMBRE ADELANTANDO EL DESREFERENCING EN EL MANEJO
+DE PUNTEROS EN TIEMPO DE GENERACION DE CODIGO INTERMEDIO, ENTREGANDO A EL GENERADOR
+DE CODIGO ASSEMBLER UNA LISTA DE TERCETOS LIBRE DE OPERACIONES ENTRE PUNTEROS. EN EL CASO
+DE LAS DECLARACIONES DE PUNTEROS, LOS MISMOS SI SE ENCUENTRAN EN LA TABLA DE SIMBOLOS
+QUE UTILIZA LA GENERACION DE CODIGO INTERMEDIO, PERO LUEGO NO SON VOLCADOS A DIRECCIONES
+DE MEMORIA EFECTIVAS EN ASSEMBLER. LO MISMO OCURRE POR LA ASIGNACION ENTRE PUNTEROS
+QUE INTERCAMBIA EL DESREFERENCIN QUE LA GENERACION DE TERCETOS HARA CUANDO SE LOS ACCEDA
+PERO EL TERCETO DE LA ASIGNACION PROPIA ENTRE PUNTEROS ES IGNORADO POR EL GENERADOR DE
+ASSEMBLER#
+
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+----------------------------------------------------------------------------------
+----------------------------------------------------------------------------------
+__________________________________________________________________________________
+__________________________________________________________________________________
+#CASOS DE PRUEBA SOLICITADOS POR LA CATEDRA#
+
+#- Para los ejemplos 4 a 9 del análisis sintáctico, agregar en cada bloque una impresión para mostrar el comportamiento.#
+
+#EJEMPLOS ANALISADOR SINTACTICO 4 #
+let linteger _varif:=34_l,
+if (_varif=34_l)
+print('hola mundo'),
+end_if,
+
+
+#EJEMPLOS ANALISADOR SINTACTICO 5 #
+let linteger _varif:=34_l,
+if (_varif=34_l)
+{
+print('hola mundo1'),
+print('hola mundo2'),
+print('hola mundo3'),
+}
+end_if,
+
+#EJEMPLOS ANALISADOR SINTACTICO 6 #
+#CASO IF#
+let linteger _varif:=34_l,
+if (_varif=34_l)
+print('hola mundo'),
+else
+print('hola mundo else'),
+end_if,
+
+#EJEMPLOS ANALISADOR SINTACTICO 6 #
+#CASO ELSE#
+let linteger _varif:=35_l,
+if (_varif=34_l)
+print('hola mundo'),
+else
+print('hola mundo else'),
+end_if,
+
+#EJEMPLOS ANALISADOR SINTACTICO 7 #
+#CASO IF#
+let linteger _var:=12_l,
+let linteger _algo:=-2_l,
+let linteger _algomas:=2_l,
+if ( _var / 2_l+ = 10_l + _algo * _algomas)
+print('hola mundo'),
+else
+print('hola mundo else'),
+end_if,
+
+#EJEMPLOS ANALISADOR SINTACTICO 7 #
+#CASO ELSE#
+let linteger _var:=12_l,
+let linteger _algo:=-2_l,
+let linteger _algomas:=4_l,
+if ( _var / 2_l+ = 10_l + _algo * _algomas)
+print('hola mundo'),
+else
+print('hola mundo else'),
+end_if,
+
+#EJEMPLOS ANALISADOR SINTACTICO 8 #
+let mut linteger _var,
+_var := 0_l,
+let linteger _count:=5_l,
+while ( _var <= _count )
+{
+print('hola mundo'),
+_var := _var + 1_l,
+},
+
+#EJEMPLOS ANALISADOR SINTACTICO 9 #
+let mut linteger _var,
+_var := 10_l,
+let linteger _count:=20_l,
+let linteger _algo:=-2_l,
+let linteger _algomas:=2_l,
+while ( _var <= _count )
+{
+print('hola mundo while'),
+if ( _var / 2_l+ = 10_l + _algo * _algomas)
+print('hola mundo var vale 12'),
+else
+print('hola mundo else var distinto de 12'),
+end_if,
+_var := _var + 1_l,
+},
+
+
+#- Para los ejemplos 12 a 15 del análisis sintáctico, agregar impresiones en los cuerpos de las funciones.#
+
+#NO CORRESPONDE#
+
+#- Para los ejemplos 10, 11 y 16 a 18 del análisis sintáctico, colocar luego una selección para verificar el
+resultado de las expresiones y conversiones. #
+
+
+#EJEMPLOS ANALISADOR SINTACTICO 10 #
+let mut linteger _a; _b; *_c; _d; *_e ,
+let linteger _x := 5_l ,
+#NO HAY EXPRESIONES NI CONVERSIONES, SOLO SE DECLARAN COMO MUTABLES O NO LAS VARIABLES#
+
+#EJEMPLOS ANALISADOR SINTACTICO 11 #
+let mut linteger *_a;_b,
+_a := &_b ,
+_b:=2_l,
+if ( _b = 2_l )
+print('hola mundo _b vale 2'),
+else
+print('hola mundo _b no vale 2'),
+end_if,
+*_a := 4_l,
+if ( _b = 4_l )
+print('hola mundo _b vale 4'),
+else
+print('hola mundo _b no vale 4'),
+end_if,
+
+
+#EJEMPLOS ANALISADOR SINTACTICO 16 #
+let mut linteger _a,
+_a := -32_l + 2_l ,
+if ( _a = -30_l )
+print('hola mundo _a vale 30'),
+else
+print('hola mundo _a no vale 30'),
+end_if,
+
+#- Variables y funciones no declaradas.#
+
+#Validado en casos de prueba propios#
+
+#- Variables y funciones redeclaradas.#
+
+#Validado en casos de prueba propios#
+
+#- Chequeos de tipos para el for (si corresponde).#
+
+#No corresponde#
+
+#- Chequeos de tipos para el case (si corresponde).#
+
+#No corresponde#
+
+#- Expresiones con tipos compatibles y tipos no compatibles.#
+
+#Validado en casos de prueba propios#
+
+#- Conversiones válidas e inválidas.#
+
+#No corresponde#
+
+#- Visibilidad de las variables declaradas en funciones (si corresponde).#
+
+#No corresponde#
+
+#- Lectura y escritura de variables según diferentes permisos (si corresponde).#
+
+#No corresponde#
+
+#- Casos válidos e inválidos para mutabilidad (si corresponde).#
+
+#Validado en casos de prueba propios#
