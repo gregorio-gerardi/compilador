@@ -113,7 +113,17 @@ public class GeneradorAssembler {
         ArrayList<Integer> labelsEndIf = new ArrayList<>();
 
         for (int i = 0; i < listaTercetos.size(); i++) {
+
             t = listaTercetos.get(i);
+
+            for (int j = labelsElse.size()-1; j >=0 ; j--) {
+                if (labelsElse.get(j)==i){
+                    code.add("JMP @labelTercetoEndIf"+(Integer.valueOf(listaTercetos.get(i-1).getOperando2ForAssembler())-1));
+                }
+            }
+/*            if(labelsElse.contains(i)){
+                code.add("JMP @labelTercetoEndIf"+(Integer.valueOf(listaTercetos.get(i-1).getOperando2ForAssembler())-1));
+            }*/
 
             //guardo labelTercetoElse en caso de que vaya ser utilizado por una condicion
             for (int j = labelsIf.size()-1; j >= 0; j--) {
@@ -122,10 +132,8 @@ public class GeneradorAssembler {
                     labelsIf.remove(j);
                 }
             }
-            //TODO CAMBIAR EN LOS DEMAS
-
             //guardo labelsWhile para while
-            for (int j = 0; j < labelsWhile.size(); j++) {
+            for (int j = labelsWhile.size()-1; j >= 0; j--) {
                 if (labelsWhile.get(j) == i) {
                     code.add("JMP @labelTercetoWhile" + t.getOperando2ForAssembler());
                     labelsWhile.remove(j);
@@ -137,24 +145,17 @@ public class GeneradorAssembler {
                 labelsElse.add(Integer.valueOf(t.getOperando2ForAssembler()));
                 labelsEndIf.add(Integer.valueOf(listaTercetos.get(Integer.valueOf(t.getOperando2ForAssembler())-1).getOperando2ForAssembler()));
             }
-/*            for (int j = 0; j <labelsElse.size() ; j++) {
-                if (labelsElse.get(j) == i) {
-                    code.add("JMP @labelTercetoEndIf" + i);
-                    labelsElse.remove(j);
-                }
-            }*/
-            if(labelsElse.contains(i)){
-                code.add("JMP @labelTercetoEndIf"+i);
-            }
-/*            for (int j = 0; j <labelsEndIf.size() ; j++) {
+
+            for (int j = labelsEndIf.size()-1; j >= 0; j--) {
                 if (labelsEndIf.get(j) == i) {
                     code.add("@labelTercetoEndIf"+(i-1)+":");
                     labelsEndIf.remove(j);
                 }
-            }*/
-            if (labelsEndIf.contains(i)){
-                code.add("@labelTercetoEndIf"+(i-1)+":");
             }
+
+/*            if (labelsEndIf.contains(i)){
+                code.add("@labelTercetoEndIf"+(i-1)+":");
+            }*/
 
             //--ARITMETICOS--
             //suma
@@ -240,11 +241,12 @@ public class GeneradorAssembler {
             if (t.getOperador().equals("/")) {
                 if (t.getTipo().equals(EntradaTablaSimbolos.SINGLE)) {
                     //chequeo division cero TODO VERIFICAR
-                    code.add("FLD " + t.getOperando2ForAssembler());
-                    code.add("FTST"); //COMPARO ST CON CERO
+                    code.add("FLDZ");
+                    code.add("FLD " +t.getOperando2ForAssembler());
+                    code.add("FCOM");
                     code.add("FSTSW AX");
                     code.add("SAHF");
-                    code.add("JO @LABEL_DIV_CERO");
+                    code.add("JE @LABEL_DIV_CERO");
                     //
                     code.add("FLD " + t.getOperando1ForAssembler());
                     code.add("FLD " + t.getOperando2ForAssembler()); //tener en cuenta que hace ST(1) / ST
@@ -351,6 +353,7 @@ public class GeneradorAssembler {
             if(listaTercetos.size()==(i+1) && labelsEndIf.contains(i+1)){
                 code.add("@labelTercetoEndIf" + (i) + ":");
             }
+
         }
         code.add("JMP @LABEL_END");
     }

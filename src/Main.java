@@ -114,8 +114,14 @@ public class Main {
             pw.println("--------------------");
             System.out.println("--------------------");
             pw.close();
-            //TODO VERIFICAR QUE NO HAYA ERRORES
-            GeneradorAssembler.generarAssembler(tercetos);
+            if (p.getListaDeErroresLexicos().isEmpty() && p.getListaDeErroresSemanticos().isEmpty() && p.getListaDeErroresSintacticos().isEmpty()){
+                GeneradorAssembler.generarAssembler(tercetos);
+/*                Runtime aplicacion = Runtime.getRuntime();
+                try{aplicacion.exec("compilador.cmd"); }
+                catch(Exception e){}*/
+            }else {
+                System.out.println("Imposible generar assembler, chequear lista errores.");
+            }
         } catch (IOException ex) {
             ex.printStackTrace();
         }

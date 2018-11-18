@@ -7,37 +7,33 @@ TOKENS DEL ANALIZADOR LEXICO:
 
 Palabra Reservada let (linea 1)
 Palabra Reservada mut (linea 1)
-Palabra Reservada linteger (linea 1)
+Palabra Reservada single (linea 1)
 ID (linea 1)
 Simbolo , (linea 1)
 Palabra Reservada let (linea 2)
-Palabra Reservada linteger (linea 2)
-Simbolo * (linea 2)
-ID (linea 2)
-Simbolo := (linea 2)
-Simbolo & (linea 2)
+Palabra Reservada mut (linea 2)
+Palabra Reservada single (linea 2)
 ID (linea 2)
 Simbolo , (linea 2)
-Simbolo * (linea 3)
+Palabra Reservada let (linea 3)
+Palabra Reservada mut (linea 3)
+Palabra Reservada single (linea 3)
 ID (linea 3)
-Simbolo := (linea 3)
-CTE linteger (linea 3)
 Simbolo , (linea 3)
-Palabra Reservada if (linea 4)
-Simbolo ( (linea 4)
 ID (linea 4)
-Simbolo = (linea 4)
-CTE linteger (linea 4)
-Simbolo ) (linea 4)
-Simbolo { (linea 4)
-Palabra Reservada print (linea 5)
-Simbolo ( (linea 5)
-Cadena Caracteres: "anduvo" (linea 5)
-Simbolo ) (linea 5)
+Simbolo := (linea 4)
+CTE Float 3.40282347E38 (linea 4)
+Simbolo , (linea 4)
+ID (linea 5)
+Simbolo := (linea 5)
+CTE Float 3.40282347E38 (linea 5)
 Simbolo , (linea 5)
-Simbolo } (linea 6)
-Palabra Reservada end_if (linea 7)
-Simbolo , (linea 7)
+ID (linea 6)
+Simbolo := (linea 6)
+ID (linea 6)
+Simbolo + (linea 6)
+ID (linea 6)
+Simbolo , (linea 6)
 --------------------
 
 ERRORES SINTACTICOS:
@@ -53,27 +49,32 @@ sentencia declarativa reconocida en linea 1
 sentencia reconocida en linea 1
 Contenido de programa reconocido en linea 1
 tipo reconocida en linea 2
-asign cte reconocida en linea 2
-sentencia declarativa en linea 2
+lista de variables reconocida en linea 2
+sentencia declarativa reconocida en linea 2
 sentencia reconocida en linea 2
 Contenido de programa reconocido en linea 2
-expresion reconocida en linea 3
-asignacion reconocida en linea 3
-sentencia ejecutable reconocida en linea 3
+tipo reconocida en linea 3
+lista de variables reconocida en linea 3
+sentencia declarativa reconocida en linea 3
 sentencia reconocida en linea 3
 Contenido de programa reconocido en linea 3
 expresion reconocida en linea 4
-expresion reconocida en linea 4
-condicion reconocida en linea 4
-print reconocida en linea 5
+asignacion reconocida en linea 4
+sentencia ejecutable reconocida en linea 4
+sentencia reconocida en linea 4
+Contenido de programa reconocido en linea 4
+expresion reconocida en linea 5
+asignacion reconocida en linea 5
 sentencia ejecutable reconocida en linea 5
-conj sent ejecutable reconocida en linea 5
-bloque sentencia reconocida en linea 6
-if reconocida en linea 7
-sentencia ejecutable reconocida en linea 7
-sentencia reconocida en linea 7
-Contenido de programa reconocido en linea 7
-Programa reconocido en linea 8
+sentencia reconocida en linea 5
+Contenido de programa reconocido en linea 5
+expresion reconocida en linea 6
+expresion reconocida en linea 6
+asignacion reconocida en linea 6
+sentencia ejecutable reconocida en linea 6
+sentencia reconocida en linea 6
+Contenido de programa reconocido en linea 6
+Programa reconocido en linea 6
 --------------------
 ERRORES SEMANTICOS:
 
@@ -82,18 +83,16 @@ No se detectaron errores sintacticos.
 
 CONTENIDO DE LA TABLA DE SIMBOLOS:
 
-22 --> Linteger
-_b --> Linteger
-_c --> ReferenciaAMemoria
-anduvo --> String
+_a --> Single
+_b --> Single
+_c --> Single
+3.40282347E38 --> Single
 --------------------
 
 LISTA DE TERCETOS GENERADOS:
 
-0 - ( ASIGNACION , _c , &_b ) 
-1 - ( ASIGNACION , _b , 22 ) 
-2 - ( = , _b , 22 ) 
-3 - ( ELSE , [2] , 6 ) 
-4 - ( PRINT , anduvo , - ) 
-5 - ( BI , - , 6 ) 
+0 - ( ASIGNACION , _a , 3.40282347E38 ) 
+1 - ( ASIGNACION , _b , 3.40282347E38 ) 
+2 - ( + , _a , _b ) 
+3 - ( ASIGNACION , _c , [2] ) 
 --------------------
