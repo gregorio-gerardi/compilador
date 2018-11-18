@@ -149,7 +149,7 @@ public class GeneradorAssembler {
             }
 
             //guardo label EndIF
-            if (t.getOperador().equals("ELSE")){
+            if (t.getOperador().equals("BF")){
                 labelsElse.add(Integer.valueOf(t.getOperando2ForAssembler()));
                 labelsEndIf.add(Integer.valueOf(listaTercetos.get(Integer.valueOf(t.getOperando2ForAssembler())-1).getOperando2ForAssembler()));
             }

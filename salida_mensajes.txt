@@ -102,7 +102,7 @@ LISTA DE TERCETOS GENERADOS:
 0 - ( ASIGNACION , _var , 0 ) 
 1 - ( ASIGNACION , _count , 5 ) 
 2 - ( COMP_MENOR_IGUAL , _var , _count ) 
-3 - ( ELSE , [2] , 8 ) 
+3 - ( BF , [2] , 8 ) 
 4 - ( PRINT , hola mundo , - ) 
 5 - ( + , _var , 1 ) 
 6 - ( ASIGNACION , _var , [5] ) 

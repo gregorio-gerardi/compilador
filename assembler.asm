@@ -31,7 +31,6 @@ MOV _count, EAX
 @labelTercetoWhile2:
 MOV EAX, _var
 CMP EAX, _count
-
 invoke MessageBox, NULL, addr holamundo, addr holamundo, MB_OK
 MOV EAX, _var
 ADD EAX, 1
@@ -40,7 +39,6 @@ MOV @aux5, EAX
 MOV EAX ,@aux5
 MOV _var, EAX
 JMP @labelTercetoWhile2
-
 JMP @LABEL_END
 
 @LABEL_OVF_PRODUCTO:
