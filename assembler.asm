@@ -5,12 +5,13 @@ includelib \masm32\lib\masm32.lib
 dll_dllcrt0 PROTO C
 printf PROTO C :VARARG
 .DATA
-mem@cte0@0 REAL8 0.0
-mem@cte15@0 REAL8 15.0
-@aux2 REAL8 ?
-_c REAL8 ?
-_b REAL8 ?
-_a REAL8 ?
+mem@cte5 DD 5
+mem@cte1 DD 1
+mem@cte0 DD 0
+_var DD ?
+_count DD ?
+@aux5 DD ?
+holamundo db "hola mundo", 0
 @aux_mem DW ?
 max_double REAL8 340282347000000000000000000000000000000.
 min_double REAL8 0.0000000000000000000000000000000000000117549435
@@ -23,29 +24,23 @@ mensaje_division_cero db "DIVISION POR CERO DETECTADA", 0
 .code
 start:
 FNINIT
-FLD mem@cte0@0
-FSTP _a
-FLD mem@cte15@0
-FSTP _b
-FLD _a
-FLD _b
-FADD
-FSTP @aux2
-FLD max_double
-FLD @aux2
-FCOM
-FSTSW @aux_mem
-MOV AX, @aux_mem
-SAHF
-JA @LABEL_OVF_SUMA
-FLD min_double
-FLD @aux2
-FCOM
-FSTSW AX
-SAHF
-JB @LABEL_OVF_SUMA
-FLD @aux2
-FSTP _c
+MOV EAX ,0
+MOV _var, EAX
+MOV EAX ,5
+MOV _count, EAX
+@labelTercetoWhile2:
+MOV EAX, _var
+CMP EAX, _count
+
+invoke MessageBox, NULL, addr holamundo, addr holamundo, MB_OK
+MOV EAX, _var
+ADD EAX, 1
+JO @LABEL_OVF_SUMA
+MOV @aux5, EAX
+MOV EAX ,@aux5
+MOV _var, EAX
+JMP @labelTercetoWhile2
+
 JMP @LABEL_END
 
 @LABEL_OVF_PRODUCTO:

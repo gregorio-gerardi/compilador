@@ -738,7 +738,7 @@ end_if,
 let linteger _var:=12_l,
 let linteger _algo:=-2_l,
 let linteger _algomas:=2_l,
-if ( _var / 2_l+ = 10_l + _algo * _algomas)
+if ( _var / 2_l = 10_l + _algo * _algomas)
 print('hola mundo'),
 else
 print('hola mundo else'),
@@ -749,7 +749,7 @@ end_if,
 let linteger _var:=12_l,
 let linteger _algo:=-2_l,
 let linteger _algomas:=4_l,
-if ( _var / 2_l+ = 10_l + _algo * _algomas)
+if ( _var / 2_l = 10_l + _algo * _algomas)
 print('hola mundo'),
 else
 print('hola mundo else'),

@@ -26,13 +26,18 @@ public class GeneradorAssembler {
         int indexS = desde;
         for (EntradaTablaSimbolos e : AnalizadorLexico.tablaDeSimbolos.values()) {
             if (e.getLexema().substring(0, 1).equals("_") || e.getLexema().substring(0, 1).equals("@")) {  //Variables
-                code.add(indexV, e.getLexema() + " REAL8 ?");
-                indexS++;
+                if(e.getTipo().equals(EntradaTablaSimbolos.SINGLE)){
+                    code.add(indexV, e.getLexema().replace("-","neg") + " REAL8 ?");
+                    indexS++;
+                }else if (e.getTipo().equals(EntradaTablaSimbolos.LONG)){
+                    code.add(indexV, e.getLexema().replace("-","neg") + " DD ?");
+                    indexS++;
+                }
             } else if (e.getTipo().equals("String")) {                                              //Strings
                 code.add(indexS, e.getLexema().replace(" ", "") + " db \"" + e.getLexema() + "\", 0");
             } else {
                 if (e.tipo.equals(EntradaTablaSimbolos.LONG)) {
-                    code.add(desde, "mem@cte" + e.getLexema().replace(".", "") + " DD " + e.getLexema());                 //Constantes
+                    code.add(desde, "mem@cte" + e.getLexema().replace(".", "").replace("-","neg") + " DD " + e.getLexema());                 //Constantes
                     indexV++;
                     indexS++;
                 } else if
@@ -156,10 +161,6 @@ public class GeneradorAssembler {
                 }
             }
 
-/*            if (labelsEndIf.contains(i)){
-                code.add("@labelTercetoEndIf"+(i-1)+":");
-            }*/
-
             //--ARITMETICOS--
             //suma
             if (t.getOperador().equals("+")) {
@@ -265,8 +266,9 @@ public class GeneradorAssembler {
                     code.add("JZ @LABEL_DIV_CERO");
                     //
                     code.add("MOV EDX,0");
-                    code.add("MOV EAX," + t.getOperando1ForAssembler());
-                    code.add("IDIV " + t.getOperando2ForAssembler());
+                    code.add("MOV EAX, " + t.getOperando1ForAssembler());
+                    code.add("MOV EBX, "+t.getOperando2ForAssembler());
+                    code.add("IDIV EBX");
                     code.add("MOV " + getResult(t) + ", EAX");
                     AnalizadorLexico.agregarATablaSimbolos(new EntradaTablaSimbolos(t.getAuxResultado(), t.getTipo()));
                 }

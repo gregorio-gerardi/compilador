@@ -1,6 +1,8 @@
-let mut single _a,
-let mut single _b,
-let mut single _c,
-_a:=0.,
-_b:=15.,
-_c := _a  + _b,
+let mut linteger _var,
+_var := 0_l,
+let linteger _count:=5_l,
+while ( _var <= _count )
+{
+print('hola mundo'),
+_var := _var + 1_l,
+},
