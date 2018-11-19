@@ -546,7 +546,7 @@ let mut linteger *_a;_b,
 let mut single *_af;_bf,
 _a:=&_b,
 _af:=&_bf,
-_a:=_af,
+_a:=_a+_a-&_b,
 
 #PROBANDO ASIGNACION A PUNTERO DE UNA EXPRESION ARITMETICA DE PUNTEROS
 SE VE EL ERROR#
@@ -806,3 +806,68 @@ end_if,
 #- Casos válidos e inválidos para mutabilidad (si corresponde).#
 
 #Validado en casos de prueba propios#
+_------------------------------------------------
+
+PRUEBAS TIEMPO DE EJECUCION
+
+#-------LINTEGER----------#
+
+#DIVISION POR CERO LINTEGER#
+let mut linteger _a,
+let mut linteger _b,
+let mut linteger _c,
+_a := 15_l,
+_b:= 0_l,
+_c:=_a/_b,
+
+#OVERFLOW SUMA#
+    #POSITIVOS#
+let mut linteger _a,
+let mut linteger _b,
+let mut linteger _c,
+_a :=2147483647_l,
+_b:= 2147483647_l,
+_c:=_a + _b,
+    #NEGATIVOS#
+let mut linteger _a,
+let mut linteger _b,
+let mut linteger _c,
+_a:=-2147483647_l,
+_b:=-2147483647_l,
+_c:=_a + _b,
+
+
+#OVERFLOW PRODUCTO#
+    #POSITIVOS#
+let mut linteger _a,
+let mut linteger _b,
+let mut linteger _c,
+_a :=2147483647_l,
+_b:= 2147483647_l,
+_c:=_a * _b,
+
+    #NEGATIVOS#
+let mut linteger _a,
+let mut linteger _b,
+let mut linteger _c,
+_a:= -2147483647_l,
+_b:= 2147483647_l,
+_c:=_a * _b,
+
+#--------------SINGLES-----------#
+
+#DIVISION POR CERO SINGLES#
+let mut single _a,
+let mut single _b,
+let mut single _c,
+_a := 15.0,
+_b:= 0.0,
+_c:=_a/_b,
+
+#SUMA SINGLES POSITIVOS#
+let mut single _a,
+let mut single _b,
+let mut single _c,
+_a := 340282347000000000000000000000000000000.,
+_b := 340282347000000000000000000000000000000.,
+_c := _a + _b,

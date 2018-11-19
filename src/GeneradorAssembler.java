@@ -204,9 +204,8 @@ public class GeneradorAssembler {
             if (t.getOperador().equals("/")) {
                 if (t.getTipo().equals(EntradaTablaSimbolos.SINGLE)) {
                     //chequeo division cero TODO VERIFICAR
-                    code.add("FLDZ");
                     code.add("FLD " + t.getOperando2ForAssembler());
-                    code.add("FCOM");
+                    code.add("FTST");
                     code.add("FSTSW AX");
                     code.add("SAHF");
                     code.add("JE @LABEL_DIV_CERO");
@@ -323,12 +322,24 @@ public class GeneradorAssembler {
                 }
             }
 
-            if (labelsIncondicional.contains(i)) {
+
+            for (int j = labelsIncondicional.size()-1; j >= 0; j--) {
+                if (labelsIncondicional.get(j)==i){
+                    code.add("@labelSaltoIncondicional" + (i + 1) + ":");
+                }
+            }
+
+            for (int j = labelsCondicional.size()-1; j >= 0; j--) {
+                if (labelsCondicional.get(j)==i){
+                    code.add("@labelSaltoCondicional" + (i + 1) + ":");
+                }
+            }
+/*            if (labelsIncondicional.contains(i)) {
                 code.add("@labelSaltoIncondicional" + (i + 1) + ":");
             }
             if (labelsCondicional.contains(i)) {
                 code.add("@labelSaltoCondicional" + (i + 1) + ":");
-            }
+            }*/
         }
         code.add("JMP @LABEL_END");
     }
