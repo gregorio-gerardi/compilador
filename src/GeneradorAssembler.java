@@ -288,7 +288,7 @@ public class GeneradorAssembler {
                 //comparacion menor
                 if (t.getOperador().equals("<")) {
                     if (tnext.getOperador().equals("BF")) {
-                        code.add("JGL @labelSaltoCondicional" + (((TercetoDestino) tnext.getOperando2()).destino.toString()));
+                        code.add("JGE @labelSaltoCondicional" + (((TercetoDestino) tnext.getOperando2()).destino.toString()));
                     }
                 }
                 //comparacion mayor

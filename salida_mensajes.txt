@@ -6,48 +6,140 @@ No se encontraron errores lexicos.
 TOKENS DEL ANALIZADOR LEXICO:
 
 Palabra Reservada let (linea 1)
-Palabra Reservada mut (linea 1)
 Palabra Reservada linteger (linea 1)
 ID (linea 1)
+Simbolo := (linea 1)
+CTE linteger (linea 1)
 Simbolo , (linea 1)
-ID (linea 2)
-Simbolo := (linea 2)
-CTE linteger (linea 2)
-Simbolo , (linea 2)
-Palabra Reservada while (linea 3)
-Simbolo ( (linea 3)
+Palabra Reservada let (linea 3)
+Palabra Reservada mut (linea 3)
+Palabra Reservada linteger (linea 3)
 ID (linea 3)
-Simbolo <= (linea 3)
-CTE linteger (linea 3)
-Simbolo ) (linea 3)
-Simbolo { (linea 4)
-Palabra Reservada if (linea 5)
-Simbolo ( (linea 5)
+Simbolo ; (linea 3)
+Simbolo * (linea 3)
+ID (linea 3)
+Simbolo ; (linea 3)
+ID (linea 3)
+Simbolo , (linea 3)
+Palabra Reservada let (linea 5)
+Palabra Reservada single (linea 5)
 ID (linea 5)
-Simbolo = (linea 5)
-CTE linteger (linea 5)
-Simbolo ) (linea 5)
-Palabra Reservada print (linea 6)
-Simbolo ( (linea 6)
-Cadena Caracteres: " ADENTRO WHILE vale 13 dentro del if" (linea 6)
-Simbolo ) (linea 6)
-Simbolo , (linea 6)
-Palabra Reservada else (linea 7)
-Palabra Reservada print (linea 8)
-Simbolo ( (linea 8)
-Cadena Caracteres: " ADENTRO WHILE no vale 13 todavia" (linea 8)
-Simbolo ) (linea 8)
-Simbolo , (linea 8)
-Palabra Reservada end_if (linea 9)
+Simbolo := (linea 5)
+CTE Float 10.5 (linea 5)
+Simbolo , (linea 5)
+Palabra Reservada let (linea 7)
+Palabra Reservada mut (linea 7)
+Palabra Reservada single (linea 7)
+ID (linea 7)
+Simbolo ; (linea 7)
+ID (linea 7)
+Simbolo , (linea 7)
+ID (linea 9)
+Simbolo := (linea 9)
+CTE linteger (linea 9)
 Simbolo , (linea 9)
 ID (linea 10)
 Simbolo := (linea 10)
 ID (linea 10)
-Simbolo + (linea 10)
-CTE linteger (linea 10)
 Simbolo , (linea 10)
-Simbolo } (linea 11)
+ID (linea 11)
+Simbolo := (linea 11)
+CTE Float 1.5 (linea 11)
 Simbolo , (linea 11)
+ID (linea 12)
+Simbolo := (linea 12)
+ID (linea 12)
+Simbolo , (linea 12)
+ID (linea 14)
+Simbolo := (linea 14)
+Simbolo & (linea 14)
+ID (linea 14)
+Simbolo , (linea 14)
+Palabra Reservada print (linea 15)
+Simbolo ( (linea 15)
+Cadena Caracteres: "inicio del while" (linea 15)
+Simbolo ) (linea 15)
+Simbolo , (linea 15)
+Palabra Reservada while (linea 16)
+Simbolo ( (linea 16)
+ID (linea 16)
+Simbolo Simple < (linea 16)
+ID (linea 16)
+Simbolo ) (linea 16)
+Simbolo { (linea 17)
+Simbolo * (linea 18)
+ID (linea 18)
+Simbolo := (linea 18)
+ID (linea 18)
+Simbolo + (linea 18)
+CTE linteger (linea 18)
+Simbolo , (linea 18)
+ID (linea 19)
+Simbolo := (linea 19)
+ID (linea 19)
+Simbolo , (linea 19)
+Palabra Reservada print (linea 20)
+Simbolo ( (linea 20)
+Cadena Caracteres: "inicio del if" (linea 20)
+Simbolo ) (linea 20)
+Simbolo , (linea 20)
+Palabra Reservada if (linea 21)
+Simbolo ( (linea 21)
+ID (linea 21)
+Simbolo + (linea 21)
+ID (linea 21)
+Simbolo <= (linea 21)
+ID (linea 21)
+Simbolo ) (linea 21)
+Simbolo { (linea 22)
+Palabra Reservada print (linea 23)
+Simbolo ( (linea 23)
+Cadena Caracteres: "hola mundo" (linea 23)
+Simbolo ) (linea 23)
+Simbolo , (linea 23)
+Palabra Reservada print (linea 24)
+Simbolo ( (linea 24)
+Cadena Caracteres: "dentro del if" (linea 24)
+Simbolo ) (linea 24)
+Simbolo , (linea 24)
+Palabra Reservada print (linea 25)
+Simbolo ( (linea 25)
+Cadena Caracteres: "porque los enteros juntos suman menos o igual a 10" (linea 25)
+Simbolo ) (linea 25)
+Simbolo , (linea 25)
+Simbolo } (linea 26)
+Palabra Reservada else (linea 27)
+Simbolo { (linea 28)
+Palabra Reservada print (linea 29)
+Simbolo ( (linea 29)
+Cadena Caracteres: "chau mundo cruel" (linea 29)
+Simbolo ) (linea 29)
+Simbolo , (linea 29)
+Palabra Reservada print (linea 30)
+Simbolo ( (linea 30)
+Cadena Caracteres: "dentro del else" (linea 30)
+Simbolo ) (linea 30)
+Simbolo , (linea 30)
+Palabra Reservada print (linea 31)
+Simbolo ( (linea 31)
+Cadena Caracteres: "porque los enteros juntos suman mas de 10" (linea 31)
+Simbolo ) (linea 31)
+Simbolo , (linea 31)
+Simbolo } (linea 32)
+Palabra Reservada end_if (linea 33)
+Simbolo , (linea 33)
+Palabra Reservada print (linea 34)
+Simbolo ( (linea 34)
+Cadena Caracteres: "fin del if" (linea 34)
+Simbolo ) (linea 34)
+Simbolo , (linea 34)
+Simbolo } (linea 35)
+Simbolo , (linea 35)
+Palabra Reservada print (linea 36)
+Simbolo ( (linea 36)
+Cadena Caracteres: "fin del while" (linea 36)
+Simbolo ) (linea 36)
+Simbolo , (linea 36)
 --------------------
 
 ERRORES SINTACTICOS:
@@ -58,41 +150,112 @@ No se detectaron errores sintacticos.
 REGLAS SINTACTICAS:
 
 tipo reconocida en linea 1
-lista de variables reconocida en linea 1
-sentencia declarativa reconocida en linea 1
+asign cte reconocida en linea 1
+sentencia declarativa en linea 1
 sentencia reconocida en linea 1
 Contenido de programa reconocido en linea 1
-expresion reconocida en linea 2
-asignacion reconocida en linea 2
-sentencia ejecutable reconocida en linea 2
-sentencia reconocida en linea 2
-Contenido de programa reconocido en linea 2
-expresion reconocida en linea 3
-expresion reconocida en linea 3
-condicion reconocida en linea 3
-expresion reconocida en linea 5
-expresion reconocida en linea 5
-condicion reconocida en linea 5
-print reconocida en linea 6
-sentencia ejecutable reconocida en linea 6
-bloque sentencia reconocida en linea 6
-print reconocida en linea 8
-sentencia ejecutable reconocida en linea 8
-bloque sentencia reconocida en linea 8
-if reconocida en linea 9
+tipo reconocida en linea 3
+lista de variables reconocida en linea 3
+lista de variables reconocida en linea 3
+lista de variables reconocida en linea 3
+sentencia declarativa reconocida en linea 3
+sentencia reconocida en linea 3
+Contenido de programa reconocido en linea 3
+tipo reconocida en linea 5
+asign cte reconocida en linea 5
+sentencia declarativa en linea 5
+sentencia reconocida en linea 5
+Contenido de programa reconocido en linea 5
+tipo reconocida en linea 7
+lista de variables reconocida en linea 7
+lista de variables reconocida en linea 7
+sentencia declarativa reconocida en linea 7
+sentencia reconocida en linea 7
+Contenido de programa reconocido en linea 7
+expresion reconocida en linea 9
+asignacion reconocida en linea 9
 sentencia ejecutable reconocida en linea 9
-conj sent ejecutable reconocida en linea 9
-expresion reconocida en linea 10
+sentencia reconocida en linea 9
+Contenido de programa reconocido en linea 9
 expresion reconocida en linea 10
 asignacion reconocida en linea 10
 sentencia ejecutable reconocida en linea 10
-conj sent ejecutable reconocida en linea 10
-bloque sentencia reconocida en linea 11
-while reconocida en linea 11
+sentencia reconocida en linea 10
+Contenido de programa reconocido en linea 10
+expresion reconocida en linea 11
+asignacion reconocida en linea 11
 sentencia ejecutable reconocida en linea 11
 sentencia reconocida en linea 11
 Contenido de programa reconocido en linea 11
-Programa reconocido en linea 12
+expresion reconocida en linea 12
+asignacion reconocida en linea 12
+sentencia ejecutable reconocida en linea 12
+sentencia reconocida en linea 12
+Contenido de programa reconocido en linea 12
+expresion reconocida en linea 14
+asignacion reconocida en linea 14
+sentencia ejecutable reconocida en linea 14
+sentencia reconocida en linea 14
+Contenido de programa reconocido en linea 14
+print reconocida en linea 15
+sentencia ejecutable reconocida en linea 15
+sentencia reconocida en linea 15
+Contenido de programa reconocido en linea 15
+expresion reconocida en linea 16
+expresion reconocida en linea 16
+condicion reconocida en linea 16
+expresion reconocida en linea 18
+expresion reconocida en linea 18
+asignacion reconocida en linea 18
+sentencia ejecutable reconocida en linea 18
+conj sent ejecutable reconocida en linea 18
+expresion reconocida en linea 19
+asignacion reconocida en linea 19
+sentencia ejecutable reconocida en linea 19
+conj sent ejecutable reconocida en linea 19
+print reconocida en linea 20
+sentencia ejecutable reconocida en linea 20
+conj sent ejecutable reconocida en linea 20
+expresion reconocida en linea 21
+expresion reconocida en linea 21
+expresion reconocida en linea 21
+condicion reconocida en linea 21
+print reconocida en linea 23
+sentencia ejecutable reconocida en linea 23
+conj sent ejecutable reconocida en linea 23
+print reconocida en linea 24
+sentencia ejecutable reconocida en linea 24
+conj sent ejecutable reconocida en linea 24
+print reconocida en linea 25
+sentencia ejecutable reconocida en linea 25
+conj sent ejecutable reconocida en linea 25
+bloque sentencia reconocida en linea 26
+print reconocida en linea 29
+sentencia ejecutable reconocida en linea 29
+conj sent ejecutable reconocida en linea 29
+print reconocida en linea 30
+sentencia ejecutable reconocida en linea 30
+conj sent ejecutable reconocida en linea 30
+print reconocida en linea 31
+sentencia ejecutable reconocida en linea 31
+conj sent ejecutable reconocida en linea 31
+bloque sentencia reconocida en linea 32
+if reconocida en linea 33
+sentencia ejecutable reconocida en linea 33
+conj sent ejecutable reconocida en linea 33
+print reconocida en linea 34
+sentencia ejecutable reconocida en linea 34
+conj sent ejecutable reconocida en linea 34
+bloque sentencia reconocida en linea 35
+while reconocida en linea 35
+sentencia ejecutable reconocida en linea 35
+sentencia reconocida en linea 35
+Contenido de programa reconocido en linea 35
+print reconocida en linea 36
+sentencia ejecutable reconocida en linea 36
+sentencia reconocida en linea 36
+Contenido de programa reconocido en linea 36
+Programa reconocido en linea 36
 --------------------
 ERRORES SEMANTICOS:
 
@@ -101,26 +264,56 @@ No se detectaron errores sintacticos.
 
 CONTENIDO DE LA TABLA DE SIMBOLOS:
 
- ADENTRO WHILE vale 13 dentro del if --> String
+hola mundo --> String
+dentro del else --> String
+_integerInmutable --> Linteger
+fin del if --> String
+chau mundo cruel --> String
+_integerMutable2 --> Linteger
+_integerMutable1 --> Linteger
+inicio del if --> String
+porque los enteros juntos suman menos o igual a 10 --> String
+10.5 --> Single
 1 --> Linteger
-13 --> Linteger
-_var --> Linteger
- ADENTRO WHILE no vale 13 todavia --> String
-16 --> Linteger
+_singleInmutable --> Single
+porque los enteros juntos suman mas de 10 --> String
+dentro del if --> String
+fin del while --> String
+_singleMutable1 --> Single
+1.5 --> Single
+_punteroALinteger --> ReferenciaAMemoria
+_singleMutable2 --> Single
+inicio del while --> String
 10 --> Linteger
 --------------------
 
 LISTA DE TERCETOS GENERADOS:
 
-0 - ( ASIGNACION , _var , 10 ) 
-1 - ( COMP_MENOR_IGUAL , _var , 16 ) 
-2 - ( BF , [1] , 11 ) 
-3 - ( = , _var , 13 ) 
-4 - ( BF , [3] , 7 ) 
-5 - ( PRINT ,  ADENTRO WHILE vale 13 dentro del if , - ) 
-6 - ( BI , - , 8 ) 
-7 - ( PRINT ,  ADENTRO WHILE no vale 13 todavia , - ) 
-8 - ( + , _var , 1 ) 
-9 - ( ASIGNACION , _var , [8] ) 
-10 - ( BI , - , 1 ) 
+0 - ( ASIGNACION , _integerInmutable , 10 ) 
+1 - ( ASIGNACION , _singleInmutable , 10.5 ) 
+2 - ( ASIGNACION , _integerMutable1 , 1 ) 
+3 - ( ASIGNACION , _integerMutable2 , _integerMutable1 ) 
+4 - ( ASIGNACION , _singleMutable1 , 1.5 ) 
+5 - ( ASIGNACION , _singleMutable2 , _singleInmutable ) 
+6 - ( ASIGNACION , _punteroALinteger , &_integerMutable1 ) 
+7 - ( PRINT , inicio del while , - ) 
+8 - ( < , _integerMutable1 , _integerInmutable ) 
+9 - ( BF , [8] , 26 ) 
+10 - ( + , _integerMutable1 , 1 ) 
+11 - ( ASIGNACION , _integerMutable1 , [10] ) 
+12 - ( ASIGNACION , _integerMutable2 , _integerMutable1 ) 
+13 - ( PRINT , inicio del if , - ) 
+14 - ( + , _integerMutable1 , _integerMutable2 ) 
+15 - ( COMP_MENOR_IGUAL , [14] , _integerInmutable ) 
+16 - ( BF , [15] , 21 ) 
+17 - ( PRINT , hola mundo , - ) 
+18 - ( PRINT , dentro del if , - ) 
+19 - ( PRINT , porque los enteros juntos suman menos o igual a 10 , - ) 
+20 - ( BI , - , 24 ) 
+21 - ( PRINT , chau mundo cruel , - ) 
+22 - ( PRINT , dentro del else , - ) 
+23 - ( PRINT , porque los enteros juntos suman mas de 10 , - ) 
+24 - ( PRINT , fin del if , - ) 
+25 - ( BI , - , 8 ) 
+26 - ( PRINT , fin del while , - ) 
 --------------------

@@ -114,13 +114,15 @@ public class Main {
             pw.println("--------------------");
             System.out.println("--------------------");
             pw.close();
-            if (p.getListaDeErroresLexicos().isEmpty() && p.getListaDeErroresSemanticos().isEmpty() && p.getListaDeErroresSintacticos().isEmpty()){
+            if (p.getListaDeErroresLexicos().isEmpty() && p.getListaDeErroresSemanticos().isEmpty() && p.getListaDeErroresSintacticos().isEmpty()) {
                 GeneradorAssembler.generarAssembler(tercetos);
 /*                Runtime aplicacion = Runtime.getRuntime();
-                try{aplicacion.exec("compilador.cmd"); }
-                catch(Exception e){}*/
-            }else {
-                System.out.println("Imposible generar assembler, chequear lista errores.");
+                try {
+                    aplicacion.exec("compilador.cmd");
+                } catch (Exception e) {
+                }*/
+            } else {
+                System.out.println("------------------Imposible generar assembler, chequear lista errores.---------------");
             }
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -132,14 +134,14 @@ public class Main {
         if (operando instanceof Terceto)
             return ("[" + ListaTercetos.getInstanceOfListaDeTercetos().getIndice((Terceto) operando) + "]");
         if (operando instanceof TercetoDestino)
-            return (((TercetoDestino)operando).destino.toString());
+            return (((TercetoDestino) operando).destino.toString());
         if (operando instanceof EntradaTablaDeSimbolosReferenciaAMemoria)
-            return "&"+((EntradaTablaSimbolos) operando).getLexema();
+            return "&" + ((EntradaTablaSimbolos) operando).getLexema();
         return ((EntradaTablaSimbolos) operando).getLexema();
     }
 
-    public static void printRed(String texto){
-        System.out.println("\033[31m"+texto+"\u001B[0m");
+    public static void printRed(String texto) {
+        System.out.println("\033[31m" + texto + "\u001B[0m");
     }
 }
 
