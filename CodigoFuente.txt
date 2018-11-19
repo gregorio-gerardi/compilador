@@ -1,8 +1,11 @@
 let mut linteger _var,
-_var := 0_l,
-let linteger _count:=5_l,
-while ( _var <= _count )
+_var := 10_l,
+while ( _var <= 16_l)
 {
-print('hola mundo'),
+if ( _var = 13_l)
+print(' ADENTRO WHILE vale 13 dentro del if'),
+else
+print(' ADENTRO WHILE no vale 13 todavia'),
+end_if,
 _var := _var + 1_l,
 },

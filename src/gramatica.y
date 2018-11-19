@@ -2,7 +2,6 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-
 %}
 
 %token ID ASIGNACION COMP_MAYOR_IGUAL COMP_MENOR_IGUAL COMP_DIFERENTE IF ELSE END_IF PRINT LINTEGER SINGLE WHILE LET MUT CADENA CTE
@@ -281,7 +280,7 @@ import java.util.HashSet;
   ListaTercetos lt=ListaTercetos.getInstanceOfListaDeTercetos();
   Terceto tercetoIncompleto = lt.getTerceto(lt.getPilaTercetos().pop());
   tercetoIncompleto.setOperando2(new TercetoDestino(lt.getTercetos().size()+1));
-  Terceto saltoAlInicio= new Terceto("WHILE");
+  Terceto saltoAlInicio= new Terceto("BI");
   saltoAlInicio.setOperando2(new TercetoDestino(lt.getPilaTercetos().pop()));
   lt.addTerceto(saltoAlInicio);
 }
@@ -381,7 +380,7 @@ import java.util.HashSet;
     ListaTercetos lt= ListaTercetos.getInstanceOfListaDeTercetos();
     lt.addTerceto(terceto);
     //añado un terceto para indicar el branch por falso y apilo el terceto recien creado incompleto para completar luego
-    lt.addTerceto(new Terceto("ELSE",lt.getTerceto(lt.getTercetos().size()-1)));
+    lt.addTerceto(new Terceto("BF",lt.getTerceto(lt.getTercetos().size()-1)));
     lt.getPilaTercetos().push(lt.getTercetos().size()-1);
   }
 }
@@ -535,7 +534,7 @@ import java.util.HashSet;
   EntradaTablaSimbolos entradaTablaSimbolos = (EntradaTablaSimbolos) ($1.obj);
   if (entradaTablaSimbolos.getTipo() == EntradaTablaSimbolos.LONG) {
     //chequeo si la cte positiva es mayor al maximo permitido-un valor por encima por si era negativa-
-    if ((Long.valueOf(entradaTablaSimbolos.getLexema())) == AnalizadorLexico.MAX_LONG) {
+    if ((Double.valueOf(entradaTablaSimbolos.getLexema())) == AnalizadorLexico.MAX_LONG) {
       //si lo es, lo informo y utilizo reemplazo para bajarla al maximo permitido
       addErrorSintactico(String.format("warning linteger cte positiva mayor al maximo permitido en linea %1$d", al.getLinea()));
       String nuevoLexema = String.valueOf(AnalizadorLexico.MAX_LONG - 1);
@@ -558,9 +557,10 @@ import java.util.HashSet;
     al.agregarATablaSimbolos(elementoTS);
   }
   /*addReglaSintacticaReconocida(String.format("ctenegativa  reconocida en linea %1$d", al.getLinea()));*/
-  //si el tipo es long debo chequear que su contraparte positiva que queda en la tabla de simbolos no sea mayor al maximo,
+  //si el tipo es long debo chequear que su contraparte positivo que queda en la tabla de simbolos no sea mayor al maximo,
+  //todo si implementamos un contador de usos no deberia ser necesario, se podria utilizar que si el contador llega a 0  se elimine la positiva
   if (entradaTablaSimbolos.getTipo() == EntradaTablaSimbolos.LONG) {
-    if ((Long.valueOf(entradaTablaSimbolos.getLexema())) == AnalizadorLexico.MAX_LONG) {
+    if ((Double.valueOf(entradaTablaSimbolos.getLexema())) == AnalizadorLexico.MAX_LONG) {
       al.getTablaDeSimbolos().remove(entradaTablaSimbolos.getLexema());
     }
   }
@@ -692,4 +692,3 @@ import java.util.HashSet;
   public HashMap<String,EntradaTablaSimbolos> getTablaDeSimbolos() {
     return al.getTablaDeSimbolos();
   }
-

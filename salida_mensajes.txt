@@ -14,32 +14,40 @@ ID (linea 2)
 Simbolo := (linea 2)
 CTE linteger (linea 2)
 Simbolo , (linea 2)
-Palabra Reservada let (linea 3)
-Palabra Reservada linteger (linea 3)
+Palabra Reservada while (linea 3)
+Simbolo ( (linea 3)
 ID (linea 3)
-Simbolo := (linea 3)
+Simbolo <= (linea 3)
 CTE linteger (linea 3)
-Simbolo , (linea 3)
-Palabra Reservada while (linea 4)
-Simbolo ( (linea 4)
-ID (linea 4)
-Simbolo <= (linea 4)
-ID (linea 4)
-Simbolo ) (linea 4)
-Simbolo { (linea 5)
+Simbolo ) (linea 3)
+Simbolo { (linea 4)
+Palabra Reservada if (linea 5)
+Simbolo ( (linea 5)
+ID (linea 5)
+Simbolo = (linea 5)
+CTE linteger (linea 5)
+Simbolo ) (linea 5)
 Palabra Reservada print (linea 6)
 Simbolo ( (linea 6)
-Cadena Caracteres: "hola mundo" (linea 6)
+Cadena Caracteres: " ADENTRO WHILE vale 13 dentro del if" (linea 6)
 Simbolo ) (linea 6)
 Simbolo , (linea 6)
-ID (linea 7)
-Simbolo := (linea 7)
-ID (linea 7)
-Simbolo + (linea 7)
-CTE linteger (linea 7)
-Simbolo , (linea 7)
-Simbolo } (linea 8)
+Palabra Reservada else (linea 7)
+Palabra Reservada print (linea 8)
+Simbolo ( (linea 8)
+Cadena Caracteres: " ADENTRO WHILE no vale 13 todavia" (linea 8)
+Simbolo ) (linea 8)
 Simbolo , (linea 8)
+Palabra Reservada end_if (linea 9)
+Simbolo , (linea 9)
+ID (linea 10)
+Simbolo := (linea 10)
+ID (linea 10)
+Simbolo + (linea 10)
+CTE linteger (linea 10)
+Simbolo , (linea 10)
+Simbolo } (linea 11)
+Simbolo , (linea 11)
 --------------------
 
 ERRORES SINTACTICOS:
@@ -59,28 +67,32 @@ asignacion reconocida en linea 2
 sentencia ejecutable reconocida en linea 2
 sentencia reconocida en linea 2
 Contenido de programa reconocido en linea 2
-tipo reconocida en linea 3
-asign cte reconocida en linea 3
-sentencia declarativa en linea 3
-sentencia reconocida en linea 3
-Contenido de programa reconocido en linea 3
-expresion reconocida en linea 4
-expresion reconocida en linea 4
-condicion reconocida en linea 4
+expresion reconocida en linea 3
+expresion reconocida en linea 3
+condicion reconocida en linea 3
+expresion reconocida en linea 5
+expresion reconocida en linea 5
+condicion reconocida en linea 5
 print reconocida en linea 6
 sentencia ejecutable reconocida en linea 6
-conj sent ejecutable reconocida en linea 6
-expresion reconocida en linea 7
-expresion reconocida en linea 7
-asignacion reconocida en linea 7
-sentencia ejecutable reconocida en linea 7
-conj sent ejecutable reconocida en linea 7
-bloque sentencia reconocida en linea 8
-while reconocida en linea 8
+bloque sentencia reconocida en linea 6
+print reconocida en linea 8
 sentencia ejecutable reconocida en linea 8
-sentencia reconocida en linea 8
-Contenido de programa reconocido en linea 8
-Programa reconocido en linea 8
+bloque sentencia reconocida en linea 8
+if reconocida en linea 9
+sentencia ejecutable reconocida en linea 9
+conj sent ejecutable reconocida en linea 9
+expresion reconocida en linea 10
+expresion reconocida en linea 10
+asignacion reconocida en linea 10
+sentencia ejecutable reconocida en linea 10
+conj sent ejecutable reconocida en linea 10
+bloque sentencia reconocida en linea 11
+while reconocida en linea 11
+sentencia ejecutable reconocida en linea 11
+sentencia reconocida en linea 11
+Contenido de programa reconocido en linea 11
+Programa reconocido en linea 12
 --------------------
 ERRORES SEMANTICOS:
 
@@ -89,22 +101,26 @@ No se detectaron errores sintacticos.
 
 CONTENIDO DE LA TABLA DE SIMBOLOS:
 
-0 --> Linteger
+ ADENTRO WHILE vale 13 dentro del if --> String
 1 --> Linteger
-hola mundo --> String
-_count --> Linteger
+13 --> Linteger
 _var --> Linteger
-5 --> Linteger
+ ADENTRO WHILE no vale 13 todavia --> String
+16 --> Linteger
+10 --> Linteger
 --------------------
 
 LISTA DE TERCETOS GENERADOS:
 
-0 - ( ASIGNACION , _var , 0 ) 
-1 - ( ASIGNACION , _count , 5 ) 
-2 - ( COMP_MENOR_IGUAL , _var , _count ) 
-3 - ( BF , [2] , 8 ) 
-4 - ( PRINT , hola mundo , - ) 
-5 - ( + , _var , 1 ) 
-6 - ( ASIGNACION , _var , [5] ) 
-7 - ( WHILE , - , 2 ) 
+0 - ( ASIGNACION , _var , 10 ) 
+1 - ( COMP_MENOR_IGUAL , _var , 16 ) 
+2 - ( BF , [1] , 11 ) 
+3 - ( = , _var , 13 ) 
+4 - ( BF , [3] , 7 ) 
+5 - ( PRINT ,  ADENTRO WHILE vale 13 dentro del if , - ) 
+6 - ( BI , - , 8 ) 
+7 - ( PRINT ,  ADENTRO WHILE no vale 13 todavia , - ) 
+8 - ( + , _var , 1 ) 
+9 - ( ASIGNACION , _var , [8] ) 
+10 - ( BI , - , 1 ) 
 --------------------

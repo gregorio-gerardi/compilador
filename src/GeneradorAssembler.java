@@ -7,7 +7,6 @@ import java.util.Vector;
 
 public class GeneradorAssembler {
     private static Vector<String> code = new Vector<>();
-    private static String result;
     private static Integer desdeLinea = 0;
 
     public GeneradorAssembler() {
@@ -26,18 +25,18 @@ public class GeneradorAssembler {
         int indexS = desde;
         for (EntradaTablaSimbolos e : AnalizadorLexico.tablaDeSimbolos.values()) {
             if (e.getLexema().substring(0, 1).equals("_") || e.getLexema().substring(0, 1).equals("@")) {  //Variables
-                if(e.getTipo().equals(EntradaTablaSimbolos.SINGLE)){
-                    code.add(indexV, e.getLexema().replace("-","neg") + " REAL8 ?");
+                if (e.getTipo().equals(EntradaTablaSimbolos.SINGLE)) {
+                    code.add(indexV, e.getLexema().replace("-", "neg") + " REAL8 ?");
                     indexS++;
-                }else if (e.getTipo().equals(EntradaTablaSimbolos.LONG)){
-                    code.add(indexV, e.getLexema().replace("-","neg") + " DD ?");
+                } else if (e.getTipo().equals(EntradaTablaSimbolos.LONG)) {
+                    code.add(indexV, e.getLexema().replace("-", "neg") + " DD ?");
                     indexS++;
                 }
             } else if (e.getTipo().equals("String")) {                                              //Strings
                 code.add(indexS, e.getLexema().replace(" ", "") + " db \"" + e.getLexema() + "\", 0");
             } else {
                 if (e.tipo.equals(EntradaTablaSimbolos.LONG)) {
-                    code.add(desde, "mem@cte" + e.getLexema().replace(".", "").replace("-","neg") + " DD " + e.getLexema());                 //Constantes
+                    code.add(desde, "mem@cte" + e.getLexema().replace(".", "").replace("-", "neg") + " DD " + e.getLexema());                 //Constantes
                     indexV++;
                     indexS++;
                 } else if
@@ -81,7 +80,7 @@ public class GeneradorAssembler {
     }
 
     private static void addData() {
-/*        code.add(".386");
+/*      code.add(".386");
         code.add(".MODEL flat, stdcall");
         code.add("option casemap :none");
         code.add(".STACK 200h");*/
@@ -101,7 +100,6 @@ public class GeneradorAssembler {
         code.add("mensaje_overflow_producto db \"OVERFLOW DETECTADO EN PRODUCTO\", 0");
         code.add("mensaje_overflow_suma db \"OVERFLOW DETECTADO EN SUMA\", 0");
         code.add("mensaje_division_cero db \"DIVISION POR CERO DETECTADA\", 0");
-
     }
 
     private static String getResult(Terceto t) {
@@ -115,52 +113,11 @@ public class GeneradorAssembler {
         code.add("start:");
         code.add("FNINIT");
         Terceto t;
-        ArrayList<Integer> labelsIf = new ArrayList<>();
-        ArrayList<Integer> labelsWhile = new ArrayList<>();
-        ArrayList<Integer> labelsElse = new ArrayList<>();
-        ArrayList<Integer> labelsEndIf = new ArrayList<>();
+        ArrayList<Integer> labelsCondicional = new ArrayList<>();
+        ArrayList<Integer> labelsIncondicional = new ArrayList<>();
 
         for (int i = 0; i < listaTercetos.size(); i++) {
-
             t = listaTercetos.get(i);
-
-            for (int j = labelsElse.size()-1; j >=0 ; j--) {
-                if (labelsElse.get(j)==i){
-                    code.add("JMP @labelTercetoEndIf"+(Integer.valueOf(listaTercetos.get(i-1).getOperando2ForAssembler())-1));
-                }
-            }
-/*            if(labelsElse.contains(i)){
-                code.add("JMP @labelTercetoEndIf"+(Integer.valueOf(listaTercetos.get(i-1).getOperando2ForAssembler())-1));
-            }*/
-
-            //guardo labelTercetoElse en caso de que vaya ser utilizado por una condicion
-            for (int j = labelsIf.size()-1; j >= 0; j--) {
-                if (labelsIf.get(j) == i) {
-                    code.add("@labelTercetoElse" + i + ":");
-                    labelsIf.remove(j);
-                }
-            }
-            //guardo labelsWhile para while
-            for (int j = labelsWhile.size()-1; j >= 0; j--) {
-                if (labelsWhile.get(j) == i) {
-                    code.add("JMP @labelTercetoWhile" + t.getOperando2ForAssembler());
-                    labelsWhile.remove(j);
-                }
-            }
-
-            //guardo label EndIF
-            if (t.getOperador().equals("BF")){
-                labelsElse.add(Integer.valueOf(t.getOperando2ForAssembler()));
-                labelsEndIf.add(Integer.valueOf(listaTercetos.get(Integer.valueOf(t.getOperando2ForAssembler())-1).getOperando2ForAssembler()));
-            }
-
-            for (int j = labelsEndIf.size()-1; j >= 0; j--) {
-                if (labelsEndIf.get(j) == i) {
-                    code.add("@labelTercetoEndIf"+(i-1)+":");
-                    labelsEndIf.remove(j);
-                }
-            }
-
             //--ARITMETICOS--
             //suma
             if (t.getOperador().equals("+")) {
@@ -194,6 +151,7 @@ public class GeneradorAssembler {
                 }
 
             }
+
             //resta
             if (t.getOperador().equals("-")) {
                 if (t.getTipo().equals(EntradaTablaSimbolos.SINGLE)) {
@@ -247,7 +205,7 @@ public class GeneradorAssembler {
                 if (t.getTipo().equals(EntradaTablaSimbolos.SINGLE)) {
                     //chequeo division cero TODO VERIFICAR
                     code.add("FLDZ");
-                    code.add("FLD " +t.getOperando2ForAssembler());
+                    code.add("FLD " + t.getOperando2ForAssembler());
                     code.add("FCOM");
                     code.add("FSTSW AX");
                     code.add("SAHF");
@@ -267,19 +225,20 @@ public class GeneradorAssembler {
                     //
                     code.add("MOV EDX,0");
                     code.add("MOV EAX, " + t.getOperando1ForAssembler());
-                    code.add("MOV EBX, "+t.getOperando2ForAssembler());
+                    code.add("MOV EBX, " + t.getOperando2ForAssembler());
                     code.add("IDIV EBX");
                     code.add("MOV " + getResult(t) + ", EAX");
                     AnalizadorLexico.agregarATablaSimbolos(new EntradaTablaSimbolos(t.getAuxResultado(), t.getTipo()));
                 }
 
             }
+
             //asignacion
             if (t.getOperador().equals("ASIGNACION")) {
                 if (t.getOperando1().getTipo().equals(EntradaTablaSimbolos.LONG)) {
                     code.add("MOV EAX ," + t.getOperando2ForAssembler());
                     code.add("MOV " + t.getOperando1ForAssembler() + ", EAX");
-                } else if (t.getOperando1().getTipo().equals(EntradaTablaSimbolos.SINGLE)){
+                } else if (t.getOperando1().getTipo().equals(EntradaTablaSimbolos.SINGLE)) {
                     if (t.getOperando2() instanceof EntradaTablaSimbolos && !(((EntradaTablaSimbolos) t.getOperando2()).getLexema().startsWith("_", 0))) {
                         code.add("FLD mem@cte" + t.getOperando2ForAssembler().replace(".", "@"));
                         code.add("FSTP " + t.getOperando1ForAssembler());
@@ -289,86 +248,89 @@ public class GeneradorAssembler {
                     }
                 }
             }
+
             //print
             if (t.getOperador().equals("PRINT")) {
                 code.add("invoke MessageBox, NULL, addr " + t.getOperando1ForAssembler().replace(" ", "") + ", addr " + t.getOperando1ForAssembler().replace(" ", "") + ", MB_OK");
             }
 
+            //-----------------------------------------Labels Jumps y Comparaciones-----------------------------------//
+            //salto incondicional hacia atras
+            if (t.getOperador().equals("BI") && Integer.valueOf(t.getOperando2ForAssembler()) < i) {
+                code.add("JMP @labelSaltoIncondicional" + t.getOperando2ForAssembler());
+            }
+
+            //salto inconcicional hacia adelante
+            if (t.getOperador().equals("BI") && Integer.valueOf(t.getOperando2ForAssembler()) > i) {
+                code.add("JMP @labelSaltoIncondicional" + t.getOperando2ForAssembler());
+                labelsIncondicional.add(Integer.valueOf(t.getOperando2ForAssembler()) - 1);//agrego el anterior al que va a saltar
+                //para completar el codigo al finalizar la pasada del terceto por el traductor a assembler, porque sino puede que agregue
+                //un numero mas de la cantidad de tercetos que tenemos y nunca rellene el label, esto haria que tenga que chequear que las
+                //listas que use no esten vacias por si querdo alguno colgado
+            }
+
             //comparaciones
             if ((t.getOperador().equals("<")) || (t.getOperador().equals(">")) || (t.getOperador().equals("COMP_MENOR_IGUAL")) || (t.getOperador().equals("COMP_MAYOR_IGUAL")) || (t.getOperador().equals("="))) {
-                //guardo labelsWhile para while
                 Terceto tnext = listaTercetos.get(i + 1);
-                Terceto retroceso = listaTercetos.get(Integer.valueOf(tnext.getOperando2ForAssembler()) - 1);
-                if (retroceso.getOperador().equals("WHILE")) {
-                    code.add("@labelTercetoWhile" + i + ":");
-                    labelsWhile.add((((TercetoDestino) tnext.getOperando2()).destino) - 1);
+                Terceto tretroceso = listaTercetos.get(Integer.valueOf(tnext.getOperando2ForAssembler()) - 1);
+
+                //caso salto incondicional hacia atras (evaluando a futuro)
+                if (tretroceso.getOperador().equals("BI") && Integer.valueOf(tretroceso.getOperando2ForAssembler()) == i) {
+                    code.add("@labelSaltoIncondicional" + i + ":");
                 }
 
                 code.add("MOV EAX, " + t.getOperando1ForAssembler());
                 code.add("CMP EAX, " + t.getOperando2ForAssembler());
+
+                //---------------me cada caso de comparador para poner el jump correspondiente-----------------------//
+                //------------saltos condicionales-------------//
+                labelsCondicional.add(Integer.valueOf(tnext.getOperando2ForAssembler()) - 1);
+                //comparacion menor
+                if (t.getOperador().equals("<")) {
+                    if (tnext.getOperador().equals("BF")) {
+                        code.add("JGL @labelSaltoCondicional" + (((TercetoDestino) tnext.getOperando2()).destino.toString()));
+                    }
+                }
+                //comparacion mayor
+                if (t.getOperador().equals(">")) {
+                    if (tnext.getOperador().equals("BF")) {
+                        code.add("JLE @labelSaltoCondicional" + (((TercetoDestino) tnext.getOperando2()).destino.toString()));
+                    }
+                }
+                //comparacion menor igual
+                if (t.getOperador().equals("COMP_MENOR_IGUAL")) {
+                    if (tnext.getOperador().equals("BF")) {
+                        code.add("JG @labelSaltoCondicional" + (((TercetoDestino) tnext.getOperando2()).destino.toString()));
+                    }
+                }
+                //comparacion mayor igual
+                if (t.getOperador().equals("COMP_MAYOR_IGUAL")) {
+                    if (tnext.getOperador().equals("BF")) {
+                        code.add("JL @labelSaltoCondicional" + (((TercetoDestino) tnext.getOperando2()).destino.toString()));
+                    }
+                }
+                //comparacion igual
+                if (t.getOperador().equals("=")) {
+                    if (tnext.getOperador().equals("BF")) {
+                        code.add("JNE @labelSaltoCondicional" + (((TercetoDestino) tnext.getOperando2()).destino.toString()));
+                    }
+                }
+                //comparacion distinto
+                if (t.getOperador().equals("!=")) {
+                    if (tnext.getOperador().equals("BF")) {
+                        code.add("JE @labelSaltoCondicional" + (((TercetoDestino) tnext.getOperando2()).destino.toString()));
+                    }
+                }
             }
 
-            //comparacion menor
-            if (t.getOperador().equals("<")) {
-                Terceto tnext = listaTercetos.get(i + 1);
-                if (listaTercetos.size() > ((((TercetoDestino) tnext.getOperando2()).destino))) {
-                    code.add("JGL @labelTercetoElse" + (((TercetoDestino) tnext.getOperando2()).destino.toString()));
-                    labelsIf.add((((TercetoDestino) tnext.getOperando2()).destino));
-                }
+            if (labelsIncondicional.contains(i)) {
+                code.add("@labelSaltoIncondicional" + (i + 1) + ":");
             }
-            //comparacion mayor
-            if (t.getOperador().equals(">")) {
-                Terceto tnext = listaTercetos.get(i + 1);
-                if (listaTercetos.size() > ((((TercetoDestino) tnext.getOperando2()).destino))) {
-                    code.add("JLE @labelTercetoElse" + (((TercetoDestino) tnext.getOperando2()).destino.toString()));
-                    labelsIf.add((((TercetoDestino) tnext.getOperando2()).destino));
-                }
+            if (labelsCondicional.contains(i)) {
+                code.add("@labelSaltoCondicional" + (i + 1) + ":");
             }
-            //comparacion menor igual
-            if (t.getOperador().equals("COMP_MENOR_IGUAL")) {
-                Terceto tnext = listaTercetos.get(i + 1);
-                if (listaTercetos.size() > ((((TercetoDestino) tnext.getOperando2()).destino))) {
-                    code.add("JG @labelTercetoElse" + (((TercetoDestino) tnext.getOperando2()).destino.toString()));
-                    labelsIf.add((((TercetoDestino) tnext.getOperando2()).destino));
-                }
-            }
-            //comparacion mayor igual
-            if (t.getOperador().equals("COMP_MAYOR_IGUAL")) {
-                Terceto tnext = listaTercetos.get(i + 1);
-                if (listaTercetos.size() > ((((TercetoDestino) tnext.getOperando2()).destino))) {
-                    code.add("JL @labelTercetoElse" + (((TercetoDestino) tnext.getOperando2()).destino.toString()));
-                    labelsIf.add((((TercetoDestino) tnext.getOperando2()).destino));
-                }
-            }
-            //comparacion igual
-            if (t.getOperador().equals("=")) {
-                Terceto tnext = listaTercetos.get(i + 1);
-                if (listaTercetos.size() > ((((TercetoDestino) tnext.getOperando2()).destino))) {
-                    code.add("JNE @labelTercetoElse" + (((TercetoDestino) tnext.getOperando2()).destino.toString()));
-                    labelsIf.add((((TercetoDestino) tnext.getOperando2()).destino));
-                }
-            }
-            //comparacion distinto
-            if (t.getOperador().equals("!=")) {
-                Terceto tnext = listaTercetos.get(i + 1);
-                if (listaTercetos.size() > ((((TercetoDestino) tnext.getOperando2()).destino))) {
-                    code.add("JE @labelTercetoElse" + (((TercetoDestino) tnext.getOperando2()).destino.toString()));
-                    labelsIf.add((((TercetoDestino) tnext.getOperando2()).destino));
-                }
-            }
-            if(listaTercetos.size()==(i+1) && labelsEndIf.contains(i+1)){
-                code.add("@labelTercetoEndIf" + (i) + ":");
-            }
-
         }
         code.add("JMP @LABEL_END");
     }
 }
-
-/*
-linteger
-simple
-referenciaAMemoria
-desconocido --> asignacion, sentencia control, print
-*/
 

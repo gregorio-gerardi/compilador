@@ -5,13 +5,14 @@ includelib \masm32\lib\masm32.lib
 dll_dllcrt0 PROTO C
 printf PROTO C :VARARG
 .DATA
-mem@cte5 DD 5
+mem@cte10 DD 10
+mem@cte16 DD 16
+mem@cte13 DD 13
 mem@cte1 DD 1
-mem@cte0 DD 0
+@aux8 DD ?
 _var DD ?
-_count DD ?
-@aux5 DD ?
-holamundo db "hola mundo", 0
+ADENTROWHILEnovale13todavia db " ADENTRO WHILE no vale 13 todavia", 0
+ADENTROWHILEvale13dentrodelif db " ADENTRO WHILE vale 13 dentro del if", 0
 @aux_mem DW ?
 max_double REAL8 340282347000000000000000000000000000000.
 min_double REAL8 0.0000000000000000000000000000000000000117549435
@@ -24,21 +25,28 @@ mensaje_division_cero db "DIVISION POR CERO DETECTADA", 0
 .code
 start:
 FNINIT
-MOV EAX ,0
+MOV EAX ,10
 MOV _var, EAX
-MOV EAX ,5
-MOV _count, EAX
-@labelTercetoWhile2:
+@labelSaltoIncondicional1:
 MOV EAX, _var
-CMP EAX, _count
-invoke MessageBox, NULL, addr holamundo, addr holamundo, MB_OK
+CMP EAX, 16
+JG @labelSaltoCondicional11
+MOV EAX, _var
+CMP EAX, 13
+JNE @labelSaltoCondicional7
+invoke MessageBox, NULL, addr ADENTROWHILEvale13dentrodelif, addr ADENTROWHILEvale13dentrodelif, MB_OK
+JMP @labelSaltoIncondicional8
+@labelSaltoCondicional7:
+invoke MessageBox, NULL, addr ADENTROWHILEnovale13todavia, addr ADENTROWHILEnovale13todavia, MB_OK
+@labelSaltoIncondicional8:
 MOV EAX, _var
 ADD EAX, 1
 JO @LABEL_OVF_SUMA
-MOV @aux5, EAX
-MOV EAX ,@aux5
+MOV @aux8, EAX
+MOV EAX ,@aux8
 MOV _var, EAX
-JMP @labelTercetoWhile2
+JMP @labelSaltoIncondicional1
+@labelSaltoCondicional11:
 JMP @LABEL_END
 
 @LABEL_OVF_PRODUCTO:
