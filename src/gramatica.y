@@ -534,7 +534,7 @@ import java.util.HashSet;
   EntradaTablaSimbolos entradaTablaSimbolos = (EntradaTablaSimbolos) ($1.obj);
   if (entradaTablaSimbolos.getTipo() == EntradaTablaSimbolos.LONG) {
     //chequeo si la cte positiva es mayor al maximo permitido-un valor por encima por si era negativa-
-    if ((Double.valueOf(entradaTablaSimbolos.getLexema())) == AnalizadorLexico.MAX_LONG) {
+    if ((Long.valueOf(entradaTablaSimbolos.getLexema())) == AnalizadorLexico.MAX_LONG) {
       //si lo es, lo informo y utilizo reemplazo para bajarla al maximo permitido
       addErrorSintactico(String.format("warning linteger cte positiva mayor al maximo permitido en linea %1$d", al.getLinea()));
       String nuevoLexema = String.valueOf(AnalizadorLexico.MAX_LONG - 1);
@@ -557,10 +557,9 @@ import java.util.HashSet;
     al.agregarATablaSimbolos(elementoTS);
   }
   /*addReglaSintacticaReconocida(String.format("ctenegativa  reconocida en linea %1$d", al.getLinea()));*/
-  //si el tipo es long debo chequear que su contraparte positivo que queda en la tabla de simbolos no sea mayor al maximo,
-  //todo si implementamos un contador de usos no deberia ser necesario, se podria utilizar que si el contador llega a 0  se elimine la positiva
+  //si el tipo es long debo chequear que su contraparte positiva que queda en la tabla de simbolos no sea mayor al maximo,
   if (entradaTablaSimbolos.getTipo() == EntradaTablaSimbolos.LONG) {
-    if ((Double.valueOf(entradaTablaSimbolos.getLexema())) == AnalizadorLexico.MAX_LONG) {
+    if ((Long.valueOf(entradaTablaSimbolos.getLexema())) == AnalizadorLexico.MAX_LONG) {
       al.getTablaDeSimbolos().remove(entradaTablaSimbolos.getLexema());
     }
   }
