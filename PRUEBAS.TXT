@@ -806,9 +806,141 @@ end_if,
 #- Casos válidos e inválidos para mutabilidad (si corresponde).#
 
 #Validado en casos de prueba propios#
-_------------------------------------------------
 
-PRUEBAS TIEMPO DE EJECUCION
+
+------------------------------------------------
+PRUEBAS OPERADORES ARITMETICOS Y COMPARADORES CON ENTEROS
+
+let mut linteger _l1,
+let mut linteger _l2,
+let mut linteger _l3,
+_l1 :=  15_l,
+_l2 :=  3_l,
+
+print('probando operaciones aritmeticas PRINTEAN TODAS QUE ANDAN dando los resultados'),
+
+_l3 := _l1 + _l2,
+if (_l3 = 18_l){
+print('Suma 18'),
+}else
+print('No Anduvo Suma'),
+end_if,
+
+_l3:= _l1-_l2,
+if (_l3 = 12_l){
+print('Resta 12'),
+}else
+print('No Anduvo Suma'),
+end_if,
+
+_l3 := _l1 * _l2,
+if (_l3 = 45_l){
+print('Multiplicacion 45'),
+}else
+print('No Anduvo Multiplicacion'),
+end_if,
+
+_l3 := _l1 / _l2,
+if (_l3 = 5_l){
+print('Division 5'),
+}else
+print('No Anduvo Division'),
+end_if,
+
+print('ahora comparadores con l3 igual 5'),
+
+if (_l3 > 2_l){
+print('Aduvo mayor'),
+}else
+print('No Anduvo mayor'),
+end_if,
+
+if (_l3 < 10_l){
+print('Aduvo menor'),
+}else
+print('No Anduvo menor'),
+end_if,
+
+if (_l3 != 10_l){
+print('Aduvo distinto'),
+}else
+print('No Anduvo distinto'),
+end_if,
+
+print('ahora debe printear que NO ANDA NINGUNO'),
+
+_l3 := _l1 + _l2,
+if (_l3 = 99_l){
+print('Suma 18'),
+}else
+print('No Anduvo Suma'),
+end_if,
+
+_l3:= _l1-_l2,
+if (_l3 = 99_l){
+print('Resta 12'),
+}else
+print('No Anduvo Resta'),
+end_if,
+
+_l3 := _l1 * _l2,
+if (_l3 = 99_l){
+print('Multiplicacion 45'),
+}else
+print('No Anduvo Multiplicacion'),
+end_if,
+
+_l3 := _l1 / _l2,
+if (_l3 = 99_l){
+print('Division 5'),
+}else
+print('No Anduvo Division'),
+end_if,
+
+print('ahora comparadores con l3 igual 5 tienen que printear que NO ANDUVIERON'),
+
+if (_l3 > 99_l){
+print('Aduvo mayor'),
+}else
+print('No Anduvo mayor'),
+end_if,
+
+if (_l3 < 1_l){
+print('Aduvo menor'),
+}else
+print('No Anduvo menor'),
+end_if,
+
+_l3 := _l1 / _l2,
+if ( _l3 != 5_l){
+print('Aduvo distinto'),
+}else
+print('No Anduvo distinto'),
+end_if,
+
+PRUEBAS OPERADORES ARITMETICOS CON SINGLES (EN EL ASSEMBLER HABRIA QUE AGREGARLE A MANO LA INSTRUCCION PARA QUE MUESTRE POR CONSOLA LOS VALORES)
+invoke printf, cfm$("%.20Lf\n"), _s3
+
+let mut single _s1,
+let mut single _s2,
+let mut single _s3,
+_s1 :=  10.5,
+_s2 :=  4.5,
+
+_s3:=_s1+_s2,
+print('imprime 15'),
+
+_s3:=_s1-_s2,
+print('imprime 6'),
+
+_s3:=_s1*_s2,
+print('imprime 47_25'),
+
+_s3:=_s1/_s2,
+print('imprime 2_33'),
+
+---------------------------------------------------
+PRUEBAS TIEMPO DE EJECUCION CUARTA ENTREGA
 
 #-------LINTEGER----------#
 
@@ -828,6 +960,7 @@ let mut linteger _c,
 _a :=2147483647_l,
 _b:= 2147483647_l,
 _c:=_a + _b,
+
     #NEGATIVOS#
 let mut linteger _a,
 let mut linteger _b,
@@ -835,7 +968,6 @@ let mut linteger _c,
 _a:=-2147483647_l,
 _b:=-2147483647_l,
 _c:=_a + _b,
-
 
 #OVERFLOW PRODUCTO#
     #POSITIVOS#
@@ -864,10 +996,78 @@ _a := 15.0,
 _b:= 0.0,
 _c:=_a/_b,
 
-#SUMA SINGLES POSITIVOS#
+###########################SUMA############################
+
+-----------SUMA DE SINGLES CON RESULTADO POSITIVO-------------
+
+    #SUMA SINGLES RESULTADO POSITIVO > AL POSITIVO MAS GRANDE PERMITIDO#
 let mut single _a,
 let mut single _b,
 let mut single _c,
 _a := 340282347000000000000000000000000000000.,
 _b := 340282347000000000000000000000000000000.,
 _c := _a + _b,
+
+    #SUMA SINGLES RESULTADO POSITIVO < AL POSITIVO MAS CHICO PERMITIDO#
+let mut single _a,
+let mut single _b,
+let mut single _c,
+_a := -0.0000000000000000000000000000000000000117549435,
+_b :=  0.00000000000000000000000000000000000002,
+_c := _a + _b,
+
+----------SUMA DE SINGLES CON RESULTADO NEGATIVO----------
+
+#SUMA SINGLES RESULTADO NEGATIVO < AL NEGATIVO MAS CHICO PERMITIDO#
+let mut single _a,
+let mut single _b,
+let mut single _c,
+_a := -340282347000000000000000000000000000000.,
+_b := -340282347000000000000000000000000000000.,
+_c := _a + _b,
+
+#SUMA SINGLES RESULTADO NEGATIVO > NEGATIVO MAS GRANDE PERMITIDO#
+let mut single _a,
+let mut single _b,
+let mut single _c,
+_a :=  0.0000000000000000000000000000000000000117549435,
+_b := -0.00000000000000000000000000000000000002,
+_c := _a + _b,
+
+-----------------------------------------------------
+
+        ############## MULTIPLICACION #################
+----------RESULTADO POSITIVO-----------
+#MULTIPLICACION SINGLES CON RESULTADO POSITIVO > POSITIVO MAS GRANDE#
+let mut single _a,
+let mut single _b,
+let mut single _c,
+_a := 340282347000000000000000000000000000000.,
+_b := 340282347000000000000000000000000000000.,
+_c := _a * _b,
+
+#MULTIPLICACION SINGLES CON RESULTADO POSITIVO < POSITIVO MAS CHICO#
+let mut single _a,
+let mut single _b,
+let mut single _c,
+_a :=  0.0000000000000000000000000000000000000117549435,
+_b :=  0.0000000000000000000000000000000000000117549435,
+_c := _a * _b,
+
+-----------MULTIPLICACION DE SINGLES CON RESULTADO NEGATIVO-------------
+
+#MULTIPLICACION SINGLES CON RESULTADO NEGATIVO < NEGATIVO MAS CHICO PERMITIDO#
+let mut single _a,
+let mut single _b,
+let mut single _c,
+_a := -340282347000000000000000000000000000000.,
+_b :=  340282347000000000000000000000000000000.,
+_c := _a * _b,
+
+#MULTIPLICACION SINGLES CON RESULTADO NEGATIVO > NEGATIVO MAS GRANDE PERMITIDO#
+let mut single _a,
+let mut single _b,
+let mut single _c,
+_a :=  0.0000000000000000000000000000000000000117549435,
+_b := -0.00000000000000000000000000000000000002,
+_c := _a * _b,

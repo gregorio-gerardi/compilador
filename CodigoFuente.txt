@@ -1,9 +1,17 @@
-#    public static double MAX_FLOAT = 340282347000000000000000000000000000000.;
-    public static double MIN_FLOAT = 0.0000000000000000000000000000000000000117549435;#
+let mut single _s1,
+let mut single _s2,
+let mut single _s3,
+_s1 :=  10.5,
+_s2 :=  4.5,
 
-let mut single _a,
-let mut single _b,
-let mut single _c,
-_a := -1.2,
-_b := 0.,
-_c := _a + _b,
+_s3:=_s1+_s2,
+print('imprime 15'),
+
+_s3:=_s1-_s2,
+print('imprime 6'),
+
+_s3:=_s1*_s2,
+print('imprime 47_25'),
+
+_s3:=_s1/_s2,
+print('imprime 2_33'),

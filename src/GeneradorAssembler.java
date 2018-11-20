@@ -32,16 +32,16 @@ public class GeneradorAssembler {
                     code.add(indexV, e.getLexema().replace("-", "neg") + " DD ?");
                     indexS++;
                 }
-            } else if (e.getTipo().equals("String")) {                                              //Strings
-                code.add(indexS, e.getLexema().replace(" ", "") + " db \"" + e.getLexema() + "\", 0");
+            } else if (e.getTipo().equals("String")) {                                              //Strings -- remplazamos los espacios por blancos y las "," por "coma" porque sino se rompe el assembler
+                code.add(indexS, e.getLexema().replace(" ", "").replace(",","coma") + " db \"" + e.getLexema() + "\", 0");
             } else {
                 if (e.tipo.equals(EntradaTablaSimbolos.LONG)) {
-                    code.add(desde, "mem@cte" + e.getLexema().replace(".", "").replace("-", "neg") + " DD " + e.getLexema());                 //Constantes
+                    code.add(desde, "mem@cte" + e.getLexema().replace("-", "neg") + " DD " + e.getLexema());                 //Constantes
                     indexV++;
                     indexS++;
                 } else if
                 (e.tipo.equals(EntradaTablaSimbolos.SINGLE)) {
-                    code.add(desde, "mem@cte" + e.getLexema().replace(".", "@") + " REAL8 " + e.getLexema());                 //Constantes
+                    code.add(desde, "mem@cte" + e.getLexema().replace(".", "@").replace("-","neg") + " REAL8 " + e.getLexema());                 //Constantes
                     indexV++;
                     indexS++;
                 }
@@ -67,11 +67,23 @@ public class GeneradorAssembler {
         code.add("@LABEL_OVF_PRODUCTO:");
         code.add("invoke MessageBox, NULL, addr mensaje_overflow_producto,addr mensaje_error, MB_OK");
         code.add("JMP @LABEL_END");
+
+        code.add("@LABEL_OVF_PRODUCTO_NEGATIVO:");
+        code.add("invoke MessageBox, NULL, addr mensaje_overflow_producto_negativo,addr mensaje_error, MB_OK");
+        code.add("JMP @LABEL_END");
+
         code.add("@LABEL_OVF_SUMA:");
         code.add("invoke MessageBox, NULL, addr mensaje_overflow_suma, addr mensaje_error, MB_OK");
         code.add("JMP @LABEL_END");
+
+        code.add("@LABEL_OVF_SUMA_NEGATIVO:");
+        code.add("invoke MessageBox, NULL, addr mensaje_overflow_suma_negativo, addr mensaje_error, MB_OK");
+        code.add("JMP @LABEL_END");
+
         code.add("@LABEL_DIV_CERO:");
         code.add("invoke MessageBox, NULL, addr mensaje_division_cero, addr mensaje_error, MB_OK");
+        code.add("JMP @LABEL_END");
+
         code.add("@LABEL_END:");
         code.add("invoke MessageBox, NULL, addr mensaje_fin, addr mensaje_fin, MB_OK");
         code.add("FNINIT");
@@ -80,7 +92,8 @@ public class GeneradorAssembler {
     }
 
     private static void addData() {
-/*      code.add(".386");
+        //anda sin esto, y si los agrego tira warnings de multiples directivas de modelo, por las dudas quedan comentadas.
+      /*code.add(".386");
         code.add(".MODEL flat, stdcall");
         code.add("option casemap :none");
         code.add(".STACK 200h");*/
@@ -93,12 +106,16 @@ public class GeneradorAssembler {
         code.add(".DATA");
         desdeLinea = code.size();
         code.add("@aux_mem DW ?");
-        code.add("max_double REAL8 " + "340282347000000000000000000000000000000.");
-        code.add("min_double REAL8 " + "0.0000000000000000000000000000000000000117549435");
+        code.add("max_double_positivo REAL8 " + "340282347000000000000000000000000000000.");
+        code.add("min_double_positivo REAL8 " + "0.0000000000000000000000000000000000000117549435");
+        code.add("min_double_negativo REAL8 " + "-340282347000000000000000000000000000000.");
+        code.add("max_double_negativo REAL8 " + "-0.0000000000000000000000000000000000000117549435");
         code.add("mensaje_error db \"Error en tiempo de ejecucion!\",0");
         code.add("mensaje_fin db \"Fin de la ejecucion!\",0");
         code.add("mensaje_overflow_producto db \"OVERFLOW DETECTADO EN PRODUCTO\", 0");
+        code.add("mensaje_overflow_producto_negativo db \"OVERFLOW DETECTADO EN PRODUCTO PARA NUMERO NEGATIVO\", 0");
         code.add("mensaje_overflow_suma db \"OVERFLOW DETECTADO EN SUMA\", 0");
+        code.add("mensaje_overflow_suma_negativo db \"OVERFLOW DETECTADO EN SUMA PARA NUMERO NEGATIVO\", 0");
         code.add("mensaje_division_cero db \"DIVISION POR CERO DETECTADA\", 0");
     }
 
@@ -122,24 +139,53 @@ public class GeneradorAssembler {
             //suma
             if (t.getOperador().equals("+")) {
                 if (t.getTipo().equals(EntradaTablaSimbolos.SINGLE)) {
-                    //TODO QUEDA CON JA Y JB NO ANDA LOS JUMP SIGNADOS
+                    //TODO QUEDA CON JA Y JB NO ANDA LOS JUMP SIGNADOS PARA EL COPROCESADOR
                     code.add("FLD " + t.getOperando1ForAssembler());
                     code.add("FLD " + t.getOperando2ForAssembler());
                     code.add("FADD");
                     code.add("FSTP " + getResult(t));
-                    code.add("FLD max_double");
+                    //chequeo overflow despues de la suma, si es menor q cero saltara a @label singles negativos
+                    code.add("FLD " + getResult(t));
+                    code.add("FTST");
+                    code.add("FSTSW AX");
+                    code.add("SAHF");
+                    code.add("FNINIT");
+                    code.add("JB @LABEL_CHEQUEO_OVERFLOW_SUMA_NEGATIVOS_SINGLES");
+                    //para positivos
+                    code.add("FLD max_double_positivo");
                     code.add("FLD " + getResult(t));
                     code.add("FCOM");
                     code.add("FSTSW @aux_mem");
                     code.add("MOV AX, @aux_mem");
                     code.add("SAHF");
+                    code.add("FNINIT");
                     code.add("JA @LABEL_OVF_SUMA");
-                    code.add("FLD min_double");
+                    code.add("FLD min_double_positivo");
                     code.add("FLD " + getResult(t));
                     code.add("FCOM");
                     code.add("FSTSW AX");
                     code.add("SAHF");
+                    code.add("FNINIT");
                     code.add("JB @LABEL_OVF_SUMA");
+                    code.add("JMP @LABEL_FIN_OVERFLOW_POSITIVO");
+                    //para negativos por si saltó
+                    code.add("@LABEL_CHEQUEO_OVERFLOW_SUMA_NEGATIVOS_SINGLES:");
+                    code.add("FLD max_double_negativo");
+                    code.add("FLD " + getResult(t));
+                    code.add("FCOM");
+                    code.add("FSTSW @aux_mem");
+                    code.add("MOV AX, @aux_mem");
+                    code.add("SAHF");
+                    code.add("FNINIT");
+                    code.add("JA @LABEL_OVF_SUMA_NEGATIVO");
+                    code.add("FLD min_double_negativo");
+                    code.add("FLD " + getResult(t));
+                    code.add("FCOM");
+                    code.add("FSTSW AX");
+                    code.add("SAHF");
+                    code.add("FNINIT");
+                    code.add("JB @LABEL_OVF_SUMA_NEGATIVO");
+                    code.add("@LABEL_FIN_OVERFLOW_POSITIVO:");
                     AnalizadorLexico.agregarATablaSimbolos(new EntradaTablaSimbolos(t.getAuxResultado(), t.getTipo()));
                 }
                 if (t.getTipo().equals(EntradaTablaSimbolos.LONG)) {
@@ -149,7 +195,6 @@ public class GeneradorAssembler {
                     code.add("MOV " + getResult(t) + ", EAX");
                     AnalizadorLexico.agregarATablaSimbolos(new EntradaTablaSimbolos(t.getAuxResultado(), t.getTipo()));
                 }
-
             }
 
             //resta
@@ -167,28 +212,55 @@ public class GeneradorAssembler {
                     code.add("MOV " + getResult(t) + ", EAX");
                     AnalizadorLexico.agregarATablaSimbolos(new EntradaTablaSimbolos(t.getAuxResultado(), t.getTipo()));
                 }
-
             }
+
             //multiplicacion
             if (t.getOperador().equals("*")) {
                 if (t.getTipo().equals(EntradaTablaSimbolos.SINGLE)) {
-                    //TODO QUEDA CON JA Y JB NO ANDA LOS JUMP SIGNADOS
                     code.add("FLD " + t.getOperando1ForAssembler());
                     code.add("FLD " + t.getOperando2ForAssembler()); //tener en cuenta que hace ST(1) * ST
                     code.add("FMUL");
                     code.add("FSTP " + getResult(t));
-                    code.add("FLD max_double");
+                    //overflow
+                    code.add("FLD " + getResult(t));
+                    code.add("FTST");
+                    code.add("FSTSW AX");
+                    code.add("SAHF");
+                    code.add("FNINIT");
+                    code.add("JB @LABEL_CHEQUEO_OVERFLOW_MUL_NEGATIVOS_SINGLES");
+                    //positivos
+                    code.add("FLD max_double_positivo");
                     code.add("FLD " + getResult(t));
                     code.add("FCOM");
                     code.add("FSTSW AX");
                     code.add("SAHF");
+                    code.add("FNINIT");
                     code.add("JA @LABEL_OVF_PRODUCTO");
-                    code.add("FLD min_double");
+                    code.add("FLD min_double_positivo");
                     code.add("FLD " + getResult(t));
                     code.add("FCOM");
                     code.add("FSTSW AX");
                     code.add("SAHF");
-                    code.add("JB @LABEL_OVF_PRODUCTO");
+                    code.add("FNINIT");
+                    code.add("JB @LABEL_OVF_PRODUCTO"); //esta rompiendo
+                    code.add("JMP @LABEL_FIN_OVERFLOW_POSITIVO_MUL");
+                    //negativos
+                    code.add("@LABEL_CHEQUEO_OVERFLOW_MUL_NEGATIVOS_SINGLES:");
+                    code.add("FLD max_double_negativo");
+                    code.add("FLD " + getResult(t));
+                    code.add("FCOM");
+                    code.add("FSTSW AX");
+                    code.add("SAHF");
+                    code.add("FNINIT");
+                    code.add("JA @LABEL_OVF_PRODUCTO_NEGATIVO");
+                    code.add("FLD min_double_negativo");
+                    code.add("FLD " + getResult(t));
+                    code.add("FCOM");
+                    code.add("FSTSW AX");
+                    code.add("SAHF");
+                    code.add("FNINIT");
+                    code.add("JB @LABEL_OVF_PRODUCTO_NEGATIVO");
+                    code.add("@LABEL_FIN_OVERFLOW_POSITIVO_MUL:");
                     AnalizadorLexico.agregarATablaSimbolos(new EntradaTablaSimbolos(t.getAuxResultado(), t.getTipo()));
                 }
                 if (t.getTipo().equals(EntradaTablaSimbolos.LONG)) {
@@ -203,13 +275,13 @@ public class GeneradorAssembler {
             //division
             if (t.getOperador().equals("/")) {
                 if (t.getTipo().equals(EntradaTablaSimbolos.SINGLE)) {
-                    //chequeo division cero TODO VERIFICAR
+                    //chequeo division cero
                     code.add("FLD " + t.getOperando2ForAssembler());
                     code.add("FTST");
                     code.add("FSTSW AX");
                     code.add("SAHF");
                     code.add("JE @LABEL_DIV_CERO");
-                    //
+                    //no era cero, sigo
                     code.add("FLD " + t.getOperando1ForAssembler());
                     code.add("FLD " + t.getOperando2ForAssembler()); //tener en cuenta que hace ST(1) / ST
                     code.add("FDIV");
@@ -221,7 +293,7 @@ public class GeneradorAssembler {
                     code.add("MOV EAX," + t.getOperando2ForAssembler());
                     code.add("SUB EAX, 0");
                     code.add("JZ @LABEL_DIV_CERO");
-                    //
+                    //no era cero, sigo
                     code.add("MOV EDX,0");
                     code.add("MOV EAX, " + t.getOperando1ForAssembler());
                     code.add("MOV EBX, " + t.getOperando2ForAssembler());
@@ -229,7 +301,6 @@ public class GeneradorAssembler {
                     code.add("MOV " + getResult(t) + ", EAX");
                     AnalizadorLexico.agregarATablaSimbolos(new EntradaTablaSimbolos(t.getAuxResultado(), t.getTipo()));
                 }
-
             }
 
             //asignacion
@@ -239,7 +310,7 @@ public class GeneradorAssembler {
                     code.add("MOV " + t.getOperando1ForAssembler() + ", EAX");
                 } else if (t.getOperando1().getTipo().equals(EntradaTablaSimbolos.SINGLE)) {
                     if (t.getOperando2() instanceof EntradaTablaSimbolos && !(((EntradaTablaSimbolos) t.getOperando2()).getLexema().startsWith("_", 0))) {
-                        code.add("FLD mem@cte" + t.getOperando2ForAssembler().replace(".", "@"));
+                        code.add("FLD mem@cte" + t.getOperando2ForAssembler().replace(".", "@").replace("-","neg"));
                         code.add("FSTP " + t.getOperando1ForAssembler());
                     } else {
                         code.add("FLD " + t.getOperando2ForAssembler());
@@ -250,7 +321,7 @@ public class GeneradorAssembler {
 
             //print
             if (t.getOperador().equals("PRINT")) {
-                code.add("invoke MessageBox, NULL, addr " + t.getOperando1ForAssembler().replace(" ", "") + ", addr " + t.getOperando1ForAssembler().replace(" ", "") + ", MB_OK");
+                code.add("invoke MessageBox, NULL, addr " + t.getOperando1ForAssembler().replace(" ", "").replace(",","coma") + ", addr " + t.getOperando1ForAssembler().replace(" ", "").replace(",","coma") + ", MB_OK");
             }
 
             //-----------------------------------------Labels Jumps y Comparaciones-----------------------------------//
@@ -269,7 +340,7 @@ public class GeneradorAssembler {
             }
 
             //comparaciones
-            if ((t.getOperador().equals("<")) || (t.getOperador().equals(">")) || (t.getOperador().equals("COMP_MENOR_IGUAL")) || (t.getOperador().equals("COMP_MAYOR_IGUAL")) || (t.getOperador().equals("="))) {
+            if ((t.getOperador().equals("<")) || (t.getOperador().equals(">")) || (t.getOperador().equals("COMP_MENOR_IGUAL")) || (t.getOperador().equals("COMP_MAYOR_IGUAL")) || (t.getOperador().equals("="))|| (t.getOperador().equals("COMP_DIFERENTE"))) {
                 Terceto tnext = listaTercetos.get(i + 1);
                 Terceto tretroceso = listaTercetos.get(Integer.valueOf(tnext.getOperando2ForAssembler()) - 1);
 
@@ -281,8 +352,8 @@ public class GeneradorAssembler {
                 code.add("MOV EAX, " + t.getOperando1ForAssembler());
                 code.add("CMP EAX, " + t.getOperando2ForAssembler());
 
-                //---------------me cada caso de comparador para poner el jump correspondiente-----------------------//
-                //------------saltos condicionales-------------//
+                //---------------veo cada caso de operador comparador para poner el jump correspondiente-----------------------//
+                //---------------saltos condicionales-------------//
                 labelsCondicional.add(Integer.valueOf(tnext.getOperando2ForAssembler()) - 1);
                 //comparacion menor
                 if (t.getOperador().equals("<")) {
@@ -315,31 +386,27 @@ public class GeneradorAssembler {
                     }
                 }
                 //comparacion distinto
-                if (t.getOperador().equals("!=")) {
+                if (t.getOperador().equals("COMP_DIFERENTE")) {
                     if (tnext.getOperador().equals("BF")) {
                         code.add("JE @labelSaltoCondicional" + (((TercetoDestino) tnext.getOperando2()).destino.toString()));
                     }
                 }
             }
 
-
+            //detenccion de completado etiquetas y eliminacion de la lista de marcados
             for (int j = labelsIncondicional.size()-1; j >= 0; j--) {
                 if (labelsIncondicional.get(j)==i){
                     code.add("@labelSaltoIncondicional" + (i + 1) + ":");
+                    labelsIncondicional.remove(j);
                 }
             }
 
             for (int j = labelsCondicional.size()-1; j >= 0; j--) {
                 if (labelsCondicional.get(j)==i){
                     code.add("@labelSaltoCondicional" + (i + 1) + ":");
+                    labelsCondicional.remove(j);
                 }
             }
-/*            if (labelsIncondicional.contains(i)) {
-                code.add("@labelSaltoIncondicional" + (i + 1) + ":");
-            }
-            if (labelsCondicional.contains(i)) {
-                code.add("@labelSaltoCondicional" + (i + 1) + ":");
-            }*/
         }
         code.add("JMP @LABEL_END");
     }

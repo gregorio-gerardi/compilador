@@ -5,36 +5,73 @@ No se encontraron errores lexicos.
 
 TOKENS DEL ANALIZADOR LEXICO:
 
-Palabra Reservada let (linea 4)
-Palabra Reservada mut (linea 4)
-Palabra Reservada single (linea 4)
+Palabra Reservada let (linea 1)
+Palabra Reservada mut (linea 1)
+Palabra Reservada single (linea 1)
+ID (linea 1)
+Simbolo , (linea 1)
+Palabra Reservada let (linea 2)
+Palabra Reservada mut (linea 2)
+Palabra Reservada single (linea 2)
+ID (linea 2)
+Simbolo , (linea 2)
+Palabra Reservada let (linea 3)
+Palabra Reservada mut (linea 3)
+Palabra Reservada single (linea 3)
+ID (linea 3)
+Simbolo , (linea 3)
 ID (linea 4)
+Simbolo := (linea 4)
+CTE Float 10.5 (linea 4)
 Simbolo , (linea 4)
-Palabra Reservada let (linea 5)
-Palabra Reservada mut (linea 5)
-Palabra Reservada single (linea 5)
 ID (linea 5)
+Simbolo := (linea 5)
+CTE Float 4.5 (linea 5)
 Simbolo , (linea 5)
-Palabra Reservada let (linea 6)
-Palabra Reservada mut (linea 6)
-Palabra Reservada single (linea 6)
-ID (linea 6)
-Simbolo , (linea 6)
 ID (linea 7)
 Simbolo := (linea 7)
-Simbolo - (linea 7)
-CTE Float 1.2 (linea 7)
+ID (linea 7)
+Simbolo + (linea 7)
+ID (linea 7)
 Simbolo , (linea 7)
-ID (linea 8)
-Simbolo := (linea 8)
-CTE Float 0.0 (linea 8)
+Palabra Reservada print (linea 8)
+Simbolo ( (linea 8)
+Cadena Caracteres: "imprime 15" (linea 8)
+Simbolo ) (linea 8)
 Simbolo , (linea 8)
-ID (linea 9)
-Simbolo := (linea 9)
-ID (linea 9)
-Simbolo + (linea 9)
-ID (linea 9)
-Simbolo , (linea 9)
+ID (linea 10)
+Simbolo := (linea 10)
+ID (linea 10)
+Simbolo - (linea 10)
+ID (linea 10)
+Simbolo , (linea 10)
+Palabra Reservada print (linea 11)
+Simbolo ( (linea 11)
+Cadena Caracteres: "imprime 6" (linea 11)
+Simbolo ) (linea 11)
+Simbolo , (linea 11)
+ID (linea 13)
+Simbolo := (linea 13)
+ID (linea 13)
+Simbolo * (linea 13)
+ID (linea 13)
+Simbolo , (linea 13)
+Palabra Reservada print (linea 14)
+Simbolo ( (linea 14)
+Cadena Caracteres: "imprime 47_25" (linea 14)
+Simbolo ) (linea 14)
+Simbolo , (linea 14)
+ID (linea 16)
+Simbolo := (linea 16)
+ID (linea 16)
+Simbolo / (linea 16)
+ID (linea 16)
+Simbolo , (linea 16)
+Palabra Reservada print (linea 17)
+Simbolo ( (linea 17)
+Cadena Caracteres: "imprime 2_33" (linea 17)
+Simbolo ) (linea 17)
+Simbolo , (linea 17)
 --------------------
 
 ERRORES SINTACTICOS:
@@ -44,38 +81,70 @@ No se detectaron errores sintacticos.
 
 REGLAS SINTACTICAS:
 
-tipo reconocida en linea 4
-lista de variables reconocida en linea 4
-sentencia declarativa reconocida en linea 4
+tipo reconocida en linea 1
+lista de variables reconocida en linea 1
+sentencia declarativa reconocida en linea 1
+sentencia reconocida en linea 1
+Contenido de programa reconocido en linea 1
+tipo reconocida en linea 2
+lista de variables reconocida en linea 2
+sentencia declarativa reconocida en linea 2
+sentencia reconocida en linea 2
+Contenido de programa reconocido en linea 2
+tipo reconocida en linea 3
+lista de variables reconocida en linea 3
+sentencia declarativa reconocida en linea 3
+sentencia reconocida en linea 3
+Contenido de programa reconocido en linea 3
+expresion reconocida en linea 4
+asignacion reconocida en linea 4
+sentencia ejecutable reconocida en linea 4
 sentencia reconocida en linea 4
 Contenido de programa reconocido en linea 4
-tipo reconocida en linea 5
-lista de variables reconocida en linea 5
-sentencia declarativa reconocida en linea 5
+expresion reconocida en linea 5
+asignacion reconocida en linea 5
+sentencia ejecutable reconocida en linea 5
 sentencia reconocida en linea 5
 Contenido de programa reconocido en linea 5
-tipo reconocida en linea 6
-lista de variables reconocida en linea 6
-sentencia declarativa reconocida en linea 6
-sentencia reconocida en linea 6
-Contenido de programa reconocido en linea 6
+expresion reconocida en linea 7
 expresion reconocida en linea 7
 asignacion reconocida en linea 7
 sentencia ejecutable reconocida en linea 7
 sentencia reconocida en linea 7
 Contenido de programa reconocido en linea 7
-expresion reconocida en linea 8
-asignacion reconocida en linea 8
+print reconocida en linea 8
 sentencia ejecutable reconocida en linea 8
 sentencia reconocida en linea 8
 Contenido de programa reconocido en linea 8
-expresion reconocida en linea 9
-expresion reconocida en linea 9
-asignacion reconocida en linea 9
-sentencia ejecutable reconocida en linea 9
-sentencia reconocida en linea 9
-Contenido de programa reconocido en linea 9
-Programa reconocido en linea 9
+expresion reconocida en linea 10
+expresion reconocida en linea 10
+asignacion reconocida en linea 10
+sentencia ejecutable reconocida en linea 10
+sentencia reconocida en linea 10
+Contenido de programa reconocido en linea 10
+print reconocida en linea 11
+sentencia ejecutable reconocida en linea 11
+sentencia reconocida en linea 11
+Contenido de programa reconocido en linea 11
+expresion reconocida en linea 13
+asignacion reconocida en linea 13
+sentencia ejecutable reconocida en linea 13
+sentencia reconocida en linea 13
+Contenido de programa reconocido en linea 13
+print reconocida en linea 14
+sentencia ejecutable reconocida en linea 14
+sentencia reconocida en linea 14
+Contenido de programa reconocido en linea 14
+expresion reconocida en linea 16
+asignacion reconocida en linea 16
+sentencia ejecutable reconocida en linea 16
+sentencia reconocida en linea 16
+Contenido de programa reconocido en linea 16
+print reconocida en linea 17
+sentencia ejecutable reconocida en linea 17
+sentencia reconocida en linea 17
+Contenido de programa reconocido en linea 17
+Programa reconocido en linea 17
 --------------------
 ERRORES SEMANTICOS:
 
@@ -84,18 +153,31 @@ No se detectaron errores sintacticos.
 
 CONTENIDO DE LA TABLA DE SIMBOLOS:
 
-_a --> Single
-0.0 --> Single
-_b --> Single
-_c --> Single
-1.2 --> Single
--1.2 --> Single
+10.5 --> Single
+imprime 47_25 --> String
+4.5 --> Single
+_s1 --> Single
+imprime 2_33 --> String
+_s3 --> Single
+imprime 15 --> String
+_s2 --> Single
+imprime 6 --> String
 --------------------
 
 LISTA DE TERCETOS GENERADOS:
 
-0 - ( ASIGNACION , _a , -1.2 ) 
-1 - ( ASIGNACION , _b , 0.0 ) 
-2 - ( + , _a , _b ) 
-3 - ( ASIGNACION , _c , [2] ) 
+0 - ( ASIGNACION , _s1 , 10.5 ) 
+1 - ( ASIGNACION , _s2 , 4.5 ) 
+2 - ( + , _s1 , _s2 ) 
+3 - ( ASIGNACION , _s3 , [2] ) 
+4 - ( PRINT , imprime 15 , - ) 
+5 - ( - , _s1 , _s2 ) 
+6 - ( ASIGNACION , _s3 , [5] ) 
+7 - ( PRINT , imprime 6 , - ) 
+8 - ( * , _s1 , _s2 ) 
+9 - ( ASIGNACION , _s3 , [8] ) 
+10 - ( PRINT , imprime 47_25 , - ) 
+11 - ( / , _s1 , _s2 ) 
+12 - ( ASIGNACION , _s3 , [11] ) 
+13 - ( PRINT , imprime 2_33 , - ) 
 --------------------
