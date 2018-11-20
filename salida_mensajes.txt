@@ -3,73 +3,9 @@ ERRORES DEL ANALIZADOR LEXICO:
 Error lexico en linea: 5
 --------------------
 
-TOKENS DEL ANALIZADOR LEXICO:
-
-Palabra Reservada let (linea 1)
-Palabra Reservada mut (linea 1)
-Palabra Reservada single (linea 1)
-ID (linea 1)
-Simbolo , (linea 1)
-Palabra Reservada let (linea 2)
-Palabra Reservada mut (linea 2)
-Palabra Reservada single (linea 2)
-ID (linea 2)
-Simbolo , (linea 2)
-Palabra Reservada let (linea 3)
-Palabra Reservada mut (linea 3)
-Palabra Reservada single (linea 3)
-ID (linea 3)
-Simbolo , (linea 3)
-Palabra Reservada let (linea 4)
-Palabra Reservada mut (linea 4)
-Palabra Reservada linteger (linea 4)
-ID (linea 4)
-Simbolo , (linea 4)
-ID (linea 5)
-Simbolo := (linea 5)
-Simbolo , (linea 5)
-ID (linea 6)
-Simbolo := (linea 6)
-CTE Float 3.502823E36 (linea 6)
-Simbolo , (linea 6)
---------------------
-
 ERRORES SINTACTICOS:
 
 asignacion mal definida en linea 5
---------------------
-
-REGLAS SINTACTICAS:
-
-tipo reconocida en linea 1
-lista de variables reconocida en linea 1
-sentencia declarativa reconocida en linea 1
-sentencia reconocida en linea 1
-Contenido de programa reconocido en linea 1
-tipo reconocida en linea 2
-lista de variables reconocida en linea 2
-sentencia declarativa reconocida en linea 2
-sentencia reconocida en linea 2
-Contenido de programa reconocido en linea 2
-tipo reconocida en linea 3
-lista de variables reconocida en linea 3
-sentencia declarativa reconocida en linea 3
-sentencia reconocida en linea 3
-Contenido de programa reconocido en linea 3
-tipo reconocida en linea 4
-lista de variables reconocida en linea 4
-sentencia declarativa reconocida en linea 4
-sentencia reconocida en linea 4
-Contenido de programa reconocido en linea 4
-sentencia ejecutable reconocida en linea 5
-sentencia reconocida en linea 5
-Contenido de programa reconocido en linea 5
-expresion reconocida en linea 6
-asignacion reconocida en linea 6
-sentencia ejecutable reconocida en linea 6
-sentencia reconocida en linea 6
-Contenido de programa reconocido en linea 6
-Programa reconocido en linea 6
 --------------------
 ERRORES SEMANTICOS:
 

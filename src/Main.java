@@ -30,7 +30,7 @@ public class Main {
                     printRed(e);
                     pw.println(e);
                 }
-            pw.println("--------------------");
+            /*pw.println("--------------------");
             System.out.println("--------------------");
             pw.println("");
             pw.println("TOKENS DEL ANALIZADOR LEXICO:");
@@ -42,7 +42,7 @@ public class Main {
                 for (String e : p.getListaDeTokens()) {
                     System.out.println(e);
                     pw.println(e);
-                }
+                }*/
             pw.println("--------------------");
             System.out.println("--------------------");
             pw.println("");
@@ -56,7 +56,7 @@ public class Main {
                     printRed(e);
                     pw.println(e);
                 }
-            pw.println("--------------------");
+/*            pw.println("--------------------");
             System.out.println("--------------------");
             pw.println("");
             pw.println("REGLAS SINTACTICAS:");
@@ -68,7 +68,7 @@ public class Main {
                 for (String e : p.getListaDeReglas()) {
                     System.out.println(e);
                     pw.println(e);
-                }
+                }*/
             pw.println("--------------------");
             System.out.println("--------------------");
             pw.println("ERRORES SEMANTICOS:");
@@ -136,9 +136,9 @@ public class Main {
                 }
                 if (generar && p.getListaDeErroresSemanticos().isEmpty()){
                     GeneradorAssembler.generarAssembler(tercetos);
-                    System.out.println("Assembler generado, el codigo contiene Warnings.-");
+                    System.out.println("Assembler generado, el codigo contiene Warnings");
                 }else {
-                    System.out.println("------------------Imposible generar assembler, chequear lista errores.---------------");
+                    System.out.println("!------------------Imposible generar assembler, chequear lista errores-----------------!");
                 }
             }
         } catch (IOException ex) {
