@@ -116,13 +116,30 @@ public class Main {
             pw.close();
             if (p.getListaDeErroresLexicos().isEmpty() && p.getListaDeErroresSemanticos().isEmpty() && p.getListaDeErroresSintacticos().isEmpty()) {
                 GeneradorAssembler.generarAssembler(tercetos);
-/*                Runtime aplicacion = Runtime.getRuntime();
-                try {
-                    aplicacion.exec("compilador.cmd");
-                } catch (Exception e) {
-                }*/
+                System.out.println("Assembler generado correctamente");
             } else {
-                System.out.println("------------------Imposible generar assembler, chequear lista errores.---------------");
+                ArrayList<String> lista;
+                lista = p.getListaDeErroresLexicos();
+                boolean generar  = true;
+                for (int i = 0; i < lista.size() ; i++) {
+                    if(!(lista.get(i).contains("Warning"))) {
+                        generar = false;
+                    }
+                }
+                if (generar){
+                    lista = p.getListaDeErroresSintacticos();
+                    for (int i = 0; i < lista.size() ; i++) {
+                        if(!(lista.get(i).contains("warning"))) {
+                            generar = false;
+                        }
+                    }
+                }
+                if (generar && p.getListaDeErroresSemanticos().isEmpty()){
+                    GeneradorAssembler.generarAssembler(tercetos);
+                    System.out.println("Assembler generado, el codigo contiene Warnings.-");
+                }else {
+                    System.out.println("------------------Imposible generar assembler, chequear lista errores.---------------");
+                }
             }
         } catch (IOException ex) {
             ex.printStackTrace();

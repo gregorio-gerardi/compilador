@@ -1,17 +1,6 @@
 let mut single _s1,
 let mut single _s2,
 let mut single _s3,
-_s1 :=  10.5,
-_s2 :=  4.5,
-
-_s3:=_s1+_s2,
-print('imprime 15'),
-
-_s3:=_s1-_s2,
-print('imprime 6'),
-
-_s3:=_s1*_s2,
-print('imprime 47_25'),
-
-_s3:=_s1/_s2,
-print('imprime 2_33'),
+let mut linteger _l1,
+_l1:= 214748,
+_s1 :=  3502823000000000000000000000000000000.,
